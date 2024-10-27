@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9C9A97DA-F2A1-63BB-8F64-8FB80D10133C" name="JIZDNI_RADY">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>730ED73D-1083-63AE-A072-02FB5EC120F7</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>jizdni_rad</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_jizdniho_radu" id="A7814C15-C1A7-7B68-B036-B0D9A891110C">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>15B1E7F1-C8B7-DCD9-D91E-9D28ACDF2E85</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>jizdni_rady_id_jizdniho_radu_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>jizdni_rady_id_jizdniho_radu_trg</autoIncrementTriggerName>
+</Column>
+<Column name="platnost_od" id="31C6C0AD-3F39-99F6-1685-5A75E5F56C6D">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>FF8C40B4-FE91-798A-DDD3-79D540700F90</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="platnost_do" id="0AC49600-DDBF-8EDE-DD12-F978DA7AD975">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>8F444010-B07C-4E08-D082-56650F7AB370</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6D915BC9-6230-8AA6-1AC6-001AF2C64830" name="JIZDNI_RAD_PK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>998B7C3C-B0B1-9C14-A0EE-5E193BD03E80</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A7814C15-C1A7-7B68-B036-B0D9A891110C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

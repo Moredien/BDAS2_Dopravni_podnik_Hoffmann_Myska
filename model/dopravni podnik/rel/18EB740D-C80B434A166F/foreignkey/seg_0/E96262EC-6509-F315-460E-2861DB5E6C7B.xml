@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E96262EC-6509-F315-460E-2861DB5E6C7B" containerWithKeyObject="4DE7D47A-C239-27F4-8FAF-27E7FD747EC7" localFKIndex="2CB67712-E390-0028-3F42-363F841F44D2" name="JIZDA_TRASA_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>8B3675E6-0EB6-6C3E-A5F8-538844DDE583</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<referredTableLongName>TRASY</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1FC64966-09FA-DB22-E7BB-BA4E2251615D</referredTableID>
+<keyObject>4334A181-CD81-6F48-8EAC-0E96AAF1D19B</keyObject>
+<referredKeyID>4334A181-CD81-6F48-8EAC-0E96AAF1D19B</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_trasy</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

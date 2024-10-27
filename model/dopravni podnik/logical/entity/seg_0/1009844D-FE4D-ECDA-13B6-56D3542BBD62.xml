@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1009844D-FE4D-ECDA-13B6-56D3542BBD62" name="GARAZ">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-19 16:31:23 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_garaze" id="6BF6F033-3623-D4E3-BD0E-D16FC878A842">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-20 13:44:25 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="jmeno" id="E68A67A3-8697-120C-3961-37BE92524EA0">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-20 13:44:41 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="kapacita" id="8F61F0EF-FB26-D628-4FDF-A52E9D296B9D">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-20 13:45:15 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_adresy" id="0353D206-1BA2-C904-B6A6-B0F1A79A7467">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-21 13:18:44 UTC</createdTime>
+<generatorID>8F7B2C4E-E616-B417-9B8B-0688DB2628FE</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<referedAttribute>0977D8DB-2FEC-1D1E-98C3-A9957E71739C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="06B1BC12-81AF-2F2D-F4BB-F67468855257" name="Garáž PK">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-20 13:44:39 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6BF6F033-3623-D4E3-BD0E-D16FC878A842</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

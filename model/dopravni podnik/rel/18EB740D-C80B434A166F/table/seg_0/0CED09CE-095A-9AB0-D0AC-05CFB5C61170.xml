@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0CED09CE-095A-9AB0-D0AC-05CFB5C61170" name="ADRESY">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>7D2926C2-60FE-E922-518B-2450A84081E2</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>adresa</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_adresy" id="3343EB30-9CB3-E4D5-3E76-3262469A94FE">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>0977D8DB-2FEC-1D1E-98C3-A9957E71739C</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>adresy_id_adresy_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>adresy_id_adresy_trg</autoIncrementTriggerName>
+</Column>
+<Column name="mesto" id="F6EA7191-E116-2020-7A04-F82571578AA4">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>FEBC626A-2281-8715-0C02-D3933A4BB2EA</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ulice" id="5FC6C29A-11FC-A337-6940-B9386FD12F16">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>5A08ED16-20D1-C25C-4BDF-F67038AB03FD</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cislo_popisne" id="C85D3EC0-93AF-1911-4B3B-52EF0CE923FD">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>0F9C0584-2B6B-DEAD-731B-1F87572A6A22</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="895B50D0-4308-8A7E-71D3-98A50CFDD956" name="ADRESA_PK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>7E977EF9-AC9B-78C8-2792-B974AF5871BB</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3343EB30-9CB3-E4D5-3E76-3262469A94FE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

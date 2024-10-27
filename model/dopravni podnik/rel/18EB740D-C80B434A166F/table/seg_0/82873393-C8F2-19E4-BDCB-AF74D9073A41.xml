@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="82873393-C8F2-19E4-BDCB-AF74D9073A41" name="VOZIDLA">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>8F397D04-8AC0-DECD-AA87-06416DEFF224</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>vozidlo</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_vozidla" id="BE842757-B87F-C7E2-9DD1-B76D11A4B42B">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>306A5523-0475-6768-B211-15E48D7CFD3D</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>vozidla_id_vozidla_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>vozidla_id_vozidla_trg</autoIncrementTriggerName>
+</Column>
+<Column name="id_garaze" id="C6ED48B4-1E0A-DC89-1943-F3633145FA38">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>DBB5DB0F-4C32-8248-A7E8-AF7B961D2E0E</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="92A36514-BD9D-61C7-3236-5E08492D7A95" referredColumn="12194B16-6113-AA9C-DFB4-51192E45A363"/>
+</associations>
+</Column>
+<Column name="id_typ_vozidla" id="6EFA64AC-416D-40A6-62CF-DDBFB6E64951">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>A71CECA6-7D90-6D32-ECD4-BA1750914D82</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9D025F49-4098-605E-8EA5-B5E48D2984DA" referredColumn="568ED2F0-A638-DFA2-9AEF-2A53F02D2401"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2A8254B9-03EA-BBD4-A5A7-ACA587A92D37" name="VOZIDLO_PK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>976D2570-2CE1-3AE8-EE60-EA21DD8A8472</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BE842757-B87F-C7E2-9DD1-B76D11A4B42B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D81C1385-7570-CB4C-3FA6-C37ED639E63F" name="VOZIDLO_GARAZ_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>041BADBB-8E26-9EE5-08EB-D7F55909471F</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C6ED48B4-1E0A-DC89-1943-F3633145FA38"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AF7FCCC3-798D-6235-2B5F-78F827F49AFF" name="VOZIDLO_TYP_VOZIDLA_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>4D3F5A5C-9CA4-8E79-F848-41267BFB62FB</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6EFA64AC-416D-40A6-62CF-DDBFB6E64951"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="47ABA0CF-9253-3B5B-84BE-EBBB341C91A7" name="LINKA">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-19 16:30:43 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_linky" id="9BAD7A66-3EB3-CE5D-2F0B-9E7EFA43782F">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-20 13:51:21 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cislo" id="9DB7F576-51E9-579A-30E6-0544466427E9">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-20 13:51:52 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_jizdniho_radu" id="5F082B65-3C29-FD15-7E30-614A3E2A8E75">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-20 14:12:38 UTC</createdTime>
+<generatorID>4582EE3E-07BA-5020-E9E6-A98DCE23AC14</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<referedAttribute>15B1E7F1-C8B7-DCD9-D91E-9D28ACDF2E85</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8658232D-4C50-AA3C-21A4-911434FCE930" name="Linka PK">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-20 13:51:51 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9BAD7A66-3EB3-CE5D-2F0B-9E7EFA43782F</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

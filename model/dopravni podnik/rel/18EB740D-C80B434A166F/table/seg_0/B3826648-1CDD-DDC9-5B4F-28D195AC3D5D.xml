@@ -1,0 +1,106 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B3826648-1CDD-DDC9-5B4F-28D195AC3D5D" name="ZASTAVENI">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>C449EBD3-FA80-DED9-DCA9-869517C5C2D3</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_zastaveni" id="2CAAECBD-DF14-0553-AA15-57164E473A53">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>3710D7E6-5E02-7F40-35B8-397F9730981E</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>zastaveni_id_zastaveni_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>zastaveni_id_zastaveni_trg</autoIncrementTriggerName>
+</Column>
+<Column name="odjezd" id="032350A7-A890-885B-CFF7-12D95AA0BC8E">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>F27662E9-DE97-1CF9-98BD-91F3A63443DF</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_trasy" id="AD8B78AF-5BBE-AC26-F631-92A38D6D8458">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>31CFCB95-BF6F-9697-F2FB-763C7C686416</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="14A21978-A3FF-D052-5625-827F6A3BDA68" referredColumn="202B97D7-EBCC-7DB8-41F4-3C7720AA7BD7"/>
+</associations>
+</Column>
+<Column name="id_zastavky" id="68FE7B6A-AB2B-E22F-C3E1-1FFF62E51156">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>6D14E7C6-034F-ABD3-E06A-607CC356A9CE</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1FD7FA8C-74D1-0A8F-DF77-1397918BAC10" referredColumn="25AF779D-8DA9-5EEE-4534-A439D7D1EEBE"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A31103CC-86A5-CB7E-26C4-6CC8F51D1D63" name="ZASTAVENI_PK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>B728EC79-A23D-39D6-D441-7056AA7CB760</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2CAAECBD-DF14-0553-AA15-57164E473A53"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C553E3E3-7B2B-0B44-4912-93F933A44CE5" name="ZASTAVENI_TRASA_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>04A200FD-C62A-628A-2A8D-3488B22DFE6E</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AD8B78AF-5BBE-AC26-F631-92A38D6D8458"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="157850AF-816A-78D6-353C-627A7449A4C6" name="ZASTAVENI_ZASTAVKA_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>77450719-679F-DF48-5CDC-37F367688A64</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="68FE7B6A-AB2B-E22F-C3E1-1FFF62E51156"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

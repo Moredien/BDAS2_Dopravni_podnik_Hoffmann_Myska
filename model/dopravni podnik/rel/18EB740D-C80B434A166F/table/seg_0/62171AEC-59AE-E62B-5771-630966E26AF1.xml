@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="62171AEC-59AE-E62B-5771-630966E26AF1" name="PLATBY_KARTOU_MHD">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>ADBB8764-05C7-A734-DE4B-1ECF3D3B5152</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>kartou_mhd</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_platby" id="97BCAE28-780F-68DF-4827-A2168B5D0B80">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>D97A9541-127D-B6E0-56AA-921B8FF90178</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B433903A-31A6-F54C-FA69-023213FC8306" referredColumn="A8F6A38D-334E-8905-9AD8-625D5FBF7389"/>
+</associations>
+</Column>
+<Column name="id_karty" id="B7C35616-3DF6-F5A2-E423-F7CF9BED9EAE">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>EB6A71F7-C6B2-5F9F-A87B-DA29365CB16E</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="77773882-CA23-233D-2F40-0E111B387DC3" referredColumn="E935F268-C12E-E490-B488-0FCB6AA61528"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E3796479-DB37-484B-F0F8-007E154353AC" name="KARTOU_MHD_PK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>96E1222A-7A19-568F-8CA4-9609BB39F40D</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="97BCAE28-780F-68DF-4827-A2168B5D0B80"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AC856D0F-4D01-B2FF-F397-45DDF464BF7F" name="KARTOU_MHD_PLATBA_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>B5EF1372-C994-7D41-4AB1-969DAA59F20D</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="97BCAE28-780F-68DF-4827-A2168B5D0B80"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="00871610-FDCF-A176-3E6F-FB74B3D9BDC0" name="KARTOU_MHD_KARTA_MHD_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>D9A3F11B-43A4-6AD8-DD8F-A45E25FA89B2</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B7C35616-3DF6-F5A2-E423-F7CF9BED9EAE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

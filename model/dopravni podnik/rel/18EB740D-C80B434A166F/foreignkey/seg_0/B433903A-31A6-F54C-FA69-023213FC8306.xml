@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B433903A-31A6-F54C-FA69-023213FC8306" containerWithKeyObject="62171AEC-59AE-E62B-5771-630966E26AF1" localFKIndex="AC856D0F-4D01-B2FF-F397-45DDF464BF7F" name="KARTOU_MHD_PLATBA_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>B5EF1372-C994-7D41-4AB1-969DAA59F20D</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<referredTableLongName>PLATBY</referredTableLongName>
+<arc>AF16C931-96AC-2D6E-2A0A-9EF2CD792A10</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>46BCAA8C-2E77-B366-C975-A390FD4B0C06</referredTableID>
+<keyObject>D7C00BA8-4582-2947-6F24-8AD7BFC56440</keyObject>
+<referredKeyID>D7C00BA8-4582-2947-6F24-8AD7BFC56440</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_platby</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorValue>0</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

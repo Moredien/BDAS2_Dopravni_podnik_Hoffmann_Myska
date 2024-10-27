@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1FC64966-09FA-DB22-E7BB-BA4E2251615D" name="TRASY">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>5706E986-E694-84A4-AD6D-67AC9B085416</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>trasa</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_trasy" id="202B97D7-EBCC-7DB8-41F4-3C7720AA7BD7">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>AB933D20-B080-439F-5374-DBF46CF59178</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>trasy_id_trasy_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>trasy_id_trasy_trg</autoIncrementTriggerName>
+</Column>
+<Column name="jmeno" id="75F8C864-5F57-504D-1B12-A13EF070988A">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>A37D2289-7072-5051-033F-548DD1F7DC66</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>64</dataTypeSize>
+<ownDataTypeParameters>64,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_linky" id="7A4FB5F9-1B9A-59A0-E0BA-6711CF4AA559">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>E99BBC16-CE06-17CA-2B36-1B3785BDA0F5</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EC835D74-4CC5-E87E-BA24-032C7FA3DA83" referredColumn="D6CECE29-09F1-9806-D5C7-05A94EFFADED"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4334A181-CD81-6F48-8EAC-0E96AAF1D19B" name="TRASA_PK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>42AB8699-4F5A-ABAB-747C-65278825BE37</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="202B97D7-EBCC-7DB8-41F4-3C7720AA7BD7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="090505F9-5B0E-7BC3-03C5-6DCD06D0A3CC" name="TRASA_LINKA_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>D3A426AF-7399-B515-8A89-A345D483A73C</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7A4FB5F9-1B9A-59A0-E0BA-6711CF4AA559"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

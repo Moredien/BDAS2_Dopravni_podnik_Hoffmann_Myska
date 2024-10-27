@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKArc class="oracle.dbtools.crest.model.design.relational.FKArc" directorySegmentName="seg_0" id="AF16C931-96AC-2D6E-2A0A-9EF2CD792A10" name="FKArc_typ_platby">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<mandatory>false</mandatory>
+<reverseArc>true</reverseArc>
+<table>46BCAA8C-2E77-B366-C975-A390FD4B0C06</table>
+<discriminatorColumn>D78888C1-57D5-D9BF-AB70-364CAA49037A</discriminatorColumn>
+<fkeys>
+<fkeyID>71C801E8-043A-30E3-B71E-663360985048</fkeyID>
+<fkeyID>B433903A-31A6-F54C-FA69-023213FC8306</fkeyID>
+</fkeys>
+</FKArc>

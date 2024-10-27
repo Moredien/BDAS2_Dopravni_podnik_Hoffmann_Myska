@@ -1,0 +1,119 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4DE7D47A-C239-27F4-8FAF-27E7FD747EC7" name="JIZDY">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>802497FE-35CB-7CAF-A1C2-405F47E59786</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>jizda</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_jizdy" id="F1333C76-1E9C-43B6-2AA3-5784E82203C3">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>863E3432-5392-EC12-E145-8F021182D314</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>jizdy_id_jizdy_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>jizdy_id_jizdy_trg</autoIncrementTriggerName>
+</Column>
+<Column name="zacatek" id="1AFC9099-2E17-F98E-6A11-E42EBF6F8AC2">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>414A91EB-9579-D54F-91A6-9F712B18CA85</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="konec" id="308DB11F-711F-318D-DF75-45C846ED3325">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>2FBF459D-DCCD-3B07-E215-650B2FB66CC0</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_vozidla" id="74124880-B774-36EA-8E12-F9B4579CF655">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>FF3C7B95-B57C-FACA-337B-0D3C0A1613CD</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DBA541EB-5D8C-7195-8590-B0151E87ABD9" referredColumn="BE842757-B87F-C7E2-9DD1-B76D11A4B42B"/>
+</associations>
+</Column>
+<Column name="id_trasy" id="85D280ED-6E82-B4AE-DD0E-DEE08F68375A">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>277179FF-3F50-593D-2C5D-CFB6453B5928</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E96262EC-6509-F315-460E-2861DB5E6C7B" referredColumn="202B97D7-EBCC-7DB8-41F4-3C7720AA7BD7"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1F702A1E-CF74-4264-1290-EEB17278A9AD" name="JIZDA_PK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>40D60E2B-ADF6-8971-9D3F-D55ED060D046</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F1333C76-1E9C-43B6-2AA3-5784E82203C3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2CB67712-E390-0028-3F42-363F841F44D2" name="JIZDA_TRASA_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>8B3675E6-0EB6-6C3E-A5F8-538844DDE583</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="85D280ED-6E82-B4AE-DD0E-DEE08F68375A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="26410A9D-1009-B10F-A717-5DDDBDA945A5" name="JIZDA_VOZIDLO_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>32ABBC82-794B-C6BF-85CD-F3828A399667</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="74124880-B774-36EA-8E12-F9B4579CF655"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

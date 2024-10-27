@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="802497FE-35CB-7CAF-A1C2-405F47E59786" name="JIZDA">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-19 16:24:46 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_jizdy" id="863E3432-5392-EC12-E145-8F021182D314">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-19 19:26:46 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="zacatek" id="414A91EB-9579-D54F-91A6-9F712B18CA85">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-19 19:26:59 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="konec" id="2FBF459D-DCCD-3B07-E215-650B2FB66CC0">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-19 19:27:50 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_vozidla" id="FF3C7B95-B57C-FACA-337B-0D3C0A1613CD">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-20 14:08:10 UTC</createdTime>
+<generatorID>32ABBC82-794B-C6BF-85CD-F3828A399667</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<referedAttribute>306A5523-0475-6768-B211-15E48D7CFD3D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_trasy" id="277179FF-3F50-593D-2C5D-CFB6453B5928">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-21 13:11:42 UTC</createdTime>
+<generatorID>8B3675E6-0EB6-6C3E-A5F8-538844DDE583</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<referedAttribute>AB933D20-B080-439F-5374-DBF46CF59178</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="40D60E2B-ADF6-8971-9D3F-D55ED060D046" name="Jízda PK">
+<createdBy>Radek</createdBy>
+<createdTime>2022-11-19 19:27:02 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>863E3432-5392-EC12-E145-8F021182D314</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

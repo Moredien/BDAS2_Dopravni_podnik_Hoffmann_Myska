@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F80A1F83-0B30-80ED-ED91-30C1032F79E4" containerWithKeyObject="7C1FE634-158F-E2CC-8304-5CB98244218A" localFKIndex="FA622D43-7014-B850-0D61-9ECB0D80D7A7" name="RIDIC_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>16C4326B-2622-3BAE-2450-10505C32F697</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<referredTableLongName>RIDICI</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>787FD771-19F3-5CA6-9966-002979B5009B</referredTableID>
+<keyObject>F4619F2D-C68F-FD3B-AE02-F9EC1C6FE94B</keyObject>
+<referredKeyID>F4619F2D-C68F-FD3B-AE02-F9EC1C6FE94B</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_ridice</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,158 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="46BCAA8C-2E77-B366-C975-A390FD4B0C06" name="PLATBY">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>86DA4BB1-AC2D-8A51-759D-24FD4AD939E3</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>platba</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_platby" id="A8F6A38D-334E-8905-9AD8-625D5FBF7389">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>D97A9541-127D-B6E0-56AA-921B8FF90178</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>platby_id_platby_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>platby_id_platby_trg</autoIncrementTriggerName>
+</Column>
+<Column name="vyse_platby" id="D6317D77-40CC-20FC-1BB6-6A559F4465DA">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>70C96EB0-A676-D314-59F4-A32FA7102886</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cas_platby" id="FA065C18-BA5A-E876-DB13-5D3E4797DCA9">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>D5D0D561-74A4-0005-B821-3AE30605BB4B</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_jizdy" id="47232DB2-9FC1-871A-01D0-087A70B625BB">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>F95BD81C-DF2A-F0BB-0CFA-DBE7D8B5CD55</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2C79FEDA-1076-025E-57BA-4D4ABBCE811A" referredColumn="F1333C76-1E9C-43B6-2AA3-5784E82203C3"/>
+</associations>
+</Column>
+<Column name="id_zastavky_vystup" id="3D1831A9-4904-2647-E5AA-576AD370BB72">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>0476AFEA-2B76-DA57-BD96-F55F7E4602AF</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="34645C31-5AF5-E7F7-8496-A90408EBD2A1" referredColumn="25AF779D-8DA9-5EEE-4534-A439D7D1EEBE"/>
+</associations>
+</Column>
+<Column name="id_zastavky_nastup" id="95DA2E67-758F-F21D-651C-78727FE736BC">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>5DFF910E-C524-93AF-4259-709D67CA9C1D</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D79A1502-DDF6-C041-A6C5-28A5449ACD6E" referredColumn="25AF779D-8DA9-5EEE-4534-A439D7D1EEBE"/>
+</associations>
+</Column>
+<Column name="typ_platby" id="D78888C1-57D5-D9BF-AB70-364CAA49037A">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 18:02:33 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D7C00BA8-4582-2947-6F24-8AD7BFC56440" name="PLATBA_PK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>96E1222A-7A19-568F-8CA4-9609BB39F40D</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A8F6A38D-334E-8905-9AD8-625D5FBF7389"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EDCDBE2B-A696-8C73-904A-246FC2D7367B" name="PLATBA_JIZDA_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>51587F20-76C5-849D-A824-ECD495AB5AE2</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="47232DB2-9FC1-871A-01D0-087A70B625BB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4DE163A0-4DB6-662E-FF90-E32DDDD6F264" name="PLATBA_ZAST_NASTUP_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>22D29B07-2B1A-A7F7-F6E5-D27494507E28</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="95DA2E67-758F-F21D-651C-78727FE736BC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AECF7E6A-654B-F2C3-4E9A-CF3C87FCA262" name="PLATBA_ZAST_VYSTUP_FK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>6B678023-0AC0-72A3-006E-2B419A0BF818</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3D1831A9-4904-2647-E5AA-576AD370BB72"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4419E4B3-4783-2AD0-6ECE-1104EC33ED0B" name="ZASTAVKY">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>5C40E991-E249-8CAE-5C78-58C9A4ADCC49</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>zastavka</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_zastavky" id="25AF779D-8DA9-5EEE-4534-A439D7D1EEBE">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>D846B8EB-45A5-B011-5D45-4F589BFC6F3E</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>zastavky_id_zastavky_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>zastavky_id_zastavky_trg</autoIncrementTriggerName>
+</Column>
+<Column name="jmeno" id="3D028770-801F-3146-9AD5-F7D3F4AAA887">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>C94D4280-6308-CC76-25F6-BAB015805426</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A9588323-9D2A-2193-D06C-ABE389B0C1F6" name="ZASTAVKA_PK">
+<createdBy>radek</createdBy>
+<createdTime>2023-12-12 17:38:54 UTC</createdTime>
+<generatorID>28A86D65-D0F1-C1D3-0D47-C43419227277</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="25AF779D-8DA9-5EEE-4534-A439D7D1EEBE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
