@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Uživatel\\Documents\\BDAS2\\DopravniPodnik\\DopravniPodnik\\DopravniPodnik.csproj",
+      "projectUniqueName": "C:\\Users\\Uživatel\\Source\\Repos\\Moredien\\BDAS2_Dopravni_podnik_Hoffmann_Myska\\DopravniPodnik\\DopravniPodnik\\DopravniPodnik.csproj",
       "projectName": "DopravniPodnik",
-      "projectPath": "C:\\Users\\Uživatel\\Documents\\BDAS2\\DopravniPodnik\\DopravniPodnik\\DopravniPodnik.csproj",
+      "projectPath": "C:\\Users\\Uživatel\\Source\\Repos\\Moredien\\BDAS2_Dopravni_podnik_Hoffmann_Myska\\DopravniPodnik\\DopravniPodnik\\DopravniPodnik.csproj",
       "packagesPath": "C:\\Users\\Uživatel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Uživatel\\Documents\\BDAS2\\DopravniPodnik\\DopravniPodnik\\obj\\",
+      "outputPath": "C:\\Users\\Uživatel\\Source\\Repos\\Moredien\\BDAS2_Dopravni_podnik_Hoffmann_Myska\\DopravniPodnik\\DopravniPodnik\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

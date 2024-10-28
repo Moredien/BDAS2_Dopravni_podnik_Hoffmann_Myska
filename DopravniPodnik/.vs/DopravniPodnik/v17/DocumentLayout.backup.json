@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\U\u017Eivatel\\Documents\\BDAS2\\DopravniPodnik\\",
+  "WorkspaceRootPath": "C:\\Users\\U\u017Eivatel\\source\\repos\\Moredien\\BDAS2_Dopravni_podnik_Hoffmann_Myska\\DopravniPodnik\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1E5838E9-795D-4A6F-88CB-CC9CA1CE29F8}|DopravniPodnik\\DopravniPodnik.csproj|c:\\users\\u\u017Eivatel\\documents\\bdas2\\dopravnipodnik\\dopravnipodnik\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1E5838E9-795D-4A6F-88CB-CC9CA1CE29F8}|DopravniPodnik\\DopravniPodnik.csproj|c:\\users\\u\u017Eivatel\\source\\repos\\moredien\\bdas2_dopravni_podnik_hoffmann_myska\\dopravnipodnik\\dopravnipodnik\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E5838E9-795D-4A6F-88CB-CC9CA1CE29F8}|DopravniPodnik\\DopravniPodnik.csproj|solutionrelative:dopravnipodnik\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -20,9 +20,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\U\u017Eivatel\\Documents\\BDAS2\\DopravniPodnik\\DopravniPodnik\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\U\u017Eivatel\\source\\repos\\Moredien\\BDAS2_Dopravni_podnik_Hoffmann_Myska\\DopravniPodnik\\DopravniPodnik\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "DopravniPodnik\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\U\u017Eivatel\\Documents\\BDAS2\\DopravniPodnik\\DopravniPodnik\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\U\u017Eivatel\\source\\repos\\Moredien\\BDAS2_Dopravni_podnik_Hoffmann_Myska\\DopravniPodnik\\DopravniPodnik\\MainWindow.xaml.cs",
               "RelativeToolTip": "DopravniPodnik\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
