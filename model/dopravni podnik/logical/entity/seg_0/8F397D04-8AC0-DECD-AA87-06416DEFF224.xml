@@ -4,7 +4,9 @@
 <createdTime>2022-11-19 16:20:55 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -20,27 +22,15 @@
 <createdTime>2022-11-19 16:39:22 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>8</dataTypePrecision>
-<ownDataTypeParameters>,8,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_garaze" id="DBB5DB0F-4C32-8248-A7E8-AF7B961D2E0E">
-<createdBy>Radek</createdBy>
-<createdTime>2022-11-20 14:08:57 UTC</createdTime>
-<generatorID>041BADBB-8E26-9EE5-08EB-D7F55909471F</generatorID>
-<ownerDesignName>dopravni podnik</ownerDesignName>
-<engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
-</engineerTo>
-<referedAttribute>6BF6F033-3623-D4E3-BD0E-D16FC878A842</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="id_typ_vozidla" id="A71CECA6-7D90-6D32-ECD4-BA1750914D82">
 <createdBy>radek</createdBy>
@@ -48,12 +38,15 @@
 <generatorID>4D3F5A5C-9CA4-8E79-F848-41267BFB62FB</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <referedAttribute>33506C2A-A6DB-0802-50C7-3D19F3B28FC7</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -63,7 +56,9 @@
 <createdTime>2022-11-19 16:39:23 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="false"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

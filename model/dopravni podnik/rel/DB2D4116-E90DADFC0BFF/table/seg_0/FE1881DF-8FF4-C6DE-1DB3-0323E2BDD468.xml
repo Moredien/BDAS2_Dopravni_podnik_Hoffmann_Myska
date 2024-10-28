@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FE1881DF-8FF4-C6DE-1DB3-0323E2BDD468" name="TYPY_UZIVATELE">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>2721C73B-68D7-4A45-5601-3F02646C65E1</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>typ_uzivatele</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_typ_uzivatele" id="5EFE164C-876A-D860-5C23-A84918333393">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>C2898B23-5BDC-E47C-8594-02E53AC0FAD8</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>typy_uzivatele_id_typ_uzivatele_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>typy_uzivatele_id_typ_uzivatele_trg</autoIncrementTriggerName>
+</Column>
+<Column name="nazev" id="7E934435-7BAA-39D7-FAA4-F34227FC53F1">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>33A7F361-A4D2-AC82-2F40-F0AD591A37AE</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="04E365F8-03FC-9BD9-B11B-BC640B71035B" name="TYP_UZIVATELE_PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>E2EB7CE2-A104-C45B-CF49-4F83B3BEE548</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5EFE164C-876A-D860-5C23-A84918333393"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

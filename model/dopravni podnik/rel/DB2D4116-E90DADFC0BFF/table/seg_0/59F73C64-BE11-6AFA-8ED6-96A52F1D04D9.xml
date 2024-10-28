@@ -1,0 +1,115 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="59F73C64-BE11-6AFA-8ED6-96A52F1D04D9" name="LOGY">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>0E69A465-2AA0-5435-F2A5-274B45AC581B</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>log</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_logu" id="28C11981-B93D-18EF-796A-B94ADF0DDE98">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>0EA07926-3310-3007-3110-B8D47D2B03ED</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>logy_id_logu_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>logy_id_logu_trg</autoIncrementTriggerName>
+</Column>
+<Column name="cas" id="7D26067A-09EC-A796-11A8-7BB926E6436A">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>D29D8753-5225-FCDB-C963-DCE3EBCFF1A9</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="uzivatel" id="0BCF90F6-F861-C31E-683E-323CDF6F9EC2">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>CE9C09BE-D2E5-292A-05CD-66347B1B6A56</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tabulka" id="EE46A74D-7420-D8B5-32E4-0C98F8362E11">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>81DEE61F-E146-078E-2303-AE29F8264EEA</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="operace" id="1F7917F2-1D96-74B6-E813-416CD7BC0B49">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>BEF729B7-B6DE-D63D-79CD-3EB2B7C2DFE1</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="stara_hodnota" id="41CE199F-F335-CDA4-E503-33ED7D873B00">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>636E5580-7B06-BD81-76DC-C83EB92D83DD</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nova_hodnota" id="F562EEB5-4282-04FC-EF24-7E7BE57D9921">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>F522CA34-D6CF-34B8-8284-AFC9181D5FE1</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000</dataTypeSize>
+<ownDataTypeParameters>1000,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="099D0BFF-4848-38D7-6890-DB52DED0A797" name="LOG_PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>B26B4B7B-8DCB-6678-D295-7502DB8D87CE</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="28C11981-B93D-18EF-796A-B94ADF0DDE98"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

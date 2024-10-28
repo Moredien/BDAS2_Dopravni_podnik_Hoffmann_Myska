@@ -1,0 +1,67 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EDE1AEB4-F319-0804-91A9-10C8991941BC" name="LINKY">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>5706E986-E694-84A4-AD6D-67AC9B085416</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>linka</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_linky" id="6A4E918B-0FB5-41F3-D9A0-779B0C0C4A05">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>AB933D20-B080-439F-5374-DBF46CF59178</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>linky_id_linky_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>linky_id_linky_trg</autoIncrementTriggerName>
+</Column>
+<Column name="cislo_linky" id="4863C2E3-D08E-6AF5-DA3C-602453DF7413">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>A37D2289-7072-5051-033F-548DD1F7DC66</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="jmeno" id="B7EC8138-F93B-D197-E458-BD6A7C33998E">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>E41A6A81-F0CC-A54F-C0BB-4E3962BF5956</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="124AE8F6-5A43-DCEA-B3E7-B643E85FDE6E" name="LINKA_PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>42AB8699-4F5A-ABAB-747C-65278825BE37</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A4E918B-0FB5-41F3-D9A0-779B0C0C4A05"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

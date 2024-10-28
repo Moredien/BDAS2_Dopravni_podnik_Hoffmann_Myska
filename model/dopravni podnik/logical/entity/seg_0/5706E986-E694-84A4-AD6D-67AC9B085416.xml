@@ -1,10 +1,12 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5706E986-E694-84A4-AD6D-67AC9B085416" name="TRASA">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5706E986-E694-84A4-AD6D-67AC9B085416" name="LINKA">
 <createdBy>Radek</createdBy>
 <createdTime>2022-11-19 16:22:31 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -15,44 +17,49 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_trasy" id="AB933D20-B080-439F-5374-DBF46CF59178">
+<Attribute name="id_linky" id="AB933D20-B080-439F-5374-DBF46CF59178">
 <createdBy>Radek</createdBy>
 <createdTime>2022-11-20 13:34:09 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="jmeno" id="A37D2289-7072-5051-033F-548DD1F7DC66">
+<Attribute name="cislo_linky" id="A37D2289-7072-5051-033F-548DD1F7DC66">
 <createdBy>Radek</createdBy>
 <createdTime>2022-11-20 13:36:38 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>64</dataTypeSize>
-<ownDataTypeParameters>64,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_linky" id="E99BBC16-CE06-17CA-2B36-1B3785BDA0F5">
-<createdBy>Radek</createdBy>
-<createdTime>2022-11-21 13:09:37 UTC</createdTime>
-<generatorID>D3A426AF-7399-B515-8A89-A345D483A73C</generatorID>
-<ownerDesignName>dopravni podnik</ownerDesignName>
-<engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<referedAttribute>9BAD7A66-3EB3-CE5D-2F0B-9E7EFA43782F</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="jmeno" id="E41A6A81-F0CC-A54F-C0BB-4E3962BF5956">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 18:00:13 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -62,7 +69,9 @@
 <createdTime>2022-11-20 13:36:33 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="false"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

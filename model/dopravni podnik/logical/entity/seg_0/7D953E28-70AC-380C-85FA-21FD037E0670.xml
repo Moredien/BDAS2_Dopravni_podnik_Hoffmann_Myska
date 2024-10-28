@@ -4,7 +4,9 @@
 <createdTime>2023-09-29 14:29:49 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -20,25 +22,46 @@
 <createdTime>2023-09-29 14:30:02 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="jmeno" id="AE3CE9D1-84DD-0F35-F20D-D220642CD811">
 <createdBy>radek</createdBy>
 <createdTime>2023-09-29 14:30:19 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>100</dataTypeSize>
 <ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cena" id="9E2DFC62-8F6B-667E-4AAD-415B4084D267">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 17:32:16 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -47,7 +70,9 @@
 <createdTime>2023-09-29 14:30:17 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="false"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

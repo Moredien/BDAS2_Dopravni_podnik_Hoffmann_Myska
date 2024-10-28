@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7AE3CC35-A4CC-9C22-A48C-31994E09AE15" containerWithKeyObject="E1EE9FB4-E59C-9FD9-D1DC-B9F720ED378A" localFKIndex="E8FB4EFA-C07A-B93E-24C2-ACF3DC672BB5" name="ZASTAVENI_ZASTAVKA_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>77450719-679F-DF48-5CDC-37F367688A64</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<referredTableLongName>ZASTAVKA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>94DCAA93-5022-30FC-91BF-4B52D268F954</referredTableID>
+<keyObject>26E34C9B-55DD-F1BC-6402-230AFD18D63B</keyObject>
+<referredKeyID>26E34C9B-55DD-F1BC-6402-230AFD18D63B</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_zastavky</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -4,7 +4,9 @@
 <createdTime>2022-11-20 13:50:31 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -20,31 +22,40 @@
 <createdTime>2022-11-20 13:50:36 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="zustatek" id="6F516D3B-9795-07D8-D734-4DF5D79BEF9B">
 <createdBy>Radek</createdBy>
 <createdTime>2022-11-20 13:50:48 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
 </Attribute>
 <Attribute name="platnost_od" id="8CF9F8C1-236D-8122-CAB3-BF0EDC3F128F">
 <createdBy>Radek</createdBy>
 <createdTime>2022-11-21 12:57:37 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -56,7 +67,9 @@
 <createdTime>2022-11-21 12:57:48 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -69,12 +82,32 @@
 <generatorID>BBE18410-000E-0562-9429-FE2AB757446E</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <referedAttribute>EBE38003-AAA9-88E8-FBA4-34F91BE1B74B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_foto" id="1547B499-DBFA-E92F-B4F2-12785B1AF477">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 15:20:58 UTC</createdTime>
+<generatorID>F1C629B3-5098-AD05-CAC8-84A5F11B2DB1</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<referedAttribute>8B06BE9E-B4F7-0E07-A222-2B7563C0CED8</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -84,7 +117,9 @@
 <createdTime>2022-11-20 13:50:46 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="65153532-D018-73F2-277E-65430ED0F707" value="true"/>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="false"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

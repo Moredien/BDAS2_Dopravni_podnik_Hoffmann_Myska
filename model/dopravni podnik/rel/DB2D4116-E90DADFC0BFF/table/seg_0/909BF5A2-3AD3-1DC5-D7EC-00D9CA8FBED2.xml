@@ -1,0 +1,67 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="909BF5A2-3AD3-1DC5-D7EC-00D9CA8FBED2" name="TYPY_PREDPLATNEHO">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>7D953E28-70AC-380C-85FA-21FD037E0670</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>typ_predplatneho</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_typ_predplatneho" id="81C31069-0DCB-1499-4422-FE0A22D3C492">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>C8AEA855-2002-9C12-3BBE-E648908B68AE</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>typy_predplatneho_id_typ_predplatneho_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>typy_predplatneho_id_typ_predplatneho_trg</autoIncrementTriggerName>
+</Column>
+<Column name="jmeno" id="3A18B027-F584-D639-53C5-6809B52E87EF">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>AE3CE9D1-84DD-0F35-F20D-D220642CD811</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cena" id="25BAB904-46A0-8FFC-5D6D-4F1AAD1709E4">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>9E2DFC62-8F6B-667E-4AAD-415B4084D267</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BAF7CBD2-1DEE-F13F-7464-93B18CADB7F1" name="TYP_PREDPLATNEHO_PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>167318A8-52AF-AE19-1995-7F82CBBEFE6F</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="81C31069-0DCB-1499-4422-FE0A22D3C492"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

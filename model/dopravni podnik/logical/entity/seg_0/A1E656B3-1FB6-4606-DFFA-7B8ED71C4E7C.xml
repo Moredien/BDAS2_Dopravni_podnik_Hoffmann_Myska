@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A1E656B3-1FB6-4606-DFFA-7B8ED71C4E7C" name="FOTO">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 14:51:55 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_foto" id="8B06BE9E-B4F7-0E07-A222-2B7563C0CED8">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 14:53:34 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="jmeno_souboru" id="BE95A398-9202-206C-E3FB-F86FCC1E706D">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 14:53:56 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data" id="2E1F3D38-59B2-E621-6B37-6AA87A1ED91D">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 14:56:44 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="datum_pridani" id="19A4579F-CC91-66F1-1915-949F07B6BACB">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 14:57:12 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_karty" id="698FA2A7-60B8-673D-DEA5-CD9002B8F53C">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 15:20:33 UTC</createdTime>
+<generatorID>F1C629B3-5098-AD05-CAC8-84A5F11B2DB1</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<referedAttribute>4D052AAA-FC4A-F876-75D3-950894F3E7D3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_uzivatele" id="15050386-FC77-2734-83E3-2AA474B451AA">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 21:55:35 UTC</createdTime>
+<generatorID>166A700F-9818-658D-B383-2BEFBF83A439</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<referedAttribute>59C09D83-F7B9-26B7-D275-A00432F1DB4D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="BF131C19-E07C-394A-CE6D-221945F46D91" name="PRUKAZOVE_FOTO PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 14:53:53 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8B06BE9E-B4F7-0E07-A222-2B7563C0CED8</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

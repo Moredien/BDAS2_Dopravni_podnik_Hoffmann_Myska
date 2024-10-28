@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B4F67F05-61E8-BF2E-A405-92DB01B50FF5" name="PLATBY">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>227F2D53-F68E-ED10-47B3-097F6366C0D4</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>platba</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_platby" id="8EA97B25-397E-C100-05E9-EC2A697DE782">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>2F5478FD-A4D0-014C-1A33-D1AA310AD20F</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>platby_id_platby_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>platby_id_platby_trg</autoIncrementTriggerName>
+</Column>
+<Column name="cas_platby" id="63658AB3-D52E-52EB-91DE-CA0E95DBA3B8">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>BA77A3D0-9E24-BA92-85C0-054A2B7BC26A</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="vyse_platby" id="E59C1AE7-73CB-08C6-F0FA-83665EE650D7">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>3B2159A1-C9F7-DF15-D271-74109FACF2D0</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ZAKAZNIK_id_zakaznika" id="24694CCA-7B67-64A2-7FFE-49E73EDFB9DA">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>919825E5-5C18-62FF-A1BC-E76F577E4A12</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="76ACC0CC-9BD2-33FE-5218-B2A433FFDFDD" referredColumn="675C9070-26C8-364E-94A3-F0990439D30B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="24178753-DD7D-40D8-4F6D-D32978515A46" name="PLATBA_PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>6C1236C5-E68D-FBD5-40FC-D43B1014E9AA</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8EA97B25-397E-C100-05E9-EC2A697DE782"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5CE96AC0-1269-0704-BBBF-92B8CD68C6A5" name="PLATBA_ZAKAZNIK_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>89AA08AD-585E-BEC2-5CB7-835ABC0C39B4</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="24694CCA-7B67-64A2-7FFE-49E73EDFB9DA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

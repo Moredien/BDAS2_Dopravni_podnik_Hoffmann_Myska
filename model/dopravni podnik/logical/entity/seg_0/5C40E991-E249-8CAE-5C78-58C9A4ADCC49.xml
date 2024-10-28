@@ -4,6 +4,8 @@
 <createdTime>2022-11-19 16:22:50 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
 <item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
@@ -20,18 +22,23 @@
 <createdTime>2022-11-20 13:39:47 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
 <item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="jmeno" id="C94D4280-6308-CC76-25F6-BAB015805426">
 <createdBy>Radek</createdBy>
 <createdTime>2022-11-20 13:39:58 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
 <item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
@@ -47,6 +54,8 @@
 <createdTime>2022-11-20 13:39:57 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
+<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
+<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="false"/>
 <item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <pk>true</pk>

@@ -1,0 +1,139 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="04130356-EAC5-AD64-B7A1-1B1F6706AF18" name="FOTO">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>A1E656B3-1FB6-4606-DFFA-7B8ED71C4E7C</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_foto" id="460417AC-A8AD-B53E-FA08-3F97DA8D57E0">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>8B06BE9E-B4F7-0E07-A222-2B7563C0CED8</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>foto_id_foto_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>foto_id_foto_trg</autoIncrementTriggerName>
+</Column>
+<Column name="jmeno_souboru" id="A05DEC71-524E-9FD3-202F-ECD5753AABAA">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>BE95A398-9202-206C-E3FB-F86FCC1E706D</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data" id="9F874446-E967-B66C-D667-E6C387673D2B">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>2E1F3D38-59B2-E621-6B37-6AA87A1ED91D</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT029</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="datum_pridani" id="F2EF6D00-D8D5-A9F6-92C0-499BCE41AF9A">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>19A4579F-CC91-66F1-1915-949F07B6BACB</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="KARTA_MHD_id_karty" id="B29168EE-E7B3-5E31-2E13-A35EEBA8B4A6">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>698FA2A7-60B8-673D-DEA5-CD9002B8F53C</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D4ABC981-FFA6-93D7-E1CD-D61A2CAD2FF3" referredColumn="0B6354D6-BF10-A953-FE51-C1597C087E99"/>
+</associations>
+</Column>
+<Column name="UZIVATELE_id_uzivatele" id="15A7BEEE-C294-4E54-896C-B431135C26C1">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 22:10:00 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7D4B6CB9-3CAA-467D-A86B-869330A9A4A6" referredColumn="B374FC69-BA12-90E9-DC95-8D4464012845"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DB704FB2-467A-BC26-9E4B-F0B2D1C1FD6C" name="FOTO_PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>BF131C19-E07C-394A-CE6D-221945F46D91</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="460417AC-A8AD-B53E-FA08-3F97DA8D57E0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="61F8BC8D-BE7F-2BC1-AA94-D6B090A6A5AA" name="FOTO__IDX">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>F1C629B3-5098-AD05-CAC8-84A5F11B2DB1</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="B29168EE-E7B3-5E31-2E13-A35EEBA8B4A6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8EA039AF-41CD-CDA5-4FA6-0B10DCEAAB2C" name="FOTO_KARTA_MHD_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>F1C629B3-5098-AD05-CAC8-84A5F11B2DB1</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B29168EE-E7B3-5E31-2E13-A35EEBA8B4A6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="054032D5-DBB0-ECA0-8151-24D02A09E40D" name="FOTO_UZIVATELE_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 22:10:00 UTC</createdTime>
+<generatorID>295CB76E-450A-4CC0-2D74-1AB6442736C1</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="15A7BEEE-C294-4E54-896C-B431135C26C1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

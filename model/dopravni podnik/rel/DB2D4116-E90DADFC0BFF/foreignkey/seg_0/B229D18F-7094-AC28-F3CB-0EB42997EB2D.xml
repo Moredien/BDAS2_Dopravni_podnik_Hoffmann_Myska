@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B229D18F-7094-AC28-F3CB-0EB42997EB2D" containerWithKeyObject="E28D195D-3483-552B-3FB5-F411D39B83C3" localFKIndex="0EE4A7CF-EF0A-46A7-1F1D-BC64166ED2C4" name="PREDPLATNE_TYP_PREDPLATNEHO_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>C510673F-2104-F776-BB8C-4F748D2EBE71</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<referredTableLongName>TYPY_PREDPLATNEHO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>909BF5A2-3AD3-1DC5-D7EC-00D9CA8FBED2</referredTableID>
+<keyObject>BAF7CBD2-1DEE-F13F-7464-93B18CADB7F1</keyObject>
+<referredKeyID>BAF7CBD2-1DEE-F13F-7464-93B18CADB7F1</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_typ_predplatneho</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

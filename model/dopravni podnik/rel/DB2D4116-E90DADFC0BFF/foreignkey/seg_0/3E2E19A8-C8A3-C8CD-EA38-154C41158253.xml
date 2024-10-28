@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="3E2E19A8-C8A3-C8CD-EA38-154C41158253" containerWithKeyObject="508CC610-B075-7388-BBAB-0DA08B929693" localFKIndex="9A4AE63D-5E07-FC98-34E5-54D326354F52" name="KARTA_MHD_ZAKAZNIK_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>BBE18410-000E-0562-9429-FE2AB757446E</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<referredTableLongName>ZAKAZNIK</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>04EE42FE-7B0B-0B0B-BEBC-22F04A2F27CD</referredTableID>
+<keyObject>B88EDB8F-50F4-51C6-C21C-1354C42DC5F1</keyObject>
+<referredKeyID>B88EDB8F-50F4-51C6-C21C-1354C42DC5F1</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_zakaznika</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

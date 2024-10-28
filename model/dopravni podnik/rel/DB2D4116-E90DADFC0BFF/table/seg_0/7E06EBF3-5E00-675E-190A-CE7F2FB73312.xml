@@ -1,0 +1,176 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7E06EBF3-5E00-675E-190A-CE7F2FB73312" name="UZIVATELE">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>92A05949-4F23-46A6-B398-71533D53A4A4</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>uzivatel</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_uzivatele" id="B374FC69-BA12-90E9-DC95-8D4464012845">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>59C09D83-F7B9-26B7-D275-A00432F1DB4D</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>uzivatele_id_uzivatele_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>uzivatele_id_uzivatele_trg</autoIncrementTriggerName>
+</Column>
+<Column name="uzivatelske_jmeno" id="0EC23DDD-027F-7B6B-3A93-F7C52E70D58E">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>9B92224A-CFAF-059E-9FE6-8F975B3543F9</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="heslo" id="6E90015A-483B-287A-D749-CD77F94230A5">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>93148E00-9268-5FF7-8C85-C1FE94C44634</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="jmeno" id="92D7EF9B-188E-6F29-641C-9CA256587903">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>ACD31601-15D5-119F-DAC0-49E4D438EB91</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="prijmeni" id="56EF5AFF-4D33-F6BE-836E-660842F6C14F">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>10146E21-9602-FC30-6937-CCB7DDA06E18</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cas_zalozeni" id="5DC25077-C098-6082-950E-B94CCEE10EE8">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>16265D19-DFFF-D951-A941-4BB727C9EC4C</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="datum_narozeni" id="8266E5BD-CA7D-1819-D1E9-00B17A02F49C">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>25E726C8-65CA-8500-6EFE-21D76E199BE0</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TYP_UZIVATELE_id_typ_uzivatele" id="F4A2D395-AC1B-8453-675C-3E2EB4C5E385">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>B9748706-861D-375C-F214-AB114B90AABC</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D7FF8D3C-168C-4694-6E25-26B958BD8AAC" referredColumn="5EFE164C-876A-D860-5C23-A84918333393"/>
+</associations>
+</Column>
+<Column name="ADRESA_id_adresy" id="618BC68D-FCD1-D7CA-45ED-DA2E0F28C661">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>C41C34CA-223E-71C8-AE93-698BA50CE26A</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3A7D604E-2D13-A03A-9F08-2BD6179F913C" referredColumn="F1F7B0BB-0516-08D8-C82D-80405DA965D6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="39EFF291-E049-E38E-6E8D-3821395A57C8" name="UZIVATEL_PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>295CB76E-450A-4CC0-2D74-1AB6442736C1</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B374FC69-BA12-90E9-DC95-8D4464012845"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F4BEBEC3-37D0-990A-E973-4B067A193E22" name="UZIVATELE__UN">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 21:51:18 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0EC23DDD-027F-7B6B-3A93-F7C52E70D58E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0A1A3B6B-3060-C504-A31B-038286D03AC2" name="UZIVATEL_TYP_UZIVATELE_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>8DC0C031-5621-7A92-7BB9-FABB0C85356E</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F4A2D395-AC1B-8453-675C-3E2EB4C5E385"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="460C0841-6590-F345-211C-48FD8DD0FB5B" name="UZIVATEL_ADRESA_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>8857B447-D11C-DB5B-9AB6-46BFB048A65F</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="618BC68D-FCD1-D7CA-45ED-DA2E0F28C661"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

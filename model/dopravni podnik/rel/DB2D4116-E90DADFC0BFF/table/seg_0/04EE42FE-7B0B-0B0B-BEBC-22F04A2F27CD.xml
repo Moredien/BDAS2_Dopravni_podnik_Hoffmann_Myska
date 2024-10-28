@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="04EE42FE-7B0B-0B0B-BEBC-22F04A2F27CD" name="ZAKAZNICI">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>0814E9AC-F45D-D84D-066E-FDC3FB3565CB</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>zakaznik</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_zakaznika" id="675C9070-26C8-364E-94A3-F0990439D30B">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>EBE38003-AAA9-88E8-FBA4-34F91BE1B74B</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementSequenceName>zakaznici_id_zakaznika_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>zakaznici_id_zakaznika_trg</autoIncrementTriggerName>
+</Column>
+<Column name="UZIVATEL_id_uzivatele" id="1A0595B2-0FBD-6D7E-CBB0-5841ECCF3277">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>8F3DF8A8-D107-ED0A-C39E-5DD6DAFA1502</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="26BB7AA6-B38C-CBFA-B97F-62D0A65B3A58" referredColumn="B374FC69-BA12-90E9-DC95-8D4464012845"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B88EDB8F-50F4-51C6-C21C-1354C42DC5F1" name="ZAKAZNIK_PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>0BF5742C-517D-8F77-A434-DDE461F3E8DC</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="675C9070-26C8-364E-94A3-F0990439D30B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="24EE6E10-7FC4-F72E-4B89-E859E393B193" name="ZAKAZNIK__IDX">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>67309874-B28E-4959-7AC6-21495E061B5F</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="1A0595B2-0FBD-6D7E-CBB0-5841ECCF3277"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="76455E93-6A7A-10E9-81BC-DB6767FE87EF" name="ZAKAZNIK_UZIVATEL_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>67309874-B28E-4959-7AC6-21495E061B5F</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1A0595B2-0FBD-6D7E-CBB0-5841ECCF3277"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,174 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="92A05949-4F23-46A6-B398-71533D53A4A4" name="UZIVATEL">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 16:23:58 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_uzivatele" id="59C09D83-F7B9-26B7-D275-A00432F1DB4D">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 16:24:06 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="uzivatelske_jmeno" id="9B92224A-CFAF-059E-9FE6-8F975B3543F9">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 16:24:37 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="heslo" id="93148E00-9268-5FF7-8C85-C1FE94C44634">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 16:24:53 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="jmeno" id="ACD31601-15D5-119F-DAC0-49E4D438EB91">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 17:16:56 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="prijmeni" id="10146E21-9602-FC30-6937-CCB7DDA06E18">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 17:17:15 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cas_zalozeni" id="16265D19-DFFF-D951-A941-4BB727C9EC4C">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 17:17:46 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="datum_narozeni" id="25E726C8-65CA-8500-6EFE-21D76E199BE0">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 17:18:45 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_typ_uzivatele" id="B9748706-861D-375C-F214-AB114B90AABC">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 16:27:09 UTC</createdTime>
+<generatorID>8DC0C031-5621-7A92-7BB9-FABB0C85356E</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<referedAttribute>C2898B23-5BDC-E47C-8594-02E53AC0FAD8</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_adresy" id="C41C34CA-223E-71C8-AE93-698BA50CE26A">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 17:39:50 UTC</createdTime>
+<generatorID>8857B447-D11C-DB5B-9AB6-46BFB048A65F</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<referedAttribute>0977D8DB-2FEC-1D1E-98C3-A9957E71739C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="295CB76E-450A-4CC0-2D74-1AB6442736C1" name="UZIVATEL PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 16:24:14 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
+<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>59C09D83-F7B9-26B7-D275-A00432F1DB4D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A79BDC2C-63A6-9175-BD4A-EB07906A9884" containerWithKeyObject="1AE46A5C-E21B-49C1-0FC8-73C84830AFA8" localFKIndex="13539776-8353-E7CB-BF41-C08AFE9CBBD6" name="JIZDA_VOZIDLO_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<generatorID>32ABBC82-794B-C6BF-85CD-F3828A399667</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<referredTableLongName>VOZIDLO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>BEA7E4F9-81C9-A9EC-BE7C-7BF9F5367404</referredTableID>
+<keyObject>3C523F02-7599-7FF3-72F9-67C975B942D8</keyObject>
+<referredKeyID>3C523F02-7599-7FF3-72F9-67C975B942D8</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_vozidla</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
