@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DotNetEnv;
+using Microsoft.EntityFrameworkCore;
 
 namespace DopravniPodnik.Data.service;
 
@@ -6,9 +7,16 @@ public class OracleDbContext(DbContextOptions<OracleDbContext> options) : DbCont
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        var connectionString = Environment.GetEnvironmentVariable("ORACLE_DB_CONNECTION");
+        
+        if (string.IsNullOrWhiteSpace(connectionString))
+        {
+            throw new Exception("Oracle DB connection string not found");
+        }
+        
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseOracle("User Id=st67028;Password=SQLP455w0rd;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=FEI-SQL3.UPCEUCEBNY.CZ)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=BDAS)));");
+            optionsBuilder.UseOracle();
         }
     }
 }
