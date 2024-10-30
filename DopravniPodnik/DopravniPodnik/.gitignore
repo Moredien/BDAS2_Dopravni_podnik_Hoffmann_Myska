@@ -1,0 +1,27 @@
+# Build artifacts
+bin/
+obj/
+
+# Auto-generated files by Visual Studio and Rider
+.vs/
+.vs/*
+.idea/
+.idea/*
+
+# .NET Core artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Log files
+*.log
+
+# Environment secrets
+.env
+
+# Compiled files
+*.dll
+*.exe
+*.pdb
+*.cache
+*.mdb
