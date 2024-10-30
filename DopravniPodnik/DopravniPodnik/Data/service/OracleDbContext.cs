@@ -16,7 +16,7 @@ public class OracleDbContext(DbContextOptions<OracleDbContext> options) : DbCont
         
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseOracle();
+            optionsBuilder.UseOracle(connectionString);
         }
     }
 }
