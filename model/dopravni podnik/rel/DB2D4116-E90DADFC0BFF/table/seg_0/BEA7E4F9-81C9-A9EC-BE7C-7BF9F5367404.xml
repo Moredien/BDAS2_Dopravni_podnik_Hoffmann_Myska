@@ -24,7 +24,7 @@
 <autoIncrementSequenceName>vozdila_id_vozidla_seq</autoIncrementSequenceName>
 <autoIncrementTriggerName>vozdila_id_vozidla_trg</autoIncrementTriggerName>
 </Column>
-<Column name="TYP_VOZIDLA_id_typ_vozidla" id="19FAE0D7-4422-5BF0-E987-5AE8B7D1E699">
+<Column name="id_typ_vozidla" id="19FAE0D7-4422-5BF0-E987-5AE8B7D1E699">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>A71CECA6-7D90-6D32-ECD4-BA1750914D82</generatorID>
