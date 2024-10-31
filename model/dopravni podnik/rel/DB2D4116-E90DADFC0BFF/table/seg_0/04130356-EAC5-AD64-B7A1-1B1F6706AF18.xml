@@ -57,7 +57,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="KARTA_MHD_id_karty" id="B29168EE-E7B3-5E31-2E13-A35EEBA8B4A6">
+<Column name="id_karty" id="B29168EE-E7B3-5E31-2E13-A35EEBA8B4A6">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>698FA2A7-60B8-673D-DEA5-CD9002B8F53C</generatorID>
@@ -73,7 +73,7 @@
 <colAssociation fkAssociation="D4ABC981-FFA6-93D7-E1CD-D61A2CAD2FF3" referredColumn="0B6354D6-BF10-A953-FE51-C1597C087E99"/>
 </associations>
 </Column>
-<Column name="UZIVATELE_id_uzivatele" id="15A7BEEE-C294-4E54-896C-B431135C26C1">
+<Column name="id_uzivatele" id="15A7BEEE-C294-4E54-896C-B431135C26C1">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 22:10:00 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>

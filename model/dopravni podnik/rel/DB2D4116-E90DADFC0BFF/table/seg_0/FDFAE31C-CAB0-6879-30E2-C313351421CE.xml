@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="RIDIC_id_ridice" id="875C990C-F097-3CC3-2C9D-E7A82CB6F581">
+<Column name="id_ridice" id="875C990C-F097-3CC3-2C9D-E7A82CB6F581">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
@@ -23,7 +23,7 @@
 <colAssociation fkAssociation="3937447B-8873-AA0C-AC70-8A7AE2C1F64B" referredColumn="76E8A840-670D-4F4E-4136-072386B92D1F"/>
 </associations>
 </Column>
-<Column name="JIZDA_id_jizdy" id="CA2A8E12-3856-E243-A5FE-C9CEC7391FB9">
+<Column name="id_jizdy" id="CA2A8E12-3856-E243-A5FE-C9CEC7391FB9">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
@@ -40,7 +40,7 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="FAC910EC-0F1E-2F22-63E5-B78901F99082" name="Relation_10_PK">
+<ind_PK_UK id="FAC910EC-0F1E-2F22-63E5-B78901F99082" name="JIZDY_RIDICU">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>

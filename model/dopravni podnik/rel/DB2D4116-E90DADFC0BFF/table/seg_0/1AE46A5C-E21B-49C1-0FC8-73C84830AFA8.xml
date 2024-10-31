@@ -47,7 +47,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="VOZIDLO_id_vozidla" id="7B480C1C-1ACF-1DE4-CDC4-DCB8B6012559">
+<Column name="id_vozidla" id="7B480C1C-1ACF-1DE4-CDC4-DCB8B6012559">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>FF3C7B95-B57C-FACA-337B-0D3C0A1613CD</generatorID>
@@ -63,7 +63,7 @@
 <colAssociation fkAssociation="A79BDC2C-63A6-9175-BD4A-EB07906A9884" referredColumn="989EB48B-2F0E-75BE-43F9-20EA3E3D6008"/>
 </associations>
 </Column>
-<Column name="LINKA_id_linky" id="440F7B17-E664-4D66-8716-C99152821EB5">
+<Column name="id_linky" id="440F7B17-E664-4D66-8716-C99152821EB5">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>277179FF-3F50-593D-2C5D-CFB6453B5928</generatorID>

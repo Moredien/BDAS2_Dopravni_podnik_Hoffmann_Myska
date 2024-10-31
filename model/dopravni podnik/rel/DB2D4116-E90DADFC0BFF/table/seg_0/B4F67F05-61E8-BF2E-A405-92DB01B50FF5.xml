@@ -48,7 +48,7 @@
 <ownDataTypeParameters>,10,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="ZAKAZNIK_id_zakaznika" id="24694CCA-7B67-64A2-7FFE-49E73EDFB9DA">
+<Column name="id_zakaznika" id="24694CCA-7B67-64A2-7FFE-49E73EDFB9DA">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>919825E5-5C18-62FF-A1BC-E76F577E4A12</generatorID>

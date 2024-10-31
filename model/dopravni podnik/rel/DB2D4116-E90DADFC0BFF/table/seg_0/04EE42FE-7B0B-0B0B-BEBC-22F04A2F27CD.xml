@@ -24,7 +24,7 @@
 <autoIncrementSequenceName>zakaznici_id_zakaznika_seq</autoIncrementSequenceName>
 <autoIncrementTriggerName>zakaznici_id_zakaznika_trg</autoIncrementTriggerName>
 </Column>
-<Column name="UZIVATEL_id_uzivatele" id="1A0595B2-0FBD-6D7E-CBB0-5841ECCF3277">
+<Column name="id_uzivatele" id="1A0595B2-0FBD-6D7E-CBB0-5841ECCF3277">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>8F3DF8A8-D107-ED0A-C39E-5DD6DAFA1502</generatorID>
