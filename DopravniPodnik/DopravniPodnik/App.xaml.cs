@@ -26,6 +26,7 @@ namespace DopravniPodnik
             }
             
             var services = ConfigureServices(connectionString);
+            var dbService = services.GetRequiredService<DatabaseService>();
             
             Task.Run(() => RetryDatabaseConnection(services));
             
@@ -37,6 +38,7 @@ namespace DopravniPodnik
         private static ServiceProvider ConfigureServices(string connectionString)
         {
             var serviceCollection = new ServiceCollection();
+            
             serviceCollection.AddDbContext<OracleDbContext>(options => options.UseOracle(connectionString));
             
             serviceCollection.AddSingleton<DatabaseService>();
