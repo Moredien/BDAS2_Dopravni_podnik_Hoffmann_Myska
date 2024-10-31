@@ -3,6 +3,7 @@ using DopravniPodnik.Data.service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using DotNetEnv;
+using System.Diagnostics;
 
 namespace DopravniPodnik
 {
@@ -14,7 +15,8 @@ namespace DopravniPodnik
         [STAThread]
         public static void Main()
         {
-            Env.Load();
+            Env.Load("../../../.env");
+
             var connectionString = Environment.GetEnvironmentVariable("ORACLE_DB_CONNECTION");
             if (string.IsNullOrWhiteSpace(connectionString))
             {
