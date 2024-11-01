@@ -1,10 +1,14 @@
-﻿using DotNetEnv;
+﻿using DopravniPodnik.Data.Models;
+using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
 namespace DopravniPodnik.Data.service;
 
 public class OracleDbContext(DbContextOptions<OracleDbContext> options) : DbContext(options)
 {
+    public DbSet<Uzivatele> Uzivatele { get; set; }
+    public DbSet<TypyUzivatele> TypyUzivatelu { get; set; }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var connectionString = Environment.GetEnvironmentVariable("ORACLE_DB_CONNECTION");
