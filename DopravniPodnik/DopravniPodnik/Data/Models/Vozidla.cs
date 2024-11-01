@@ -7,9 +7,9 @@ public partial class Vozidla
 {
     public decimal IdVozidla { get; set; }
 
-    public decimal TypVozidlaIdTypVozidla { get; set; }
+    public decimal IdTypVozidla { get; set; }
+
+    public virtual TypyVozidel IdTypVozidlaNavigation { get; set; } = null!;
 
     public virtual ICollection<Jizdy> Jizdies { get; set; } = new List<Jizdy>();
-
-    public virtual TypyVozidel TypVozidlaIdTypVozidlaNavigation { get; set; } = null!;
 }

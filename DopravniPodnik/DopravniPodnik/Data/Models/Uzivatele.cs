@@ -19,15 +19,15 @@ public partial class Uzivatele
 
     public DateTime DatumNarozeni { get; set; }
 
-    public decimal TypUzivateleIdTypUzivatele { get; set; }
+    public decimal IdTypUzivatele { get; set; }
 
-    public decimal AdresaIdAdresy { get; set; }
-
-    public virtual Adresy AdresaIdAdresyNavigation { get; set; } = null!;
+    public decimal IdAdresy { get; set; }
 
     public virtual ICollection<Foto> Fotos { get; set; } = new List<Foto>();
 
-    public virtual TypyUzivatele TypUzivateleIdTypUzivateleNavigation { get; set; } = null!;
+    public virtual Adresy IdAdresyNavigation { get; set; } = null!;
+
+    public virtual TypyUzivatele IdTypUzivateleNavigation { get; set; } = null!;
 
     public virtual Zakaznici? Zakaznici { get; set; }
 

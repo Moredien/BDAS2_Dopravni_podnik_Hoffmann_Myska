@@ -9,11 +9,11 @@ public partial class Zastaveni
 
     public DateTime Odjezd { get; set; }
 
-    public decimal LinkaIdLinky { get; set; }
+    public decimal IdLinky { get; set; }
 
-    public decimal ZastavkaIdZastavky { get; set; }
+    public decimal IdZastavky { get; set; }
 
-    public virtual Linky LinkaIdLinkyNavigation { get; set; } = null!;
+    public virtual Linky IdLinkyNavigation { get; set; } = null!;
 
-    public virtual Zastavky ZastavkaIdZastavkyNavigation { get; set; } = null!;
+    public virtual Zastavky IdZastavkyNavigation { get; set; } = null!;
 }

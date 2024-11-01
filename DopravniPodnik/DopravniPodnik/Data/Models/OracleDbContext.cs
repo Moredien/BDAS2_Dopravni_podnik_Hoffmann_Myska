@@ -90,7 +90,7 @@ public partial class OracleDbContext : DbContext
 
             entity.ToTable("FOTO");
 
-            entity.HasIndex(e => e.KartaMhdIdKarty, "FOTO__IDX").IsUnique();
+            entity.HasIndex(e => e.IdKarty, "FOTO__IDX").IsUnique();
 
             entity.Property(e => e.IdFoto)
                 .ValueGeneratedOnAdd()
@@ -102,24 +102,24 @@ public partial class OracleDbContext : DbContext
             entity.Property(e => e.DatumPridani)
                 .HasColumnType("DATE")
                 .HasColumnName("DATUM_PRIDANI");
+            entity.Property(e => e.IdKarty)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_KARTY");
+            entity.Property(e => e.IdUzivatele)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_UZIVATELE");
             entity.Property(e => e.JmenoSouboru)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("JMENO_SOUBORU");
-            entity.Property(e => e.KartaMhdIdKarty)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("KARTA_MHD_ID_KARTY");
-            entity.Property(e => e.UzivateleIdUzivatele)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("UZIVATELE_ID_UZIVATELE");
 
-            entity.HasOne(d => d.KartaMhdIdKartyNavigation).WithOne(p => p.Foto)
-                .HasForeignKey<Foto>(d => d.KartaMhdIdKarty)
+            entity.HasOne(d => d.IdKartyNavigation).WithOne(p => p.Foto)
+                .HasForeignKey<Foto>(d => d.IdKarty)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FOTO_KARTA_MHD_FK");
 
-            entity.HasOne(d => d.UzivateleIdUzivateleNavigation).WithMany(p => p.Fotos)
-                .HasForeignKey(d => d.UzivateleIdUzivatele)
+            entity.HasOne(d => d.IdUzivateleNavigation).WithMany(p => p.Fotos)
+                .HasForeignKey(d => d.IdUzivatele)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FOTO_UZIVATELE_FK");
         });
@@ -134,26 +134,26 @@ public partial class OracleDbContext : DbContext
                 .ValueGeneratedOnAdd()
                 .HasColumnType("NUMBER(32)")
                 .HasColumnName("ID_JIZDY");
+            entity.Property(e => e.IdLinky)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_LINKY");
+            entity.Property(e => e.IdVozidla)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_VOZIDLA");
             entity.Property(e => e.Konec)
                 .HasColumnType("DATE")
                 .HasColumnName("KONEC");
-            entity.Property(e => e.LinkaIdLinky)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("LINKA_ID_LINKY");
-            entity.Property(e => e.VozidloIdVozidla)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("VOZIDLO_ID_VOZIDLA");
             entity.Property(e => e.Zacatek)
                 .HasColumnType("DATE")
                 .HasColumnName("ZACATEK");
 
-            entity.HasOne(d => d.LinkaIdLinkyNavigation).WithMany(p => p.Jizdies)
-                .HasForeignKey(d => d.LinkaIdLinky)
+            entity.HasOne(d => d.IdLinkyNavigation).WithMany(p => p.Jizdies)
+                .HasForeignKey(d => d.IdLinky)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("JIZDA_LINKA_FK");
 
-            entity.HasOne(d => d.VozidloIdVozidlaNavigation).WithMany(p => p.Jizdies)
-                .HasForeignKey(d => d.VozidloIdVozidla)
+            entity.HasOne(d => d.IdVozidlaNavigation).WithMany(p => p.Jizdies)
+                .HasForeignKey(d => d.IdVozidla)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("JIZDA_VOZIDLO_FK");
         });
@@ -164,35 +164,35 @@ public partial class OracleDbContext : DbContext
 
             entity.ToTable("KARTY_MHD");
 
-            entity.HasIndex(e => e.FotoIdFoto, "KARTA_MHD__IDX").IsUnique();
+            entity.HasIndex(e => e.IdFoto, "KARTA_MHD__IDX").IsUnique();
 
             entity.Property(e => e.IdKarty)
                 .ValueGeneratedOnAdd()
                 .HasColumnType("NUMBER(32)")
                 .HasColumnName("ID_KARTY");
-            entity.Property(e => e.FotoIdFoto)
+            entity.Property(e => e.IdFoto)
                 .HasColumnType("NUMBER(32)")
-                .HasColumnName("FOTO_ID_FOTO");
+                .HasColumnName("ID_FOTO");
+            entity.Property(e => e.IdZakaznika)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_ZAKAZNIKA");
             entity.Property(e => e.PlatnostDo)
                 .HasColumnType("DATE")
                 .HasColumnName("PLATNOST_DO");
             entity.Property(e => e.PlatnostOd)
                 .HasColumnType("DATE")
                 .HasColumnName("PLATNOST_OD");
-            entity.Property(e => e.ZakaznikIdZakaznika)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("ZAKAZNIK_ID_ZAKAZNIKA");
             entity.Property(e => e.Zustatek)
                 .HasColumnType("NUMBER(10,2)")
                 .HasColumnName("ZUSTATEK");
 
-            entity.HasOne(d => d.FotoIdFotoNavigation).WithOne(p => p.KartyMhd)
-                .HasForeignKey<KartyMhd>(d => d.FotoIdFoto)
+            entity.HasOne(d => d.IdFotoNavigation).WithOne(p => p.KartyMhd)
+                .HasForeignKey<KartyMhd>(d => d.IdFoto)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("KARTA_MHD_FOTO_FK");
 
-            entity.HasOne(d => d.ZakaznikIdZakaznikaNavigation).WithMany(p => p.KartyMhds)
-                .HasForeignKey(d => d.ZakaznikIdZakaznika)
+            entity.HasOne(d => d.IdZakaznikaNavigation).WithMany(p => p.KartyMhds)
+                .HasForeignKey(d => d.IdZakaznika)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("KARTA_MHD_ZAKAZNIK_FK");
         });
@@ -264,15 +264,15 @@ public partial class OracleDbContext : DbContext
             entity.Property(e => e.CasPlatby)
                 .HasColumnType("DATE")
                 .HasColumnName("CAS_PLATBY");
+            entity.Property(e => e.IdZakaznika)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_ZAKAZNIKA");
             entity.Property(e => e.VysePlatby)
                 .HasColumnType("NUMBER(10,2)")
                 .HasColumnName("VYSE_PLATBY");
-            entity.Property(e => e.ZakaznikIdZakaznika)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("ZAKAZNIK_ID_ZAKAZNIKA");
 
-            entity.HasOne(d => d.ZakaznikIdZakaznikaNavigation).WithMany(p => p.Platbies)
-                .HasForeignKey(d => d.ZakaznikIdZakaznika)
+            entity.HasOne(d => d.IdZakaznikaNavigation).WithMany(p => p.Platbies)
+                .HasForeignKey(d => d.IdZakaznika)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("PLATBA_ZAKAZNIK_FK");
         });
@@ -290,23 +290,23 @@ public partial class OracleDbContext : DbContext
             entity.Property(e => e.Do)
                 .HasColumnType("DATE")
                 .HasColumnName("DO");
-            entity.Property(e => e.KartaMhdIdKarty)
+            entity.Property(e => e.IdKarty)
                 .HasColumnType("NUMBER(32)")
-                .HasColumnName("KARTA_MHD_ID_KARTY");
+                .HasColumnName("ID_KARTY");
+            entity.Property(e => e.IdTypPredplatneho)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_TYP_PREDPLATNEHO");
             entity.Property(e => e.Od)
                 .HasColumnType("DATE")
                 .HasColumnName("OD");
-            entity.Property(e => e.TypPIdTypPredplatneho)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("TYP_P_ID_TYP_PREDPLATNEHO");
 
-            entity.HasOne(d => d.KartaMhdIdKartyNavigation).WithMany(p => p.Predplatnes)
-                .HasForeignKey(d => d.KartaMhdIdKarty)
+            entity.HasOne(d => d.IdKartyNavigation).WithMany(p => p.Predplatnes)
+                .HasForeignKey(d => d.IdKarty)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("PREDPLATNE_KARTA_MHD_FK");
 
-            entity.HasOne(d => d.TypPIdTypPredplatnehoNavigation).WithMany(p => p.Predplatnes)
-                .HasForeignKey(d => d.TypPIdTypPredplatneho)
+            entity.HasOne(d => d.IdTypPredplatnehoNavigation).WithMany(p => p.Predplatnes)
+                .HasForeignKey(d => d.IdTypPredplatneho)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("PREDPLATNE_TYP_PREDPLATNEHO_FK");
         });
@@ -330,27 +330,27 @@ public partial class OracleDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("PRIJMENI");
 
-            entity.HasMany(d => d.JizdaIdJizdies).WithMany(p => p.RidicIdRidices)
+            entity.HasMany(d => d.IdJizdies).WithMany(p => p.IdRidices)
                 .UsingEntity<Dictionary<string, object>>(
                     "JizdyRidicu",
                     r => r.HasOne<Jizdy>().WithMany()
-                        .HasForeignKey("JizdaIdJizdy")
+                        .HasForeignKey("IdJizdy")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("JIZDY_RIDICU_JIZDA_FK"),
                     l => l.HasOne<Ridici>().WithMany()
-                        .HasForeignKey("RidicIdRidice")
+                        .HasForeignKey("IdRidice")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("JIZDY_RIDICU_RIDIC_FK"),
                     j =>
                     {
-                        j.HasKey("RidicIdRidice", "JizdaIdJizdy").HasName("RELATION_10_PK");
+                        j.HasKey("IdRidice", "IdJizdy").HasName("JIZDY_RIDICU");
                         j.ToTable("JIZDY_RIDICU");
-                        j.IndexerProperty<decimal>("RidicIdRidice")
+                        j.IndexerProperty<decimal>("IdRidice")
                             .HasColumnType("NUMBER(32)")
-                            .HasColumnName("RIDIC_ID_RIDICE");
-                        j.IndexerProperty<decimal>("JizdaIdJizdy")
+                            .HasColumnName("ID_RIDICE");
+                        j.IndexerProperty<decimal>("IdJizdy")
                             .HasColumnType("NUMBER(32)")
-                            .HasColumnName("JIZDA_ID_JIZDY");
+                            .HasColumnName("ID_JIZDY");
                     });
         });
 
@@ -421,9 +421,6 @@ public partial class OracleDbContext : DbContext
                 .ValueGeneratedOnAdd()
                 .HasColumnType("NUMBER(32)")
                 .HasColumnName("ID_UZIVATELE");
-            entity.Property(e => e.AdresaIdAdresy)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("ADRESA_ID_ADRESY");
             entity.Property(e => e.CasZalozeni)
                 .HasColumnType("DATE")
                 .HasColumnName("CAS_ZALOZENI");
@@ -434,6 +431,12 @@ public partial class OracleDbContext : DbContext
                 .HasMaxLength(30)
                 .IsUnicode(false)
                 .HasColumnName("HESLO");
+            entity.Property(e => e.IdAdresy)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_ADRESY");
+            entity.Property(e => e.IdTypUzivatele)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_TYP_UZIVATELE");
             entity.Property(e => e.Jmeno)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -442,21 +445,18 @@ public partial class OracleDbContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("PRIJMENI");
-            entity.Property(e => e.TypUzivateleIdTypUzivatele)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("TYP_UZIVATELE_ID_TYP_UZIVATELE");
             entity.Property(e => e.UzivatelskeJmeno)
                 .HasMaxLength(30)
                 .IsUnicode(false)
                 .HasColumnName("UZIVATELSKE_JMENO");
 
-            entity.HasOne(d => d.AdresaIdAdresyNavigation).WithMany(p => p.Uzivateles)
-                .HasForeignKey(d => d.AdresaIdAdresy)
+            entity.HasOne(d => d.IdAdresyNavigation).WithMany(p => p.Uzivateles)
+                .HasForeignKey(d => d.IdAdresy)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("UZIVATEL_ADRESA_FK");
 
-            entity.HasOne(d => d.TypUzivateleIdTypUzivateleNavigation).WithMany(p => p.Uzivateles)
-                .HasForeignKey(d => d.TypUzivateleIdTypUzivatele)
+            entity.HasOne(d => d.IdTypUzivateleNavigation).WithMany(p => p.Uzivateles)
+                .HasForeignKey(d => d.IdTypUzivatele)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("UZIVATEL_TYP_UZIVATELE_FK");
         });
@@ -471,12 +471,12 @@ public partial class OracleDbContext : DbContext
                 .ValueGeneratedOnAdd()
                 .HasColumnType("NUMBER(32)")
                 .HasColumnName("ID_VOZIDLA");
-            entity.Property(e => e.TypVozidlaIdTypVozidla)
+            entity.Property(e => e.IdTypVozidla)
                 .HasColumnType("NUMBER(32)")
-                .HasColumnName("TYP_VOZIDLA_ID_TYP_VOZIDLA");
+                .HasColumnName("ID_TYP_VOZIDLA");
 
-            entity.HasOne(d => d.TypVozidlaIdTypVozidlaNavigation).WithMany(p => p.Vozidlas)
-                .HasForeignKey(d => d.TypVozidlaIdTypVozidla)
+            entity.HasOne(d => d.IdTypVozidlaNavigation).WithMany(p => p.Vozidlas)
+                .HasForeignKey(d => d.IdTypVozidla)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("VOZIDLO_TYP_VOZIDLA_FK");
         });
@@ -487,18 +487,18 @@ public partial class OracleDbContext : DbContext
 
             entity.ToTable("ZAKAZNICI");
 
-            entity.HasIndex(e => e.UzivatelIdUzivatele, "ZAKAZNIK__IDX").IsUnique();
+            entity.HasIndex(e => e.IdUzivatele, "ZAKAZNIK__IDX").IsUnique();
 
             entity.Property(e => e.IdZakaznika)
                 .ValueGeneratedOnAdd()
                 .HasColumnType("NUMBER(32)")
                 .HasColumnName("ID_ZAKAZNIKA");
-            entity.Property(e => e.UzivatelIdUzivatele)
+            entity.Property(e => e.IdUzivatele)
                 .HasColumnType("NUMBER(32)")
-                .HasColumnName("UZIVATEL_ID_UZIVATELE");
+                .HasColumnName("ID_UZIVATELE");
 
-            entity.HasOne(d => d.UzivatelIdUzivateleNavigation).WithOne(p => p.Zakaznici)
-                .HasForeignKey<Zakaznici>(d => d.UzivatelIdUzivatele)
+            entity.HasOne(d => d.IdUzivateleNavigation).WithOne(p => p.Zakaznici)
+                .HasForeignKey<Zakaznici>(d => d.IdUzivatele)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("ZAKAZNIK_UZIVATEL_FK");
         });
@@ -509,34 +509,34 @@ public partial class OracleDbContext : DbContext
 
             entity.ToTable("ZAMESTNANCI");
 
-            entity.HasIndex(e => e.UzivatelIdUzivatele, "ZAMESTNANEC__IDX").IsUnique();
+            entity.HasIndex(e => e.IdUzivatele, "ZAMESTNANEC__IDX").IsUnique();
 
             entity.Property(e => e.IdZamestnance)
                 .ValueGeneratedOnAdd()
                 .HasColumnType("NUMBER(32)")
                 .HasColumnName("ID_ZAMESTNANCE");
+            entity.Property(e => e.IdNadrizeneho)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_NADRIZENEHO");
+            entity.Property(e => e.IdUzivatele)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_UZIVATELE");
             entity.Property(e => e.Plat)
                 .HasPrecision(6)
                 .HasColumnName("PLAT");
             entity.Property(e => e.PlatnostUvazkuDo)
                 .HasColumnType("DATE")
                 .HasColumnName("PLATNOST_UVAZKU_DO");
-            entity.Property(e => e.UzivatelIdUzivatele)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("UZIVATEL_ID_UZIVATELE");
-            entity.Property(e => e.ZamestnanecIdZamestnance)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("ZAMESTNANEC_ID_ZAMESTNANCE");
 
-            entity.HasOne(d => d.UzivatelIdUzivateleNavigation).WithOne(p => p.Zamestnanci)
-                .HasForeignKey<Zamestnanci>(d => d.UzivatelIdUzivatele)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("ZAMESTNANEC_UZIVATEL_FK");
-
-            entity.HasOne(d => d.ZamestnanecIdZamestnanceNavigation).WithMany(p => p.InverseZamestnanecIdZamestnanceNavigation)
-                .HasForeignKey(d => d.ZamestnanecIdZamestnance)
+            entity.HasOne(d => d.IdNadrizenehoNavigation).WithMany(p => p.InverseIdNadrizenehoNavigation)
+                .HasForeignKey(d => d.IdNadrizeneho)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("ZAMESTNANEC_ZAMESTNANEC_FK");
+
+            entity.HasOne(d => d.IdUzivateleNavigation).WithOne(p => p.Zamestnanci)
+                .HasForeignKey<Zamestnanci>(d => d.IdUzivatele)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("ZAMESTNANEC_UZIVATEL_FK");
         });
 
         modelBuilder.Entity<Zastaveni>(entity =>
@@ -549,23 +549,23 @@ public partial class OracleDbContext : DbContext
                 .ValueGeneratedOnAdd()
                 .HasColumnType("NUMBER(32)")
                 .HasColumnName("ID_ZASTAVENI");
-            entity.Property(e => e.LinkaIdLinky)
+            entity.Property(e => e.IdLinky)
                 .HasColumnType("NUMBER(32)")
-                .HasColumnName("LINKA_ID_LINKY");
+                .HasColumnName("ID_LINKY");
+            entity.Property(e => e.IdZastavky)
+                .HasColumnType("NUMBER(32)")
+                .HasColumnName("ID_ZASTAVKY");
             entity.Property(e => e.Odjezd)
                 .HasColumnType("DATE")
                 .HasColumnName("ODJEZD");
-            entity.Property(e => e.ZastavkaIdZastavky)
-                .HasColumnType("NUMBER(32)")
-                .HasColumnName("ZASTAVKA_ID_ZASTAVKY");
 
-            entity.HasOne(d => d.LinkaIdLinkyNavigation).WithMany(p => p.Zastavenis)
-                .HasForeignKey(d => d.LinkaIdLinky)
+            entity.HasOne(d => d.IdLinkyNavigation).WithMany(p => p.Zastavenis)
+                .HasForeignKey(d => d.IdLinky)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("ZASTAVENI_LINKA_FK");
 
-            entity.HasOne(d => d.ZastavkaIdZastavkyNavigation).WithMany(p => p.Zastavenis)
-                .HasForeignKey(d => d.ZastavkaIdZastavky)
+            entity.HasOne(d => d.IdZastavkyNavigation).WithMany(p => p.Zastavenis)
+                .HasForeignKey(d => d.IdZastavky)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("ZASTAVENI_ZASTAVKA_FK");
         });

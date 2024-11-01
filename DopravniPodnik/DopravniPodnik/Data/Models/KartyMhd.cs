@@ -13,15 +13,15 @@ public partial class KartyMhd
 
     public DateTime PlatnostDo { get; set; }
 
-    public decimal ZakaznikIdZakaznika { get; set; }
+    public decimal IdZakaznika { get; set; }
 
-    public decimal FotoIdFoto { get; set; }
+    public decimal IdFoto { get; set; }
 
     public virtual Foto? Foto { get; set; }
 
-    public virtual Foto FotoIdFotoNavigation { get; set; } = null!;
+    public virtual Foto IdFotoNavigation { get; set; } = null!;
+
+    public virtual Zakaznici IdZakaznikaNavigation { get; set; } = null!;
 
     public virtual ICollection<Predplatne> Predplatnes { get; set; } = new List<Predplatne>();
-
-    public virtual Zakaznici ZakaznikIdZakaznikaNavigation { get; set; } = null!;
 }
