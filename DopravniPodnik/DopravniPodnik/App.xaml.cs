@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using DopravniPodnik.Data.service;
+using DopravniPodnik.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using DotNetEnv;
@@ -39,8 +40,11 @@ namespace DopravniPodnik
         {
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddDbContext<OracleDbContext>(options => options.UseOracle(connectionString));
+            
             serviceCollection.AddSingleton<DatabaseService>();
-
+            serviceCollection.AddSingleton<AuthService>();
+            serviceCollection.AddSingleton<UserSession>();
+            
             return serviceCollection.BuildServiceProvider();
         }
 
