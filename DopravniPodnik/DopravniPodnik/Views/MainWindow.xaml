@@ -6,11 +6,20 @@
         xmlns:viewmodels="clr-namespace:DopravniPodnik.ViewModels"
         xmlns:views="clr-namespace:DopravniPodnik.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     
     <Window.DataContext>
         <viewmodels:MainWindowViewModel></viewmodels:MainWindowViewModel>
     </Window.DataContext>
+    
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value=" 16 0 16 0" />
+            <Setter Property="Width" Value=" 100"/>
+        </Style>
+    </Window.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -22,8 +31,12 @@
         <Border Background="LightBlue" Padding="10">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                <Button Content="Login"/>
-                <Button Content="Register"/>
+                <Button Content="Login" 
+                        Command="{Binding ChangeViewToCommand}"
+                        CommandParameter="{x:Type viewmodels:LoginViewModel}"/>
+                <Button Content="Register"
+                        Command="{Binding ChangeViewToCommand}"
+                        CommandParameter="{x:Type viewmodels:RegisterViewModel}"/>
             </StackPanel>
         </Border>
 
@@ -36,7 +49,6 @@
 
             <!-- The collapsible pane -->
             <StackPanel Background="LightGray">
-                <Button>-</Button>
                 <ListBox ItemsSource="{Binding MenuItems}" SelectedItem="{Binding SelectedListItem}">
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type viewmodels:ListItemTemplate}">
@@ -50,16 +62,7 @@
             
             <!-- Main content area -->
             <Grid Grid.Column="1" Background="White">
-                <ContentControl Content="{Binding CurrentPage}">
-                    <ContentControl.Resources>
-                        <DataTemplate DataType="{x:Type viewmodels:JizdyViewModel}">
-                            <views:JizdyView/>
-                        </DataTemplate>
-                        <DataTemplate DataType="{x:Type viewmodels:ZastavkyViewModel}">
-                            <views:ZastavkyView/>
-                        </DataTemplate>
-                    </ContentControl.Resources>
-                </ContentControl>
+                <ContentControl Content="{Binding CurrentPage}"/>
             </Grid>
         </Grid>
     </Grid>
