@@ -13,13 +13,13 @@ public partial class Foto
 
     public DateTime DatumPridani { get; set; }
 
-    public decimal KartaMhdIdKarty { get; set; }
+    public decimal IdKarty { get; set; }
 
-    public decimal UzivateleIdUzivatele { get; set; }
+    public decimal IdUzivatele { get; set; }
 
-    public virtual KartyMhd KartaMhdIdKartyNavigation { get; set; } = null!;
+    public virtual KartyMhd IdKartyNavigation { get; set; } = null!;
+
+    public virtual Uzivatele IdUzivateleNavigation { get; set; } = null!;
 
     public virtual KartyMhd? KartyMhd { get; set; }
-
-    public virtual Uzivatele UzivateleIdUzivateleNavigation { get; set; } = null!;
 }

@@ -11,11 +11,11 @@ public partial class Predplatne
 
     public DateTime Do { get; set; }
 
-    public decimal KartaMhdIdKarty { get; set; }
+    public decimal IdKarty { get; set; }
 
-    public decimal TypPIdTypPredplatneho { get; set; }
+    public decimal IdTypPredplatneho { get; set; }
 
-    public virtual KartyMhd KartaMhdIdKartyNavigation { get; set; } = null!;
+    public virtual KartyMhd IdKartyNavigation { get; set; } = null!;
 
-    public virtual TypyPredplatneho TypPIdTypPredplatnehoNavigation { get; set; } = null!;
+    public virtual TypyPredplatneho IdTypPredplatnehoNavigation { get; set; } = null!;
 }

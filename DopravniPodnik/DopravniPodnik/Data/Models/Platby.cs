@@ -11,7 +11,7 @@ public partial class Platby
 
     public decimal VysePlatby { get; set; }
 
-    public decimal ZakaznikIdZakaznika { get; set; }
+    public decimal IdZakaznika { get; set; }
 
-    public virtual Zakaznici ZakaznikIdZakaznikaNavigation { get; set; } = null!;
+    public virtual Zakaznici IdZakaznikaNavigation { get; set; } = null!;
 }

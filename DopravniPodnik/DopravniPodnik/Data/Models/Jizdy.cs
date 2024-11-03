@@ -11,13 +11,13 @@ public partial class Jizdy
 
     public DateTime? Konec { get; set; }
 
-    public decimal VozidloIdVozidla { get; set; }
+    public decimal IdVozidla { get; set; }
 
-    public decimal LinkaIdLinky { get; set; }
+    public decimal IdLinky { get; set; }
 
-    public virtual Linky LinkaIdLinkyNavigation { get; set; } = null!;
+    public virtual Linky IdLinkyNavigation { get; set; } = null!;
 
-    public virtual Vozidla VozidloIdVozidlaNavigation { get; set; } = null!;
+    public virtual Vozidla IdVozidlaNavigation { get; set; } = null!;
 
-    public virtual ICollection<Ridici> RidicIdRidices { get; set; } = new List<Ridici>();
+    public virtual ICollection<Ridici> IdRidices { get; set; } = new List<Ridici>();
 }

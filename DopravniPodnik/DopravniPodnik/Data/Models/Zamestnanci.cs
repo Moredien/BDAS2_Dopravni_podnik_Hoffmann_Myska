@@ -11,13 +11,13 @@ public partial class Zamestnanci
 
     public DateTime? PlatnostUvazkuDo { get; set; }
 
-    public decimal ZamestnanecIdZamestnance { get; set; }
+    public decimal IdNadrizeneho { get; set; }
 
-    public decimal UzivatelIdUzivatele { get; set; }
+    public decimal IdUzivatele { get; set; }
 
-    public virtual ICollection<Zamestnanci> InverseZamestnanecIdZamestnanceNavigation { get; set; } = new List<Zamestnanci>();
+    public virtual Zamestnanci IdNadrizenehoNavigation { get; set; } = null!;
 
-    public virtual Uzivatele UzivatelIdUzivateleNavigation { get; set; } = null!;
+    public virtual Uzivatele IdUzivateleNavigation { get; set; } = null!;
 
-    public virtual Zamestnanci ZamestnanecIdZamestnanceNavigation { get; set; } = null!;
+    public virtual ICollection<Zamestnanci> InverseIdNadrizenehoNavigation { get; set; } = new List<Zamestnanci>();
 }

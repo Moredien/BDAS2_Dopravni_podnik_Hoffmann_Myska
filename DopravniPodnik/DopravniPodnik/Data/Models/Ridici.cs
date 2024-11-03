@@ -11,5 +11,5 @@ public partial class Ridici
 
     public string Prijmeni { get; set; } = null!;
 
-    public virtual ICollection<Jizdy> JizdaIdJizdies { get; set; } = new List<Jizdy>();
+    public virtual ICollection<Jizdy> IdJizdies { get; set; } = new List<Jizdy>();
 }
