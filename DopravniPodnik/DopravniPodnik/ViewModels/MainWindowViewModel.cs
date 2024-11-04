@@ -15,7 +15,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private ViewModelBase _currentPage = new JizdyViewModel();
 
     [ObservableProperty] 
-    private ViewModelBase _currentMenu;
+    private ViewModelBase? _currentMenu;
     
     [ObservableProperty]
     public ListItemTemplate _selectedListItem;    
@@ -49,6 +49,8 @@ public partial class MainWindowViewModel : ViewModelBase
         if(visibleInMenu)
             MenuItems.Add(new ListItemTemplate(name,type,viewType));
         var newViewModel = (ViewModelBase)Activator.CreateInstance(type);
+        if (newViewModel == null)
+            throw new Exception($"Failed to create new instance of {type}");
         WindowManager.AddNewContentView(newViewModel, viewType); 
     }
 

@@ -9,12 +9,12 @@ namespace DopravniPodnik.ViewModels;
 public partial class LoginViewModel : ViewModelBase
 {
     [ObservableProperty]
-    private string username;
+    private string _username = "";
 
 //passwordbox not yet bound
     
     [RelayCommand]
-    void Login()
+    private void Login()
     {
         //do so authentication
         WindowManager.SetMenuView(ViewType.LoggedInMenu);
