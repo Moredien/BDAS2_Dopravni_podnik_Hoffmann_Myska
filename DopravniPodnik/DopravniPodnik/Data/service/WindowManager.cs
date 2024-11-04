@@ -7,9 +7,9 @@ public static class WindowManager
 { 
     public static MainWindowViewModel? MainWindow {get;set;}
     //viewmodels for the main content
-    private static Dictionary<ViewType, ViewModelBase> contentViewModels = new();
+    private static readonly Dictionary<ViewType, ViewModelBase> ContentViewModels = new();
     //viewmodels for the top menu
-    private static Dictionary<ViewType, ViewModelBase> menuViewModels = new()
+    private static readonly Dictionary<ViewType, ViewModelBase> MenuViewModels = new()
     {
         {ViewType.AnonymousMenu,(ViewModelBase)Activator.CreateInstance(typeof(AnonymousUserMenuViewModel))},
         {ViewType.LoggedInMenu,(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserViewModel))}
@@ -20,43 +20,45 @@ public static class WindowManager
     public static ViewModelBase? CurrentContentViewModel { get; set; }
    
 
-    public static void AddNewContentView(ViewModelBase? contentViewModel, ViewType key)
+    public static void AddNewContentView(ViewModelBase contentViewModel, ViewType key)
     {
-        if (contentViewModels.ContainsKey(key))
+        if (!ContentViewModels.TryAdd(key, contentViewModel))
             return;
-        contentViewModels.Add(key,contentViewModel);
-        if (contentViewModels == null)
+        if (CurrentContentViewModel == null)
         {
-            CurrentContentViewModel = contentViewModels[key];
+            CurrentContentViewModel = ContentViewModels[key];
         }
     }
 
     public static void SetContentView(ViewType key)
     {
-        if (contentViewModels.ContainsKey(key))
+        if (ContentViewModels.ContainsKey(key) && MainWindow != null)
         {
-            CurrentContentViewModel = contentViewModels[key];
+            CurrentContentViewModel = ContentViewModels[key];
             MainWindow.CurrentPage = CurrentContentViewModel;
         }
     }
 
     public static void SetContentViewToSelected()
     {
-        if(MainWindow.SelectedListItem!=null)
+        if (MainWindow != null && MainWindow?.SelectedListItem != null)
             SetContentView(MainWindow.SelectedListItem.ViewTypeEnum);
+        else
+            throw new Exception("Failed setting content view to selected");
     }
 
     public static void SetMenuView(ViewType key)
     {
-        if (menuViewModels.ContainsKey(key))
+        if (MainWindow == null)
+            throw new Exception("Failed to set menu view. MainWindow is not set");
+        if (MenuViewModels.TryGetValue(key, out var model))
         {
-            CurrentMenuViewModel = menuViewModels[key];
+            CurrentMenuViewModel = model;
             MainWindow.CurrentMenu = CurrentMenuViewModel;
         }
         else
-        {
-            throw new Exception($"Failed to set menuview. MenuView {key} doesnt exist.");
-        }
+            throw new Exception($"Failed to set menu view. MenuView {key} doesnt exist.");
+        
     }
 
 }
