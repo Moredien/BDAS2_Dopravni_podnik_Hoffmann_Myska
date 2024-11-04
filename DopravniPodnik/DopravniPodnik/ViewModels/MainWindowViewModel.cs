@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using DopravniPodnik.Data.service;
+using DopravniPodnik.Utils;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DopravniPodnik.ViewModels;
@@ -57,14 +58,3 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 }
 
-public class ListItemTemplate
-{
-    public ListItemTemplate(string label, Type modelType)
-    {
-        Label = label;
-        ModelType = modelType;
-    }
-
-    public string Label { get; }
-    public Type ModelType { get; }
-}
