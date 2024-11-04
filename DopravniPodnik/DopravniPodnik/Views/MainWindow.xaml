@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewmodels="clr-namespace:DopravniPodnik.ViewModels"
         xmlns:views="clr-namespace:DopravniPodnik.Views"
+        xmlns:utils="clr-namespace:DopravniPodnik.Utils"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
     
@@ -54,7 +55,7 @@
             <StackPanel Background="LightGray">
                 <ListBox ItemsSource="{Binding MenuItems}" SelectedItem="{Binding SelectedListItem}">
                     <ListBox.ItemTemplate>
-                        <DataTemplate DataType="{x:Type viewmodels:ListItemTemplate}">
+                        <DataTemplate DataType="{x:Type utils:ListItemTemplate}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding Label}"></TextBlock>
                             </StackPanel>
