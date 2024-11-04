@@ -1,49 +1,59 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Automation.Peers;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using DopravniPodnik.Data.service;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DopravniPodnik.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty] private ViewModelBase _currentPage = new JizdyViewModel();
+    [ObservableProperty] 
+    private ViewModelBase _currentPage = new JizdyViewModel();
+
+    [ObservableProperty] 
+    private ViewModelBase _currentMenu;
     
     [ObservableProperty]
-    private ListItemTemplate _selectedListItem;    
+    public ListItemTemplate _selectedListItem;    
     partial void OnSelectedListItemChanged(ListItemTemplate? value)
     {
         if (value == null) 
             value = MenuItems[0];
-        ChangeViewTo(value.ModelType);
+        WindowManager.SetContentView(value.Label);
     }
-    public ObservableCollection<ListItemTemplate> MenuItems { get; } = new()
-    {
-        new ListItemTemplate("Jízdy",typeof(JizdyViewModel)),
-        new ListItemTemplate("Zastávky" , typeof(ZastavkyViewModel))
-    };
+
+    public ObservableCollection<ListItemTemplate> MenuItems { get; } = new();
 
     public MainWindowViewModel()
     {
-        _selectedListItem = MenuItems[0];
-        var registerViewModel = new RegisterViewModel();
-        registerViewModel.ExitRegistationViewAction += ChangeViewToDefault;
+        WindowManager.MainWindow = this;
+        CreateNewContentView(typeof(JizdyViewModel), "Jízdy", true);
+        CreateNewContentView(typeof(ZastavkyViewModel), "Zastávky", true);
+        CreateNewContentView(typeof(LoginViewModel), "Login", false);
+        CreateNewContentView(typeof(RegisterViewModel), "Register", false);
+
+        SelectedListItem = MenuItems[0];
+        
+        WindowManager.SetMenuView("Anonymous");
+        CurrentMenu = WindowManager.currentMenuViewModel;
+        Console.WriteLine();
+    }
+
+    private void CreateNewContentView(Type type, string name, bool visibleInMenu)
+    {
+        if(visibleInMenu)
+            MenuItems.Add(new ListItemTemplate(name,type));
+        var newViewModel = (ViewModelBase)Activator.CreateInstance(type);
+        WindowManager.AddNewContentView(newViewModel, name); 
     }
 
     [RelayCommand]
-    void ChangeViewTo(Type viewModelType)
+    private void ChangeViewTo(string name)
     {
-        if (viewModelType == null)
-            viewModelType = _selectedListItem.ModelType;
-        var instance = Activator.CreateInstance(viewModelType);
-        if (instance == null) return;
-        CurrentPage = (ViewModelBase)instance;
-    }
-    [RelayCommand]
-    void ChangeViewToDefault()
-    {
-        ChangeViewTo(null);
+        WindowManager.SetContentView(name);
     }
 }
 

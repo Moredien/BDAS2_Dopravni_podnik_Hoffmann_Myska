@@ -28,16 +28,19 @@
         </Grid.RowDefinitions>
 
         <!-- Header area in the top row -->
-        <Border Background="LightBlue" Padding="10">
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right">
-                <Button Content="Login" 
-                        Command="{Binding ChangeViewToCommand}"
-                        CommandParameter="{x:Type viewmodels:LoginViewModel}"/>
-                <Button Content="Register"
-                        Command="{Binding ChangeViewToCommand}"
-                        CommandParameter="{x:Type viewmodels:RegisterViewModel}"/>
-            </StackPanel>
+        <Border Background="LightBlue"
+                Padding="10"
+                Height="50">
+            <!-- <StackPanel Orientation="Horizontal" -->
+            <!--             HorizontalAlignment="Right"> -->
+            <!--     <Button Content="Login" -->
+            <!--             Command="{Binding ChangeViewToCommand}" -->
+            <!--             CommandParameter="Login"/> -->
+            <!--     <Button Content="Register" -->
+            <!--             Command="{Binding ChangeViewToCommand}" -->
+            <!--             CommandParameter="Register"/> -->
+            <!-- </StackPanel> -->
+            <ContentControl Content="{Binding CurrentMenu}"/>
         </Border>
 
         <!-- Main content area in the second row -->

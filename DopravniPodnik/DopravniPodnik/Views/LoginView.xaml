@@ -36,7 +36,8 @@
                FontSize="30" />
 
         <Label Content="Uživatelské jméno:" />
-        <TextBox />
+        <TextBox
+            Text="{Binding Username}"/>
         <Label Content="Heslo:" />
         <PasswordBox />
 
