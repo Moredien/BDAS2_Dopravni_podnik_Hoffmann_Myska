@@ -32,15 +32,7 @@
         <Border Background="LightBlue"
                 Padding="10"
                 Height="50">
-            <!-- <StackPanel Orientation="Horizontal" -->
-            <!--             HorizontalAlignment="Right"> -->
-            <!--     <Button Content="Login" -->
-            <!--             Command="{Binding ChangeViewToCommand}" -->
-            <!--             CommandParameter="Login"/> -->
-            <!--     <Button Content="Register" -->
-            <!--             Command="{Binding ChangeViewToCommand}" -->
-            <!--             CommandParameter="Register"/> -->
-            <!-- </StackPanel> -->
+            <!-- Inserting top menu based on current state -->
             <ContentControl Content="{Binding CurrentMenu}"/>
         </Border>
 
@@ -53,7 +45,8 @@
 
             <!-- The collapsible pane -->
             <StackPanel Background="LightGray">
-                <ListBox ItemsSource="{Binding MenuItems}" SelectedItem="{Binding SelectedListItem}">
+                <ListBox ItemsSource="{Binding MenuItems}"
+                         SelectedItem="{Binding SelectedListItem}">
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type utils:ListItemTemplate}">
                             <StackPanel Orientation="Horizontal">

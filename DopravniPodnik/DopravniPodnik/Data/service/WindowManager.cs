@@ -1,4 +1,5 @@
-﻿using DopravniPodnik.ViewModels;
+﻿using DopravniPodnik.Utils;
+using DopravniPodnik.ViewModels;
 
 namespace DopravniPodnik.Data.service;
 
@@ -6,51 +7,51 @@ public static class WindowManager
 { 
     public static MainWindowViewModel? MainWindow {get;set;}
     //viewmodels for the main content
-    private static Dictionary<string, ViewModelBase> contentViewModels = new();
+    private static Dictionary<ViewType, ViewModelBase> contentViewModels = new();
     //viewmodels for the top menu
-    private static Dictionary<string, ViewModelBase> menuViewModels = new()
+    private static Dictionary<ViewType, ViewModelBase> menuViewModels = new()
     {
-        {"Anonymous",(ViewModelBase)Activator.CreateInstance(typeof(AnonymousUserMenuViewModel))},
-        {"LoggedIn",(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserViewModel))}
+        {ViewType.AnonymousMenu,(ViewModelBase)Activator.CreateInstance(typeof(AnonymousUserMenuViewModel))},
+        {ViewType.LoggedInMenu,(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserViewModel))}
     };
 
-    public static ViewModelBase currentMenuViewModel { get; set; }
+    public static ViewModelBase? CurrentMenuViewModel { get; set; }
 
-    public static ViewModelBase currentContentViewModel { get; set; }
+    public static ViewModelBase? CurrentContentViewModel { get; set; }
    
 
-    public static void AddNewContentView(ViewModelBase? contentViewModel, string key)
+    public static void AddNewContentView(ViewModelBase? contentViewModel, ViewType key)
     {
         if (contentViewModels.ContainsKey(key))
             return;
         contentViewModels.Add(key,contentViewModel);
         if (contentViewModels == null)
         {
-            currentContentViewModel = contentViewModels[key];
+            CurrentContentViewModel = contentViewModels[key];
         }
     }
 
-    public static void SetContentView(string key)
+    public static void SetContentView(ViewType key)
     {
         if (contentViewModels.ContainsKey(key))
         {
-            currentContentViewModel = contentViewModels[key];
-            MainWindow.CurrentPage = currentContentViewModel;
+            CurrentContentViewModel = contentViewModels[key];
+            MainWindow.CurrentPage = CurrentContentViewModel;
         }
     }
 
     public static void SetContentViewToSelected()
     {
         if(MainWindow.SelectedListItem!=null)
-            SetContentView(MainWindow.SelectedListItem.Label);
+            SetContentView(MainWindow.SelectedListItem.ViewTypeEnum);
     }
 
-    public static void SetMenuView(string key)
+    public static void SetMenuView(ViewType key)
     {
         if (menuViewModels.ContainsKey(key))
         {
-            currentMenuViewModel = menuViewModels[key];
-            MainWindow.CurrentMenu = currentMenuViewModel;
+            CurrentMenuViewModel = menuViewModels[key];
+            MainWindow.CurrentMenu = CurrentMenuViewModel;
         }
         else
         {
