@@ -1,7 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
 using DopravniPodnik.Utils;
 using Microsoft.EntityFrameworkCore;

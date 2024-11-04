@@ -18,9 +18,7 @@ public partial class KartyMhd
     public decimal IdFoto { get; set; }
 
     public virtual Foto? Foto { get; set; }
-
-    public virtual Foto IdFotoNavigation { get; set; } = null!;
-
+    
     public virtual Zakaznici IdZakaznikaNavigation { get; set; } = null!;
 
     public virtual ICollection<Predplatne> Predplatnes { get; set; } = new List<Predplatne>();
