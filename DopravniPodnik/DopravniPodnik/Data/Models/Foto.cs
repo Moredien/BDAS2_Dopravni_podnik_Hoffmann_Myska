@@ -16,9 +16,7 @@ public partial class Foto
     public decimal IdKarty { get; set; }
 
     public decimal IdUzivatele { get; set; }
-
-    public virtual KartyMhd IdKartyNavigation { get; set; } = null!;
-
+    
     public virtual Uzivatele IdUzivateleNavigation { get; set; } = null!;
 
     public virtual KartyMhd? KartyMhd { get; set; }

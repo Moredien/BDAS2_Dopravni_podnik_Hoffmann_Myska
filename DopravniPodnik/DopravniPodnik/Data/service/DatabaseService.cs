@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DopravniPodnik.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DopravniPodnik.Data.service;
 

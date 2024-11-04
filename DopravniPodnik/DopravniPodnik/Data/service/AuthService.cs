@@ -1,7 +1,9 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography;
+using System.Text;
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.Utils;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DopravniPodnik.Data.service;
@@ -12,6 +14,7 @@ public class AuthService
     private readonly IServiceProvider _serviceProvider;
     private UserSession? _userSession;
     
+    private const int NumberOfIterations = 10000;
     
     private AuthService(OracleDbContext context, ServiceProvider serviceProvider)
     {
@@ -89,13 +92,45 @@ public class AuthService
     //TODO udelat poradny hash
     private string HashPassword(string password)
     {
-        var bytes = Encoding.UTF8.GetBytes(password);
-        return Convert.ToBase64String(bytes);
+        var salt = new byte[16];
+        RandomNumberGenerator.Fill(salt);
+        
+        using var pbkdf2 = new Rfc2898DeriveBytes(
+            password, 
+            salt, 
+            NumberOfIterations,
+            HashAlgorithmName.SHA256);
+        var hash = pbkdf2.GetBytes(32); // 32-byte hash for SHA-256
+
+        //Zkombinovani hashe a soli 
+        var hashBytes = new byte[48];
+        Array.Copy(salt, 0, hashBytes, 0, 16);
+        Array.Copy(hash, 0, hashBytes, 16, 32);
+
+        return Convert.ToBase64String(hashBytes);
     }
 
     private bool ValidatePassword(string loginPassword, string userPassword)
     {
-        return userPassword == HashPassword(loginPassword);
+        var hashBytes = Convert.FromBase64String(userPassword);
+        var salt = new byte[16];
+        Array.Copy(hashBytes, 0, salt, 0, 16);
+
+        //Hash nove hesla za pouziti stejne soli a poctu iteraci
+        using var pbkdf2 = new Rfc2898DeriveBytes(
+            loginPassword,
+            salt,
+            NumberOfIterations,
+            HashAlgorithmName.SHA256);
+        var hash = pbkdf2.GetBytes(32); // 32-byte hash for SHA-256
+        
+        for (var i = 0; i < 32; i++)
+        {
+            if (hashBytes[i + 16] != hash[i])
+                return false;
+        }
+
+        return true;
     }
 
     private bool CreateNewSession(string uzivatelskeJmeno, TypyUzivatele typyUzivatele)
