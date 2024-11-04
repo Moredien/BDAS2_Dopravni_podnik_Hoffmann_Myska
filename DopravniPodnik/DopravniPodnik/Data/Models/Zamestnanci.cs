@@ -5,15 +5,15 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Zamestnanci
 {
-    public decimal IdZamestnance { get; set; }
+    public int IdZamestnance { get; set; }
 
     public int? Plat { get; set; }
 
     public DateTime? PlatnostUvazkuDo { get; set; }
 
-    public decimal IdNadrizeneho { get; set; }
+    public int IdNadrizeneho { get; set; }
 
-    public decimal IdUzivatele { get; set; }
+    public int IdUzivatele { get; set; }
 
     public virtual Zamestnanci IdNadrizenehoNavigation { get; set; } = null!;
 

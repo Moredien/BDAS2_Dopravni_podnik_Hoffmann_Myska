@@ -5,7 +5,7 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Zastavky
 {
-    public decimal IdZastavky { get; set; }
+    public int IdZastavky { get; set; }
 
     public string Jmeno { get; set; } = null!;
 

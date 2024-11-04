@@ -5,7 +5,7 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Linky
 {
-    public decimal IdLinky { get; set; }
+    public int IdLinky { get; set; }
 
     public short CisloLinky { get; set; }
 

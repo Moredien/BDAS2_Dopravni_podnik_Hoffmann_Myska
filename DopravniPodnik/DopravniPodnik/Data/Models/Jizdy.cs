@@ -5,15 +5,15 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Jizdy
 {
-    public decimal IdJizdy { get; set; }
+    public int IdJizdy { get; set; }
 
     public DateTime Zacatek { get; set; }
 
     public DateTime? Konec { get; set; }
 
-    public decimal IdVozidla { get; set; }
+    public int IdVozidla { get; set; }
 
-    public decimal IdLinky { get; set; }
+    public int IdLinky { get; set; }
 
     public virtual Linky IdLinkyNavigation { get; set; } = null!;
 

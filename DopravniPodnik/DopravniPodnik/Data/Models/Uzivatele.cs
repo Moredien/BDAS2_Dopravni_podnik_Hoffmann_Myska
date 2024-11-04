@@ -5,7 +5,7 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Uzivatele
 {
-    public decimal IdUzivatele { get; set; }
+    public int IdUzivatele { get; set; }
 
     public string UzivatelskeJmeno { get; set; } = null!;
 
@@ -19,9 +19,9 @@ public partial class Uzivatele
 
     public DateTime DatumNarozeni { get; set; }
 
-    public decimal IdTypUzivatele { get; set; }
+    public int IdTypUzivatele { get; set; }
 
-    public decimal IdAdresy { get; set; }
+    public int IdAdresy { get; set; }
 
     public virtual ICollection<Foto> Fotos { get; set; } = new List<Foto>();
 

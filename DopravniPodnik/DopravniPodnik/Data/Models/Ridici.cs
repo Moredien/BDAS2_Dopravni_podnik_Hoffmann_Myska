@@ -5,7 +5,7 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Ridici
 {
-    public decimal IdRidice { get; set; }
+    public int IdRidice { get; set; }
 
     public string Jmeno { get; set; } = null!;
 
