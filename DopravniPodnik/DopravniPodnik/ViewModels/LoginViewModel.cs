@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.service;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.ViewModels;
 
@@ -16,7 +17,7 @@ public partial class LoginViewModel : ViewModelBase
     void Login()
     {
         //do so authentication
-        WindowManager.SetMenuView("LoggedIn");
+        WindowManager.SetMenuView(ViewType.LoggedInMenu);
         Exit();
     }
 

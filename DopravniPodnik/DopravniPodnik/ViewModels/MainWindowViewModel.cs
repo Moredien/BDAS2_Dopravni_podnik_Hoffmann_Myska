@@ -23,7 +23,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (value == null) 
             value = MenuItems[0];
-        WindowManager.SetContentView(value.Label);
+        WindowManager.SetContentView(value.ViewTypeEnum);
     }
 
     public ObservableCollection<ListItemTemplate> MenuItems { get; } = new();
@@ -31,30 +31,31 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         WindowManager.MainWindow = this;
-        CreateNewContentView(typeof(JizdyViewModel), "Jízdy", true);
-        CreateNewContentView(typeof(ZastavkyViewModel), "Zastávky", true);
-        CreateNewContentView(typeof(LoginViewModel), "Login", false);
-        CreateNewContentView(typeof(RegisterViewModel), "Register", false);
+        CreateNewContentView(typeof(JizdyViewModel),ViewType.Jizdy, "Jízdy", true);
+        CreateNewContentView(typeof(ZastavkyViewModel),ViewType.Zastavky, "Zastávky", true);
+        CreateNewContentView(typeof(LoginViewModel),ViewType.Login, "Login", false);
+        CreateNewContentView(typeof(RegisterViewModel),ViewType.Register, "Register", false);
 
         SelectedListItem = MenuItems[0];
         
-        WindowManager.SetMenuView("Anonymous");
-        CurrentMenu = WindowManager.currentMenuViewModel;
+        WindowManager.SetMenuView(ViewType.AnonymousMenu);
+        CurrentMenu = WindowManager.CurrentMenuViewModel;
         Console.WriteLine();
     }
 
-    private void CreateNewContentView(Type type, string name, bool visibleInMenu)
+    private void CreateNewContentView(Type type, ViewType viewType, string name, bool visibleInMenu)
     {
+        //excludes views that are not reachable from the side menu
         if(visibleInMenu)
-            MenuItems.Add(new ListItemTemplate(name,type));
+            MenuItems.Add(new ListItemTemplate(name,type,viewType));
         var newViewModel = (ViewModelBase)Activator.CreateInstance(type);
-        WindowManager.AddNewContentView(newViewModel, name); 
+        WindowManager.AddNewContentView(newViewModel, viewType); 
     }
 
     [RelayCommand]
-    private void ChangeViewTo(string name)
+    private void ChangeViewTo(ViewType viewType)
     {
-        WindowManager.SetContentView(name);
+        WindowManager.SetContentView(viewType);
     }
 }
 
