@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DopravniPodnik.Data.service;
 
-public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) : DbContext(options)
+public partial class OracleDbContext : DbContext
 {
     public virtual DbSet<Adresy> Adresy { get; set; }
 
@@ -40,7 +40,25 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
     public virtual DbSet<Zastaveni> Zastaveni { get; set; }
 
     public virtual DbSet<Zastavky> Zastavky { get; set; }
-
+    
+    private static OracleDbContext? _instance;
+    private static readonly object Lock = new();
+    
+    private OracleDbContext() { }
+    
+    public static OracleDbContext Instance
+    {
+        get
+        {
+            if (_instance != null) return _instance;
+            lock (Lock)
+            {
+                _instance = new OracleDbContext();
+            }
+            return _instance;
+        }
+    }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var connectionString = Environment.GetEnvironmentVariable("ORACLE_DB_CONNECTION");

@@ -3,15 +3,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DopravniPodnik.Data.service;
 
-public class DatabaseService(OracleDbContext context)
+public class DatabaseService
 {
+    private readonly OracleDbContext _context = OracleDbContext.Instance;
+
     public bool TestConnection()
     {
         try
         {
             //Test jestli je mozne se pripojit k db
-            context.Database.OpenConnection();
-            context.Database.CloseConnection();
+            _context.Database.OpenConnection();
+            _context.Database.CloseConnection();
             return true;
         }
         catch (Exception ex)

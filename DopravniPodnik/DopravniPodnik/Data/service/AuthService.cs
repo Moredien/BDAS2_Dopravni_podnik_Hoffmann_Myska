@@ -11,15 +11,12 @@ namespace DopravniPodnik.Data.service;
 public class AuthService
 {
     private readonly OracleDbContext _context;
-    private readonly IServiceProvider _serviceProvider;
-    private UserSession? _userSession;
     
     private const int NumberOfIterations = 10000;
     
-    private AuthService(OracleDbContext context, ServiceProvider serviceProvider)
+    private AuthService()
     {
-        _context = context;
-        _serviceProvider = serviceProvider;
+        _context = OracleDbContext.Instance;
     }
 
     public async Task<UserRegistrationResult> RegisterUser(Uzivatele uzivatel)
@@ -83,10 +80,8 @@ public class AuthService
     
     public void LogoutUser()
     {
-        if (_userSession == null) return;
-        
-        Console.WriteLine("User logged out. Session destroyed.");
-        _userSession = null;
+        var userSession = UserSession.Instance;
+        userSession.EndSession();
     }
     
     //TODO udelat poradny hash
@@ -135,12 +130,9 @@ public class AuthService
 
     private bool CreateNewSession(string uzivatelskeJmeno, TypyUzivatele typyUzivatele)
     {
-        _userSession = _serviceProvider.GetService<UserSession>();
-        if(_userSession == null) return false;
+        var userSession = UserSession.Instance;
         
-        _userSession.UserName = uzivatelskeJmeno;
-        _userSession.UserType = typyUzivatele;
-        
+        userSession.UpdateSession(uzivatelskeJmeno, typyUzivatele);
         return true;
     }
 }
