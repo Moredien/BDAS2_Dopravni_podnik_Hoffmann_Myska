@@ -5,7 +5,7 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Logy
 {
-    public decimal IdLogu { get; set; }
+    public int IdLogu { get; set; }
 
     public DateTime Cas { get; set; }
 

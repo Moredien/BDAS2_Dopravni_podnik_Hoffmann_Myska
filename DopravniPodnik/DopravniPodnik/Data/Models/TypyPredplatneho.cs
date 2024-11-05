@@ -5,7 +5,7 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class TypyPredplatneho
 {
-    public decimal IdTypPredplatneho { get; set; }
+    public int IdTypPredplatneho { get; set; }
 
     public string Jmeno { get; set; } = null!;
 

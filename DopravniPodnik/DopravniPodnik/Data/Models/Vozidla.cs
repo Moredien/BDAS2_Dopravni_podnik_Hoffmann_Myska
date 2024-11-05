@@ -5,9 +5,9 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Vozidla
 {
-    public decimal IdVozidla { get; set; }
+    public int IdVozidla { get; set; }
 
-    public decimal IdTypVozidla { get; set; }
+    public int IdTypVozidla { get; set; }
 
     public virtual TypyVozidel IdTypVozidlaNavigation { get; set; } = null!;
 

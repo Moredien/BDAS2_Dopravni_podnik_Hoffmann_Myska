@@ -5,9 +5,9 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Zakaznici
 {
-    public decimal IdZakaznika { get; set; }
+    public int IdZakaznika { get; set; }
 
-    public decimal IdUzivatele { get; set; }
+    public int IdUzivatele { get; set; }
 
     public virtual Uzivatele IdUzivateleNavigation { get; set; } = null!;
 

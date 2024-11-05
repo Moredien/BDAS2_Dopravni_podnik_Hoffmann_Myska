@@ -5,15 +5,15 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Predplatne
 {
-    public decimal IdPredplatneho { get; set; }
+    public int IdPredplatneho { get; set; }
 
     public DateTime Od { get; set; }
 
     public DateTime Do { get; set; }
 
-    public decimal IdKarty { get; set; }
+    public int IdKarty { get; set; }
 
-    public decimal IdTypPredplatneho { get; set; }
+    public int IdTypPredplatneho { get; set; }
 
     public virtual KartyMhd IdKartyNavigation { get; set; } = null!;
 

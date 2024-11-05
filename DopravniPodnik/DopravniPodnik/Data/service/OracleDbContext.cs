@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DopravniPodnik.Data.service;
 
-public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) : DbContext(options)
+public partial class OracleDbContext : DbContext
 {
     public virtual DbSet<Adresy> Adresy { get; set; }
 
@@ -40,7 +40,25 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
     public virtual DbSet<Zastaveni> Zastaveni { get; set; }
 
     public virtual DbSet<Zastavky> Zastavky { get; set; }
-
+    
+    private static OracleDbContext? _instance;
+    private static readonly object Lock = new();
+    
+    private OracleDbContext() { }
+    
+    public static OracleDbContext Instance
+    {
+        get
+        {
+            if (_instance != null) return _instance;
+            lock (Lock)
+            {
+                _instance = new OracleDbContext();
+            }
+            return _instance;
+        }
+    }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var connectionString = Environment.GetEnvironmentVariable("ORACLE_DB_CONNECTION");
@@ -69,11 +87,10 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("ADRESY");
 
             entity.Property(e => e.IdAdresy)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_ADRESY");
             entity.Property(e => e.CisloPopisne)
-                .HasPrecision(5)
+                .HasPrecision(6)
                 .HasColumnName("CISLO_POPISNE");
             entity.Property(e => e.Mesto)
                 .HasMaxLength(32)
@@ -94,8 +111,7 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.HasIndex(e => e.IdKarty, "FOTO__IDX").IsUnique();
 
             entity.Property(e => e.IdFoto)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_FOTO");
             entity.Property(e => e.Data)
                 .HasColumnType("BLOB")
@@ -104,17 +120,17 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
                 .HasColumnType("DATE")
                 .HasColumnName("DATUM_PRIDANI");
             entity.Property(e => e.IdKarty)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_KARTY");
             entity.Property(e => e.IdUzivatele)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_UZIVATELE");
             entity.Property(e => e.JmenoSouboru)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("JMENO_SOUBORU");
 
-            entity.HasOne(d => d.KartyMhd).WithOne(p => p.Foto)
+            entity.HasOne(d => d.IdKartyNavigation).WithOne(p => p.Foto)
                 .HasForeignKey<Foto>(d => d.IdKarty)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FOTO_KARTA_MHD_FK");
@@ -132,14 +148,13 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("JIZDY");
 
             entity.Property(e => e.IdJizdy)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_JIZDY");
             entity.Property(e => e.IdLinky)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_LINKY");
             entity.Property(e => e.IdVozidla)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_VOZIDLA");
             entity.Property(e => e.Konec)
                 .HasColumnType("DATE")
@@ -168,14 +183,13 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.HasIndex(e => e.IdFoto, "KARTA_MHD__IDX").IsUnique();
 
             entity.Property(e => e.IdKarty)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_KARTY");
             entity.Property(e => e.IdFoto)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_FOTO");
             entity.Property(e => e.IdZakaznika)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_ZAKAZNIKA");
             entity.Property(e => e.PlatnostDo)
                 .HasColumnType("DATE")
@@ -187,7 +201,7 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
                 .HasColumnType("NUMBER(10,2)")
                 .HasColumnName("ZUSTATEK");
 
-            entity.HasOne(d => d.Foto).WithOne(p => p.KartyMhd)
+            entity.HasOne(d => d.IdFotoNavigation).WithOne(p => p.KartyMhd)
                 .HasForeignKey<KartyMhd>(d => d.IdFoto)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("KARTA_MHD_FOTO_FK");
@@ -205,8 +219,7 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("LINKY");
 
             entity.Property(e => e.IdLinky)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_LINKY");
             entity.Property(e => e.CisloLinky)
                 .HasPrecision(5)
@@ -224,8 +237,7 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("LOGY");
 
             entity.Property(e => e.IdLogu)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_LOGU");
             entity.Property(e => e.Cas)
                 .HasColumnType("DATE")
@@ -259,14 +271,13 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("PLATBY");
 
             entity.Property(e => e.IdPlatby)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_PLATBY");
             entity.Property(e => e.CasPlatby)
                 .HasColumnType("DATE")
                 .HasColumnName("CAS_PLATBY");
             entity.Property(e => e.IdZakaznika)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_ZAKAZNIKA");
             entity.Property(e => e.VysePlatby)
                 .HasColumnType("NUMBER(10,2)")
@@ -285,17 +296,16 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("PREDPLATNE");
 
             entity.Property(e => e.IdPredplatneho)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_PREDPLATNEHO");
             entity.Property(e => e.Do)
                 .HasColumnType("DATE")
                 .HasColumnName("DO");
             entity.Property(e => e.IdKarty)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_KARTY");
             entity.Property(e => e.IdTypPredplatneho)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_TYP_PREDPLATNEHO");
             entity.Property(e => e.Od)
                 .HasColumnType("DATE")
@@ -319,8 +329,7 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("RIDICI");
 
             entity.Property(e => e.IdRidice)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_RIDICE");
             entity.Property(e => e.Jmeno)
                 .HasMaxLength(32)
@@ -346,11 +355,11 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
                     {
                         j.HasKey("IdRidice", "IdJizdy").HasName("JIZDY_RIDICU");
                         j.ToTable("JIZDY_RIDICU");
-                        j.IndexerProperty<decimal>("IdRidice")
-                            .HasColumnType("NUMBER(32)")
+                        j.IndexerProperty<int>("IdRidice")
+                            .HasPrecision(9)
                             .HasColumnName("ID_RIDICE");
-                        j.IndexerProperty<decimal>("IdJizdy")
-                            .HasColumnType("NUMBER(32)")
+                        j.IndexerProperty<int>("IdJizdy")
+                            .HasPrecision(9)
                             .HasColumnName("ID_JIZDY");
                     });
         });
@@ -362,8 +371,7 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("TYPY_PREDPLATNEHO");
 
             entity.Property(e => e.IdTypPredplatneho)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_TYP_PREDPLATNEHO");
             entity.Property(e => e.Cena)
                 .HasColumnType("NUMBER(10,2)")
@@ -381,8 +389,7 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("TYPY_UZIVATELE");
 
             entity.Property(e => e.IdTypUzivatele)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_TYP_UZIVATELE");
             entity.Property(e => e.Nazev)
                 .HasMaxLength(20)
@@ -397,8 +404,7 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("TYPY_VOZIDEL");
 
             entity.Property(e => e.IdTypVozidla)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_TYP_VOZIDLA");
             entity.Property(e => e.Nazev)
                 .HasMaxLength(100)
@@ -419,8 +425,7 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.HasIndex(e => e.UzivatelskeJmeno, "UZIVATELE__UN").IsUnique();
 
             entity.Property(e => e.IdUzivatele)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_UZIVATELE");
             entity.Property(e => e.CasZalozeni)
                 .HasColumnType("DATE")
@@ -433,10 +438,10 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
                 .IsUnicode(false)
                 .HasColumnName("HESLO");
             entity.Property(e => e.IdAdresy)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_ADRESY");
             entity.Property(e => e.IdTypUzivatele)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_TYP_UZIVATELE");
             entity.Property(e => e.Jmeno)
                 .HasMaxLength(20)
@@ -469,11 +474,10 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("VOZIDLA");
 
             entity.Property(e => e.IdVozidla)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_VOZIDLA");
             entity.Property(e => e.IdTypVozidla)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_TYP_VOZIDLA");
 
             entity.HasOne(d => d.IdTypVozidlaNavigation).WithMany(p => p.Vozidlas)
@@ -491,11 +495,10 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.HasIndex(e => e.IdUzivatele, "ZAKAZNIK__IDX").IsUnique();
 
             entity.Property(e => e.IdZakaznika)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_ZAKAZNIKA");
             entity.Property(e => e.IdUzivatele)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_UZIVATELE");
 
             entity.HasOne(d => d.IdUzivateleNavigation).WithOne(p => p.Zakaznici)
@@ -513,14 +516,13 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.HasIndex(e => e.IdUzivatele, "ZAMESTNANEC__IDX").IsUnique();
 
             entity.Property(e => e.IdZamestnance)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_ZAMESTNANCE");
             entity.Property(e => e.IdNadrizeneho)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_NADRIZENEHO");
             entity.Property(e => e.IdUzivatele)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_UZIVATELE");
             entity.Property(e => e.Plat)
                 .HasPrecision(6)
@@ -547,14 +549,13 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("ZASTAVENI");
 
             entity.Property(e => e.IdZastaveni)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_ZASTAVENI");
             entity.Property(e => e.IdLinky)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_LINKY");
             entity.Property(e => e.IdZastavky)
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_ZASTAVKY");
             entity.Property(e => e.Odjezd)
                 .HasColumnType("DATE")
@@ -578,8 +579,7 @@ public partial class OracleDbContext(DbContextOptions<OracleDbContext> options) 
             entity.ToTable("ZASTAVKY");
 
             entity.Property(e => e.IdZastavky)
-                .ValueGeneratedOnAdd()
-                .HasColumnType("NUMBER(32)")
+                .HasPrecision(9)
                 .HasColumnName("ID_ZASTAVKY");
             entity.Property(e => e.Jmeno)
                 .HasMaxLength(128)

@@ -5,7 +5,7 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class TypyUzivatele
 {
-    public decimal IdTypUzivatele { get; set; }
+    public int IdTypUzivatele { get; set; }
 
     public string Nazev { get; set; } = null!;
 

@@ -1,57 +1,27 @@
 ﻿using System.Windows;
-using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
 using DopravniPodnik.Utils;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using DotNetEnv;
 
 namespace DopravniPodnik
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         [STAThread]
         public static void Main()
         {
             Env.Load("../../../.env");
-            var connectionString = Environment.GetEnvironmentVariable("ORACLE_DB_CONNECTION");
+            
+            var dbService = new DatabaseService();
+            Task.Run(() => RetryDatabaseConnection(dbService));
 
-            if (string.IsNullOrWhiteSpace(connectionString)) // Pokud se connection string nenacte nema smysl poustet aplikaci
-            {
-                Console.WriteLine("Oracle DB connection string is empty.");
-                Environment.Exit(-1);
-            }
-            
-            var services = ConfigureServices(connectionString);
-            var dbService = services.GetRequiredService<DatabaseService>();
-            
-            Task.Run(() => RetryDatabaseConnection(services));
-            
             var app = new App();
             app.InitializeComponent();
             app.Run();
         }
 
-        private static ServiceProvider ConfigureServices(string connectionString)
+        private static async Task RetryDatabaseConnection(DatabaseService dbService)
         {
-            var serviceCollection = new ServiceCollection();
-            
-            serviceCollection.AddDbContext<OracleDbContext>(options => options.UseOracle(connectionString));
-            
-            serviceCollection.AddSingleton<DatabaseService>();
-            serviceCollection.AddSingleton<AuthService>();
-            serviceCollection.AddSingleton<UserSession>();
-            
-            return serviceCollection.BuildServiceProvider();
-        }
-
-        private static async Task RetryDatabaseConnection(ServiceProvider services)
-        {
-            var dbService = services.GetRequiredService<DatabaseService>();
-
             while (true)
             {
                 try
@@ -68,8 +38,8 @@ namespace DopravniPodnik
                 {
                     Console.WriteLine($"Database connection exception: {ex.Message}");
                 }
-                
-                await Task.Delay(5000); // Proto aby se to opakovalo jednou za 5 sekund
+
+                await Task.Delay(5000); // Retry every 5 seconds
             }
         }
     }
