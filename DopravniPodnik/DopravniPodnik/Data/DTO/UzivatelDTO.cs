@@ -15,7 +15,7 @@ public class UzivatelDTO
     //foto
     public int id_foto{ get; set; }
     public string foto_jmeno_souboru{ get; set; }
-    public Image foto_data{ get; set; }
+    public Image? foto_data{ get; set; }
     public DateTime foto_datum_pridani{ get; set; }
     //adresa
     public int id_adresy{ get; set; }
