@@ -1,11 +1,8 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows.Automation.Peers;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
 using DopravniPodnik.Data.service;
 using DopravniPodnik.Utils;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DopravniPodnik.ViewModels;
 
@@ -31,10 +28,9 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         WindowManager.MainWindow = this;
-        CreateNewContentView(typeof(JizdyViewModel),ViewType.Jizdy, "Jízdy", true);
-        CreateNewContentView(typeof(ZastavkyViewModel),ViewType.Zastavky, "Zastávky", true);
-        CreateNewContentView(typeof(LoginViewModel),ViewType.Login, "Login", false);
-        CreateNewContentView(typeof(RegisterViewModel),ViewType.Register, "Register", false);
+        CreateNewContentView(typeof(UzivateleViewModel),ViewType.Uzivatele, "Uživatelé");
+        CreateNewContentView(typeof(JizdyViewModel),ViewType.Jizdy, "Jízdy");
+        CreateNewContentView(typeof(ZastavkyViewModel),ViewType.Zastavky, "Zastávky");
 
         SelectedListItem = MenuItems[0];
         
@@ -43,11 +39,9 @@ public partial class MainWindowViewModel : ViewModelBase
         Console.WriteLine();
     }
 
-    private void CreateNewContentView(Type type, ViewType viewType, string name, bool visibleInMenu)
+    private void CreateNewContentView(Type type, ViewType viewType, string name)
     {
-        //excludes views that are not reachable from the side menu
-        if(visibleInMenu)
-            MenuItems.Add(new ListItemTemplate(name,type,viewType));
+        MenuItems.Add(new ListItemTemplate(name,type,viewType));
         var newViewModel = (ViewModelBase)Activator.CreateInstance(type);
         if (newViewModel == null)
             throw new Exception($"Failed to create new instance of {type}");

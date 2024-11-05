@@ -7,5 +7,7 @@ public enum ViewType
     Register,
     Login,
     Jizdy,
-    Zastavky
+    Zastavky,
+    Uzivatele,
+    UzivatelForm
 }

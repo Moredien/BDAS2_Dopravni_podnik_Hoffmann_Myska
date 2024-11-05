@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:DopravniPodnik"
              xmlns:viewmodels="clr-namespace:DopravniPodnik.ViewModels"
              xmlns:views="clr-namespace:DopravniPodnik.Views"
+             xmlns:formviewmodels="clr-namespace:DopravniPodnik.ViewModels.Forms"
+             xmlns:formviews="clr-namespace:DopravniPodnik.Views.Forms"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
         <!-- there must be a better way to do this -->
@@ -24,6 +26,12 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type viewmodels:LoggedInUserViewModel}">
             <views:LoggedInUserMenuView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:UzivateleViewModel}">
+            <views:UzivateleView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type formviewmodels:UzivatelFormViewModel}">
+            <formviews:UzivatelFormView/>
         </DataTemplate>
         
         

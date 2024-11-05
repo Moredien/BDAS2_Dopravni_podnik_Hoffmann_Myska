@@ -1,5 +1,6 @@
 ﻿using DopravniPodnik.Utils;
 using DopravniPodnik.ViewModels;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DopravniPodnik.Data.service;
 
@@ -19,7 +20,8 @@ public static class WindowManager
 
     public static ViewModelBase? CurrentContentViewModel { get; set; }
    
-
+    // adds new content view to a collection for repeated access
+    // also sets the first one as selected
     public static void AddNewContentView(ViewModelBase contentViewModel, ViewType key)
     {
         if (!ContentViewModels.TryAdd(key, contentViewModel))
@@ -29,7 +31,7 @@ public static class WindowManager
             CurrentContentViewModel = ContentViewModels[key];
         }
     }
-
+    //changes the main content view
     public static void SetContentView(ViewType key)
     {
         if (ContentViewModels.ContainsKey(key) && MainWindow != null)
@@ -38,7 +40,8 @@ public static class WindowManager
             MainWindow.CurrentPage = CurrentContentViewModel;
         }
     }
-
+    // changes the main content to whatever is selected in the side menu
+    // used to close one time use views like forms
     public static void SetContentViewToSelected()
     {
         if (MainWindow != null && MainWindow?.SelectedListItem != null)
@@ -46,7 +49,7 @@ public static class WindowManager
         else
             throw new Exception("Failed setting content view to selected");
     }
-
+    //changes the top menu
     public static void SetMenuView(ViewType key)
     {
         if (MainWindow == null)
@@ -59,6 +62,12 @@ public static class WindowManager
         else
             throw new Exception($"Failed to set menu view. MenuView {key} doesnt exist.");
         
+    }
+    // creates new view that is not kept in any collection and not displayed in the side menu
+    public static void OpenNewFormView(Type type, object[] parameters)
+    {
+        var form = (ViewModelBase)Activator.CreateInstance(type,parameters);
+        MainWindow.CurrentPage = form;
     }
 
 }

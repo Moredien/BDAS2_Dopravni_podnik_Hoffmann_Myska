@@ -20,10 +20,4 @@ public partial class LoginViewModel : ViewModelBase
         WindowManager.SetMenuView(ViewType.LoggedInMenu);
         Exit();
     }
-
-    [RelayCommand]
-    private void Exit()
-    {
-        WindowManager.SetContentViewToSelected();
-    }
 }

@@ -9,11 +9,11 @@ public partial class AnonymousUserMenuViewModel : ViewModelBase
     [RelayCommand]
     private void OpenLoginView()
     {
-        WindowManager.SetContentView(ViewType.Login);
+        WindowManager.OpenNewFormView(typeof(LoginViewModel), null);
     }
     [RelayCommand]
     private void OpenRegisterView()
     {
-        WindowManager.SetContentView(ViewType.Register);
+        WindowManager.OpenNewFormView(typeof(RegisterViewModel), null);
     }
 }
