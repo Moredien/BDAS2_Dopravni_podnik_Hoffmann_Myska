@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Security;
+using System.Windows.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.service;
@@ -9,13 +11,17 @@ namespace DopravniPodnik.ViewModels;
 public partial class LoginViewModel : ViewModelBase
 {
     [ObservableProperty]
-    private string _username = "";
+    private string uzivatelske_jmeno;
+    [ObservableProperty]
+    private SecureString heslo;
 
-//passwordbox not yet bound
-    
+  
+
+
     [RelayCommand]
     private void Login()
     {
+        Console.WriteLine($"pw: {PasswordBoxHelper.ConvertToUnsecureString(heslo)}");
         //do so authentication
         WindowManager.SetMenuView(ViewType.LoggedInMenu);
         Exit();

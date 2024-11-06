@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DopravniPodnik.Views"
+             xmlns:utils="clr-namespace:DopravniPodnik.Utils"
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="800">
 
@@ -37,29 +38,33 @@
                    FontSize="30" />
 
             <Label Content="Uživatelské jméno:" />
-            <TextBox />
+            <TextBox Text="{Binding Uzivatelske_jmeno}"/>
             <Label Content="Heslo:" />
-            <PasswordBox />
+            <PasswordBox utils:PasswordBoxHelper.BoundPassword="{Binding Heslo_1, Mode=TwoWay}"
+                         utils:PasswordBoxHelper.PropertyName="Heslo_1"/>
             <Label Content="Heslo znovu:" />
-            <PasswordBox />
+            <PasswordBox utils:PasswordBoxHelper.BoundPassword="{Binding Heslo_2, Mode=TwoWay}"
+                         utils:PasswordBoxHelper.PropertyName="Heslo_2"/>
             <Label Content="Jméno:" />
-            <TextBox />
+            <TextBox Text="{Binding Jmeno}"/>
             <Label Content="Příjmení:" />
-            <TextBox />
+            <TextBox Text="{Binding Prijmeni}"/>
             <Label Content="Datum narození:" />
-            <DatePicker/>
+            <DatePicker SelectedDate="{Binding Datum_narozeni, Mode=TwoWay}"/>
             <Label Content="Město:" />
-            <TextBox />
+            <TextBox Text="{Binding Mesto}"/>
             <Label Content="Ulice:" />
-            <TextBox />
+            <TextBox Text="{Binding Ulice}"/>
             <Label Content="Číslo popisné:" />
-            <TextBox />
+            <TextBox Text="{Binding Cislo_popisne}"/>
 
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <Button Content="Zpět" 
                         Command="{Binding ExitCommand}"/>
-                <Button Content="Registrovat"/>
+                <Button Content="Registrovat"
+                        Command="{Binding ExecuteRegisterCommand}" 
+                        />
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

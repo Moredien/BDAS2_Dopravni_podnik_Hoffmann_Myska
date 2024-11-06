@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodels="clr-namespace:DopravniPodnik.ViewModels"
              xmlns:views="clr-namespace:DopravniPodnik.Views"
+             xmlns:utils="clr-namespace:DopravniPodnik.Utils"
+             xmlns:toolkit="clr-namespace:CommunityToolkit"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="800">
     
@@ -39,7 +41,8 @@
         <TextBox
             Text="{Binding Username}"/>
         <Label Content="Heslo:" />
-        <PasswordBox />
+        <PasswordBox utils:PasswordBoxHelper.BoundPassword="{Binding Heslo, Mode=TwoWay}"
+                     utils:PasswordBoxHelper.PropertyName="Heslo"/>
 
 
         <StackPanel Orientation="Horizontal"
