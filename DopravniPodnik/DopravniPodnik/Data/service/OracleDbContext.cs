@@ -62,19 +62,21 @@ public partial class OracleDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var connectionString = Environment.GetEnvironmentVariable("ORACLE_DB_CONNECTION");
-        
+
         if (string.IsNullOrWhiteSpace(connectionString))
         {
             throw new Exception("Oracle DB connection string not found");
         }
-        
+
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseOracle(connectionString);
+            optionsBuilder
+                .UseOracle(connectionString)
+                .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
         }
     }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    
+     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
             .HasDefaultSchema("ST67028")

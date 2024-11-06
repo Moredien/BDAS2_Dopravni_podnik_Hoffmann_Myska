@@ -13,14 +13,14 @@ namespace DopravniPodnik
             Env.Load("../../../.env");
             
             var dbService = new DatabaseService();
-            Task.Run(() => RetryDatabaseConnection(dbService));
+            RetryDatabaseConnection(dbService);
 
             var app = new App();
             app.InitializeComponent();
             app.Run();
         }
 
-        private static async Task RetryDatabaseConnection(DatabaseService dbService)
+        private static void RetryDatabaseConnection(DatabaseService dbService)
         {
             while (true)
             {
@@ -38,8 +38,6 @@ namespace DopravniPodnik
                 {
                     Console.WriteLine($"Database connection exception: {ex.Message}");
                 }
-
-                await Task.Delay(5000); // Retry every 5 seconds
             }
         }
     }
