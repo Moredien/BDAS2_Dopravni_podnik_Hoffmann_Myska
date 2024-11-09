@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using DopravniPodnik.Data.DTO;
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.Utils;
 using Microsoft.EntityFrameworkCore;
@@ -10,38 +11,62 @@ namespace DopravniPodnik.Data.service;
 
 public class AuthService
 {
-    private readonly OracleDbContext _context;
+    private readonly OracleDbContext _context = OracleDbContext.Instance;
+    private readonly DatabaseService _databaseService = new();
     
     private const int NumberOfIterations = 10000;
-    
-    private AuthService()
-    {
-        _context = OracleDbContext.Instance;
-    }
+    private const string InsertAddressCommand = @"
+            INSERT INTO ST67028.ADRESY (MESTO, ULICE, CISLO_POPISNE)
+            VALUES ({0}, {1}, {2})
+            RETURNING ID_ADRESY INTO :outputId";
+    private const string InsertUserCommand = @"
+            INSERT INTO ST67028.UZIVATELE 
+            (UZIVATELSKE_JMENO, HESLO, JMENO, PRIJMENI, CAS_ZALOZENI, DATUM_NAROZENI, ID_TYP_UZIVATELE, ID_ADRESY)
+            VALUES (:UzivatelskeJmeno, :Heslo, :Jmeno, :Prijmeni, :CasZalozeni, :DatumNarozeni, :IdTypUzivatele, :IdAdresy)";
 
-    public async Task<UserRegistrationResult> RegisterUser(Uzivatele uzivatel)
+    public UserRegistrationResult RegisterUser(UzivatelDTO uzivatel)
     {
         try
         {
-            Uzivatele? existingUser = await _context.Uzivatele
-                .FromSqlRaw("SELECT * FROM Uzivatele WHERE UzivatelskeJmeno = {0}", uzivatel.UzivatelskeJmeno)
-                .FirstOrDefaultAsync();
+            Uzivatele? existingUser = _context.Uzivatele
+                .FromSqlRaw("SELECT * FROM ST67028.UZIVATELE WHERE UZIVATELSKE_JMENO = {0}", uzivatel.uzivatelske_jmeno)
+                .FirstOrDefault();
 
             if (existingUser != null) return UserRegistrationResult.AlreadyRegistered;
 
-            var hashedPassword = HashPassword(uzivatel.Heslo);
-            var casZalozeni = DateTime.Now;
+            var hashedPassword = HashPassword(uzivatel.heslo);
 
-            //TODO domluvit se co vsechno bude potreba pro registraci
-            var result = await _context.Database
-                .ExecuteSqlRawAsync(
-                    "INSERT INTO Uzivatele (UzivatelskeJmeno, Heslo, Jmeno, Prijmeni, CasZalozeni, DatumNarozeni ) VALUES ({0}, {1}, {2}, {3}, {4}, {5})",
-                    uzivatel.UzivatelskeJmeno,
-                    hashedPassword,
-                    uzivatel.Prijmeni,
-                    casZalozeni,
-                    uzivatel.DatumNarozeni);
+            var userTypeId = _databaseService.GetUserTypeId("admin");
+            if (userTypeId == -1)
+            {
+                Console.WriteLine("ID_TYP_UZIVATELE not found");
+                return UserRegistrationResult.Failed;
+            }
+        
+            var idAdresyParam = new Oracle.ManagedDataAccess.Client.OracleParameter
+            {
+                ParameterName = "outputId",
+                DbType = System.Data.DbType.Int32,
+                Direction = System.Data.ParameterDirection.Output
+            };
 
+            _context.Database.ExecuteSqlRaw(InsertAddressCommand, uzivatel.mesto, uzivatel.ulice, uzivatel.cislo_popisne, idAdresyParam);
+            int idAdresy = (int)idAdresyParam.Value;
+        
+            object[] parameters =
+            [
+                new Oracle.ManagedDataAccess.Client.OracleParameter("UzivatelskeJmeno", uzivatel.uzivatelske_jmeno),
+                new Oracle.ManagedDataAccess.Client.OracleParameter("Heslo", hashedPassword),
+                new Oracle.ManagedDataAccess.Client.OracleParameter("Jmeno", uzivatel.jmeno),
+                new Oracle.ManagedDataAccess.Client.OracleParameter("Prijmeni", uzivatel.prijmeni),
+                new Oracle.ManagedDataAccess.Client.OracleParameter("CasZalozeni", DateTime.Now),
+                new Oracle.ManagedDataAccess.Client.OracleParameter("DatumNarozeni", uzivatel.datum_narozeni),
+                new Oracle.ManagedDataAccess.Client.OracleParameter("IdTypUzivatele", userTypeId),
+                new Oracle.ManagedDataAccess.Client.OracleParameter("IdAdresy", idAdresy)
+            ];
+        
+            var result = _context.Database.ExecuteSqlRaw(InsertUserCommand, parameters);
+        
             return result == 1 ? UserRegistrationResult.Success : UserRegistrationResult.Failed;
         }
         catch (Exception e)
@@ -50,26 +75,27 @@ public class AuthService
             return UserRegistrationResult.Failed;
         }
     }
-
-    public async Task<UserLoginResult> LoginUser(string uzivatelskeJmeno, string heslo)
+    
+    public UserLoginResult LoginUser(string uzivatelskeJmeno, string heslo)
     {
         try
         {
-            var user = await _context.Uzivatele
-                .FromSqlRaw("SELECT * FROM WHERE UzivatelskeJmeno = {0}", uzivatelskeJmeno)
-                .FirstOrDefaultAsync();
+            var user = _context.Uzivatele
+                .FromSqlInterpolated($"SELECT * FROM ST67028.UZIVATELE WHERE UZIVATELSKE_JMENO = {uzivatelskeJmeno}")
+                .FirstOrDefault();
 
-            if (user == null ) return UserLoginResult.Failed;
-            
-            if(!ValidatePassword(heslo, user.Heslo)) return UserLoginResult.WrongPassword;
+            if (user == null) return UserLoginResult.Failed;
 
-            var userType = await _context.TypyUzivatelu.FromSqlRaw(
-                    "SELECT * FROM TypyUzivatele WHERE IdTypUzivatele = {0}", user.IdTypUzivatele)
-                .FirstOrDefaultAsync();
-            
-            if(userType == null) return UserLoginResult.Failed;
-            
-            return !CreateNewSession(user.UzivatelskeJmeno, userType) ? UserLoginResult.Failed : UserLoginResult.Success;
+            if (!ValidatePassword(heslo, user.Heslo)) return UserLoginResult.WrongPassword;
+
+            var userType = _context.TypyUzivatelu
+                .FromSqlInterpolated($"SELECT * FROM ST67028.TYPY_UZIVATELE WHERE ID_TYP_UZIVATELE = {user.IdTypUzivatele}")
+                .FirstOrDefault();
+
+            if (userType == null) return UserLoginResult.Failed;
+
+            CreateNewSession(user.UzivatelskeJmeno, userType);
+            return UserLoginResult.Success;
         }
         catch (Exception e)
         {
@@ -77,14 +103,9 @@ public class AuthService
             return UserLoginResult.Failed;
         }
     }
+
+    public void LogoutUser() => App.UserSessionInstance.EndSession();
     
-    public void LogoutUser()
-    {
-        var userSession = UserSession.Instance;
-        userSession.EndSession();
-    }
-    
-    //TODO udelat poradny hash
     private string HashPassword(string password)
     {
         var salt = new byte[16];
@@ -128,11 +149,6 @@ public class AuthService
         return true;
     }
 
-    private bool CreateNewSession(string uzivatelskeJmeno, TypyUzivatele typyUzivatele)
-    {
-        var userSession = UserSession.Instance;
-        
-        userSession.UpdateSession(uzivatelskeJmeno, typyUzivatele);
-        return true;
-    }
+    private void CreateNewSession(string uzivatelskeJmeno, TypyUzivatele typyUzivatele) 
+        => App.UserSessionInstance.UpdateSession(uzivatelskeJmeno, typyUzivatele);
 }

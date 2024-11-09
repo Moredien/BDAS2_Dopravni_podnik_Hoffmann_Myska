@@ -1,43 +1,48 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using DopravniPodnik.Data.service;
 using DopravniPodnik.Utils;
 using DotNetEnv;
 
-namespace DopravniPodnik
+namespace DopravniPodnik;
+
+public partial class App : Application
 {
-    public partial class App : Application
+    public static UserSession UserSessionInstance { get; private set; } = null!;
+
+    [STAThread]
+    public static void Main()
     {
-        [STAThread]
-        public static void Main()
-        {
-            Env.Load("../../../.env");
-            
-            var dbService = new DatabaseService();
-            RetryDatabaseConnection(dbService);
+        Env.Load("../../../.env");
 
-            var app = new App();
-            app.InitializeComponent();
-            app.Run();
-        }
+        UserSessionInstance = UserSession.Instance;
+        UserSessionInstance.UpdateSession("default", null);
 
-        private static void RetryDatabaseConnection(DatabaseService dbService)
+        var dbService = new DatabaseService();
+        RetryDatabaseConnection(dbService);
+
+        var app = new App();
+        app.InitializeComponent();
+        app.Run();
+    }
+
+    private static void RetryDatabaseConnection(DatabaseService dbService)
+    {
+        while (true)
         {
-            while (true)
+            try
             {
-                try
+                if (dbService.TestConnection())
                 {
-                    if (dbService.TestConnection())
-                    {
-                        Console.WriteLine("Database connection successful.");
-                        break;
-                    }
+                    Console.WriteLine("Database connection successful.");
+                    break;
+                }
 
-                    Console.WriteLine("Database connection failed. Retrying...");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Database connection exception: {ex.Message}");
-                }
+                Console.WriteLine("Database connection failed. Retrying...");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Database connection exception: {ex.Message}");
             }
         }
     }
