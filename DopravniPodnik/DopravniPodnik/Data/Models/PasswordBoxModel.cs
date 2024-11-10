@@ -44,6 +44,8 @@ public class PasswordBoxModel : INotifyPropertyChanged
         ErrorMessage = null;
         if (_value == null || _value.Length == 0)
             ErrorMessage = "Nebylo zadáno heslo.";
+        else if (_value.Length > 30) //maybe too many? 
+            ErrorMessage = "Maximální délka hesla je 30 znaků.";
         return ErrorMessage;
     }
 }

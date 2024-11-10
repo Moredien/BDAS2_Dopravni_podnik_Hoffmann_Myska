@@ -11,11 +11,11 @@ using DopravniPodnik.ViewModels.Forms;
 namespace DopravniPodnik.ViewModels;
 
 public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
-{ 
+{
+    private readonly ErrorsViewModel _errorsViewModel;
     public bool HasErrors => _errorsViewModel.HasErrors;
     public bool CanCreate => !HasErrors;
-    private readonly ErrorsViewModel _errorsViewModel;
-    
+
     private string? _uzivatelske_jmeno ;
 
     public string? Uzivatelske_jmeno
@@ -71,7 +71,6 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
     private void ValidateInput(string propertyName)
     {
         _errorsViewModel.ClearErrors(propertyName);
-        _errorsViewModel.ClearErrors("EmptyForm");
         
         switch (propertyName)
         {
