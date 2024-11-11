@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using DopravniPodnik.ViewModels;
 
-namespace DopravniPodnik.Views;
+namespace DopravniPodnik.Views.Forms;
 
 public partial class LoginView : UserControl
 {
