@@ -1,11 +1,10 @@
 ﻿using System.Security.Cryptography;
-using System.Text;
 using DopravniPodnik.Data.DTO;
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.Utils;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 
 namespace DopravniPodnik.Data.service;
 
@@ -29,11 +28,13 @@ public class AuthService
     {
         try
         {
-            Uzivatele? existingUser = _context.Uzivatele
-                .FromSqlRaw("SELECT * FROM ST67028.UZIVATELE WHERE UZIVATELSKE_JMENO = {0}", uzivatel.uzivatelske_jmeno)
-                .FirstOrDefault();
+            var existingUser = CheckUserExist(uzivatel.uzivatelske_jmeno);
 
-            if (existingUser != null) return UserRegistrationResult.AlreadyRegistered;
+            if (existingUser)
+            {
+                _logger.Message($"User with uzivatelske jmeno {uzivatel.uzivatelske_jmeno} already exists").Warning().Log();
+                return UserRegistrationResult.AlreadyRegistered;
+            }
 
             var hashedPassword = HashPassword(uzivatel.heslo);
 
@@ -44,7 +45,7 @@ public class AuthService
                 return UserRegistrationResult.Failed;
             }
         
-            var idAdresyParam = new Oracle.ManagedDataAccess.Client.OracleParameter
+            var idAdresyParam = new OracleParameter
             {
                 ParameterName = "outputId",
                 DbType = System.Data.DbType.Int32,
@@ -52,18 +53,18 @@ public class AuthService
             };
 
             _context.Database.ExecuteSqlRaw(InsertAddressCommand, uzivatel.mesto, uzivatel.ulice, uzivatel.cislo_popisne, idAdresyParam);
-            int idAdresy = (int)idAdresyParam.Value;
+            var idAdresy = (int)idAdresyParam.Value;
         
             object[] parameters =
             [
-                new Oracle.ManagedDataAccess.Client.OracleParameter("UzivatelskeJmeno", uzivatel.uzivatelske_jmeno),
-                new Oracle.ManagedDataAccess.Client.OracleParameter("Heslo", hashedPassword),
-                new Oracle.ManagedDataAccess.Client.OracleParameter("Jmeno", uzivatel.jmeno),
-                new Oracle.ManagedDataAccess.Client.OracleParameter("Prijmeni", uzivatel.prijmeni),
-                new Oracle.ManagedDataAccess.Client.OracleParameter("CasZalozeni", DateTime.Now),
-                new Oracle.ManagedDataAccess.Client.OracleParameter("DatumNarozeni", uzivatel.datum_narozeni),
-                new Oracle.ManagedDataAccess.Client.OracleParameter("IdTypUzivatele", userTypeId),
-                new Oracle.ManagedDataAccess.Client.OracleParameter("IdAdresy", idAdresy)
+                new OracleParameter("UzivatelskeJmeno", uzivatel.uzivatelske_jmeno),
+                new OracleParameter("Heslo", hashedPassword),
+                new OracleParameter("Jmeno", uzivatel.jmeno),
+                new OracleParameter("Prijmeni", uzivatel.prijmeni),
+                new OracleParameter("CasZalozeni", DateTime.Now),
+                new OracleParameter("DatumNarozeni", uzivatel.datum_narozeni),
+                new OracleParameter("IdTypUzivatele", userTypeId),
+                new OracleParameter("IdAdresy", idAdresy)
             ];
         
             var result = _context.Database.ExecuteSqlRaw(InsertUserCommand, parameters);
@@ -94,7 +95,7 @@ public class AuthService
 
             if (user == null)
             {
-                _logger.Message($"User with name: {uzivatelskeJmeno} doesn't exist").Info().Log();
+                _logger.Message($"User with name: {uzivatelskeJmeno} doesn't exist").Warning().Log();
                 return UserLoginResult.NotRegistered;
             }
 
@@ -166,6 +167,34 @@ public class AuthService
         return true;
     }
 
+    private bool CheckUserExist(string username)
+    {
+        //Kvuli tomu ze GetDbConnection obecny DbContext, tak to musi castnout na OracleConnection, abych tu connection mohl pouzit v OracleCommand
+        using var connection = _context.Database.GetDbConnection() as OracleConnection; 
+        if (connection == null)
+        {
+            _logger.Message("GetDbConnection wasn't of type OracleConnection").Error().Log();
+            return false;
+        }
+        connection.Open();
+
+        using var command = new OracleCommand("CheckUserExists", connection);
+        command.CommandType = System.Data.CommandType.StoredProcedure;
+
+        command.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
+
+        var outputParam = new OracleParameter("p_exists", OracleDbType.Int32)
+        {
+            Direction = System.Data.ParameterDirection.Output
+        };
+        command.Parameters.Add(outputParam);
+
+        command.ExecuteNonQuery();
+
+        var userExists = ((OracleDecimal)outputParam.Value).ToInt32() == 1;
+        return userExists;
+    }
+    
     private void CreateNewSession(string uzivatelskeJmeno, TypyUzivatele typyUzivatele) 
         => App.UserSessionInstance.UpdateSession(uzivatelskeJmeno, typyUzivatele);
 }
