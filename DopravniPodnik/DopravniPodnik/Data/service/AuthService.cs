@@ -13,6 +13,7 @@ public class AuthService
 {
     private readonly OracleDbContext _context = OracleDbContext.Instance;
     private readonly DatabaseService _databaseService = new();
+    private readonly Logger _logger = App.LoggerInstance;
     
     private const int NumberOfIterations = 10000;
     private const string InsertAddressCommand = @"
@@ -39,7 +40,7 @@ public class AuthService
             var userTypeId = _databaseService.GetUserTypeId("admin");
             if (userTypeId == -1)
             {
-                Console.WriteLine("ID_TYP_UZIVATELE not found");
+                _logger.Message("ID_TYP_UZIVATELE not found").Error().Log();
                 return UserRegistrationResult.Failed;
             }
         
@@ -66,12 +67,19 @@ public class AuthService
             ];
         
             var result = _context.Database.ExecuteSqlRaw(InsertUserCommand, parameters);
-        
-            return result == 1 ? UserRegistrationResult.Success : UserRegistrationResult.Failed;
+
+            if (result != 1)
+            {
+                _logger.Message("User wasn't inserted into DB").Error().Log();
+                return UserRegistrationResult.Failed;
+            }
+
+            _logger.Message("User was inserted into DB").Info().Log();
+            return UserRegistrationResult.Success;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.Exception(e).Log();
             return UserRegistrationResult.Failed;
         }
     }
@@ -84,7 +92,11 @@ public class AuthService
                 .FromSqlInterpolated($"SELECT * FROM ST67028.UZIVATELE WHERE UZIVATELSKE_JMENO = {uzivatelskeJmeno}")
                 .FirstOrDefault();
 
-            if (user == null) return UserLoginResult.Failed;
+            if (user == null)
+            {
+                _logger.Message($"User with name: {uzivatelskeJmeno} doesn't exist").Info().Log();
+                return UserLoginResult.NotRegistered;
+            }
 
             if (!ValidatePassword(heslo, user.Heslo)) return UserLoginResult.WrongPassword;
 
@@ -92,14 +104,19 @@ public class AuthService
                 .FromSqlInterpolated($"SELECT * FROM ST67028.TYPY_UZIVATELE WHERE ID_TYP_UZIVATELE = {user.IdTypUzivatele}")
                 .FirstOrDefault();
 
-            if (userType == null) return UserLoginResult.Failed;
+            if (userType == null)
+            {
+                _logger.Message($"User type of ID: {user.IdTypUzivatele} doesn't exist").Error().Log();
+                return UserLoginResult.Failed;
+            }
 
             CreateNewSession(user.UzivatelskeJmeno, userType);
+            _logger.Message("User was successfully logged in and Session was updated").Info().Log();
             return UserLoginResult.Success;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.Exception(e).Log();
             return UserLoginResult.Failed;
         }
     }

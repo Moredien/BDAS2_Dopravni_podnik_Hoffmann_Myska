@@ -9,6 +9,7 @@ namespace DopravniPodnik;
 public partial class App : Application
 {
     public static UserSession UserSessionInstance { get; private set; } = null!;
+    public static Logger LoggerInstance { get; private set; } = null!;
 
     [STAThread]
     public static void Main()
@@ -17,6 +18,7 @@ public partial class App : Application
 
         UserSessionInstance = UserSession.Instance;
         UserSessionInstance.UpdateSession("default", null);
+        LoggerInstance = Logger.Instance;
 
         var dbService = new DatabaseService();
         RetryDatabaseConnection(dbService);
