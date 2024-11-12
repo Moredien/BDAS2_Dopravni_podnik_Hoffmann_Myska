@@ -26,27 +26,22 @@ public class DatabaseService
     public int GetUserTypeId(string userType)
     {
         var userTypeId = -1; // Default hodnota
-        var connection = _context.Database.GetDbConnection();
+        using var connection = _context.Database.GetDbConnection();
         connection.Open();
 
-        using (var command = connection.CreateCommand())
-        {
-            // Use a parameterized query to prevent SQL injection
-            command.CommandText = "SELECT ID_TYP_UZIVATELE FROM ST67028.TYPY_UZIVATELE WHERE NAZEV = :userType";
-            var parameter = command.CreateParameter();
-            parameter.ParameterName = "userType";
-            parameter.Value = userType;
-            command.Parameters.Add(parameter);
+        using var command = connection.CreateCommand();
+        command.CommandText = "SELECT ID_TYP_UZIVATELE FROM ST67028.TYPY_UZIVATELE WHERE NAZEV = :userType";
+        
+        var parameter = command.CreateParameter();
+        parameter.ParameterName = "userType";
+        parameter.Value = userType;
+        command.Parameters.Add(parameter);
 
-            using (var reader = command.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    userTypeId = reader.GetInt32(reader.GetOrdinal("ID_TYP_UZIVATELE"));
-                }
-            }
+        using var reader = command.ExecuteReader();
+        if (reader.Read())
+        {
+            userTypeId = reader.GetInt32(reader.GetOrdinal("ID_TYP_UZIVATELE"));
         }
-        connection.Close();
 
         return userTypeId;
     }
