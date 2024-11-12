@@ -20,8 +20,7 @@ public class UserSession
         {
             lock (LockObject)
             {
-                if (_instance != null) return _instance;
-                return new UserSession();
+                return _instance ??= new UserSession();
             }
         }
     }
