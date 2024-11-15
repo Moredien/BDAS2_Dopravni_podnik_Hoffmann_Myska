@@ -6,7 +6,7 @@ using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.ViewModels.Forms;
 
-namespace DopravniPodnik.ViewModels;
+namespace DopravniPodnik.ViewModels.Forms;
 
 public partial class RegisterViewModel : ViewModelBase , INotifyDataErrorInfo
 {

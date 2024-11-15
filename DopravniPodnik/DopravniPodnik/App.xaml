@@ -1,39 +1,14 @@
 ﻿<Application x:Class="DopravniPodnik.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:DopravniPodnik"
-             xmlns:viewmodels="clr-namespace:DopravniPodnik.ViewModels"
-             xmlns:views="clr-namespace:DopravniPodnik.Views"
-             xmlns:formviewmodels="clr-namespace:DopravniPodnik.ViewModels.Forms"
-             xmlns:formviews="clr-namespace:DopravniPodnik.Views.Forms"
+             xmlns:utils="clr-namespace:DopravniPodnik.Utils"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-        <!-- there must be a better way to do this -->
-        <DataTemplate DataType="{x:Type viewmodels:JizdyViewModel}">
-            <views:JizdyView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:ZastavkyViewModel}">
-            <views:ZastavkyView/>
-        </DataTemplate> 
-        <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
-            <formviews:LoginView/>
-        </DataTemplate>    
-        <DataTemplate DataType="{x:Type viewmodels:RegisterViewModel}">
-            <formviews:RegisterView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:AnonymousUserMenuViewModel}">
-            <views:AnonymousUserMenuView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:LoggedInUserViewModel}">
-            <views:LoggedInUserMenuView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:UzivateleViewModel}">
-            <views:UzivateleView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type formviewmodels:UzivatelFormViewModel}">
-            <formviews:UzivatelFormView/>
-        </DataTemplate>
-        
-        
+        <ResourceDictionary>
+            <utils:ViewLocator x:Key="ViewLocator" />
+            <Style TargetType="ContentControl">
+                <Setter Property="ContentTemplateSelector" Value="{StaticResource ViewLocator}" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
