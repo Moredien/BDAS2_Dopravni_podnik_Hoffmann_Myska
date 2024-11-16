@@ -20,7 +20,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (value == null) 
             value = MenuItems[0];
-        WindowManager.SetContentView(value.ViewTypeEnum);
+        WindowManager.SetContentView(value.ModelType,true,null);
     }
 
     public ObservableCollection<ListItemTemplate> MenuItems { get; } = new();
@@ -28,30 +28,15 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         WindowManager.MainWindow = this;
-        CreateNewContentView(typeof(UzivateleViewModel),ViewType.Uzivatele, "Uživatelé");
-        CreateNewContentView(typeof(JizdyViewModel),ViewType.Jizdy, "Jízdy");
-        CreateNewContentView(typeof(ZastavkyViewModel),ViewType.Zastavky, "Zastávky");
-
+        MenuItems.Add(new ListItemTemplate("Uživatelé", typeof(UzivateleViewModel)));
+        MenuItems.Add(new ListItemTemplate("Jízdy", typeof(JizdyViewModel)));
+        MenuItems.Add(new ListItemTemplate("Zastávky", typeof(ZastavkyViewModel)));
+        
+        
         SelectedListItem = MenuItems[0];
         
         WindowManager.SetMenuView(ViewType.AnonymousMenu);
         CurrentMenu = WindowManager.CurrentMenuViewModel;
-        Console.WriteLine();
-    }
-
-    private void CreateNewContentView(Type type, ViewType viewType, string name)
-    {
-        MenuItems.Add(new ListItemTemplate(name,type,viewType));
-        var newViewModel = (ViewModelBase)Activator.CreateInstance(type);
-        if (newViewModel == null)
-            throw new Exception($"Failed to create new instance of {type}");
-        WindowManager.AddNewContentView(newViewModel, viewType); 
-    }
-
-    [RelayCommand]
-    private void ChangeViewTo(ViewType viewType)
-    {
-        WindowManager.SetContentView(viewType);
     }
 }
 

@@ -2,14 +2,12 @@
 
 public class ListItemTemplate
 {
-    public ListItemTemplate(string label, Type modelType, ViewType viewType)
+    public ListItemTemplate(string label, Type modelType)
     {
         Label = label;
         ModelType = modelType;
-        ViewTypeEnum = viewType;
     }
 
     public string Label { get; }
     public Type ModelType { get; }
-    public ViewType ViewTypeEnum{get;}
 }

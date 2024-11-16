@@ -33,6 +33,6 @@ public partial class UzivatelFormViewModel : ViewModelBase
             uzivatele.Add(editedUzivatel);
         else
             uzivatele[uzivatele.IndexOf(originalUzivatel)] = editedUzivatel;
-        WindowManager.SetContentViewToSelected();
+        WindowManager.SetContentView(null,true,null);
     }
 }
