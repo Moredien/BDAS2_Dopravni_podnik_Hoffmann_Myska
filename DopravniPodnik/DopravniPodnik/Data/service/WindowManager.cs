@@ -1,4 +1,6 @@
-﻿using DopravniPodnik.Utils;
+﻿using System.CodeDom;
+using System.Windows.Media.Animation;
+using DopravniPodnik.Utils;
 using DopravniPodnik.ViewModels;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -8,7 +10,8 @@ public static class WindowManager
 { 
     public static MainWindowViewModel? MainWindow {get;set;}
     //viewmodels for the main content
-    private static readonly Dictionary<ViewType, ViewModelBase> ContentViewModels = new();
+    // private static readonly Dictionary<ViewType, ViewModelBase> ContentViewModels = new();
+    private static readonly Dictionary<Type, ViewModelBase> ContentViewModels = new();
     //viewmodels for the top menu
     private static readonly Dictionary<ViewType, ViewModelBase> MenuViewModels = new()
     {
@@ -22,7 +25,7 @@ public static class WindowManager
    
     // adds new content view to a collection for repeated access
     // also sets the first one as selected
-    public static void AddNewContentView(ViewModelBase contentViewModel, ViewType key)
+    public static void AddNewContentView(ViewModelBase contentViewModel, Type key)
     {
         if (!ContentViewModels.TryAdd(key, contentViewModel))
             return;
@@ -31,24 +34,40 @@ public static class WindowManager
             CurrentContentViewModel = ContentViewModels[key];
         }
     }
-    //changes the main content view
-    public static void SetContentView(ViewType key)
+    /// <summary>
+    /// changes the main content view
+    /// </summary>
+    /// <param name="key">type of view to be opened</param>
+    /// <param name="permanent">if true, it will be saved into dictionary and only initialized once</param>
+    /// <param name="parameters">parameters given into the viewmodel constructor</param>
+    /// <exception cref="Exception"></exception>
+    public static void SetContentView(Type? key,bool permanent, object[] parameters)
     {
-        if (ContentViewModels.ContainsKey(key) && MainWindow != null)
+        //create new view without saving it. for forms that are always initialized with new data
+        if (!permanent)
         {
-            CurrentContentViewModel = ContentViewModels[key];
+            if (key == null)
+                throw new Exception("Cannot create new view without specifying type");
+            CurrentContentViewModel = CreateNewViewInstance(key, parameters);
             MainWindow.CurrentPage = CurrentContentViewModel;
+            return;
         }
+
+        //no key was given >> we are returning to the selected item in the menu
+        if (key == null)
+        {
+            if (MainWindow.SelectedListItem == null)
+                throw new Exception("Cannot open selected view when no view is selected");
+            key = MainWindow.SelectedListItem.ModelType;
+        }
+        // the view hasn't been created yet, lets create it
+        if (!ContentViewModels.ContainsKey(key))
+            ContentViewModels.Add(key,CreateNewViewInstance(key, parameters));
+        
+        CurrentContentViewModel = ContentViewModels[key];
+        MainWindow.CurrentPage = CurrentContentViewModel;
     }
-    // changes the main content to whatever is selected in the side menu
-    // used to close one time use views like forms
-    public static void SetContentViewToSelected()
-    {
-        if (MainWindow != null && MainWindow?.SelectedListItem != null)
-            SetContentView(MainWindow.SelectedListItem.ViewTypeEnum);
-        else
-            throw new Exception("Failed setting content view to selected");
-    }
+
     //changes the top menu
     public static void SetMenuView(ViewType key)
     {
@@ -63,11 +82,9 @@ public static class WindowManager
             throw new Exception($"Failed to set menu view. MenuView {key} doesnt exist.");
         
     }
-    // creates new view that is not kept in any collection and not displayed in the side menu
-    public static void OpenNewFormView(Type type, object[] parameters)
+    private static ViewModelBase CreateNewViewInstance(Type type, object[] parameters)
     {
-        var form = (ViewModelBase)Activator.CreateInstance(type,parameters);
-        MainWindow.CurrentPage = form;
+        return (ViewModelBase)Activator.CreateInstance(type, parameters);
     }
 
 }
