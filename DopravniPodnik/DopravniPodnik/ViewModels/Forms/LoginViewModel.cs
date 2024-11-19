@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.ComponentModel;
-using System.Security;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
-using DopravniPodnik.Utils;
-using DopravniPodnik.ViewModels.Forms;
+using DopravniPodnik.ViewModels.Menu;
 
 namespace DopravniPodnik.ViewModels.Forms;
 
@@ -57,7 +55,7 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
         //do some authentication
         if (CanCreate)
         {
-            WindowManager.SetMenuView(typeof(LoggedInUserViewModel));
+            WindowManager.SetMenuView(typeof(LoggedInUserMenuViewModel));
             Exit();
         }
   
