@@ -57,7 +57,7 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
         //do some authentication
         if (CanCreate)
         {
-            WindowManager.SetMenuView(ViewType.LoggedInMenu);
+            WindowManager.SetMenuView(typeof(LoggedInUserViewModel));
             Exit();
         }
   

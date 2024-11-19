@@ -8,22 +8,22 @@ namespace DopravniPodnik.ViewModels.Forms;
 
 public partial class UzivatelFormViewModel : ViewModelBase
 {
-    [ObservableProperty] private UzivatelDTO editedUzivatel;
+    [ObservableProperty] private object editedUzivatel;
 
     private UzivatelDTO originalUzivatel;
-    private ObservableCollection<UzivatelDTO> uzivatele;
+    private ObservableCollection<object> uzivatele;
 
-    public UzivatelFormViewModel(ObservableCollection<UzivatelDTO> uzivatele)
+    public UzivatelFormViewModel(ObservableCollection<object> uzivatele)
     {
         this.uzivatele = uzivatele;
         editedUzivatel = new UzivatelDTO();
     }
 
-    public UzivatelFormViewModel(UzivatelDTO selectedUzivatel, ObservableCollection<UzivatelDTO> uzivatele)
+    public UzivatelFormViewModel(object selectedUzivatel, ObservableCollection<object> uzivatele)
     {
-        originalUzivatel = selectedUzivatel;
+        originalUzivatel = (UzivatelDTO)selectedUzivatel;
         this.uzivatele = uzivatele;
-        editedUzivatel = CopyUtilities.DeepClone(selectedUzivatel);
+        editedUzivatel =CopyUtilities.DeepClone((UzivatelDTO)selectedUzivatel);
     }
 
     [RelayCommand]
@@ -33,6 +33,6 @@ public partial class UzivatelFormViewModel : ViewModelBase
             uzivatele.Add(editedUzivatel);
         else
             uzivatele[uzivatele.IndexOf(originalUzivatel)] = editedUzivatel;
-        WindowManager.SetContentView(null,true,null);
+        Exit();
     }
 }

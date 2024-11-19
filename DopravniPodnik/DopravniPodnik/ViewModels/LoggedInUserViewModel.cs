@@ -11,6 +11,6 @@ public partial class LoggedInUserViewModel : ViewModelBase
     private void LogOut()
     {
         //logging out actions can be called from here
-        WindowManager.SetMenuView(ViewType.AnonymousMenu);
+        WindowManager.SetMenuView(typeof(AnonymousUserMenuViewModel));
     }
 }

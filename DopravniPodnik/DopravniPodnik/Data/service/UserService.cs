@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System.CodeDom;
+using System.Data;
+using System.Windows.Documents;
 using DopravniPodnik.Data.DTO;
 using DopravniPodnik.Data.Models;
 using Microsoft.EntityFrameworkCore;
@@ -29,9 +31,9 @@ public class UserService
     JOIN 
         ST67028.ADRESY A ON U.ID_ADRESY = A.ID_ADRESY";
     
-    public List<UzivatelDTO> FetchAllUsers() 
+    public List<object> FetchAllUsers() 
     {
-        var uzivateleDtos = new List<UzivatelDTO>();
+        var uzivateleDtos = new List<object>();
     
         // Get the database connection
         var connection = _context.Database.GetDbConnection();
@@ -73,5 +75,45 @@ public class UserService
         connection.Close();
 
         return uzivateleDtos;
+    }
+
+    public List<object> FetchAllTypy_Uzivatele()
+    {
+        var typy_uzivatel = new List<object>();
+        
+        var connection = _context.Database.GetDbConnection();
+        connection.Open();
+        
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "SELECT NAZEV FROM TYPY_UZIVATELE";
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var typ_uzivatele = new TypyUzivatele()
+                    {
+                        Nazev = reader.GetString(reader.GetOrdinal("NAZEV"))
+                    };
+
+                    typy_uzivatel.Add(typ_uzivatele);
+                } 
+            }
+        }
+        connection.Close();
+
+        return typy_uzivatel;
+    }
+
+    public List<object> Fetch(Type modelType)
+    {
+        switch (modelType.Name)
+        {
+            case "UzivatelDTO":
+                return FetchAllUsers();
+            case "TypyUzivatele":
+                return FetchAllTypy_Uzivatele();
+            default: return null;
+        }
     }
 }

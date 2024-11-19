@@ -2,9 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.DTO;
-using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
-using DopravniPodnik.Utils;
 using DopravniPodnik.ViewModels.Forms;
 
 namespace DopravniPodnik.ViewModels;
@@ -27,7 +25,7 @@ public partial class UzivateleViewModel : ViewModelBase
 
        foreach (var user in allUsers)
        {
-           Uzivatele.Add(user);
+           Uzivatele.Add((UzivatelDTO)user);
        }
 
     }
@@ -40,12 +38,12 @@ public partial class UzivateleViewModel : ViewModelBase
             Console.WriteLine("Neni vybran zadny uzivatel");
             return;
         }
-        WindowManager.SetContentView(typeof(UzivatelFormViewModel),false,new object[]{_selectedUzivatel,Uzivatele});
+        WindowManager.SetContentView(typeof(UzivatelFormViewModel),false,null,new object[]{_selectedUzivatel,Uzivatele});
     }
     [RelayCommand]
     void Create()
     {
-        WindowManager.SetContentView(typeof(UzivatelFormViewModel),false,new object[]{Uzivatele});
+        WindowManager.SetContentView(typeof(UzivatelFormViewModel),false,null,new object[]{Uzivatele});
     }
     [RelayCommand]
     void Delete()
