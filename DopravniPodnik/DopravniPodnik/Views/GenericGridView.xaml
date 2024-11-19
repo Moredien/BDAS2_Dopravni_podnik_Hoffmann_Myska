@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="DopravniPodnik.Views.GenericGridView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DopravniPodnik.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Upravit" Command="{Binding EditCommand}" />
+            <Button Content="Přidat" Command="{Binding CreateCommand}" />
+            <Button Content="Odstranit" Command="{Binding DeleteCommand}" />
+        </StackPanel>
+
+        <DataGrid x:Name="DynamicDataGrid"
+                  ItemsSource="{Binding Items}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  SelectedItem="{Binding SelectedItem}" />
+    </StackPanel>
+</UserControl>

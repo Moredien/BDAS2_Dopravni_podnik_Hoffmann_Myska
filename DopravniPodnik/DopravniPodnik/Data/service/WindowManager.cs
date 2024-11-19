@@ -11,12 +11,12 @@ public static class WindowManager
     public static MainWindowViewModel? MainWindow {get;set;}
     //viewmodels for the main content
     // private static readonly Dictionary<ViewType, ViewModelBase> ContentViewModels = new();
-    private static readonly Dictionary<Type, ViewModelBase> ContentViewModels = new();
+    private static readonly Dictionary<string, ViewModelBase> ContentViewModels = new();
     //viewmodels for the top menu
-    private static readonly Dictionary<ViewType, ViewModelBase> MenuViewModels = new()
+    private static readonly Dictionary<Type, ViewModelBase> MenuViewModels = new()
     {
-        {ViewType.AnonymousMenu,(ViewModelBase)Activator.CreateInstance(typeof(AnonymousUserMenuViewModel))},
-        {ViewType.LoggedInMenu,(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserViewModel))}
+        {typeof(AnonymousUserMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(AnonymousUserMenuViewModel))},
+        {typeof(LoggedInUserViewModel),(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserViewModel))}
     };
 
     public static ViewModelBase? CurrentMenuViewModel { get; set; }
@@ -25,7 +25,7 @@ public static class WindowManager
    
     // adds new content view to a collection for repeated access
     // also sets the first one as selected
-    public static void AddNewContentView(ViewModelBase contentViewModel, Type key)
+    public static void AddNewContentView(ViewModelBase contentViewModel, string key)
     {
         if (!ContentViewModels.TryAdd(key, contentViewModel))
             return;
@@ -34,42 +34,46 @@ public static class WindowManager
             CurrentContentViewModel = ContentViewModels[key];
         }
     }
-    /// <summary>
-    /// changes the main content view
-    /// </summary>
-    /// <param name="key">type of view to be opened</param>
-    /// <param name="permanent">if true, it will be saved into dictionary and only initialized once</param>
-    /// <param name="parameters">parameters given into the viewmodel constructor</param>
-    /// <exception cref="Exception"></exception>
-    public static void SetContentView(Type? key,bool permanent, object[] parameters)
+/// <summary>
+/// changes the content view
+/// </summary>
+/// <param name="type">type of viewmodel to create</param>
+/// <param name="permanent">if true, the view will be saved into dictionary and won't be created again next time</param>
+/// <param name="key">Key to under which it's saved in dictionary</param>
+/// <param name="parameters">Additional paramaters for viewmodel constructor. usually used to give some context to an edit form</param>
+/// <returns></returns>
+/// <exception cref="Exception"></exception>
+    public static ViewModelBase SetContentView(Type? type,bool permanent,string key, object[] parameters)
     {
         //create new view without saving it. for forms that are always initialized with new data
         if (!permanent)
         {
-            if (key == null)
+            if (type == null)
                 throw new Exception("Cannot create new view without specifying type");
-            CurrentContentViewModel = CreateNewViewInstance(key, parameters);
+            CurrentContentViewModel = CreateNewViewInstance(type, parameters);
             MainWindow.CurrentPage = CurrentContentViewModel;
-            return;
+            return CurrentContentViewModel;
         }
 
         //no key was given >> we are returning to the selected item in the menu
-        if (key == null)
+        if (type == null)
         {
             if (MainWindow.SelectedListItem == null)
                 throw new Exception("Cannot open selected view when no view is selected");
-            key = MainWindow.SelectedListItem.ModelType;
+            type = MainWindow.SelectedListItem.ModelType;
+            key = MainWindow.SelectedListItem.Key;
         }
         // the view hasn't been created yet, lets create it
         if (!ContentViewModels.ContainsKey(key))
-            ContentViewModels.Add(key,CreateNewViewInstance(key, parameters));
+            ContentViewModels.Add(key,CreateNewViewInstance(type, parameters));
         
         CurrentContentViewModel = ContentViewModels[key];
         MainWindow.CurrentPage = CurrentContentViewModel;
+        return CurrentContentViewModel;
     }
 
     //changes the top menu
-    public static void SetMenuView(ViewType key)
+    public static void SetMenuView(Type key)
     {
         if (MainWindow == null)
             throw new Exception("Failed to set menu view. MainWindow is not set");
