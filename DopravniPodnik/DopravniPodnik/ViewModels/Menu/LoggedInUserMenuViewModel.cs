@@ -3,9 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.service;
 using DopravniPodnik.Utils;
 
-namespace DopravniPodnik.ViewModels;
+namespace DopravniPodnik.ViewModels.Menu;
 
-public partial class LoggedInUserViewModel : ViewModelBase
+public partial class LoggedInUserMenuViewModel : ViewModelBase
 {
     [RelayCommand]
     private void LogOut()

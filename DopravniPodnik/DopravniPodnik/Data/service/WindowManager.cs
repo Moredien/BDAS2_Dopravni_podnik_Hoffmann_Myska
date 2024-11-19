@@ -1,8 +1,5 @@
-﻿using System.CodeDom;
-using System.Windows.Media.Animation;
-using DopravniPodnik.Utils;
-using DopravniPodnik.ViewModels;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using DopravniPodnik.ViewModels;
+using DopravniPodnik.ViewModels.Menu;
 
 namespace DopravniPodnik.Data.service;
 
@@ -16,7 +13,7 @@ public static class WindowManager
     private static readonly Dictionary<Type, ViewModelBase> MenuViewModels = new()
     {
         {typeof(AnonymousUserMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(AnonymousUserMenuViewModel))},
-        {typeof(LoggedInUserViewModel),(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserViewModel))}
+        {typeof(LoggedInUserMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserMenuViewModel))}
     };
 
     public static ViewModelBase? CurrentMenuViewModel { get; set; }

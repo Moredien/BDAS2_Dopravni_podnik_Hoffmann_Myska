@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace DopravniPodnik.Views;
+namespace DopravniPodnik.Views.Menu;
 
 public partial class AnonymousUserMenuView : UserControl
 {
