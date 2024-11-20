@@ -91,12 +91,12 @@ public class UserService
             {
                 while (reader.Read())
                 {
-                    var typ_uzivatele = new TypyUzivatele()
+                    var item = new TypyUzivatele()
                     {
                         Nazev = reader.GetString(reader.GetOrdinal("NAZEV"))
                     };
 
-                    typy_uzivatel.Add(typ_uzivatele);
+                    typy_uzivatel.Add(item);
                 } 
             }
         }
@@ -104,7 +104,35 @@ public class UserService
 
         return typy_uzivatel;
     }
+    public List<object> FetchAdresy()
+    {
+        var collection = new List<object>();
+        
+        var connection = _context.Database.GetDbConnection();
+        connection.Open();
+        
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "SELECT MESTO, ULICE, CISLO_POPISNE FROM ADRESY";
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var item = new Adresy()
+                    {
+                        Mesto = reader.GetString(reader.GetOrdinal("MESTO")),
+                        Ulice = reader.GetString(reader.GetOrdinal("ULICE")),
+                        CisloPopisne = reader.GetInt32(reader.GetOrdinal("CISLO_POPISNE")),
+                    };
+                    collection.Add(item);
+                } 
+            }
+        }
+        connection.Close();
 
+        return collection;
+    }
+    
     public List<object> Fetch(Type modelType)
     {
         switch (modelType.Name)
@@ -113,6 +141,8 @@ public class UserService
                 return FetchAllUsers();
             case "TypyUzivatele":
                 return FetchAllTypy_Uzivatele();
+            case "Adresy":
+                return FetchAdresy();
             default: return null;
         }
     }

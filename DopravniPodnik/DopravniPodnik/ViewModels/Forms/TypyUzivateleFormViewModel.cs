@@ -14,7 +14,7 @@ public partial class TypyUzivateleFormViewModel : ViewModelBase , INotifyDataErr
     public bool HasErrors => _errorsViewModel.HasErrors;
     public bool CanCreate => !HasErrors;
 
-    private string? _nazev ;
+    // private string? _nazev ;
 
     public string? Nazev
     {
@@ -37,7 +37,6 @@ public partial class TypyUzivateleFormViewModel : ViewModelBase , INotifyDataErr
         editedItem = new TypyUzivatele();
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
-        // Nazev = "";
     }
     public TypyUzivateleFormViewModel(object selectedItem,ObservableCollection<object> typyUzivatele)
     {
@@ -46,7 +45,6 @@ public partial class TypyUzivateleFormViewModel : ViewModelBase , INotifyDataErr
         editedItem = CopyUtilities.DeepClone((TypyUzivatele)selectedItem);
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
-        // Nazev = editedItem.Nazev;
     }
 
     private void ErrorsViewModel_ErrorsChanged(object? sender, DataErrorsChangedEventArgs e)
@@ -73,7 +71,6 @@ public partial class TypyUzivateleFormViewModel : ViewModelBase , INotifyDataErr
                 collection[collection.IndexOf(originalItem)] = editedItem;
             Exit();
         }
-  
     }
     public IEnumerable GetErrors(string? propertyName)
     {

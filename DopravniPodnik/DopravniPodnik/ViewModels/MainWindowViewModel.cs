@@ -37,6 +37,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
         MenuItems.Add(new ListItemTemplate("UživateleView", typeof(UzivatelDTO),"GridViewUzivateleDTO"));
         MenuItems.Add(new ListItemTemplate("Typy uživatele", typeof(TypyUzivatele),"GridViewTypyUzivatele"));
+        MenuItems.Add(new ListItemTemplate("Adresy", typeof(Adresy),"GridViewAdresy"));
         
         
         SelectedListItem = MenuItems[0];

@@ -30,8 +30,8 @@ public static class GridViewTemplates
     {
         switch (modelType.Name)
         {
-            case "UzivatelDTO": 
-                
+            case "UzivatelDTO":
+
                 return new DataGridDataContext(
                     modelType,
                     typeof(UzivatelFormViewModel),
@@ -47,11 +47,20 @@ public static class GridViewTemplates
                 );
             case "TypyUzivatele":
                 return new DataGridDataContext(
-                    modelType, 
+                    modelType,
                     typeof(TypyUzivateleFormViewModel),
                     new ObservableCollection<DataGridColumnInfo>
-                        {
-                            new DataGridColumnInfo { Header = "Název", BindingPath = "Nazev" },
+                    {
+                        new DataGridColumnInfo { Header = "Název", BindingPath = "Nazev" },
+                    });
+            case "Adresy":
+                return new DataGridDataContext(
+                    modelType,
+                    typeof(AdresyFormViewModel),
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Město", BindingPath = "Mesto" },
+                        new DataGridColumnInfo { Header = "Ulice", BindingPath = "Ulice" },
+                        new DataGridColumnInfo { Header = "Číslo popisné", BindingPath = "CisloPopisne" }
                         });
             default: return null;
         }
