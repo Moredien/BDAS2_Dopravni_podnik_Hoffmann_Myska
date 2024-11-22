@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.Data.DTO;
 
@@ -11,6 +12,7 @@ public class UzivatelDTO
     public DateTime datum_zalozeni{ get; set; }
     public DateTime datum_narozeni{ get; set; }
     //typ_uzivatele
+    [ColumnName("TYP_UZIVATELE")]
     public string nazev_typ_uzivatele{ get; set; }
     //foto
     public int id_foto{ get; set; }

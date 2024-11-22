@@ -16,20 +16,20 @@ public partial class UzivateleViewModel : ViewModelBase
     [ObservableProperty]
     private UzivatelDTO _selectedUzivatel;
     
-    private readonly UserService _userService = new();
+    private readonly DatabaseService _databaseService = new();
 
     public UzivateleViewModel()
     {
         SelectedUzivatel = _selectedUzivatel;
         Uzivatele = new ObservableCollection<UzivatelDTO>();
+        
+        var allUsers = _databaseService.FetchData<UzivatelDTO>("SELECT * FROM ST67028.ZakaznikView");
 
-       var allUsers = _userService.FetchAllUsers();
-
-       foreach (var user in allUsers)
-       {
-           Uzivatele.Add(user);
-       }
-
+        foreach (var user in allUsers)
+        { 
+            Uzivatele.Add(user);
+        }
+        
     }
 
     [RelayCommand]
