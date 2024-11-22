@@ -1,10 +1,9 @@
-﻿using System.Data;
-using DopravniPodnik.Data.DTO;
-using DopravniPodnik.Data.Models;
+﻿using DopravniPodnik.Data.DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace DopravniPodnik.Data.service;
 
+[Obsolete("Use DopravniPodnik.Data.DatabaseService#FetchData instead.")]
 public class UserService
 {
     private readonly OracleDbContext _context = OracleDbContext.Instance;
@@ -29,6 +28,8 @@ public class UserService
     JOIN 
         ST67028.ADRESY A ON U.ID_ADRESY = A.ID_ADRESY";
     
+    
+    [Obsolete]
     public List<UzivatelDTO> FetchAllUsers() 
     {
         var uzivateleDtos = new List<UzivatelDTO>();
@@ -70,8 +71,8 @@ public class UserService
                 } 
             }
         }
-        connection.Close();
 
+        connection.Close();
         return uzivateleDtos;
     }
 }

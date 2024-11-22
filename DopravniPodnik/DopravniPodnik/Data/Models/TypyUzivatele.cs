@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.Data.Models;
 
 public partial class TypyUzivatele
 {
+    [ColumnName("ID_TYP_UZIVATELE")]
     public int IdTypUzivatele { get; set; }
 
     public string Nazev { get; set; } = null!;
