@@ -40,12 +40,12 @@ public partial class UzivateleViewModel : ViewModelBase
             Console.WriteLine("Neni vybran zadny uzivatel");
             return;
         }
-        WindowManager.SetContentView(typeof(UzivatelFormViewModel),false,new object[]{_selectedUzivatel,Uzivatele});
+        WindowManager.SetContentView(typeof(UzivatelFormViewModel),false,null,new object[]{_selectedUzivatel,Uzivatele});
     }
     [RelayCommand]
     void Create()
     {
-        WindowManager.SetContentView(typeof(UzivatelFormViewModel),false,new object[]{Uzivatele});
+        WindowManager.SetContentView(typeof(UzivatelFormViewModel),false,null,new object[]{Uzivatele});
     }
     [RelayCommand]
     void Delete()

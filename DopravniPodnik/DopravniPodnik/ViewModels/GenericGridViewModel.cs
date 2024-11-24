@@ -1,7 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.ObjectModel;
+using System.Windows.Documents;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.ViewModels;
 
@@ -19,6 +23,8 @@ public partial class GenericGridViewModel : ViewModelBase
     private readonly UserService _userService;
     private readonly Type _modelType;
     
+    private readonly DatabaseService _databaseService = new();
+
     public GenericGridViewModel(UserService userService, Type modelType)
     {
         _userService = userService;
@@ -26,10 +32,18 @@ public partial class GenericGridViewModel : ViewModelBase
 
         DataContext = GridViewTemplates.Get(modelType);
 
-        var data =  _userService.Fetch(modelType);
+        string tableName = TableMapper.getTableName(modelType);
+
+        var method = typeof(DatabaseService).GetMethod(nameof(_databaseService.FetchData));
+        var genericMethod = method.MakeGenericMethod(modelType);
+        var data = genericMethod.Invoke(_databaseService, new object?[]{$"SELECT * FROM ST67028.{tableName}"});
+
         Items = new();
-        foreach (var obj in data)
+        foreach (var obj in (IEnumerable)data)
+        {
             Items.Add(obj);
+        }
+            
     }
     [RelayCommand]
     void Edit()
