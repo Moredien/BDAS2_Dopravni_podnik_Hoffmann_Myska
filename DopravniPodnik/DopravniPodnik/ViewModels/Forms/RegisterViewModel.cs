@@ -3,7 +3,10 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DopravniPodnik.Data.DTO;
 using DopravniPodnik.Data.Models;
+using DopravniPodnik.Data.service;
+using DopravniPodnik.Utils;
 using DopravniPodnik.ViewModels.Forms;
 
 namespace DopravniPodnik.ViewModels.Forms;
@@ -11,6 +14,9 @@ namespace DopravniPodnik.ViewModels.Forms;
 public partial class RegisterViewModel : ViewModelBase , INotifyDataErrorInfo
 {
     private readonly ErrorsViewModel _errorsViewModel;
+    private readonly AuthService _authService = new();
+    private readonly Logger _logger = App.LoggerInstance;
+    
     public bool HasErrors => _errorsViewModel.HasErrors;
     public bool CanCreate => !HasErrors;
     
@@ -33,7 +39,6 @@ public partial class RegisterViewModel : ViewModelBase , INotifyDataErrorInfo
     [ObservableProperty] 
     private string cislo_popisne;
 
-    
     public RegisterViewModel()
     {
         _errorsViewModel = new ErrorsViewModel();
@@ -45,16 +50,42 @@ public partial class RegisterViewModel : ViewModelBase , INotifyDataErrorInfo
     private void ExecuteRegister()
     {
         ValidateAllInputs();
-        if (CanCreate)
+        if (!CanCreate) return;
+        
+        var result = _authService.RegisterUser(new UzivatelDTO
         {
-            Exit();
+            uzivatelske_jmeno = Uzivatelske_jmeno,
+            heslo = PasswordBoxHelper.ConvertToUnsecureString(Heslo_1.Value), 
+            jmeno = Jmeno,
+            prijmeni = Prijmeni,
+            datum_narozeni = Datum_narozeni,
+            mesto = Mesto,
+            ulice = Ulice,
+            cislo_popisne = !string.IsNullOrEmpty(Cislo_popisne) && int.TryParse(Cislo_popisne, out var cp) ? (short)cp : (short)0,
+            nazev_typ_uzivatele = "Zákazník"
+        });
+
+        // Handle the result of the registration
+        switch (result)
+        {
+            case UserRegistrationResult.Success:
+                _logger.Message("User successfully registered!").Info().Log();
+                Exit();
+                break;
+            case UserRegistrationResult.AlreadyRegistered:
+                _logger.Message($"User with username {Uzivatelske_jmeno} already exists.").Warning().Log();
+                break;
+            case UserRegistrationResult.Failed:
+                _logger.Message("User registration failed. Please try again.").Error().Log();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
     public IEnumerable GetErrors(string? propertyName)
     {
         return _errorsViewModel.GetErrors(propertyName);
-        
     }
 
     public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
