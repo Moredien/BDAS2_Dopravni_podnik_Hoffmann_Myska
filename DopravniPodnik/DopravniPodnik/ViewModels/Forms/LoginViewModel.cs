@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
+using DopravniPodnik.Utils;
 using DopravniPodnik.ViewModels.Menu;
 
 namespace DopravniPodnik.ViewModels.Forms;
@@ -11,6 +12,7 @@ namespace DopravniPodnik.ViewModels.Forms;
 public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
 {
     private readonly ErrorsViewModel _errorsViewModel;
+    private readonly AuthService _authService = new();
     public bool HasErrors => _errorsViewModel.HasErrors;
     public bool CanCreate => !HasErrors;
 
@@ -53,12 +55,13 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
         ValidateAllInputs();
         
         //do some authentication
-        if (CanCreate)
-        {
-            WindowManager.SetMenuView(typeof(LoggedInUserMenuViewModel));
-            Exit();
-        }
-  
+        if (!CanCreate) return;
+
+        _authService.LoginUser(Uzivatelske_jmeno!, PasswordBoxHelper.ConvertToUnsecureString(Heslo.Value));
+        
+        WindowManager.SetMenuView(typeof(LoggedInUserMenuViewModel));
+        Exit();
+
     }
     public IEnumerable GetErrors(string? propertyName)
     {
