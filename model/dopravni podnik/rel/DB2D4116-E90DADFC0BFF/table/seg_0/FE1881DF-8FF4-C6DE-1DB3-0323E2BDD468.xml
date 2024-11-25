@@ -1,10 +1,9 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FE1881DF-8FF4-C6DE-1DB3-0323E2BDD468" name="TYPY_UZIVATELE">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FE1881DF-8FF4-C6DE-1DB3-0323E2BDD468" name="TYP_UZIVATELE">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>2721C73B-68D7-4A45-5601-3F02646C65E1</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
-<ordsAlias>typ_uzivatele</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
@@ -17,8 +16,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,9,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <autoIncrementColumn>true</autoIncrementColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <autoIncrementSequenceName>typy_uzivatele_id_typ_uzivatele_seq</autoIncrementSequenceName>

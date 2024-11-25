@@ -1,10 +1,9 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B22D0EDD-541B-8F74-99CF-DD4AC66F8F69" name="TYPY_VOZIDEL">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B22D0EDD-541B-8F74-99CF-DD4AC66F8F69" name="TYP_VOZIDLA">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>51C1871A-B7C5-AF09-3B3F-059F7D41BFCE</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
-<ordsAlias>typ_vozidla</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
@@ -17,8 +16,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,9,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <autoIncrementColumn>true</autoIncrementColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <autoIncrementSequenceName>typy_vozidel_id_typ_vozidla_seq</autoIncrementSequenceName>

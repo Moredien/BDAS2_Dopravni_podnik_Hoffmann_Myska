@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B4F67F05-61E8-BF2E-A405-92DB01B50FF5" name="PLATBY">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B4F67F05-61E8-BF2E-A405-92DB01B50FF5" name="PLATBA">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>227F2D53-F68E-ED10-47B3-097F6366C0D4</generatorID>
@@ -17,8 +17,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,9,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <autoIncrementColumn>true</autoIncrementColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <autoIncrementSequenceName>platby_id_platby_seq</autoIncrementSequenceName>
@@ -48,7 +48,7 @@
 <ownDataTypeParameters>,10,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_zakaznika" id="24694CCA-7B67-64A2-7FFE-49E73EDFB9DA">
+<Column name="ZAKAZNIK_id_zakaznika" id="24694CCA-7B67-64A2-7FFE-49E73EDFB9DA">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>919825E5-5C18-62FF-A1BC-E76F577E4A12</generatorID>
@@ -56,8 +56,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -66,7 +66,7 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="24178753-DD7D-40D8-4F6D-D32978515A46" name="PLATBA_PK">
+<ind_PK_UK id="24178753-DD7D-40D8-4F6D-D32978515A46" name="PLATBY_PK">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>6C1236C5-E68D-FBD5-40FC-D43B1014E9AA</generatorID>
@@ -78,7 +78,7 @@
 <colUsage columnID="8EA97B25-397E-C100-05E9-EC2A697DE782"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="5CE96AC0-1269-0704-BBBF-92B8CD68C6A5" name="PLATBA_ZAKAZNIK_FK">
+<ind_PK_UK id="5CE96AC0-1269-0704-BBBF-92B8CD68C6A5" name="PLATBY_ZAKAZNIK_FK">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>89AA08AD-585E-BEC2-5CB7-835ABC0C39B4</generatorID>

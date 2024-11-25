@@ -4,10 +4,12 @@
 <createdTime>2024-10-28 17:23:13 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <sourcePk>295CB76E-450A-4CC0-2D74-1AB6442736C1</sourcePk>
 <identifying>false</identifying>
+<nameOnSource>spravuje</nameOnSource>
+<nameOnTarget>je spravován</nameOnTarget>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>

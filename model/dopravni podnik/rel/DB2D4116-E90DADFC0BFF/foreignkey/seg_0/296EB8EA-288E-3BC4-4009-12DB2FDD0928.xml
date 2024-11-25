@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D4ABC981-FFA6-93D7-E1CD-D61A2CAD2FF3" containerWithKeyObject="04130356-EAC5-AD64-B7A1-1B1F6706AF18" localFKIndex="8EA039AF-41CD-CDA5-4FA6-0B10DCEAAB2C" name="FOTO_KARTA_MHD_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="296EB8EA-288E-3BC4-4009-12DB2FDD0928" containerWithKeyObject="04130356-EAC5-AD64-B7A1-1B1F6706AF18" localFKIndex="06F3A1B8-C461-9288-4785-9FABF0D09C79" name="FOTO_KARTA_MHD_FK">
 <createdBy>Uživatel</createdBy>
-<createdTime>2024-10-28 19:00:47 UTC</createdTime>
+<createdTime>2024-11-25 16:53:25 UTC</createdTime>
 <generatorID>F1C629B3-5098-AD05-CAC8-84A5F11B2DB1</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <referredTableLongName>KARTA_MHD</referredTableLongName>

@@ -3,6 +3,6 @@
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:40 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
+<shouldBeOpen>true</shouldBeOpen>
 <selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
 </relationalModel>

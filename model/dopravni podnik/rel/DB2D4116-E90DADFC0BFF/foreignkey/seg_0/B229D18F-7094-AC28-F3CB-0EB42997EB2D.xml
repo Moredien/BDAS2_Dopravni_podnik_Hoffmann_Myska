@@ -4,7 +4,7 @@
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>C510673F-2104-F776-BB8C-4F748D2EBE71</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
-<referredTableLongName>TYPY_PREDPLATNEHO</referredTableLongName>
+<referredTableLongName>TYP_PREDPLATNEHO</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>909BF5A2-3AD3-1DC5-D7EC-00D9CA8FBED2</referredTableID>
 <keyObject>BAF7CBD2-1DEE-F13F-7464-93B18CADB7F1</keyObject>

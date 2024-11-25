@@ -4,9 +4,7 @@
 <createdTime>2024-10-28 15:04:38 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -22,9 +20,7 @@
 <createdTime>2024-10-28 15:04:54 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -37,9 +33,7 @@
 <createdTime>2024-10-28 17:27:20 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -53,9 +47,7 @@
 <createdTime>2024-10-28 17:44:39 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -69,9 +61,7 @@
 <generatorID>BE425619-14FA-9142-C96F-0DFA6BBE5ED4</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <referedAttribute>64BD94CF-D5C7-5375-DFCB-0187677842D6</referedAttribute>
@@ -79,7 +69,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="id_uzivatele" id="E7067073-D655-98D3-5C83-05A2A45DDC76">
 <createdBy>Uživatel</createdBy>
@@ -87,16 +77,14 @@
 <generatorID>C0054CEF-DDCB-89F5-5C2E-1E180F58BFC6</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <referedAttribute>59C09D83-F7B9-26B7-D275-A00432F1DB4D</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -105,9 +93,7 @@
 <createdTime>2024-10-28 15:05:03 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="false"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

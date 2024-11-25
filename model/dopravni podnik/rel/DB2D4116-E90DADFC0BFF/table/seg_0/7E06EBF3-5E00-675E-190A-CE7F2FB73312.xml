@@ -1,10 +1,9 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7E06EBF3-5E00-675E-190A-CE7F2FB73312" name="UZIVATELE">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7E06EBF3-5E00-675E-190A-CE7F2FB73312" name="UZIVATEL">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>92A05949-4F23-46A6-B398-71533D53A4A4</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
-<ordsAlias>uzivatel</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
@@ -17,8 +16,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,9,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <autoIncrementColumn>true</autoIncrementColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <autoIncrementSequenceName>uzivatele_id_uzivatele_seq</autoIncrementSequenceName>
@@ -44,8 +43,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>64</dataTypeSize>
-<ownDataTypeParameters>64,,</ownDataTypeParameters>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="jmeno" id="92D7EF9B-188E-6F29-641C-9CA256587903">
@@ -94,7 +93,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_typ_uzivatele" id="F4A2D395-AC1B-8453-675C-3E2EB4C5E385">
+<Column name="TYP_UZIVATELE_id_typ_uzivatele" id="F4A2D395-AC1B-8453-675C-3E2EB4C5E385">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>B9748706-861D-375C-F214-AB114B90AABC</generatorID>
@@ -102,15 +101,15 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="D7FF8D3C-168C-4694-6E25-26B958BD8AAC" referredColumn="5EFE164C-876A-D860-5C23-A84918333393"/>
 </associations>
 </Column>
-<Column name="id_adresy" id="618BC68D-FCD1-D7CA-45ED-DA2E0F28C661">
+<Column name="ADRESA_id_adresy" id="618BC68D-FCD1-D7CA-45ED-DA2E0F28C661">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>C41C34CA-223E-71C8-AE93-698BA50CE26A</generatorID>
@@ -118,8 +117,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>

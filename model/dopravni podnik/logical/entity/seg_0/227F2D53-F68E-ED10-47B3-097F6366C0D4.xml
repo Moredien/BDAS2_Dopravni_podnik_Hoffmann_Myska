@@ -4,9 +4,7 @@
 <createdTime>2024-10-28 14:06:41 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -22,9 +20,7 @@
 <createdTime>2024-10-28 14:06:48 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -37,9 +33,7 @@
 <createdTime>2024-10-28 14:07:04 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -51,9 +45,7 @@
 <createdTime>2024-10-28 14:12:41 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -68,16 +60,14 @@
 <generatorID>89AA08AD-585E-BEC2-5CB7-835ABC0C39B4</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <referedAttribute>EBE38003-AAA9-88E8-FBA4-34F91BE1B74B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -86,9 +76,7 @@
 <createdTime>2024-10-28 14:07:14 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="false"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

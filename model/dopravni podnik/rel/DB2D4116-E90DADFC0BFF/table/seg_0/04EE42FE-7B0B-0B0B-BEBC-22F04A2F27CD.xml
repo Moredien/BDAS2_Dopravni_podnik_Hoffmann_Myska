@@ -1,10 +1,9 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="04EE42FE-7B0B-0B0B-BEBC-22F04A2F27CD" name="ZAKAZNICI">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="04EE42FE-7B0B-0B0B-BEBC-22F04A2F27CD" name="ZAKAZNIK">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>0814E9AC-F45D-D84D-066E-FDC3FB3565CB</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
-<ordsAlias>zakaznik</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
@@ -17,14 +16,14 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,9,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <autoIncrementColumn>true</autoIncrementColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <autoIncrementSequenceName>zakaznici_id_zakaznika_seq</autoIncrementSequenceName>
 <autoIncrementTriggerName>zakaznici_id_zakaznika_trg</autoIncrementTriggerName>
 </Column>
-<Column name="id_uzivatele" id="1A0595B2-0FBD-6D7E-CBB0-5841ECCF3277">
+<Column name="UZIVATEL_id_uzivatele" id="1A0595B2-0FBD-6D7E-CBB0-5841ECCF3277">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>8F3DF8A8-D107-ED0A-C39E-5DD6DAFA1502</generatorID>
@@ -32,8 +31,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>

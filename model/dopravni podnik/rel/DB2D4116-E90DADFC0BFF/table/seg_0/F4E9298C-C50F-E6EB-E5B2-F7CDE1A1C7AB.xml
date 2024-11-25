@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F4E9298C-C50F-E6EB-E5B2-F7CDE1A1C7AB" name="PLATBA_KARTOU">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-25 16:39:21 UTC</createdTime>
+<generatorID>17EAA543-5149-0E86-F463-00D8A288D926</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_platby" id="041B6564-F75E-58EC-1398-7F91259305F0">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-25 16:39:21 UTC</createdTime>
+<generatorID>2F5478FD-A4D0-014C-1A33-D1AA310AD20F</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B171B8F9-ED60-446F-EA4A-817AEFFD5C6A" referredColumn="8EA97B25-397E-C100-05E9-EC2A697DE782"/>
+</associations>
+</Column>
+<Column name="cislo_karty" id="729FF290-D34C-1D0D-16D7-B2F178895248">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-25 16:39:21 UTC</createdTime>
+<generatorID>DFEF1BFB-0D1C-BD7B-9145-A359921F7F44</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>16</dataTypeSize>
+<ownDataTypeParameters>16,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="jmeno_majitele" id="EB1708A2-D265-F6FE-60B3-90D7C9F0F802">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-25 16:39:21 UTC</createdTime>
+<generatorID>4EF7CB6F-E892-DBBC-906F-9C7AB2748875</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E4CF8487-AF66-D182-99D5-1513F9198F2C" name="PLATBA_KARTOU_PK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-25 16:39:21 UTC</createdTime>
+<generatorID>6C1236C5-E68D-FBD5-40FC-D43B1014E9AA</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="041B6564-F75E-58EC-1398-7F91259305F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A103B801-3605-2983-9ED5-D905F7268914" name="PLATBA_KARTOU_PLATBY_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-25 16:39:21 UTC</createdTime>
+<generatorID>0BFD6208-DE16-7530-273A-E7BEF3D299FE</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="041B6564-F75E-58EC-1398-7F91259305F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

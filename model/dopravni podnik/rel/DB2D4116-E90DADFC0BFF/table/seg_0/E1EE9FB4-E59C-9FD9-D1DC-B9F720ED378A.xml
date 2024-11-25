@@ -16,8 +16,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,9,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <autoIncrementColumn>true</autoIncrementColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <autoIncrementSequenceName>zastaveni_id_zastaveni_seq</autoIncrementSequenceName>
@@ -34,7 +34,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_linky" id="D4D104D2-0859-A060-D302-4DBEFF056981">
+<Column name="LINKA_id_linky" id="D4D104D2-0859-A060-D302-4DBEFF056981">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>31CFCB95-BF6F-9697-F2FB-763C7C686416</generatorID>
@@ -42,15 +42,15 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="7CDA7ACC-A8B8-7F6F-A621-E3F5673ED5DD" referredColumn="6A4E918B-0FB5-41F3-D9A0-779B0C0C4A05"/>
 </associations>
 </Column>
-<Column name="id_zastavky" id="320D1D84-25F4-802D-B323-2606021A0136">
+<Column name="ZASTAVKA_id_zastavky" id="320D1D84-25F4-802D-B323-2606021A0136">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>6D14E7C6-034F-ABD3-E06A-607CC356A9CE</generatorID>
@@ -58,8 +58,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>32</dataTypePrecision>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
