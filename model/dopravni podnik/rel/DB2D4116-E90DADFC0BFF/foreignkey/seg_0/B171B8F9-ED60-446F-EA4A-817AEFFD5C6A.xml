@@ -14,5 +14,6 @@
 <refColNames>id_platby</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
+<discriminatorValue>0</discriminatorValue>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
 </FKIndexAssociation>

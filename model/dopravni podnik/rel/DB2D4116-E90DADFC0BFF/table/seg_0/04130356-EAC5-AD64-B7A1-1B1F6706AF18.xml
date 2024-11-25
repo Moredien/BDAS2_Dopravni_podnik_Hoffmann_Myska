@@ -57,7 +57,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="KARTA_MHD_id_karty" id="B29168EE-E7B3-5E31-2E13-A35EEBA8B4A6">
+<Column name="id_karty" id="B29168EE-E7B3-5E31-2E13-A35EEBA8B4A6">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>698FA2A7-60B8-673D-DEA5-CD9002B8F53C</generatorID>
@@ -66,7 +66,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -86,22 +86,6 @@
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="7D4B6CB9-3CAA-467D-A86B-869330A9A4A6" referredColumn="B374FC69-BA12-90E9-DC95-8D4464012845"/>
-</associations>
-</Column>
-<Column name="UZIVATEL_id_uzivatele" id="600FB648-9178-DACD-8C51-F6D99D6544AC">
-<createdBy>Uživatel</createdBy>
-<createdTime>2024-11-25 16:39:21 UTC</createdTime>
-<generatorID>15050386-FC77-2734-83E3-2AA474B451AA</generatorID>
-<ownerDesignName>dopravni podnik</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,32,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="1FBCBBE4-C74A-F666-294B-F07824D81673" referredColumn="B374FC69-BA12-90E9-DC95-8D4464012845"/>
 </associations>
 </Column>
 </columns>
@@ -138,17 +122,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="15A7BEEE-C294-4E54-896C-B431135C26C1"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="867F3453-D9E0-F00C-3B8F-660B3F925C94" name="FOTO_UZIVATEL_FK">
-<createdBy>Uživatel</createdBy>
-<createdTime>2024-11-25 16:39:21 UTC</createdTime>
-<generatorID>166A700F-9818-658D-B383-2BEFBF83A439</generatorID>
-<ownerDesignName>dopravni podnik</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="600FB648-9178-DACD-8C51-F6D99D6544AC"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="06F3A1B8-C461-9288-4785-9FABF0D09C79" name="FOTO_KARTA_MHD_FK">

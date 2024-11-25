@@ -16,7 +16,7 @@
 <objectViews>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="04130356-EAC5-AD64-B7A1-1B1F6706AF18" otype="Table" vid="3D60D49B-0388-5BD5-3EF1-7217E6977A8F">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="33" y="396" width="269" height="215"/>
+<bounds x="33" y="396" width="268" height="196"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="04EE42FE-7B0B-0B0B-BEBC-22F04A2F27CD" otype="Table" vid="10EA45D5-D3A3-842B-850E-F3A9EFBBB961">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -44,7 +44,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="8D68A6B4-5801-01BF-3ACA-4076D1F67549" otype="Table" vid="35410E6B-4CD5-8F33-3D27-EC07E1B6ACB1">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="918" y="785" width="255" height="99"/>
+<bounds x="918" y="795" width="255" height="99"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="909BF5A2-3AD3-1DC5-D7EC-00D9CA8FBED2" otype="Table" vid="5CB03F1D-1A68-82DC-CAA5-E74FFCFA8091">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -64,7 +64,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="B4F67F05-61E8-BF2E-A405-92DB01B50FF5" otype="Table" vid="09A46EE1-B058-ABB8-E8EF-C254EDC8B313">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="714" y="619" width="275" height="123"/>
+<bounds x="714" y="619" width="275" height="142"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="BEA7E4F9-81C9-A9EC-BE7C-7BF9F5367404" otype="Table" vid="C4C5B400-8650-A41C-C48D-C87E907F69E4">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -100,15 +100,6 @@
 </OView>
 </objectViews>
 <connectors>
-<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="1FBCBBE4-C74A-F666-294B-F07824D81673" otype="FKIndexAssociation" vid_source="2442AABC-AB18-E750-A27D-43780EF9C62F" vid_target="3D60D49B-0388-5BD5-3EF1-7217E6977A8F">
-<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<backgroundColor>-16777216</backgroundColor>
-<lineWidth>1</lineWidth>
-<points>
-<point x="167" y="769"/>
-<point x="167" y="611"/>
-</points>
-</Connector>
 <Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="2007111F-78B5-C729-538F-3484F549A591" otype="FKIndexAssociation" vid_source="39923C04-9A4B-F6C3-2D85-A6E57AC42569" vid_target="C4C5B400-8650-A41C-C48D-C87E907F69E4">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <backgroundColor>-16777216</backgroundColor>
@@ -168,7 +159,7 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="302" y="479"/>
+<point x="301" y="479"/>
 <point x="356" y="479"/>
 </points>
 </Connector>
@@ -177,8 +168,8 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="953" y="742"/>
-<point x="953" y="785"/>
+<point x="953" y="761"/>
+<point x="953" y="795"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="76ACC0CC-9BD2-33FE-5218-B2A433FFDFDD" otype="FKIndexAssociation" vid_source="10EA45D5-D3A3-842B-850E-F3A9EFBBB961" vid_target="09A46EE1-B058-ABB8-E8EF-C254EDC8B313">
@@ -249,8 +240,8 @@
 <backgroundColor>-16777216</backgroundColor>
 <lineWidth>1</lineWidth>
 <points>
-<point x="989" y="688"/>
-<point x="1056" y="688"/>
+<point x="989" y="690"/>
+<point x="1056" y="690"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="B229D18F-7094-AC28-F3CB-0EB42997EB2D" otype="FKIndexAssociation" vid_source="5CB03F1D-1A68-82DC-CAA5-E74FFCFA8091" vid_target="CDAC556A-1A55-E0C8-AAEA-20D0819A0EAF">
@@ -305,7 +296,7 @@
 <arcs>
 <Arc class="oracle.dbtools.crest.swingui.relational.TVFKArc" oid="F67FAAB4-8759-CB71-4FF8-E78A29F2FBCB" otype="FKArc" vid="6A9C3979-4A49-63ED-C228-D604C6B2A452">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="694" y="599" width="315" height="163"/>
+<bounds x="694" y="599" width="315" height="182"/>
 </Arc>
 </arcs>
 </Diagram>

@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B4F67F05-61E8-BF2E-A405-92DB01B50FF5" name="PLATBA">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B4F67F05-61E8-BF2E-A405-92DB01B50FF5" name="PLATBY">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>227F2D53-F68E-ED10-47B3-097F6366C0D4</generatorID>
@@ -48,7 +48,7 @@
 <ownDataTypeParameters>,10,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="ZAKAZNIK_id_zakaznika" id="24694CCA-7B67-64A2-7FFE-49E73EDFB9DA">
+<Column name="id_zakaznika" id="24694CCA-7B67-64A2-7FFE-49E73EDFB9DA">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>919825E5-5C18-62FF-A1BC-E76F577E4A12</generatorID>
@@ -57,12 +57,24 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="76ACC0CC-9BD2-33FE-5218-B2A433FFDFDD" referredColumn="675C9070-26C8-364E-94A3-F0990439D30B"/>
 </associations>
+</Column>
+<Column name="typ_platby" id="21FC2BD6-D961-A542-6470-25E8285E65A7">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-25 17:38:55 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

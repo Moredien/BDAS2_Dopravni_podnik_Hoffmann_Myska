@@ -45,7 +45,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="KARTA_MHD_id_karty" id="26D7F172-E4E5-5E02-4E06-7F53C930D5C3">
+<Column name="id_karty" id="26D7F172-E4E5-5E02-4E06-7F53C930D5C3">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>6F7531D1-08FF-E9D8-6782-66D4FE5D749B</generatorID>
@@ -54,14 +54,14 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="A7CB8824-EAEF-2D80-1C61-20BEB4A0D374" referredColumn="0B6354D6-BF10-A953-FE51-C1597C087E99"/>
 </associations>
 </Column>
-<Column name="TYP_PREDPLATNEHO_id_typ_predplatneho" id="9BCA865F-AC38-87B1-21B9-A73B6EB3396E">
+<Column name="id_typ_predplatneho" id="9BCA865F-AC38-87B1-21B9-A73B6EB3396E">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>C2878DF7-63C7-DBB8-92F3-9219DA871D3B</generatorID>
@@ -70,7 +70,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>

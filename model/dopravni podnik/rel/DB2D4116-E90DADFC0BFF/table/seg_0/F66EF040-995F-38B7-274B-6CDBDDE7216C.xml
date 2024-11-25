@@ -1,9 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F66EF040-995F-38B7-274B-6CDBDDE7216C" name="ZAMESTNANEC">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F66EF040-995F-38B7-274B-6CDBDDE7216C" name="ZAMESTNANCI">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>741B9417-788F-8325-B3AD-C02125AC805E</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>zamestnanec</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
@@ -48,7 +49,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="ZAMESTNANEC_id_zamestnance" id="207212D2-B055-B581-B4F8-D2DEB8555924">
+<Column name="id_zamestnance1" id="207212D2-B055-B581-B4F8-D2DEB8555924">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>017DC14E-C25D-AD8A-C1F0-AC41C2DA1ABA</generatorID>
@@ -57,14 +58,14 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="DE45AB99-A17D-2BFC-8F1C-FEA4BB6D1771" referredColumn="5C395CC0-B146-A3AD-5D2E-1B77EDDE2E4B"/>
 </associations>
 </Column>
-<Column name="UZIVATEL_id_uzivatele" id="CE794A60-3125-51EA-1F18-FAC3BDE94ECC">
+<Column name="id_uzivatele" id="CE794A60-3125-51EA-1F18-FAC3BDE94ECC">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>E7067073-D655-98D3-5C83-05A2A45DDC76</generatorID>
@@ -73,7 +74,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>

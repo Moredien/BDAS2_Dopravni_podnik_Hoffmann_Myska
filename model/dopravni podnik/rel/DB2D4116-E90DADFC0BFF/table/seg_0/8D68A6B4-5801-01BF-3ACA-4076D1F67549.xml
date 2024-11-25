@@ -1,9 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8D68A6B4-5801-01BF-3ACA-4076D1F67549" name="PLATBA_PREVODEM">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8D68A6B4-5801-01BF-3ACA-4076D1F67549" name="PLATBY_PREVODEM">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-11-25 16:39:21 UTC</createdTime>
 <generatorID>FCA8B72B-5118-7067-06CB-066203B7A5A6</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
+<ordsAlias>platba_prevodem</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
