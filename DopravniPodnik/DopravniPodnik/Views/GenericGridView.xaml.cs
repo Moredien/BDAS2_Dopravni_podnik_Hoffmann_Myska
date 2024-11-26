@@ -26,8 +26,15 @@ public partial class GenericGridView : UserControl
                 var column = new DataGridTextColumn
                 {
                     Header = columnInfo.Header,
-                    Binding = new Binding(columnInfo.BindingPath)
+                    Binding = new Binding(columnInfo.BindingPath),
                 };
+                if (!string.IsNullOrEmpty(columnInfo.Format))
+                {
+                    column.Binding = new Binding(columnInfo.BindingPath)
+                    {
+                        StringFormat = "dd.MM.yyyy",
+                    };
+                }
                 DynamicDataGrid.Columns.Add(column);
             }
         }
