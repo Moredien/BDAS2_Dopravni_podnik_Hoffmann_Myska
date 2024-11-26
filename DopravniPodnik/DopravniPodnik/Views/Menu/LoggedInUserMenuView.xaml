@@ -25,7 +25,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         
-        <Label Content="Jméno uživatele"
+        <Label Content="{Binding Username}"
                Grid.Column="0"
                VerticalAlignment="Center"/>
         <StackPanel Grid.Column="1"

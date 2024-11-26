@@ -9,6 +9,7 @@ public class DataGridColumnInfo
 {
     public string Header { get; set; }
     public string BindingPath { get; set; }
+    public string Format { get; set; }
 }
 
 public class DataGridDataContext
@@ -40,8 +41,8 @@ public static class GridViewTemplates
                         new DataGridColumnInfo { Header = "Username", BindingPath = "uzivatelske_jmeno" },
                         new DataGridColumnInfo { Header = "Jméno", BindingPath = "jmeno" },
                         new DataGridColumnInfo { Header = "Příjmení", BindingPath = "prijmeni" },
-                        new DataGridColumnInfo { Header = "Datum Narození", BindingPath = "datum_narozeni" },
-                        new DataGridColumnInfo { Header = "Datum Založení", BindingPath = "datum_zalozeni" },
+                        new DataGridColumnInfo { Header = "Datum Narození", BindingPath = "datum_narozeni" , Format = "dd.MM.yyyy"},
+                        new DataGridColumnInfo { Header = "Datum Založení", BindingPath = "datum_zalozeni" ,Format = "dd.MM.yyyy" },
                         new DataGridColumnInfo { Header = "Typ Uživatele", BindingPath = "nazev_typ_uzivatele" }
                     }
                 );

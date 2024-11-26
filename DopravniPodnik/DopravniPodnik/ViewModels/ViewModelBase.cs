@@ -11,8 +11,10 @@ public partial class ViewModelBase : ObservableObject
     [RelayCommand]
     protected void Exit()
     {
-        WindowManager.SetContentView(null,true,null,null);
+        WindowManager.SetContentView(null, true, null, null);
     }
-    
-    
+
+    public virtual void Update()
+    {
+    }
 }

@@ -22,6 +22,7 @@ public partial class GenericGridViewModel : ViewModelBase
     public DataGridDataContext DataContext;
     private readonly UserService _userService;
     private readonly Type _modelType;
+    private readonly string tableName;
     
     private readonly DatabaseService _databaseService = new();
 
@@ -29,21 +30,13 @@ public partial class GenericGridViewModel : ViewModelBase
     {
         _userService = userService;
         _modelType = modelType;
-
+        Items = new();
+        
         DataContext = GridViewTemplates.Get(modelType);
 
-        string tableName = TableMapper.getTableName(modelType);
-
-        var method = typeof(DatabaseService).GetMethod(nameof(_databaseService.FetchData));
-        var genericMethod = method.MakeGenericMethod(modelType);
-        var data = genericMethod.Invoke(_databaseService, new object?[]{$"SELECT * FROM ST67028.{tableName}"});
-
-        Items = new();
-        foreach (var obj in (IEnumerable)data)
-        {
-            Items.Add(obj);
-        }
-            
+        tableName = TableMapper.getTableName(modelType);
+        
+        Reload();
     }
     [RelayCommand]
     void Edit()
@@ -65,6 +58,19 @@ public partial class GenericGridViewModel : ViewModelBase
     {
         if(SelectedItem!=null)
             Items.Remove(SelectedItem);
+    }
+    [RelayCommand]
+    void Reload()
+    {
+        Items.Clear();
+        var method = typeof(DatabaseService).GetMethod(nameof(_databaseService.FetchData));
+        var genericMethod = method.MakeGenericMethod(_modelType);
+        var data = genericMethod.Invoke(_databaseService, new object?[]{$"SELECT * FROM ST67028.{tableName}"});
+
+        foreach (var obj in (IEnumerable)data)
+        {
+            Items.Add(obj);
+        }
     }
 
 

@@ -78,6 +78,7 @@ public static class WindowManager
         {
             CurrentMenuViewModel = model;
             MainWindow.CurrentMenu = CurrentMenuViewModel;
+            CurrentMenuViewModel.Update();
         }
         else
             throw new Exception($"Failed to set menu view. MenuView {key} doesnt exist.");
