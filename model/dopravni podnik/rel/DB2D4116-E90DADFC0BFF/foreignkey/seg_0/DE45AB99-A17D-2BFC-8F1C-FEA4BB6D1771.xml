@@ -4,12 +4,12 @@
 <createdTime>2024-10-28 19:00:47 UTC</createdTime>
 <generatorID>BE425619-14FA-9142-C96F-0DFA6BBE5ED4</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
-<referredTableLongName>ZAMESTNANEC</referredTableLongName>
+<referredTableLongName>ZAMESTNANCI</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>F66EF040-995F-38B7-274B-6CDBDDE7216C</referredTableID>
 <keyObject>55FE417F-DD20-B6FE-BF38-A664BFBA1A72</keyObject>
 <referredKeyID>55FE417F-DD20-B6FE-BF38-A664BFBA1A72</referredKeyID>
-<mandatory>true</mandatory>
+<mandatory>false</mandatory>
 <refColNames>id_zamestnance</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>

@@ -5,8 +5,6 @@
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -23,14 +21,12 @@
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<dataTypePrecision>9</dataTypePrecision>
+<ownDataTypeParameters>,9,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="jmeno_souboru" id="BE95A398-9202-206C-E3FB-F86FCC1E706D">
 <createdBy>Uživatel</createdBy>
@@ -38,8 +34,6 @@
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -53,8 +47,6 @@
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -67,8 +59,6 @@
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -82,15 +72,13 @@
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <referedAttribute>4D052AAA-FC4A-F876-75D3-950894F3E7D3</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="id_uzivatele" id="15050386-FC77-2734-83E3-2AA474B451AA">
 <createdBy>Uživatel</createdBy>
@@ -99,15 +87,13 @@
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <referedAttribute>59C09D83-F7B9-26B7-D275-A00432F1DB4D</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -117,8 +103,6 @@
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

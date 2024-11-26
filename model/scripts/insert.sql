@@ -46,3 +46,6 @@ insert into UZIVATELE (uzivatelske_jmeno, heslo, jmeno, prijmeni, cas_zalozeni, 
 insert into UZIVATELE (uzivatelske_jmeno, heslo, jmeno, prijmeni, cas_zalozeni, datum_narozeni, id_typ_uzivatele, id_adresy) values ('jmatitiahoh', '$2a$04$mRcORARUcwEc/uUbTtiZW.z3kJQdqxQgy/KRubfRS5lmj.0prT2FS', 'Jocelyne', 'Matitiaho', '27/12/2023', '13/10/2024', 3, 9);
 insert into UZIVATELE (uzivatelske_jmeno, heslo, jmeno, prijmeni, cas_zalozeni, datum_narozeni, id_typ_uzivatele, id_adresy) values ('cpriumi', '$2a$04$PPPqGIGzF48w73ehVPdVzOfaTDEQjviVt.gBFJiZjBeJBixZFieMC', 'Curtis', 'Prium', '28/10/2024', '25/08/2024', 2, 13);
 insert into UZIVATELE (uzivatelske_jmeno, heslo, jmeno, prijmeni, cas_zalozeni, datum_narozeni, id_typ_uzivatele, id_adresy) values ('ggladdinj', '$2a$04$eMJ.8kJiBYlJF/o4uZ0c8uCOSJbAs7YzGX/vPcyrFwLE3fnoACKRm', 'Gordan', 'Gladdin', '12/06/2024', '13/06/2024', 1, 1);
+
+/
+commit;

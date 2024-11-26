@@ -4,9 +4,7 @@
 <createdTime>2022-11-19 16:24:46 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -22,24 +20,20 @@
 <createdTime>2022-11-19 19:26:46 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,32,</ownDataTypeParameters>
+<dataTypePrecision>9</dataTypePrecision>
+<ownDataTypeParameters>,9,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="zacatek" id="414A91EB-9579-D54F-91A6-9F712B18CA85">
 <createdBy>Radek</createdBy>
 <createdTime>2022-11-19 19:26:59 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -51,9 +45,7 @@
 <createdTime>2022-11-19 19:27:50 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -67,9 +59,7 @@
 <generatorID>32ABBC82-794B-C6BF-85CD-F3828A399667</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <referedAttribute>306A5523-0475-6768-B211-15E48D7CFD3D</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
@@ -84,16 +74,14 @@
 <generatorID>8B3675E6-0EB6-6C3E-A5F8-538844DDE583</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <referedAttribute>AB933D20-B080-439F-5374-DBF46CF59178</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>32</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -102,9 +90,7 @@
 <createdTime>2022-11-19 19:27:02 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="0FB1FB67-5472-D838-120D-8800A0939732" value="true"/>
-<item key="B9AB29F6-1904-AB02-6EF4-5B86B7950B67" value="false"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

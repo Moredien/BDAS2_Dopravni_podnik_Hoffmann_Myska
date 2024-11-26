@@ -122,5 +122,5 @@ PROCEDURE edit_zastavky(
 );
 
 END INSERT_UPDATE;
-
+/
 commit;
