@@ -69,7 +69,7 @@ public partial class UzivatelFormViewModel : ViewModelBase
     private void EditEmployee()
     {
         Zamestnanci zamestnanec = null; // this somehow needs to be the employee linked to the currently edited user
-        WindowManager.SetContentView(typeof(ZamestnanciFormViewModel),new object[]{zamestnanec});
+        WindowManager.SetContentView(typeof(ZamestnanciFormViewModel),false,null,new object[]{zamestnanec});
     }
 
     private void UpdateZmenitTypUzivateleSection()
