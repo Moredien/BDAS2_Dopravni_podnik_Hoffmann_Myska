@@ -7,7 +7,7 @@ public partial class Zamestnanci
 {
     public int IdZamestnance { get; set; }
 
-    public int? Plat { get; set; }
+    public string? Plat { get; set; }
 
     public DateTime? PlatnostUvazkuDo { get; set; }
 

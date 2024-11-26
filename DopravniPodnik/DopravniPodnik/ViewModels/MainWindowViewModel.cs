@@ -10,8 +10,7 @@ namespace DopravniPodnik.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty] 
-    private ViewModelBase _currentPage = new JizdyViewModel();
+    [ObservableProperty] private ViewModelBase _currentPage;
 
     [ObservableProperty] 
     private ViewModelBase? _currentMenu;

@@ -55,6 +55,29 @@
                         <TextBox Text="{Binding ulice}" />
                         <Label Content="Číslo popisné:" />
                         <TextBox Text="{Binding cislo_popisne}" />
+                        <Label Content="Typ Uživatele:" />
+                        <DockPanel LastChildFill="True">
+                            <Label Content="{Binding nazev_typ_uzivatele}" DockPanel.Dock="Left" VerticalAlignment="Center" />
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+                                <Button Content="Upravit"
+                                        Margin="0" HorizontalAlignment="Right"
+                                        Width="Auto"
+                                        Command="{Binding DataContext.EditEmployeeCommand,
+                                                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        Visibility="{Binding DataContext.EditBtnVisible,
+                                                                    RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                <Button
+                                    Content="{Binding DataContext.ZmenaTypuUzivateleBtnContent, 
+                                                      RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    Margin="0" HorizontalAlignment="Right"
+                                    Width="Auto"
+                                    Command="{Binding DataContext.ChangeUserTypeCommand,
+                                                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    Visibility="{Binding DataContext.ZmenaTypuUzivateleBtnVisible,
+                                                                    RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                            </StackPanel>
+                        </DockPanel>
                     </StackPanel>
         
                     

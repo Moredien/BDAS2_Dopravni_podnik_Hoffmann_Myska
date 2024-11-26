@@ -6,18 +6,22 @@
              xmlns:local="clr-namespace:DopravniPodnik.Views"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Upravit" Command="{Binding EditCommand}" />
-            <Button Content="Přidat" Command="{Binding CreateCommand}" />
-            <Button Content="Odstranit" Command="{Binding DeleteCommand}" />
-        </StackPanel>
+    <ScrollViewer>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Obnovit" Command="{Binding ReloadCommand}" />
+                <Button Content="Upravit" Command="{Binding EditCommand}" />
+                <Button Content="Přidat" Command="{Binding CreateCommand}" />
+                <Button Content="Odstranit" Command="{Binding DeleteCommand}" />
+            </StackPanel>
 
-        <DataGrid x:Name="DynamicDataGrid"
-                  ItemsSource="{Binding Items}"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False"
-                  IsReadOnly="True"
-                  SelectedItem="{Binding SelectedItem}" />
-    </StackPanel>
+
+            <DataGrid x:Name="DynamicDataGrid"
+                      ItemsSource="{Binding Items}"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      IsReadOnly="True"
+                      SelectedItem="{Binding SelectedItem}" />
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
