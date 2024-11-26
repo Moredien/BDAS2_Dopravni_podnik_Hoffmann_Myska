@@ -44,7 +44,7 @@ public class DatabaseService
             using var command = new OracleCommand(procedure, connection);
             
             command.Parameters.AddRange(parameters);
-            command.ExecuteNonQuery();
+            var result = command.ExecuteNonQuery();
 
             var errorParam = parameters.FirstOrDefault(p => p.Direction == System.Data.ParameterDirection.Output);
             if (errorParam != null && errorParam.Value != DBNull.Value)
@@ -52,7 +52,7 @@ public class DatabaseService
                 errorMessage = errorParam.Value.ToString();
             }
 
-            return errorMessage != "null";
+            return result > 0;
         }
         catch (Exception e)
         {
