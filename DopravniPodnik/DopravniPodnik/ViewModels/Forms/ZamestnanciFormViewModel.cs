@@ -45,6 +45,8 @@ public partial class ZamestnanciFormViewModel: ViewModelBase , INotifyDataErrorI
 
     public ZamestnanciFormViewModel(object selectedItem)
     {
+        _errorsViewModel = new ErrorsViewModel();
+        _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
         if (selectedItem != null)
         {
             var zamestannec = (Zamestnanci)selectedItem;

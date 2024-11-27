@@ -41,15 +41,15 @@ public partial class GenericGridViewModel : ViewModelBase
     {
         if (SelectedItem == null)
         {
-            Console.WriteLine("Neni vybran zadny uzivatel");
+            Console.WriteLine("Neni vybran zadny radek");
             return;
         }
-        WindowManager.SetContentView(EditFormtype,new object[]{selectedItem,Items});
+        WindowManager.SetContentView(EditFormtype,new object[]{selectedItem});
     }
     [RelayCommand]
     void Create()
     {
-        WindowManager.SetContentView(EditFormtype,new object[]{Items});
+        WindowManager.SetContentView(EditFormtype,new object[]{null});
     }
     [RelayCommand]
     void Delete()
