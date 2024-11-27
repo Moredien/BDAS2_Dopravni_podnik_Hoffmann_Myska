@@ -500,7 +500,7 @@ PROCEDURE edit_zamestnanci(
     p_id_zamestnance NUMBER,
     p_plat NUMBER,
     p_platnost_uvazku_do DATE,
-    p_id_zamestnance1 NUMBER,
+    p_id_nadrizeneho NUMBER,
     p_id_uzivatele NUMBER
 ) AS
 BEGIN
@@ -508,12 +508,12 @@ BEGIN
         INSERT INTO zamestnanci (
             plat,
             platnost_uvazku_do,
-            id_zamestnance1,
+            id_nadrizeneho,
             id_uzivatele
         ) VALUES (
             p_plat,
             p_platnost_uvazku_do,
-            p_id_zamestnance1,
+            p_id_nadrizeneho,
             p_id_uzivatele
         );
     ELSE
@@ -521,7 +521,7 @@ BEGIN
         SET
             plat = p_plat,
             platnost_uvazku_do = p_platnost_uvazku_do,
-            id_zamestnance1 = p_id_zamestnance1,
+            id_nadrizeneho = p_id_nadrizeneho,
             id_uzivatele = p_id_uzivatele
         WHERE
             id_zamestnance = p_id_zamestnance;

@@ -107,7 +107,7 @@ PROCEDURE edit_zamestnanci(
     p_id_zamestnance NUMBER,
     p_plat NUMBER,
     p_platnost_uvazku_do DATE,
-    p_id_zamestnance1 NUMBER,
+    p_id_nadrizeneho NUMBER,
     p_id_uzivatele NUMBER
 );
 PROCEDURE edit_zastaveni(
