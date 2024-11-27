@@ -579,6 +579,81 @@ BEGIN
     COMMIT;
 END edit_zastavky;
 
+PROCEDURE edit_uzivatel_view(
+        p_id_uzivatele IN OUT NUMBER,
+        p_uzivatelske_jmeno VARCHAR2,
+        p_heslo VARCHAR2,
+        p_jmeno VARCHAR2,
+        p_prijmeni VARCHAR2,
+        p_cas_zalozeni DATE,
+        p_datum_narozeni DATE,
+        p_typ_uzivatele_nazev VARCHAR2,
+        p_mesto VARCHAR2,
+        p_ulice VARCHAR2,
+        p_cislo_popisne NUMBER,
+        p_foto_jmeno_souboru VARCHAR2 DEFAULT NULL,
+        p_foto_data BLOB DEFAULT NULL,
+        p_foto_datum_pridani DATE DEFAULT NULL
+    ) AS
+        new_id_adresy NUMBER;
+resolved_id_typ_uzivatele NUMBER;
+v_id_uzivatele NUMBER;
+BEGIN
+    SELECT ID_TYP_UZIVATELE
+    INTO resolved_id_typ_uzivatele
+    FROM ST67028.TYPY_UZIVATELE
+    WHERE NAZEV = p_typ_uzivatele_nazev;
+
+    IF p_id_uzivatele IS NOT NULL THEN
+        UPDATE ADRESY
+        SET MESTO = p_mesto,
+            ULICE = p_ulice,
+            CISLO_POPISNE = p_cislo_popisne
+        WHERE ID_ADRESY = (
+            SELECT ID_ADRESY FROM UZIVATELE WHERE ID_UZIVATELE = p_id_uzivatele
+        );
+    ELSE
+        INSERT INTO ADRESY (MESTO, ULICE, CISLO_POPISNE)
+        VALUES (p_mesto, p_ulice, p_cislo_popisne)
+        RETURNING ID_ADRESY INTO new_id_adresy;
+    END IF;
+
+    IF p_id_uzivatele IS NOT NULL THEN
+        UPDATE UZIVATELE
+        SET UZIVATELSKE_JMENO = p_uzivatelske_jmeno,
+            HESLO = p_heslo,
+            JMENO = p_jmeno,
+            PRIJMENI = p_prijmeni,
+            CAS_ZALOZENI = p_cas_zalozeni,
+            DATUM_NAROZENI = p_datum_narozeni,
+            ID_TYP_UZIVATELE = resolved_id_typ_uzivatele,
+            ID_ADRESY = COALESCE(new_id_adresy, ID_ADRESY)
+        WHERE ID_UZIVATELE = p_id_uzivatele;
+    ELSE
+        INSERT INTO UZIVATELE (UZIVATELSKE_JMENO, HESLO, JMENO, PRIJMENI, CAS_ZALOZENI, DATUM_NAROZENI, ID_TYP_UZIVATELE, ID_ADRESY)
+        VALUES (p_uzivatelske_jmeno, p_heslo, p_jmeno, p_prijmeni, p_cas_zalozeni, p_datum_narozeni, resolved_id_typ_uzivatele, new_id_adresy)
+        RETURNING ID_UZIVATELE INTO v_id_uzivatele;
+
+        p_id_uzivatele := v_id_uzivatele;
+    END IF;
+
+    IF p_foto_jmeno_souboru IS NOT NULL AND p_foto_data IS NOT NULL AND p_foto_datum_pridani IS NOT NULL THEN
+        IF p_id_uzivatele IS NOT NULL THEN
+            UPDATE FOTO
+            SET JMENO_SOUBORU = p_foto_jmeno_souboru,
+                DATA = p_foto_data,
+                DATUM_PRIDANI = p_foto_datum_pridani
+            WHERE ID_UZIVATELE = p_id_uzivatele;
+
+            IF SQL%ROWCOUNT = 0 THEN
+                INSERT INTO FOTO (JMENO_SOUBORU, DATA, DATUM_PRIDANI, ID_UZIVATELE)
+                VALUES (p_foto_jmeno_souboru, p_foto_data, p_foto_datum_pridani, p_id_uzivatele);
+            END IF;
+        END IF;
+    END IF;
+
+    COMMIT;
+END edit_uzivatel_view;
 
 END INSERT_UPDATE;
 /

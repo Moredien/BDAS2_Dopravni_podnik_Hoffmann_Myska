@@ -120,6 +120,22 @@ PROCEDURE edit_zastavky(
     p_id_zastavky NUMBER,
     p_jmeno VARCHAR2
 );
+PROCEDURE edit_uzivatel_view(
+    p_id_uzivatele IN OUT NUMBER,
+    p_uzivatelske_jmeno VARCHAR2,
+    p_heslo VARCHAR2,
+    p_jmeno VARCHAR2,
+    p_prijmeni VARCHAR2,
+    p_cas_zalozeni DATE,
+    p_datum_narozeni DATE,
+    p_typ_uzivatele_nazev VARCHAR2,
+    p_mesto VARCHAR2,
+    p_ulice VARCHAR2,
+    p_cislo_popisne NUMBER,
+    p_foto_jmeno_souboru VARCHAR2 DEFAULT NULL,
+    p_foto_data BLOB DEFAULT NULL,
+    p_foto_datum_pridani DATE DEFAULT NULL
+);
 
 END INSERT_UPDATE;
 /
