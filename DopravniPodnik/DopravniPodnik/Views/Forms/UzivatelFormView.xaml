@@ -7,32 +7,14 @@
              xmlns:vm="clr-namespace:DopravniPodnik.ViewModels.Forms"
              mc:Ignorable="d"
              d:DesignHeight="*" d:DesignWidth="*">
-    <!-- <UserControl.DataContext> -->
-    <!--     <vm:UzivatelFormViewModel/> -->
-    <!-- </UserControl.DataContext> -->
-    
-    
+
     <UserControl.Resources>
-                <Style TargetType="Label">
-                    <Setter Property="FontSize" Value="16" />
-                </Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Height" Value="30" />
-                    <Setter Property="FontSize" Value="16" />
-                    <Setter Property="Padding" Value="5 0 0 0" />
-                </Style>
-                <Style TargetType="PasswordBox">
-                    <Setter Property="Height" Value="30" />
-                    <Setter Property="FontSize" Value="16" />
-                </Style>
-                <Style TargetType="Button">
-                    <Setter Property="HorizontalAlignment" Value="Stretch" />
-                    <Setter Property="Height" Value="30" />
-                    <Setter Property="Margin" Value="16" />
-                    <Setter Property="Width" Value=" 100"/>
-                </Style>
-            </UserControl.Resources>
-        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/FormStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
         
             <ScrollViewer>
                 <StackPanel
@@ -40,45 +22,38 @@
                     <Label Content="Uživatel"
                            HorizontalAlignment="Center"
                            FontSize="30" />
-                    <StackPanel DataContext="{Binding EditedUzivatel}">
                         <Label Content="Uživatelské jméno:" />
-                        <TextBox Text="{Binding uzivatelske_jmeno}" />
+                        <TextBox Text="{Binding Uzivatelske_jmeno, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Jméno:" />
-                        <TextBox Text="{Binding jmeno}" />
+                        <TextBox Text="{Binding Jmeno, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Příjmení:" />
-                        <TextBox Text="{Binding prijmeni}" />
+                        <TextBox Text="{Binding Prijmeni, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Datum narození:" />
-                        <DatePicker SelectedDate="{Binding datum_narozeni, Mode=TwoWay}" />
+                        <DatePicker SelectedDate="{Binding Datum_narozeni, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Město:" />
-                        <TextBox Text="{Binding mesto}" />
+                        <TextBox Text="{Binding Mesto, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Ulice:" />
-                        <TextBox Text="{Binding ulice}" />
+                        <TextBox Text="{Binding Ulice, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Číslo popisné:" />
-                        <TextBox Text="{Binding cislo_popisne}" />
+                        <TextBox Text="{Binding Cislo_popisne, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Typ Uživatele:" />
                         <DockPanel LastChildFill="True">
-                            <Label Content="{Binding nazev_typ_uzivatele}" DockPanel.Dock="Left" VerticalAlignment="Center" />
+                            <Label Content="{Binding Nazev_typ_uzivatele}" DockPanel.Dock="Left" VerticalAlignment="Center" />
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Right">
                                 <Button Content="Upravit"
                                         Margin="0" HorizontalAlignment="Right"
                                         Width="Auto"
-                                        Command="{Binding DataContext.EditEmployeeCommand,
-                                                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                        Visibility="{Binding DataContext.EditBtnVisible,
-                                                                    RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                        Command="{Binding EditEmployeeCommand}"
+                                        Visibility="{Binding EditBtnVisible}" />
                                 <Button
-                                    Content="{Binding DataContext.ZmenaTypuUzivateleBtnContent, 
-                                                      RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    Content="{Binding ZmenaTypuUzivateleBtnContent}"
                                     Margin="0" HorizontalAlignment="Right"
                                     Width="Auto"
-                                    Command="{Binding DataContext.ChangeUserTypeCommand,
-                                                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                    Visibility="{Binding DataContext.ZmenaTypuUzivateleBtnVisible,
-                                                                    RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                    Command="{Binding ChangeUserTypeCommand}"
+                                    Visibility="{Binding ZmenaTypuUzivateleBtnVisible}" />
                             </StackPanel>
                         </DockPanel>
-                    </StackPanel>
         
                     
         

@@ -12,8 +12,6 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
     private readonly ErrorsViewModel _errorsViewModel;
     public bool HasErrors => _errorsViewModel.HasErrors;
     public bool CanCreate => !HasErrors;
-    private ObservableCollection<object> collection;
-    private Adresy originalItem;
 
     [ObservableProperty]
     public string mesto;
@@ -21,24 +19,19 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
     public string ulice;
     [ObservableProperty] 
     public string cislo_popisne;
-
-    public AdresyFormViewModel(ObservableCollection<object> collection)
-    {
-        _errorsViewModel = new ErrorsViewModel();
-        _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
-        this.collection = collection;
-    }
-    public AdresyFormViewModel(object selectedItem,ObservableCollection<object> collection)
+    
+    public AdresyFormViewModel(object selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
         
-        this.collection = collection;
-        originalItem = (Adresy)selectedItem;
-
-        Mesto = originalItem.Mesto;
-        Ulice = originalItem.Ulice;
-        Cislo_popisne = originalItem.CisloPopisne.ToString();
+        if (selectedItem != null)
+        {
+            var item = (Adresy)selectedItem;
+            Mesto = item.Mesto;
+            Ulice = item.Ulice;
+            Cislo_popisne = item.CisloPopisne.ToString();
+        }
     }
 
     [RelayCommand]
@@ -48,20 +41,9 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
         
         if (CanCreate)
         {
-            // save or add here
-            if(originalItem == null)
-                collection.Add(new Adresy
-                {
-                    Mesto = Mesto,
-                    Ulice = Ulice,
-                    CisloPopisne = Int32.Parse(Cislo_popisne)
-                });
-            else
-            {
-                originalItem.Mesto = Mesto;
-                originalItem.Ulice = Ulice;
-                originalItem.CisloPopisne = Int32.Parse(Cislo_popisne);
-            }
+            //insert/update procedure
+
+            
             Exit();
         }
     }

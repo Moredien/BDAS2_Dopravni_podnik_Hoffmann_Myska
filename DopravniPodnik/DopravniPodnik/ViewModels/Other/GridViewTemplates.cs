@@ -66,7 +66,7 @@ public static class GridViewTemplates
             case "Zamestnanci":
                 return new DataGridDataContext(
                     modelType,
-                    null,
+                    typeof(ZamestnanciFormViewModel),
                     new ObservableCollection<DataGridColumnInfo>{
                         new DataGridColumnInfo { Header = "Plat", BindingPath = "Plat" },
                         new DataGridColumnInfo { Header = "Platnost úvazku do", BindingPath = "PlatnostUvazkuDo" , Format = "dd.MM.yyyy"},
