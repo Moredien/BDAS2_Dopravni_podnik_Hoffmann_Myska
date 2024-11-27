@@ -20,16 +20,26 @@ public class AuthService
 
     private const int NumberOfIterations = 10000;
 
-    private const string InsertUserProcedure = """
-                                             BEGIN
-                                                 InsertUzivatel(
-                                                     :p_uzivatelske_jmeno, :p_heslo, :p_jmeno, :p_prijmeni,
-                                                     :p_cas_zalozeni, :p_datum_narozeni, :p_typ_uzivatele_nazev,
-                                                     :p_mesto, :p_ulice, :p_cislo_popisne, :p_foto_jmeno_souboru,
-                                                     :p_foto_data, :p_foto_datum_pridani, :p_error_message
-                                                 );
-                                             END;
-                                             """;
+    private const string InsertUserProcedure = @"
+            BEGIN
+                ST67028.INSERT_UPDATE.EDIT_UZIVATEL_VIEW(
+                    :p_id_uzivatele,
+                    :p_uzivatelske_jmeno, 
+                    :p_heslo, 
+                    :p_jmeno, 
+                    :p_prijmeni,
+                    :p_cas_zalozeni, 
+                    :p_datum_narozeni, 
+                    :p_typ_uzivatele_nazev,
+                    :p_mesto, 
+                    :p_ulice, 
+                    :p_cislo_popisne, 
+                    :p_foto_jmeno_souboru,
+                    :p_foto_data, 
+                    :p_foto_datum_pridani
+                );
+            END;
+        ";
     public UserRegistrationResult RegisterUser(UzivatelDTO uzivatel)
     {
         try
@@ -46,6 +56,7 @@ public class AuthService
 
             var parameters = new List<OracleParameter>
             {
+                new("p_id_uzivatele", OracleDbType.Decimal) { Value = DBNull.Value, Direction = ParameterDirection.InputOutput },
                 new("p_uzivatelske_jmeno", OracleDbType.Varchar2, uzivatel.uzivatelske_jmeno, ParameterDirection.Input),
                 new("p_heslo", OracleDbType.Varchar2, hashedPassword, ParameterDirection.Input),
                 new("p_jmeno", OracleDbType.Varchar2, uzivatel.jmeno, ParameterDirection.Input),
@@ -56,13 +67,15 @@ public class AuthService
                 new("p_mesto", OracleDbType.Varchar2, uzivatel.mesto, ParameterDirection.Input),
                 new("p_ulice", OracleDbType.Varchar2, uzivatel.ulice, ParameterDirection.Input),
                 new("p_cislo_popisne", OracleDbType.Decimal, uzivatel.cislo_popisne, ParameterDirection.Input),
-                new("p_foto_jmeno_souboru", OracleDbType.Varchar2,
-                    string.IsNullOrEmpty(uzivatel.foto_jmeno_souboru) ? DBNull.Value : uzivatel.foto_jmeno_souboru, ParameterDirection.Input),
-                new("p_foto_data", OracleDbType.Blob,
-                    uzivatel.foto_data != null ? ImageToBlob(uzivatel.foto_data) : DBNull.Value, ParameterDirection.Input),
-                new("p_foto_datum_pridani", OracleDbType.Date,
-                    uzivatel.foto_datum_pridani != default ? uzivatel.foto_datum_pridani : DBNull.Value, ParameterDirection.Input),
-                new("p_error_message", OracleDbType.Varchar2, 4000) { Direction = ParameterDirection.Output }
+                new("p_foto_jmeno_souboru", OracleDbType.Varchar2, 
+                    string.IsNullOrEmpty(uzivatel.foto_jmeno_souboru) ? DBNull.Value : uzivatel.foto_jmeno_souboru, 
+                    ParameterDirection.Input),
+                new("p_foto_data", OracleDbType.Blob, 
+                    uzivatel.foto_data != null ? ImageToBlob(uzivatel.foto_data) : DBNull.Value, 
+                    ParameterDirection.Input),
+                new("p_foto_datum_pridani", OracleDbType.Date, 
+                    uzivatel.foto_datum_pridani != default ? uzivatel.foto_datum_pridani : DBNull.Value, 
+                    ParameterDirection.Input)
             };
 
             _databaseService.CallDbProcedure( new ProcedureCallWrapper(InsertUserProcedure, parameters), out var error);
