@@ -144,6 +144,66 @@ public class DatabaseService
         return results;
     }
     
+    public List<TDto> FetchDataParam<TDto>(ProcedureCallWrapper procedure) where TDto : new()
+    {
+        var results = new List<TDto>();
+
+        var connection = _context.Database.GetDbConnection() as OracleConnection;
+
+        if (connection == null)
+        {
+            _logger.Message("Database connection is not type of OracleConnection").Error().Log();
+            return results;
+        }
+
+        try
+        {
+            connection.Open();
+
+            using var command = new OracleCommand(procedure.Query, connection);
+        
+            foreach (var param in procedure.Parameters)
+            {
+                command.Parameters.Add(param);
+            }
+
+            using var reader = command.ExecuteReader();
+            var properties = typeof(TDto).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            while (reader.Read())
+            {
+                var obj = new TDto();
+
+                foreach (var property in properties)
+                {
+                    var columnAttribute = property.GetCustomAttribute<ColumnNameAttribute>();
+                    var columnName = columnAttribute?.Name ?? property.Name;
+
+                    if (!reader.HasColumn(columnName))
+                        continue;
+
+                    var value = reader[columnName];
+                    if (value == DBNull.Value) value = null;
+
+                    property.SetValue(obj, ConvertValue(value, property.PropertyType));
+                }
+
+                results.Add(obj);
+            }
+        }
+        catch (Exception e)
+        {
+            _logger.Exception(e).Log();
+            return [];
+        }
+        finally
+        {
+            connection.Close();
+        }
+
+        return results;
+    }
+    
     public void UpdateTable<T>(string tableName, string whereCondition, T data) where T : class
     {
         ArgumentNullException.ThrowIfNull(data);
