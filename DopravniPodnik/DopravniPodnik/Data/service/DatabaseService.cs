@@ -52,7 +52,7 @@ public class DatabaseService
                 errorMessage = errorParam.Value.ToString();
             }
 
-            return result > 0;
+            return errorMessage == "null";
         }
         catch (Exception e)
         {

@@ -16,7 +16,7 @@ public static class TableMapper
 //only necessary if the DTO type name is different from the table name 
     private static Dictionary<Type, string> tableNames = new()
     {
-        { typeof(UzivatelDTO), "ZakaznikView" },
+        { typeof(UzivatelDTO), "UZIVATEL_VIEW" },
         { typeof(TypyUzivatele), "Typy_uzivatele" }
     };
 }

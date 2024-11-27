@@ -65,7 +65,9 @@ public class AuthService
                 new OracleParameter("p_error_message", OracleDbType.Varchar2, 4000) { Direction = ParameterDirection.Output }
             };
 
-            if (!_databaseService.CallDbProcedure(InsertUserProcedure, parameters, out var errorMessage))
+            var success = _databaseService.CallDbProcedure(InsertUserProcedure, parameters, out var errorMessage);
+            
+            if (!success)
             {
                 if (!string.IsNullOrEmpty(errorMessage))
                 {
@@ -97,6 +99,7 @@ public class AuthService
         {
             var user = _context.Uzivatele
                 .FromSqlInterpolated($"SELECT * FROM ST67028.UZIVATELE WHERE UZIVATELSKE_JMENO = {uzivatelskeJmeno}")
+                .OrderBy(u => u.UzivatelskeJmeno)
                 .FirstOrDefault();
             
             if (user == null)
@@ -108,8 +111,8 @@ public class AuthService
             if (!ValidatePassword(heslo, user.Heslo)) return UserLoginResult.WrongPassword;
 
             var userType = _context.TypyUzivatelu
-                .FromSqlInterpolated(
-                    $"SELECT * FROM ST67028.TYPY_UZIVATELE WHERE ID_TYP_UZIVATELE = {user.IdTypUzivatele}")
+                .FromSqlInterpolated($"SELECT * FROM ST67028.TYPY_UZIVATELE WHERE ID_TYP_UZIVATELE = {user.IdTypUzivatele}")
+                .OrderBy(t => t.IdTypUzivatele)
                 .FirstOrDefault();
 
             if (userType == null)
