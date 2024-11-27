@@ -44,37 +44,31 @@ public class AuthService
 
             var hashedPassword = HashPassword(uzivatel.heslo);
 
-            var parameters = new []
+            var parameters = new List<OracleParameter>
             {
-                new OracleParameter("p_uzivatelske_jmeno", OracleDbType.Varchar2, uzivatel.uzivatelske_jmeno, ParameterDirection.Input),
-                new OracleParameter("p_heslo", OracleDbType.Varchar2, hashedPassword, ParameterDirection.Input),
-                new OracleParameter("p_jmeno", OracleDbType.Varchar2, uzivatel.jmeno, ParameterDirection.Input),
-                new OracleParameter("p_prijmeni", OracleDbType.Varchar2, uzivatel.prijmeni, ParameterDirection.Input),
-                new OracleParameter("p_cas_zalozeni", OracleDbType.Date, DateTime.Now, ParameterDirection.Input),
-                new OracleParameter("p_datum_narozeni", OracleDbType.Date, uzivatel.datum_narozeni, ParameterDirection.Input),
-                new OracleParameter("p_typ_uzivatele_nazev", OracleDbType.Varchar2, uzivatel.nazev_typ_uzivatele, ParameterDirection.Input),
-                new OracleParameter("p_mesto", OracleDbType.Varchar2, uzivatel.mesto, ParameterDirection.Input),
-                new OracleParameter("p_ulice", OracleDbType.Varchar2, uzivatel.ulice, ParameterDirection.Input),
-                new OracleParameter("p_cislo_popisne", OracleDbType.Decimal, uzivatel.cislo_popisne, ParameterDirection.Input),
-                new OracleParameter("p_foto_jmeno_souboru", OracleDbType.Varchar2,
+                new("p_uzivatelske_jmeno", OracleDbType.Varchar2, uzivatel.uzivatelske_jmeno, ParameterDirection.Input),
+                new("p_heslo", OracleDbType.Varchar2, hashedPassword, ParameterDirection.Input),
+                new("p_jmeno", OracleDbType.Varchar2, uzivatel.jmeno, ParameterDirection.Input),
+                new("p_prijmeni", OracleDbType.Varchar2, uzivatel.prijmeni, ParameterDirection.Input),
+                new("p_cas_zalozeni", OracleDbType.Date, DateTime.Now, ParameterDirection.Input),
+                new("p_datum_narozeni", OracleDbType.Date, uzivatel.datum_narozeni, ParameterDirection.Input),
+                new("p_typ_uzivatele_nazev", OracleDbType.Varchar2, uzivatel.nazev_typ_uzivatele, ParameterDirection.Input),
+                new("p_mesto", OracleDbType.Varchar2, uzivatel.mesto, ParameterDirection.Input),
+                new("p_ulice", OracleDbType.Varchar2, uzivatel.ulice, ParameterDirection.Input),
+                new("p_cislo_popisne", OracleDbType.Decimal, uzivatel.cislo_popisne, ParameterDirection.Input),
+                new("p_foto_jmeno_souboru", OracleDbType.Varchar2,
                     string.IsNullOrEmpty(uzivatel.foto_jmeno_souboru) ? DBNull.Value : uzivatel.foto_jmeno_souboru, ParameterDirection.Input),
-                new OracleParameter("p_foto_data", OracleDbType.Blob,
+                new("p_foto_data", OracleDbType.Blob,
                     uzivatel.foto_data != null ? ImageToBlob(uzivatel.foto_data) : DBNull.Value, ParameterDirection.Input),
-                new OracleParameter("p_foto_datum_pridani", OracleDbType.Date,
+                new("p_foto_datum_pridani", OracleDbType.Date,
                     uzivatel.foto_datum_pridani != default ? uzivatel.foto_datum_pridani : DBNull.Value, ParameterDirection.Input),
-                new OracleParameter("p_error_message", OracleDbType.Varchar2, 4000) { Direction = ParameterDirection.Output }
+                new("p_error_message", OracleDbType.Varchar2, 4000) { Direction = ParameterDirection.Output }
             };
 
-            var success = _databaseService.CallDbProcedure(InsertUserProcedure, parameters, out var errorMessage);
+            _databaseService.CallDbProcedure( new ProcedureCallWrapper(InsertUserProcedure, parameters), out var error);
             
-            if (!success)
+            if (!string.IsNullOrEmpty(error))
             {
-                if (!string.IsNullOrEmpty(errorMessage))
-                {
-                    _logger.Message($"Database error: {errorMessage}").Error().Log();
-                    return UserRegistrationResult.Failed;
-                }
-
                 _logger.Message("User registration failed at the database level").Error().Log();
                 return UserRegistrationResult.Failed;
             }
