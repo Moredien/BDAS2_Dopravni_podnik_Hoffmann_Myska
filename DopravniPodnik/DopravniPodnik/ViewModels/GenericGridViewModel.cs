@@ -20,15 +20,13 @@ public partial class GenericGridViewModel : ViewModelBase
     public object selectedItem;
 
     public DataGridDataContext DataContext;
-    private readonly UserService _userService;
     private readonly Type _modelType;
     private readonly string tableName;
     
     private readonly DatabaseService _databaseService = new();
 
-    public GenericGridViewModel(UserService userService, Type modelType)
+    public GenericGridViewModel(Type modelType)
     {
-        _userService = userService;
         _modelType = modelType;
         Items = new();
         
@@ -46,12 +44,12 @@ public partial class GenericGridViewModel : ViewModelBase
             Console.WriteLine("Neni vybran zadny uzivatel");
             return;
         }
-        WindowManager.SetContentView(EditFormtype,false,null,new object[]{selectedItem,Items});
+        WindowManager.SetContentView(EditFormtype,new object[]{selectedItem,Items});
     }
     [RelayCommand]
     void Create()
     {
-        WindowManager.SetContentView(EditFormtype,false,null,new object[]{Items});
+        WindowManager.SetContentView(EditFormtype,new object[]{Items});
     }
     [RelayCommand]
     void Delete()

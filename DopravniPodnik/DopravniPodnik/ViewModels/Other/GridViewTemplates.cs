@@ -63,6 +63,15 @@ public static class GridViewTemplates
                         new DataGridColumnInfo { Header = "Ulice", BindingPath = "Ulice" },
                         new DataGridColumnInfo { Header = "Číslo popisné", BindingPath = "CisloPopisne" }
                         });
+            case "Zamestnanci":
+                return new DataGridDataContext(
+                    modelType,
+                    null,
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Plat", BindingPath = "Plat" },
+                        new DataGridColumnInfo { Header = "Platnost úvazku do", BindingPath = "PlatnostUvazkuDo" , Format = "dd.MM.yyyy"},
+                        new DataGridColumnInfo { Header = "id nadřízeného", BindingPath = "IdNadrizeneho" }
+                    });
             default: return null;
         }
     }

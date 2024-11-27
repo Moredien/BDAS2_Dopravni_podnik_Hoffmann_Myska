@@ -2,14 +2,14 @@
 
 public class ListItemTemplate
 {
-    public ListItemTemplate(string label, Type modelType,string key)
+    public ListItemTemplate(string label, Type modelType,Type viewModelType)
     {
         Label = label;
         ModelType = modelType;
-        Key = key;
+        ViewModelType = viewModelType;
     }
 
     public string Label { get; }
     public Type ModelType { get; }
-    public string Key { get; }
+    public Type ViewModelType { get; }
 }

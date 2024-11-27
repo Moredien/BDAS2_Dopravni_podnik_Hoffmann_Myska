@@ -19,13 +19,13 @@ public partial class MainWindowViewModel : ViewModelBase
     public ListItemTemplate _selectedListItem;
 
     private GenericGridViewModel GridViewModel;
-    private UserService _userService = new();
+    // private UserService _userService = new();
     partial void OnSelectedListItemChanged(ListItemTemplate? value)
     {
         if (value == null) 
             value = MenuItems[0];
 
-        WindowManager.SetContentView(typeof(GenericGridViewModel),true,value.Key,new object[]{_userService,value.ModelType });
+        WindowManager.SetContentView(typeof(GenericGridViewModel),new object[]{value.ModelType });
     }
 
     public ObservableCollection<ListItemTemplate> MenuItems { get; } = new();
@@ -34,9 +34,10 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         WindowManager.MainWindow = this;
 
-        MenuItems.Add(new ListItemTemplate("UživateleView", typeof(UzivatelDTO),"GridViewUzivateleDTO"));
-        MenuItems.Add(new ListItemTemplate("Typy uživatele", typeof(TypyUzivatele),"GridViewTypyUzivatele"));
-        MenuItems.Add(new ListItemTemplate("Adresy", typeof(Adresy),"GridViewAdresy"));
+        MenuItems.Add(new ListItemTemplate("UživateleView", typeof(UzivatelDTO),typeof(GenericGridViewModel)));
+        MenuItems.Add(new ListItemTemplate("Typy uživatele", typeof(TypyUzivatele),typeof(GenericGridViewModel)));
+        MenuItems.Add(new ListItemTemplate("Adresy", typeof(Adresy),typeof(GenericGridViewModel)));
+        MenuItems.Add(new ListItemTemplate("Zamestnanci", typeof(Zamestnanci),typeof(GenericGridViewModel)));
         
         
         SelectedListItem = MenuItems[0];
