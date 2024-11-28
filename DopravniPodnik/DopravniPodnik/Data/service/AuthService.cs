@@ -78,7 +78,7 @@ public class AuthService
                     ParameterDirection.Input)
             };
 
-            _databaseService.CallDbProcedure( new ProcedureCallWrapper(InsertUserProcedure, parameters), out var error);
+            _databaseService.ExecuteDbCall( new ProcedureCallWrapper(InsertUserProcedure, parameters), out var error);
             
             if (!string.IsNullOrEmpty(error))
             {

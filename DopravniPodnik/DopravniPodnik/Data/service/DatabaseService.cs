@@ -26,7 +26,7 @@ public class DatabaseService
         }
     }
 
-    public void CallDbProcedure(ProcedureCallWrapper procedure, out string error)
+    public void ExecuteDbCall(ProcedureCallWrapper procedure, out string error)
     {
         var connection = _context.Database.GetDbConnection() as OracleConnection;
         if (connection == null)
@@ -41,8 +41,12 @@ public class DatabaseService
             connection.Open();
 
             using var command = new OracleCommand(procedure.Query, connection);
+
+            if (procedure.Parameters.Count != 0)
+            {
+                command.Parameters.AddRange(procedure.Parameters.ToArray());
+            }
             
-            command.Parameters.AddRange(procedure.Parameters.ToArray());
             command.ExecuteNonQuery();
             error = string.Empty;
         }
