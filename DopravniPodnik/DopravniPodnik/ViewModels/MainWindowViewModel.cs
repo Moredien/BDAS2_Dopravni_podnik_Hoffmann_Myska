@@ -42,6 +42,7 @@ public partial class MainWindowViewModel : ViewModelBase
         MenuItems.Add(new ListItemTemplate("Řidiči", typeof(Ridici),typeof(GenericGridViewModel)));
         MenuItems.Add(new ListItemTemplate("Zastávky", typeof(Zastavky),typeof(GenericGridViewModel)));
         MenuItems.Add(new ListItemTemplate("Typy předplatného", typeof(TypyPredplatneho),typeof(GenericGridViewModel)));
+        MenuItems.Add(new ListItemTemplate("Logy", typeof(Logy),typeof(GenericGridViewModel)));
         
         
         SelectedListItem = MenuItems[0];
