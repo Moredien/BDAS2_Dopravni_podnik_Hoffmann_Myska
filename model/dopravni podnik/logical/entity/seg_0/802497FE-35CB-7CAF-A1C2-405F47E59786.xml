@@ -83,6 +83,21 @@
 <dataTypePrecision>32</dataTypePrecision>
 <ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_ridice" id="08CF92A2-E3BC-920F-FC2F-67DE62D4013F">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-28 17:41:44 UTC</createdTime>
+<generatorID>16C4326B-2622-3BAE-2450-10505C32F697</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+</engineerTo>
+<referedAttribute>4DD8B2A1-05AF-D838-C715-3E799603BEB8</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="40D60E2B-ADF6-8971-9D3F-D55ED060D046" name="Jízda PK">

@@ -79,6 +79,21 @@
 <colAssociation fkAssociation="BD4DAC62-684F-5F28-3E52-3D3CD05521CB" referredColumn="6A4E918B-0FB5-41F3-D9A0-779B0C0C4A05"/>
 </associations>
 </Column>
+<Column name="id_ridice" id="C0CFDFB7-9656-7863-FE2E-4E07E977B89B">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-28 17:43:05 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="861C7C30-1C19-FF75-44C9-4F9553B8D618" referredColumn="76E8A840-670D-4F4E-4136-072386B92D1F"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="9E0647A2-FD97-ADDD-B1DB-0B25D87B459E" name="JIZDA_PK">
@@ -113,6 +128,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="7B480C1C-1ACF-1DE4-CDC4-DCB8B6012559"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ED472A0C-5F22-171F-18EB-1CE034AE08BF" name="JIZDY_RIDICI_FK">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-28 17:43:05 UTC</createdTime>
+<generatorID>EA3FBA94-CADA-50F8-D994-41D93461BF1D</generatorID>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C0CFDFB7-9656-7863-FE2E-4E07E977B89B"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
