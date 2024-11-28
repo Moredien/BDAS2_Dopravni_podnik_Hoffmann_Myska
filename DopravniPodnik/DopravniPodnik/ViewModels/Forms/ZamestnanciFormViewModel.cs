@@ -92,7 +92,7 @@ public partial class ZamestnanciFormViewModel: ViewModelBase , INotifyDataErrorI
         };
 
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
-        _databaseService.CallDbProcedure(procedureCallWrapper, out var error);
+        _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
 
         Console.WriteLine(error);
         Exit();

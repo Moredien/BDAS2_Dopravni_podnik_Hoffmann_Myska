@@ -5,6 +5,7 @@ namespace DopravniPodnik.Data.DTO;
 
 public class UzivatelDTO
 {
+    [IdProperty]
     public int? id_uzivatele { get; set; }
     public string uzivatelske_jmeno{ get; set; }
     public string heslo{ get; set; }

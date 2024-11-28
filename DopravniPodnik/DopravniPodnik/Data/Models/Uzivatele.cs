@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.Data.Models;
 
 public partial class Uzivatele
 {
+    [IdProperty]
+    [ColumnName("ID_UZIVATELE")]
     public int IdUzivatele { get; set; }
 
     public string UzivatelskeJmeno { get; set; } = null!;

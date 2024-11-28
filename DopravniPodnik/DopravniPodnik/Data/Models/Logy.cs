@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.Data.Models;
 
 public partial class Logy
 {
+    [IdProperty]
+    [ColumnName("ID_LOGU")]
     public int IdLogu { get; set; }
 
     public DateTime Cas { get; set; }

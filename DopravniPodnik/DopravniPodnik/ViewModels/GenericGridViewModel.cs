@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Reflection;
 using System.Windows.Documents;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
 using DopravniPodnik.Utils;
+using Oracle.ManagedDataAccess.Client;
 
 namespace DopravniPodnik.ViewModels;
 
@@ -56,8 +59,16 @@ public partial class GenericGridViewModel : ViewModelBase
     {
         if (SelectedItem != null)
         {
+            var id = GetId(SelectedItem);
+            var columnName = GetColumnNameForIdProperty(SelectedItem);
+            
+            string query = $"DELETE FROM {tableName} WHERE {columnName} = {id}";
+            Console.WriteLine(query);
+            
+            var procedureCallWrapper = new ProcedureCallWrapper(query, new());
+            _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+            
             Items.Remove(SelectedItem);
-
         }
             
     }
@@ -73,6 +84,32 @@ public partial class GenericGridViewModel : ViewModelBase
         {
             Items.Add(obj);
         }
+    }
+
+    private int? GetId(object obj)
+    {
+        var type = obj.GetType();
+        var idProperty = type.GetProperties()
+            .FirstOrDefault(prop => Attribute.IsDefined(prop, typeof(IdProperty)));
+    
+        return idProperty?.GetValue(obj) as int?;
+    }
+    public static string? GetColumnNameForIdProperty(object obj)
+    {
+        var properties = obj.GetType().GetProperties();
+
+        foreach (var property in properties)
+        {
+            // Check if the property has both attributes
+            var hasIdProperty = Attribute.IsDefined(property, typeof(IdProperty));
+            var columnNameAttribute = property.GetCustomAttribute<ColumnNameAttribute>();
+
+            if (hasIdProperty && columnNameAttribute != null)
+            {
+                return columnNameAttribute.Name; // Return the column name
+            }
+        }
+        return null; // Return null if no matching property is found
     }
 
 

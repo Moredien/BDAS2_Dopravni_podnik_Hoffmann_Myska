@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Windows.Controls.Primitives;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
+using DopravniPodnik.Utils;
+using Oracle.ManagedDataAccess.Client;
 
 namespace DopravniPodnik.ViewModels.Forms;
 
@@ -15,10 +18,11 @@ public partial class TypyUzivateleFormViewModel : ViewModelBase , INotifyDataErr
     private readonly ErrorsViewModel _errorsViewModel;
     public bool HasErrors => _errorsViewModel.HasErrors;
     public bool CanCreate => !HasErrors;
+    private readonly DatabaseService _databaseService = new();
 
     [ObservableProperty]
     private string? nazev ;
-
+    private int? IdTypUzivatele { get; set; }
     public TypyUzivateleFormViewModel(object selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
@@ -26,6 +30,7 @@ public partial class TypyUzivateleFormViewModel : ViewModelBase , INotifyDataErr
         if (selectedItem != null)
         {
             Nazev = ((TypyUzivatele)selectedItem).Nazev;
+            IdTypUzivatele = ((TypyUzivatele)selectedItem).IdTypUzivatele;
         }
     }
 
@@ -36,11 +41,34 @@ public partial class TypyUzivateleFormViewModel : ViewModelBase , INotifyDataErr
         
         if (CanCreate)
         {
-            //insert/update procedure
+            string query = @"
+            BEGIN
+                ST67028.INSERT_UPDATE.edit_typy_uzivatele(
+                    :p_id_typ_uzivatele,
+                    :p_nazev
+                );
+            END;
+        ";
+            
+            object id;
+            if (IdTypUzivatele == null)
+                id = DBNull.Value;
+            else
+                id = IdTypUzivatele;
+            var parameters = new List<OracleParameter>
+            {
+                new OracleParameter("p_id_typ_uzivatele", OracleDbType.Decimal)
+                    { Value = id, Direction = ParameterDirection.Input },
+                new OracleParameter("p_nazev", OracleDbType.Varchar2) 
+                    { Value = Nazev, Direction = ParameterDirection.Input }
+            };
+            var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
+            _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+
+            Console.WriteLine(error);
             Exit();
         }
     }
-
 
     private void ValidateInput(string propertyName)
     {

@@ -6,6 +6,7 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class TypyUzivatele
 {
+    [IdProperty]
     [ColumnName("ID_TYP_UZIVATELE")]
     public int IdTypUzivatele { get; set; }
 

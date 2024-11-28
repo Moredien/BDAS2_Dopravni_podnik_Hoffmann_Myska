@@ -6,6 +6,7 @@ namespace DopravniPodnik.Data.Models;
 
 public partial class Adresy
 {
+    [IdProperty]
     [ColumnName("ID_ADRESY")]
     public int IdAdresy { get; set; }
 

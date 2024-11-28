@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.Data.Models;
 
 public partial class Zastaveni
 {
+    [IdProperty]
+    [ColumnName("ID_ZASTAVENI")]
     public int IdZastaveni { get; set; }
 
     public DateTime Odjezd { get; set; }

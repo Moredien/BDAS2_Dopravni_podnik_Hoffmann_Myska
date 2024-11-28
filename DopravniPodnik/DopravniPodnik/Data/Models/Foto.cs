@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.Data.Models;
 
 public partial class Foto
 {
+    [IdProperty]
+    [ColumnName("ID_FOTO")]
     public int IdFoto { get; set; }
 
     public string JmenoSouboru { get; set; } = null!;

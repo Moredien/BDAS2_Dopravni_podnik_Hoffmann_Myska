@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.Data.Models;
 
 public partial class KartyMhd
 {
+    [IdProperty]
+    [ColumnName("ID_KARTY")]
     public int IdKarty { get; set; }
 
     public decimal Zustatek { get; set; }

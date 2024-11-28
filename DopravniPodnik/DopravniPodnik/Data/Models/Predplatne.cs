@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.Data.Models;
 
 public partial class Predplatne
 {
+    [IdProperty]
+    [ColumnName("ID_PREDPLATNEHO")]
     public int IdPredplatneho { get; set; }
 
     public DateTime Od { get; set; }

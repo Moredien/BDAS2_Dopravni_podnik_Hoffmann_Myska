@@ -137,7 +137,7 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
             };
 
             var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
-            _databaseService.CallDbProcedure(procedureCallWrapper, out var error);
+            _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
 
             Console.WriteLine(error);
             Exit();
