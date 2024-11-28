@@ -62,7 +62,7 @@
                         <Button Content="Zpět" 
                                 Command="{Binding ExitCommand}"/>
                         <Button Content="Uložit"
-                                Command="{Binding SaveChangesCommand}"/>
+                                Command="{Binding SubmitCommand}"/>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

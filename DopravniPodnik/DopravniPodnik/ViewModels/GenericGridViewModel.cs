@@ -54,8 +54,12 @@ public partial class GenericGridViewModel : ViewModelBase
     [RelayCommand]
     void Delete()
     {
-        if(SelectedItem!=null)
+        if (SelectedItem != null)
+        {
             Items.Remove(SelectedItem);
+
+        }
+            
     }
     [RelayCommand]
     void Reload()
