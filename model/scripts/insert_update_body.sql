@@ -70,7 +70,8 @@ PROCEDURE edit_jizdy(
     p_zacatek DATE,
     p_konec DATE,
     p_id_vozidla NUMBER,
-    p_id_linky NUMBER
+    p_id_linky NUMBER,
+    p_id_ridice NUMBER
 ) AS
 BEGIN
     IF p_id_jizdy IS NULL THEN
@@ -78,12 +79,14 @@ BEGIN
             zacatek,
             konec,
             id_vozidla,
-            id_linky
+            id_linky,
+	    id_ridice
         ) VALUES (
             p_zacatek,
             p_konec,
             p_id_vozidla,
-            p_id_linky
+            p_id_linky,
+	    p_id_ridice 
         );
     ELSE
         UPDATE jizdy
@@ -91,7 +94,8 @@ BEGIN
             zacatek = p_zacatek,
             konec = p_konec,
             id_vozidla = p_id_vozidla,
-            id_linky = p_id_linky
+            id_linky = p_id_linky,
+	    id_ridice = p_id_ridice
         WHERE
             id_jizdy = p_id_jizdy;
     END IF;

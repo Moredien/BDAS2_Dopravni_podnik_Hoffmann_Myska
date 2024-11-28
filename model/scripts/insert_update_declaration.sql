@@ -18,7 +18,8 @@ PROCEDURE edit_jizdy(
     p_zacatek DATE,
     p_konec DATE,
     p_id_vozidla NUMBER,
-    p_id_linky NUMBER
+    p_id_linky NUMBER,
+    p_id_ridice NUMBER
 );
 PROCEDURE edit_karty_mhd(
     p_id_karty NUMBER,

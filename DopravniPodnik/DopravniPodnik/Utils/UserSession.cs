@@ -11,6 +11,7 @@ public class UserSession
     public string? UserName { get; private set; } = null;
     public TypyUzivatele? UserType { get; private set; } = null;
     public DateTime? SessionCreationTime { get; private set; } = null;
+    public bool IsSafeModeOn { get; set; } = false;
 
     private UserSession() { }
 

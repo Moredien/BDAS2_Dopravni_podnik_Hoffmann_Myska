@@ -10,6 +10,17 @@ public partial class LoggedInUserMenuViewModel : ViewModelBase
     [ObservableProperty] 
     private string username;
 
+    private bool safeMode = true;
+    public bool SafeMode
+    {
+        get { return safeMode; }
+        set
+        {
+            safeMode = value;
+            UserSession.Instance.IsSafeModeOn = value;
+        }
+    }
+
     [RelayCommand]
     private void LogOut()
     {

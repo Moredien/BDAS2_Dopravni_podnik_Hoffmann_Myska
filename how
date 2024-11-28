@@ -1,0 +1,68 @@
+[33mcommit 8b5cfae0950a3f4b8a2df9865932a08c56e1d281[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Radek Hoffmann <radek.hoffmann@hotmail.com>
+Date:   Thu Oct 31 18:52:52 2024 +0100
+
+    changed FK column names
+
+[33mcommit 2b503a881d4cd8c791d88f2346da9cdc7ae94ca3[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Daniel Myska <st67072@upce.cz>
+Date:   Wed Oct 30 18:13:44 2024 +0100
+
+    Ted uz to je fakt opraveny
+
+[33mcommit 56b778068acb820cf90d12d0df5df4e73cb364ef[m
+Author: Daniel Myska <st67072@upce.cz>
+Date:   Wed Oct 30 18:10:52 2024 +0100
+
+    Oprava chyby
+
+[33mcommit f54de85a2979702473218c82ec3e64737f8223f9[m
+Merge: e8a6198 9e190c6
+Author: Moredien <91892602+Moredien@users.noreply.github.com>
+Date:   Wed Oct 30 17:27:52 2024 +0100
+
+    Merge pull request #1 from Moredien/Pridani-EF
+    
+    Pridani EF core a upravy
+
+[33mcommit 9e190c651f9719b024632b5eba9cf914d4a1f83e[m[33m ([m[1;31morigin/Pridani-EF[m[33m)[m
+Author: Daniel Myska <st67072@upce.cz>
+Date:   Wed Oct 30 16:48:32 2024 +0100
+
+    Pridani reprezentace tabulek z db, a uprava main metody
+
+[33mcommit e218d65bcac06bb08b488c4b6fac32c2e9be3381[m
+Author: Daniel Myska <st67072@upce.cz>
+Date:   Tue Oct 29 18:10:39 2024 +0100
+
+    Update .gitignore rules
+
+[33mcommit ee0e56808de4c0435b96f7223c04b972b5d1977e[m
+Author: Daniel Myska <st67072@upce.cz>
+Date:   Tue Oct 29 18:10:07 2024 +0100
+
+    Update .gitignore rules
+
+[33mcommit e8a619841f7e7ae134d98308f22f97c2f45f3278[m
+Author: Radek Hoffmann <radek.hoffmann@hotmail.com>
+Date:   Mon Oct 28 23:49:03 2024 +0100
+
+    new database model and a create script
+
+[33mcommit e18ae5e1fce9b1ec9319d00e97220eb665792609[m
+Author: Radek Hoffmann <radek.hoffmann@hotmail.com>
+Date:   Mon Oct 28 14:36:55 2024 +0100
+
+    added community toolkit
+
+[33mcommit 5f5fe7099a19050d21b693df3ef4a10dca9409f6[m
+Author: Radek Hoffmann <radek.hoffmann@hotmail.com>
+Date:   Mon Oct 28 14:27:03 2024 +0100
+
+    added MVVM directories
+
+[33mcommit 2f03b9eeb6095c4465e8faaec4b6b132123122a9[m
+Author: Radek Hoffmann <radek.hoffmann@hotmail.com>
+Date:   Sun Oct 27 17:13:37 2024 +0100
+
+    initial commit

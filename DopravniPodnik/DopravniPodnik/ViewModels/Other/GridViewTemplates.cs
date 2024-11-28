@@ -72,6 +72,31 @@ public static class GridViewTemplates
                         new DataGridColumnInfo { Header = "Platnost úvazku do", BindingPath = "PlatnostUvazkuDo" , Format = "dd.MM.yyyy"},
                         new DataGridColumnInfo { Header = "id nadřízeného", BindingPath = "IdNadrizeneho" }
                     });
+            case "Foto":
+                return new DataGridDataContext(
+                    modelType,
+                    null,
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Soubor", BindingPath = "JmenoSouboru" },
+                        new DataGridColumnInfo { Header = "Datum přidání", BindingPath = "DatumPridani" , Format = "dd.MM.yyyy"},
+                    });
+            case "Jizdy":
+                return new DataGridDataContext(
+                    modelType,
+                    null,
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Začátek", BindingPath = "Zacatek" },
+                        new DataGridColumnInfo { Header = "Konec", BindingPath = "Konec" },
+                    });
+            case "KartyMhd":
+                return new DataGridDataContext(
+                    modelType,
+                    null,
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Zůstatek", BindingPath = "Zustatek" },
+                        new DataGridColumnInfo { Header = "Platnost od", BindingPath = "PlatnostOd" },
+                        new DataGridColumnInfo { Header = "Platnost do", BindingPath = "PlatnostDo" },
+                    });
             default: return null;
         }
     }

@@ -21,14 +21,22 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
         <Label Content="{Binding Username}"
                Grid.Column="0"
-               VerticalAlignment="Center"/>
-        <StackPanel Grid.Column="1"
+               VerticalAlignment="Top"
+               Margin="0"
+        />
+        <CheckBox Grid.Column="1" 
+                  Content="Bezpečný režim"
+                  VerticalAlignment="Center"
+                  IsChecked="{Binding SafeMode}"/>
+        
+        
+        <StackPanel Grid.Column="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
 
