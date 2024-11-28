@@ -63,7 +63,6 @@ public partial class GenericGridViewModel : ViewModelBase
             var columnName = GetColumnNameForIdProperty(SelectedItem);
             
             string query = $"DELETE FROM {tableName} WHERE {columnName} = {id}";
-            Console.WriteLine(query);
             
             var procedureCallWrapper = new ProcedureCallWrapper(query, new());
             _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);

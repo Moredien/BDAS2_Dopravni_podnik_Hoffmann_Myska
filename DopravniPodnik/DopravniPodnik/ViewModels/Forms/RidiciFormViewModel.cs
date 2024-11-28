@@ -10,33 +10,34 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace DopravniPodnik.ViewModels.Forms;
 
-//This is just a template for creating formViewModels, not meant to be instantiated
-public partial class TemplateFormViewModel : ViewModelBase , INotifyDataErrorInfo
+public partial class RidiciFormViewModel : ViewModelBase , INotifyDataErrorInfo
 {
     public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
     private readonly ErrorsViewModel _errorsViewModel;
     public bool HasErrors => _errorsViewModel.HasErrors;
     public bool CanCreate => !HasErrors;
     private readonly DatabaseService _databaseService = new();
-    
-    // add all the properties here
+
     [ObservableProperty]
-    private string? property;
-    
+    private string? jmeno;
+    [ObservableProperty]
+    private string? prijmeni;
+
     private int? Id;
 
-    public TemplateFormViewModel(object selectedItem)
+    public RidiciFormViewModel(object selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
         if (selectedItem != null)
         {
             // cast to edited model type
-            Property = ((TypyUzivatele)selectedItem).Nazev;
-            Id = ((TypyUzivatele)selectedItem).IdTypUzivatele;
+            Jmeno = ((Ridici)selectedItem).Jmeno;
+            Prijmeni = ((Ridici)selectedItem).Prijmeni;
+            Id = ((Ridici)selectedItem).IdRidice;
         }
     }
-    
+
     [RelayCommand]
     private void Submit()
     {
@@ -46,33 +47,35 @@ public partial class TemplateFormViewModel : ViewModelBase , INotifyDataErrorInf
         {
             string query = @"
             BEGIN
-                ST67028.INSERT_UPDATE.edit_typy_uzivatele(
-                    :p_id_typ_uzivatele,
-                    :p_nazev
+                ST67028.INSERT_UPDATE.edit_ridici(
+                    :p_id_ridice,
+                    :p_jmeno,
+                    :p_prijmeni
                 );
             END;
         ";
             
-            // object id;
-            // if (IdTypUzivatele == null)
-            //     id = DBNull.Value;
-            // else
-            //     id = IdTypUzivatele;
-            // var parameters = new List<OracleParameter>
-            // {
-            //     new OracleParameter("p_id_typ_uzivatele", OracleDbType.Decimal)
-            //         { Value = id, Direction = ParameterDirection.Input },
-            //     new OracleParameter("p_nazev", OracleDbType.Varchar2) 
-            //         { Value = Nazev, Direction = ParameterDirection.Input }
-            // };
-            // var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
-            // _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
-            
-            // Console.WriteLine(error);
+            object id;
+            if (Id == null)
+                id = DBNull.Value;
+            else
+                id = Id;
+            var parameters = new List<OracleParameter>
+            {
+                new OracleParameter("p_id_ridice", OracleDbType.Decimal)
+                    { Value = id, Direction = ParameterDirection.Input },
+                new OracleParameter("p_jmeno", OracleDbType.Varchar2)
+                    { Value = Jmeno, Direction = ParameterDirection.Input },
+                new OracleParameter("p_prijmeni", OracleDbType.Varchar2) 
+                    { Value = Prijmeni, Direction = ParameterDirection.Input }
+            };
+            var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
+            _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+
+            Console.WriteLine(error);
             Exit();
         }
     }
-    
     private void ValidateInput(string propertyName)
     {
         _errorsViewModel.ClearErrors(propertyName);
@@ -90,7 +93,7 @@ public partial class TemplateFormViewModel : ViewModelBase , INotifyDataErrorInf
     private void ValidateAllInputs()
     {
         // List all properties to be validated
-        ValidateInput(nameof(Property));
+        // ValidateInput(nameof(Property));
     }
 
     public IEnumerable GetErrors(string? propertyName)
@@ -108,4 +111,4 @@ public partial class TemplateFormViewModel : ViewModelBase , INotifyDataErrorInf
     {
         ValidateInput(propertyChangedEventArgs.PropertyName);
     }
-}
+    }

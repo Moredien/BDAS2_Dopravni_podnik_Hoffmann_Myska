@@ -10,8 +10,7 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace DopravniPodnik.ViewModels.Forms;
 
-//This is just a template for creating formViewModels, not meant to be instantiated
-public partial class TemplateFormViewModel : ViewModelBase , INotifyDataErrorInfo
+public partial class ZastavkyFormViewModel : ViewModelBase , INotifyDataErrorInfo
 {
     public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
     private readonly ErrorsViewModel _errorsViewModel;
@@ -21,19 +20,19 @@ public partial class TemplateFormViewModel : ViewModelBase , INotifyDataErrorInf
     
     // add all the properties here
     [ObservableProperty]
-    private string? property;
+    private string? jmeno;
     
     private int? Id;
 
-    public TemplateFormViewModel(object selectedItem)
+    public ZastavkyFormViewModel(object selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
         if (selectedItem != null)
         {
             // cast to edited model type
-            Property = ((TypyUzivatele)selectedItem).Nazev;
-            Id = ((TypyUzivatele)selectedItem).IdTypUzivatele;
+            Jmeno = ((Zastavky)selectedItem).Jmeno;
+            Id = ((Zastavky)selectedItem).IdZastavky;
         }
     }
     
@@ -46,29 +45,29 @@ public partial class TemplateFormViewModel : ViewModelBase , INotifyDataErrorInf
         {
             string query = @"
             BEGIN
-                ST67028.INSERT_UPDATE.edit_typy_uzivatele(
-                    :p_id_typ_uzivatele,
-                    :p_nazev
+                ST67028.INSERT_UPDATE.edit_zastavky(
+                    :p_id_zastavky,
+                    :p_jmeno
                 );
             END;
         ";
             
-            // object id;
-            // if (IdTypUzivatele == null)
-            //     id = DBNull.Value;
-            // else
-            //     id = IdTypUzivatele;
-            // var parameters = new List<OracleParameter>
-            // {
-            //     new OracleParameter("p_id_typ_uzivatele", OracleDbType.Decimal)
-            //         { Value = id, Direction = ParameterDirection.Input },
-            //     new OracleParameter("p_nazev", OracleDbType.Varchar2) 
-            //         { Value = Nazev, Direction = ParameterDirection.Input }
-            // };
-            // var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
-            // _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+            object id;
+            if (Id == null)
+                id = DBNull.Value;
+            else
+                id = Id;
+            var parameters = new List<OracleParameter>
+            {
+                new OracleParameter("p_id_zastavky", OracleDbType.Decimal)
+                    { Value = id, Direction = ParameterDirection.Input },
+                new OracleParameter("p_jmeno", OracleDbType.Varchar2) 
+                    { Value = Jmeno, Direction = ParameterDirection.Input }
+            };
+            var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
+            _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
             
-            // Console.WriteLine(error);
+            Console.WriteLine(error);
             Exit();
         }
     }
@@ -90,7 +89,7 @@ public partial class TemplateFormViewModel : ViewModelBase , INotifyDataErrorInf
     private void ValidateAllInputs()
     {
         // List all properties to be validated
-        ValidateInput(nameof(Property));
+        // ValidateInput(nameof(Property));
     }
 
     public IEnumerable GetErrors(string? propertyName)

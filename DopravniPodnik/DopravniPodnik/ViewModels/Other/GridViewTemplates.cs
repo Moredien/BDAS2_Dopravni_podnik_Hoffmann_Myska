@@ -97,6 +97,37 @@ public static class GridViewTemplates
                         new DataGridColumnInfo { Header = "Platnost od", BindingPath = "PlatnostOd" },
                         new DataGridColumnInfo { Header = "Platnost do", BindingPath = "PlatnostDo" },
                     });
+            case "TypyVozidel":
+                return new DataGridDataContext(
+                    modelType,
+                    typeof(TypyVozidelFormViewModel),
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Název", BindingPath = "Nazev" },
+                        new DataGridColumnInfo { Header = "Značka", BindingPath = "Znacka" },
+                    });
+            case "Ridici":
+                return new DataGridDataContext(
+                    modelType,
+                    typeof(RidiciFormViewModel),
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Jméno", BindingPath = "Jmeno" },
+                        new DataGridColumnInfo { Header = "Příjmení", BindingPath = "Prijmeni" },
+                    });
+            case "Zastavky":
+                return new DataGridDataContext(
+                    modelType,
+                    typeof(ZastavkyFormViewModel),
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Jméno", BindingPath = "Jmeno" },
+                    });
+            case "TypyPredplatneho":
+                return new DataGridDataContext(
+                    modelType,
+                    typeof(TypyPredplatnehoFormViewModel),
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Jméno", BindingPath = "Jmeno" },
+                        new DataGridColumnInfo { Header = "Cena", BindingPath = "Cena" },
+                    });
             default: return null;
         }
     }

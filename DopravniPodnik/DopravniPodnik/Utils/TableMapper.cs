@@ -17,6 +17,8 @@ public static class TableMapper
     private static Dictionary<Type, string> tableNames = new()
     {
         { typeof(UzivatelDTO), "UZIVATEL_VIEW" },
-        { typeof(TypyUzivatele), "Typy_uzivatele" }
+        { typeof(TypyUzivatele), "Typy_uzivatele" },
+        { typeof(TypyVozidel), "Typy_vozidel" },
+        { typeof(TypyPredplatneho), "Typy_predplatneho" }
     };
 }
