@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.Models;
+using DopravniPodnik.Data.service;
+using DopravniPodnik.Utils;
+using Oracle.ManagedDataAccess.Client;
 
 namespace DopravniPodnik.ViewModels.Forms;
 
@@ -12,6 +16,7 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
     private readonly ErrorsViewModel _errorsViewModel;
     public bool HasErrors => _errorsViewModel.HasErrors;
     public bool CanCreate => !HasErrors;
+    private readonly DatabaseService _databaseService = new();
 
     [ObservableProperty]
     public string mesto;
@@ -19,6 +24,8 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
     public string ulice;
     [ObservableProperty] 
     public string cislo_popisne;
+
+    private int? IdAdresy = null; 
     
     public AdresyFormViewModel(object selectedItem)
     {
@@ -31,6 +38,8 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
             Mesto = item.Mesto;
             Ulice = item.Ulice;
             Cislo_popisne = item.CisloPopisne.ToString();
+
+            IdAdresy = item.IdAdresy;
         }
     }
 
@@ -41,8 +50,38 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
         
         if (CanCreate)
         {
-            //insert/update procedure
+            string query = @"
+            BEGIN
+                ST67028.INSERT_UPDATE.edit_adresy(
+                    :p_id_adresy,
+                    :p_mesto,
+                    :p_ulice, 
+                    :p_cislo_popisne
+                );
+            END;
+        ";
+            object id;
+            if (IdAdresy == null)
+                id = DBNull.Value;
+            else
+                id = IdAdresy;
+        
+            var parameters = new List<OracleParameter>
+            {
+                new OracleParameter("p_id_adresy", OracleDbType.Decimal)
+                    { Value = id, Direction = ParameterDirection.Input },
+                new OracleParameter("p_mesto", OracleDbType.Varchar2) 
+                    { Value = Mesto, Direction = ParameterDirection.Input },
+                new OracleParameter("p_ulice", OracleDbType.Varchar2)
+                    { Value = Ulice, Direction = ParameterDirection.Input },
+                new OracleParameter("p_cislo_popisne", OracleDbType.Decimal)
+                    { Value = Int32.Parse(Cislo_popisne), Direction = ParameterDirection.Input }
+            };
 
+            var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
+            _databaseService.CallDbProcedure(procedureCallWrapper, out var error);
+
+            Console.WriteLine(error);
             
             Exit();
         }
