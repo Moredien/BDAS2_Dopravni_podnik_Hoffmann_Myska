@@ -10,7 +10,7 @@ public partial class LoggedInUserMenuViewModel : ViewModelBase
     [ObservableProperty] 
     private string username;
 
-    private bool safeMode = true;
+    private bool safeMode = false;
     public bool SafeMode
     {
         get { return safeMode; }
@@ -25,11 +25,14 @@ public partial class LoggedInUserMenuViewModel : ViewModelBase
     private void LogOut()
     {
         //logging out actions can be called from here
+        UserSession.Instance.EndSession();
+        Update();
         WindowManager.SetMenuView(typeof(AnonymousUserMenuViewModel));
     }
 
     public override void Update()
     {
         Username = App.UserSessionInstance.UserName;
+        WindowManager.ChangeUserType(UserSession.Instance.UserType);
     }
 }

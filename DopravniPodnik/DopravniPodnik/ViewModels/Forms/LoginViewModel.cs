@@ -60,7 +60,7 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
         _authService.LoginUser(Uzivatelske_jmeno!, PasswordBoxHelper.ConvertToUnsecureString(Heslo.Value));
         
         WindowManager.SetMenuView(typeof(LoggedInUserMenuViewModel));
-        Exit();
+        // Exit();
 
     }
     public IEnumerable GetErrors(string? propertyName)
