@@ -595,7 +595,6 @@ PROCEDURE edit_uzivatel_view(
         p_prijmeni VARCHAR2,
         p_cas_zalozeni DATE,
         p_datum_narozeni DATE,
-        p_typ_uzivatele_nazev VARCHAR2,
         p_mesto VARCHAR2,
         p_ulice VARCHAR2,
         p_cislo_popisne NUMBER,
@@ -610,7 +609,7 @@ BEGIN
     SELECT ID_TYP_UZIVATELE
     INTO resolved_id_typ_uzivatele
     FROM ST67028.TYPY_UZIVATELE
-    WHERE NAZEV = p_typ_uzivatele_nazev;
+    WHERE NAZEV = 'Zákazník';
 
     IF p_id_uzivatele IS NOT NULL THEN
         UPDATE ADRESY
@@ -641,6 +640,8 @@ BEGIN
         INSERT INTO UZIVATELE (UZIVATELSKE_JMENO, HESLO, JMENO, PRIJMENI, CAS_ZALOZENI, DATUM_NAROZENI, ID_TYP_UZIVATELE, ID_ADRESY)
         VALUES (p_uzivatelske_jmeno, p_heslo, p_jmeno, p_prijmeni, p_cas_zalozeni, p_datum_narozeni, resolved_id_typ_uzivatele, new_id_adresy)
         RETURNING ID_UZIVATELE INTO v_id_uzivatele;
+        
+        INSERT INTO ZAKAZNICI(ID_UZIVATELE) VALUES (v_id_uzivatele);
 
         p_id_uzivatele := v_id_uzivatele;
     END IF;
