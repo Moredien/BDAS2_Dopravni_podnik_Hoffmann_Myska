@@ -6,7 +6,35 @@
              xmlns:local="clr-namespace:DopravniPodnik.Views"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock>TODO Informace o zastavce</TextBlock>
-    </Grid>
+
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical"
+                        Width="200">
+                <Label Content="Zastávka" />
+                <ComboBox ItemsSource="{Binding Zastavky}"
+                          SelectedItem="{Binding SelectedZastavka}"
+                          DisplayMemberPath="Jmeno" />
+            </StackPanel>
+            <Button Content="Vyhledat"
+                    Command="{Binding VyhledatCommand}"
+                    VerticalAlignment="Center"/>
+        </StackPanel>
+        <Label Content="Datum odjezdu"/>
+        <DatePicker SelectedDate="{Binding SelectedDate}"/>
+
+        <DataGrid
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Items}"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            IsReadOnly="True"
+            Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Číslo linky" Binding="{Binding Linka}" />
+                <DataGridTextColumn Header="Jméno linky" Binding="{Binding JmenoLinky}" />
+                <DataGridTextColumn Header="Čas odjezdu" Binding="{Binding Odjezd, StringFormat=dd/MM/yyyy HH:mm:ss}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </UserControl>

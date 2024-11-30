@@ -64,29 +64,29 @@ public static class WindowManager
         MainWindow.MenuItems.Clear();
         if (userType == null)
         {
-            MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", typeof(InfoOZastavceDTO),typeof(InfoOZastavceViewModel)));
-            MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", typeof(VyhledaniCestyDTO),typeof(VyhledaniCestyViewModel)));
+            MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
+            MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", null,typeof(InfoOZastavceViewModel)));
             return;
         }
         
         switch (userType.Nazev)
         {
             case "Zákazník":
-                MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", typeof(InfoOZastavceDTO),typeof(InfoOZastavceViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", typeof(VyhledaniCestyDTO),typeof(VyhledaniCestyViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", null,typeof(InfoOZastavceViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Profil", typeof(ProfilDTO),typeof(ProfilViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Karty", typeof(KartyDTO),typeof(KartyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("HistoriePlateb", typeof(HistoriePlatebDTO),typeof(HistoriePlatebViewModel)));
                 break;
             case "Zaměstnanec":
-                MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", typeof(InfoOZastavceDTO),typeof(InfoOZastavceViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", typeof(VyhledaniCestyDTO),typeof(VyhledaniCestyViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce",null,typeof(InfoOZastavceViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Jízdy", typeof(JizdyDTO),typeof(JizdyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vozový park", typeof(VozovyParkDTO),typeof(VozovyParkViewModel)));
                 break;
             case "Admin":
-                MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", typeof(InfoOZastavceDTO),typeof(InfoOZastavceViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", typeof(VyhledaniCestyDTO),typeof(VyhledaniCestyViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", null,typeof(InfoOZastavceViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("UživateleView", typeof(UzivatelDTO),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Typy uživatele", typeof(TypyUzivatele),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Adresy", typeof(Adresy),typeof(GenericGridViewModel)));

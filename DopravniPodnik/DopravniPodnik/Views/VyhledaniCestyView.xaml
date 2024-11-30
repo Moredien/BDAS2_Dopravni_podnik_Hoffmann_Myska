@@ -5,8 +5,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DopravniPodnik.Views"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock>TODO vyhledavani cesty</TextBlock>
-    </Grid>
+             d:DesignHeight="*" d:DesignWidth="*">
+
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical"
+                        Width="200">
+                <Label Content="Odkud" />
+                <ComboBox ItemsSource="{Binding Zastavky}"
+                          SelectedItem="{Binding ZastavkaOdkud}"
+                          DisplayMemberPath="Jmeno" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Width="200">
+                <Label Content="Kam" />
+                <ComboBox ItemsSource="{Binding Zastavky}"
+                          SelectedItem="{Binding ZastavkaKam}"
+                          DisplayMemberPath="Jmeno" />
+            </StackPanel>
+            <Button Content="Vyhledat"
+                    Command="{Binding VyhledatCommand}"
+                    VerticalAlignment="Center"/>
+        </StackPanel>
+        <DataGrid
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Items}"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            IsReadOnly="True"
+            Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Číslo linky" Binding="{Binding Linka}" />
+                <DataGridTextColumn Header="Čas odjezdu" Binding="{Binding StartTime, StringFormat=dd/MM/yyyy HH:mm:ss}" />
+                <DataGridTextColumn Header="Čas příjezdu" Binding="{Binding EndTime, StringFormat=dd/MM/yyyy HH:mm:ss}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </UserControl>

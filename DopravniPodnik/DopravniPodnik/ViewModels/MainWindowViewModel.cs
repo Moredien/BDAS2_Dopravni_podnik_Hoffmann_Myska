@@ -38,9 +38,9 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         WindowManager.MainWindow = this;
-        
-        MenuItems.Add(new ListItemTemplate("Info o zastávce", typeof(InfoOZastavceDTO),typeof(InfoOZastavceViewModel)));
-        MenuItems.Add(new ListItemTemplate("Vyhledání cesty", typeof(VyhledaniCestyDTO),typeof(VyhledaniCestyViewModel)));
+
+        MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
+        MenuItems.Add(new ListItemTemplate("Info o zastávce", null,typeof(InfoOZastavceViewModel)));
         SelectedListItem = MenuItems[0];
         
         WindowManager.SetMenuView(typeof(AnonymousUserMenuViewModel));
