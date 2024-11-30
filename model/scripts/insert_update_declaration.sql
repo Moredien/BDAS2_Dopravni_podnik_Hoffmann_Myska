@@ -37,7 +37,6 @@ PROCEDURE edit_linky(
 PROCEDURE edit_logy(
     p_id_logu NUMBER,
     p_cas DATE,
-    p_uzivatel VARCHAR2,
     p_tabulka VARCHAR2,
     p_operace VARCHAR2,
     p_stara_hodnota VARCHAR2,
@@ -82,8 +81,7 @@ PROCEDURE edit_typy_uzivatele(
 );
 PROCEDURE edit_typy_vozidel(
     p_id_typ_vozidla NUMBER,
-    p_nazev VARCHAR2,
-    p_znacka VARCHAR2
+    p_nazev VARCHAR2
 );
 PROCEDURE edit_uzivatele(
     p_id_uzivatele NUMBER,
@@ -98,7 +96,8 @@ PROCEDURE edit_uzivatele(
 );
 PROCEDURE edit_vozidla(
     p_id_vozidla NUMBER,
-    p_id_typ_vozidla NUMBER
+    p_id_typ_vozidla NUMBER,
+    p_znacka VARCHAR2
 );
 PROCEDURE edit_zakaznici(
     p_id_zakaznika NUMBER,
@@ -115,7 +114,9 @@ PROCEDURE edit_zastaveni(
     p_id_zastaveni NUMBER,
     p_odjezd DATE,
     p_id_linky NUMBER,
-    p_id_zastavky NUMBER
+    p_id_zastavky NUMBER,
+    p_iterace NUMBER,
+    p_smer NUMBER
 );
 PROCEDURE edit_zastavky(
     p_id_zastavky NUMBER,

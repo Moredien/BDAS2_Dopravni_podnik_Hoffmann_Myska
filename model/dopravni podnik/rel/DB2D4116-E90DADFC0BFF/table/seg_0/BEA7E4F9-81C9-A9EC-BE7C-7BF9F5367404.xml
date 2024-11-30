@@ -33,12 +33,24 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,9,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="2007111F-78B5-C729-538F-3484F549A591" referredColumn="9BD5F873-799C-9093-A92C-8E775D28CD2A"/>
 </associations>
+</Column>
+<Column name="znacka" id="6287BA1A-66BA-2D8C-C283-8412671372CD">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-30 15:01:22 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

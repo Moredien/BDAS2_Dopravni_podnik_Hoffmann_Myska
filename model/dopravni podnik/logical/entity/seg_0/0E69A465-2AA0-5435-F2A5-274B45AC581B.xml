@@ -40,19 +40,6 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="uzivatel" id="CE9C09BE-D2E5-292A-05CD-66347B1B6A56">
-<createdBy>Uživatel</createdBy>
-<createdTime>2024-10-28 17:47:20 UTC</createdTime>
-<ownerDesignName>dopravni podnik</ownerDesignName>
-<engineerTo>
-<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>30</dataTypeSize>
-<ownDataTypeParameters>30,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="tabulka" id="81DEE61F-E146-078E-2303-AE29F8264EEA">
 <createdBy>Uživatel</createdBy>
 <createdTime>2024-10-28 17:54:23 UTC</createdTime>

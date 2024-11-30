@@ -36,18 +36,6 @@
 <ownDataTypeParameters>100,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="znacka" id="2CD50030-A927-5F30-7534-C11ED6DD0A0F">
-<createdBy>Uživatel</createdBy>
-<createdTime>2024-10-28 19:00:47 UTC</createdTime>
-<generatorID>063C5C78-3C7F-36E3-7829-81E050FA9EB0</generatorID>
-<ownerDesignName>dopravni podnik</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="1806460D-F4B4-B39E-1FC5-C575DDE73865" name="TYP_VOZIDLA_PK">

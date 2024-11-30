@@ -22,7 +22,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="0E69A465-2AA0-5435-F2A5-274B45AC581B" otype="Entity" vid="0CD6FBEC-EAAF-CF0E-858A-4FC09CE38025">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="736" y="849" width="116" height="140"/>
+<bounds x="736" y="849" width="116" height="111"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="17EAA543-5149-0E86-F463-00D8A288D926" otype="Entity" vid="1559C989-6806-4B7B-6653-770BF1C3C392">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -38,7 +38,7 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="51C1871A-B7C5-AF09-3B3F-059F7D41BFCE" otype="Entity" vid="932B93EA-91A4-0F68-7959-48EB0ECB0E57">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="750" y="148" width="103" height="69"/>
+<bounds x="748" y="156" width="103" height="53"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="5706E986-E694-84A4-AD6D-67AC9B085416" otype="Entity" vid="93FD9F12-0468-2A60-7671-60230B34CC57">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -219,19 +219,19 @@
 <lineWidth>1</lineWidth>
 <sourceLabel class="oracle.dbtools.crest.model.design.Label">
 <site>0</site>
-<labelBounds x="641" y="151" width="48" height="30"/>
+<labelBounds x="641" y="152" width="48" height="30"/>
 <noBackgroundColor>true</noBackgroundColor>
 <noForegroundColor>true</noForegroundColor>
 </sourceLabel>
 <targetLabel class="oracle.dbtools.crest.model.design.Label">
 <site>2</site>
-<labelBounds x="702" y="184" width="42" height="30"/>
+<labelBounds x="700" y="185" width="42" height="30"/>
 <noBackgroundColor>true</noBackgroundColor>
 <noForegroundColor>true</noForegroundColor>
 </targetLabel>
 <points>
-<point x="631" y="181"/>
-<point x="750" y="181"/>
+<point x="631" y="182"/>
+<point x="748" y="182"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="67309874-B28E-4959-7AC6-21495E061B5F" otype="Relation" vid_source="F56EA90E-DA5F-DB39-6ECE-01F3DC13A83F" vid_target="6ABC92E7-9A39-D9A6-B4E3-3626B2B704CC">

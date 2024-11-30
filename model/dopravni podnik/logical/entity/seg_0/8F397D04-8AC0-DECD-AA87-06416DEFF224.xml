@@ -43,6 +43,20 @@
 <dataTypePrecision>32</dataTypePrecision>
 <ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="znacka" id="182A8501-A3CA-DFDB-D72C-79636B1DF52B">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-30 15:00:23 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="976D2570-2CE1-3AE8-EE60-EA21DD8A8472" name="Vozidlo PK">

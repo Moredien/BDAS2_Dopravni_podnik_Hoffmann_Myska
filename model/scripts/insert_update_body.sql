@@ -167,7 +167,6 @@ END edit_linky;
 PROCEDURE edit_logy(
     p_id_logu NUMBER,
     p_cas DATE,
-    p_uzivatel VARCHAR2,
     p_tabulka VARCHAR2,
     p_operace VARCHAR2,
     p_stara_hodnota VARCHAR2,
@@ -177,14 +176,12 @@ BEGIN
     IF p_id_logu IS NULL THEN
         INSERT INTO logy (
             cas,
-            uzivatel,
             tabulka,
             operace,
             stara_hodnota,
             nova_hodnota
         ) VALUES (
             p_cas,
-            p_uzivatel,
             p_tabulka,
             p_operace,
             p_stara_hodnota,
@@ -194,7 +191,6 @@ BEGIN
         UPDATE logy
         SET
             cas = p_cas,
-            uzivatel = p_uzivatel,
             tabulka = p_tabulka,
             operace = p_operace,
             stara_hodnota = p_stara_hodnota,
@@ -386,23 +382,19 @@ BEGIN
 END edit_typy_uzivatele;
 PROCEDURE edit_typy_vozidel(
     p_id_typ_vozidla NUMBER,
-    p_nazev VARCHAR2,
-    p_znacka VARCHAR2
+    p_nazev VARCHAR2
 ) AS
 BEGIN
     IF p_id_typ_vozidla IS NULL THEN
         INSERT INTO typy_vozidel (
-            nazev,
-            znacka
+            nazev
         ) VALUES (
-            p_nazev,
-            p_znacka
+            p_nazev
         );
     ELSE
         UPDATE typy_vozidel
         SET
-            nazev = p_nazev,
-            znacka = p_znacka
+            nazev = p_nazev
         WHERE
             id_typ_vozidla = p_id_typ_vozidla;
     END IF;
@@ -460,19 +452,23 @@ END edit_uzivatele;
 
 PROCEDURE edit_vozidla(
     p_id_vozidla NUMBER,
-    p_id_typ_vozidla NUMBER
+    p_id_typ_vozidla NUMBER,
+    p_znacka VARCHAR2
 ) AS
 BEGIN
     IF p_id_vozidla IS NULL THEN
         INSERT INTO vozidla (
-            id_typ_vozidla
+            id_typ_vozidla,
+            znacka
         ) VALUES (
-            p_id_typ_vozidla
+            p_id_typ_vozidla,
+            p_znacka
         );
     ELSE
         UPDATE vozidla
         SET
-            id_typ_vozidla = p_id_typ_vozidla
+            id_typ_vozidla = p_id_typ_vozidla,
+            znacka = p_znacka
         WHERE
             id_vozidla = p_id_vozidla;
     END IF;
@@ -537,25 +533,33 @@ PROCEDURE edit_zastaveni(
     p_id_zastaveni NUMBER,
     p_odjezd DATE,
     p_id_linky NUMBER,
-    p_id_zastavky NUMBER
+    p_id_zastavky NUMBER,
+    p_iterace NUMBER,
+    p_smer NUMBER
 ) AS
 BEGIN
     IF p_id_zastaveni IS NULL THEN
         INSERT INTO zastaveni (
             odjezd,
             id_linky,
-            id_zastavky
+            id_zastavky,
+            iterace,
+            smer
         ) VALUES (
             p_odjezd,
             p_id_linky,
-            p_id_zastavky
+            p_id_zastavky,
+            p_iterace,
+            p_smer
         );
     ELSE
         UPDATE zastaveni
         SET
             odjezd = p_odjezd,
             id_linky = p_id_linky,
-            id_zastavky = p_id_zastavky
+            id_zastavky = p_id_zastavky,
+            iterace = p_iterace,
+            smer = p_smer
         WHERE
             id_zastaveni = p_id_zastaveni;
     END IF;

@@ -70,6 +70,32 @@
 <dataTypePrecision>32</dataTypePrecision>
 <ownDataTypeParameters>,32,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="iterace" id="9A442391-F372-9C9D-693A-7DF89F436E4B">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-30 15:16:36 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<ownDataTypeParameters>,9,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="smer" id="B8401709-A8DC-A238-8973-85C9B2CFCEDD">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-30 15:18:08 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<engineerTo>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="B728EC79-A23D-39D6-D441-7056AA7CB760" name="Entity_18 PK">

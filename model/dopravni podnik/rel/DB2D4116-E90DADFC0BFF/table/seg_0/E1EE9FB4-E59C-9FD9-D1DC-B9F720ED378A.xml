@@ -59,12 +59,34 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>9</dataTypePrecision>
-<ownDataTypeParameters>,9,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="7AE3CC35-A4CC-9C22-A48C-31994E09AE15" referredColumn="97A9805F-56C4-785E-B789-1DA43E669637"/>
 </associations>
+</Column>
+<Column name="iterace" id="D4646AD8-B83D-5198-2A6A-AF08B2B85650">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-30 15:19:45 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<ownDataTypeParameters>,9,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="smer" id="7598D955-3F9A-D345-4826-7551426A30DB">
+<createdBy>Uživatel</createdBy>
+<createdTime>2024-11-30 15:19:56 UTC</createdTime>
+<ownerDesignName>dopravni podnik</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

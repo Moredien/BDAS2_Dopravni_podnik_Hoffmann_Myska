@@ -41,19 +41,6 @@
 <dataTypeSize>100</dataTypeSize>
 <ownDataTypeParameters>100,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="znacka" id="063C5C78-3C7F-36E3-7829-81E050FA9EB0">
-<createdBy>radek</createdBy>
-<createdTime>2023-09-28 14:58:11 UTC</createdTime>
-<ownerDesignName>dopravni podnik</ownerDesignName>
-<engineerTo>
-<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="16F818CA-9262-87D0-C028-0D121E4C890C" name="TYP_VOZIDLA PK">
