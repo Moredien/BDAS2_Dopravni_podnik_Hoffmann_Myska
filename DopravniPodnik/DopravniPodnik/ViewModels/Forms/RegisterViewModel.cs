@@ -61,8 +61,7 @@ public partial class RegisterViewModel : ViewModelBase , INotifyDataErrorInfo
             datum_narozeni = Datum_narozeni,
             mesto = Mesto,
             ulice = Ulice,
-            cislo_popisne = !string.IsNullOrEmpty(Cislo_popisne) && int.TryParse(Cislo_popisne, out var cp) ? (short)cp : (short)0,
-            nazev_typ_uzivatele = "Zákazník"
+            cislo_popisne = !string.IsNullOrEmpty(Cislo_popisne) && int.TryParse(Cislo_popisne, out var cp) ? (short)cp : (short)0
         });
 
         // Handle the result of the registration
