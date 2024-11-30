@@ -14,7 +14,6 @@ public partial class InfoOZastavceViewModel : ViewModelBase
 {
     [ObservableProperty] public ObservableCollection<Zastavky> zastavky = new ObservableCollection<Zastavky>();
     [ObservableProperty] public Zastavky selectedZastavka;
-    // [ObservableProperty] public DateTime datumOdjezdu;
     
     private DateTime? _selectedDate;
     public DateTime? SelectedDate

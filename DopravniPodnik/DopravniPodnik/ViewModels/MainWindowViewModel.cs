@@ -19,11 +19,8 @@ public partial class MainWindowViewModel : ViewModelBase
     public ListItemTemplate _selectedListItem;
 
     private GenericGridViewModel GridViewModel;
-    // private UserService _userService = new();
     partial void OnSelectedListItemChanged(ListItemTemplate? value)
     {
-        // if (value == null) 
-        //     value = MenuItems[0];
         if (MenuItems.Count == 0)
             return;
         if(value.ViewModelType==typeof(GenericGridViewModel))
