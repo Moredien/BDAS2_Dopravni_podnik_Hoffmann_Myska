@@ -5,15 +5,13 @@
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
-<item key="957F908B-08E0-CC9C-885E-8E5565A342C1" value="true"/>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
 </engineerTo>
 <sourcePk>BF131C19-E07C-394A-CE6D-221945F46D91</sourcePk>
 <targetPk>295CB76E-450A-4CC0-2D74-1AB6442736C1</targetPk>
 <identifying>false</identifying>
 <nameOnSource>náleží</nameOnSource>
 <nameOnTarget>má</nameOnTarget>
-<optionalSource>false</optionalSource>
+<optionalSource>true</optionalSource>
 <optionalTarget>true</optionalTarget>
 <sourceCardinality>*</sourceCardinality>
 <sourceEntity>A1E656B3-1FB6-4606-DFFA-7B8ED71C4E7C</sourceEntity>

@@ -23,8 +23,8 @@ CREATE TABLE foto (
     jmeno_souboru VARCHAR2(50) NOT NULL,
     data          BLOB NOT NULL,
     datum_pridani DATE NOT NULL,
-    id_karty      NUMBER(9) NOT NULL,
-    id_uzivatele  NUMBER(9) NOT NULL
+    id_karty      NUMBER(9),
+    id_uzivatele  NUMBER(9)
 );
 
 CREATE UNIQUE INDEX foto__idx ON

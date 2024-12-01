@@ -89,6 +89,7 @@
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <referedAttribute>8B06BE9E-B4F7-0E07-A222-2B7563C0CED8</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>

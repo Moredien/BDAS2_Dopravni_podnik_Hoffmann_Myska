@@ -88,7 +88,6 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
                     :p_prijmeni,
                     :p_cas_zalozeni,
                     :p_datum_narozeni,
-                    :p_typ_uzivatele_nazev,
                     :p_mesto,
                     :p_ulice,
                     :p_cislo_popisne,
@@ -115,8 +114,6 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
                     { Value = editedItem.datum_zalozeni, Direction = ParameterDirection.Input },
                 new OracleParameter("p_datum_narozeni", OracleDbType.Date)
                     { Value = Datum_narozeni, Direction = ParameterDirection.Input },
-                new OracleParameter("p_typ_uzivatele_nazev", OracleDbType.Varchar2)
-                    { Value = editedItem.nazev_typ_uzivatele, Direction = ParameterDirection.Input },
                 new OracleParameter("p_mesto", OracleDbType.Varchar2)
                     { Value = Mesto, Direction = ParameterDirection.Input },
                 new OracleParameter("p_ulice", OracleDbType.Varchar2)

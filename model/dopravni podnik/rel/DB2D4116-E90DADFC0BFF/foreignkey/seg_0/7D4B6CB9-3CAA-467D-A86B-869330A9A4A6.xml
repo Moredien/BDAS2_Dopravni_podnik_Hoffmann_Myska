@@ -9,7 +9,7 @@
 <referredTableID>7E06EBF3-5E00-675E-190A-CE7F2FB73312</referredTableID>
 <keyObject>39EFF291-E049-E38E-6E8D-3821395A57C8</keyObject>
 <referredKeyID>39EFF291-E049-E38E-6E8D-3821395A57C8</referredKeyID>
-<mandatory>true</mandatory>
+<mandatory>false</mandatory>
 <refColNames>id_uzivatele</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
