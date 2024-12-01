@@ -22,12 +22,14 @@ public partial class ProfilViewModel : ViewModelBase
     private readonly DatabaseService _databaseService = new();
     private readonly OracleDbContext _context = OracleDbContext.Instance;
     
-    public Image Foto;
+    // public Image Foto;
     [ObservableProperty] public BitmapSource displayedImage;
     [ObservableProperty] public UzivatelDTO uzivatel;
 
     [ObservableProperty]
     public ImageSource fotoSource;
+
+    private Foto testFoto;
 
     public object ImageSource
     {
@@ -68,6 +70,7 @@ public partial class ProfilViewModel : ViewModelBase
         Console.WriteLine("open new photo form");
 
         var foto = LoadFotoFromFile();
+        testFoto = foto;
         string query = @"
             BEGIN
                 ST67028.INSERT_UPDATE.edit_foto(
@@ -105,7 +108,7 @@ public partial class ProfilViewModel : ViewModelBase
     [RelayCommand]
     public void PhotoDetails()
     {
-        Console.WriteLine("photo details here");
+        WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { testFoto });
     }
 
     [RelayCommand]

@@ -8,7 +8,6 @@
              d:DesignHeight="*" d:DesignWidth="*">
     
     <UserControl.Resources>
-        <!-- Define the custom Style -->
         <Style x:Key="PropertyLabel" TargetType="Label">
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
