@@ -30,19 +30,7 @@ public partial class ProfilViewModel : ViewModelBase
     public ImageSource fotoSource;
 
     private Foto testFoto;
-
-    public object ImageSource
-    {
-        get
-        {
-            var bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri("..\\..\\..\\Images\\defaultUser.png", UriKind.Relative);
-            bitmap.EndInit();
-            return bitmap;
-        }
-    }
-
+    
     public ProfilViewModel()
     {
         FetchUzivatel();
@@ -53,6 +41,7 @@ public partial class ProfilViewModel : ViewModelBase
     public ProfilViewModel(UzivatelDTO uzivatel)
     {
         this.uzivatel = uzivatel;
+        LoadPhoto();
     }
 
     private void FetchUzivatel()
@@ -108,7 +97,7 @@ public partial class ProfilViewModel : ViewModelBase
     [RelayCommand]
     public void PhotoDetails()
     {
-        WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { testFoto });
+        WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { uzivatel.id_foto });
     }
 
     [RelayCommand]
@@ -122,13 +111,26 @@ public partial class ProfilViewModel : ViewModelBase
     {
         // fotoSource = new BitmapImage();
         var bitmap = new BitmapImage();
-        if (uzivatel.foto_data == null)
+        if (uzivatel.foto_data == null || uzivatel.foto_data.Length==0)
         {
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(Path.GetFullPath("../../../Images/defaultUser.png"), UriKind.Absolute);
             bitmap.EndInit();
-            fotoSource = bitmap;
+            FotoSource = bitmap;
             
+        }
+        else
+        {
+            using (var memoryStream = new MemoryStream(uzivatel.foto_data))
+            {
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad; // Load the image into memory
+                bitmapImage.StreamSource = memoryStream;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze(); // Make it thread-safe
+                FotoSource = bitmapImage;
+            }
         }
     }
 

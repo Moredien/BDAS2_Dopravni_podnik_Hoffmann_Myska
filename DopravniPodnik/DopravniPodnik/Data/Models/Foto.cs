@@ -9,15 +9,15 @@ public partial class Foto
     [IdProperty]
     [ColumnName("ID_FOTO")]
     public int? IdFoto { get; set; }
-
+    [ColumnName("JMENO_SOUBORU")]
     public string JmenoSouboru { get; set; } = null!;
 
     public byte[] Data { get; set; } = null!;
-
+    [ColumnName("DATUM_PRIDANI")]
     public DateTime DatumPridani { get; set; }
-
+    [ColumnName("ID_KARTY")]
     public int? IdKarty { get; set; }
-
+    [ColumnName("ID_UZIVATELE")]
     public int? IdUzivatele { get; set; }
 
     public virtual KartyMhd IdKartyNavigation { get; set; } = null!;

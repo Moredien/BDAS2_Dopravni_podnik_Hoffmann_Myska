@@ -6,7 +6,20 @@
              xmlns:local="clr-namespace:DopravniPodnik.Views"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock>TODO Karty</TextBlock>
-    </Grid>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Založit kartu"
+                    Command="{Binding ZalozitCommand}"/>
+            <Button Content="Informace"
+                    Command="{Binding InformaceCommand}"/>
+            <Button Content="Zaplatit"
+                    Command="{Binding ZaplatitCommand}"/>
+        </StackPanel>
+        <DataGrid
+            ItemsSource="{Binding Items}"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            SelectedItem="{Binding SelectedItem}" />
+    </StackPanel>
 </UserControl>

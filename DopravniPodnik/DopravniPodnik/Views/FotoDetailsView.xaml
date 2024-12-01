@@ -14,8 +14,8 @@
     </UserControl.Resources>
     
     <StackPanel Orientation="Horizontal">
-        <Image MaxWidth="400"
-               MaxHeight="400"
+        <Image MaxWidth="200"
+               MaxHeight="200"
                Source="{Binding FotoSource}"/>
         <StackPanel Orientation="Vertical"
                     DataContext="{Binding Foto}">
