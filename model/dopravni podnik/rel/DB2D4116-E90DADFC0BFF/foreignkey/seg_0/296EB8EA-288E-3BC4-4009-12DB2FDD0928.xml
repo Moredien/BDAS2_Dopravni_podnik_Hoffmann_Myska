@@ -4,12 +4,12 @@
 <createdTime>2024-11-25 16:53:25 UTC</createdTime>
 <generatorID>F1C629B3-5098-AD05-CAC8-84A5F11B2DB1</generatorID>
 <ownerDesignName>dopravni podnik</ownerDesignName>
-<referredTableLongName>KARTA_MHD</referredTableLongName>
+<referredTableLongName>KARTY_MHD</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>508CC610-B075-7388-BBAB-0DA08B929693</referredTableID>
 <keyObject>D2379714-1B9A-5EB4-9C6C-269A11F3E82C</keyObject>
 <referredKeyID>D2379714-1B9A-5EB4-9C6C-269A11F3E82C</referredKeyID>
-<mandatory>true</mandatory>
+<mandatory>false</mandatory>
 <refColNames>id_karty</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>

@@ -73,6 +73,7 @@
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <referedAttribute>4D052AAA-FC4A-F876-75D3-950894F3E7D3</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -88,6 +89,7 @@
 <engineerTo>
 <item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <referedAttribute>59C09D83-F7B9-26B7-D275-A00432F1DB4D</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>

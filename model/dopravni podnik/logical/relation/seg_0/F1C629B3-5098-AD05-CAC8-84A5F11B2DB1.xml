@@ -4,15 +4,15 @@
 <createdTime>2024-10-28 15:19:58 UTC</createdTime>
 <ownerDesignName>dopravni podnik</ownerDesignName>
 <engineerTo>
-<item key="18EB740D-B6A7-110D-02EE-C80B434A166F" value="true"/>
+<item key="DB2D4116-DC56-4E53-9FC3-E90DADFC0BFF" value="true"/>
 </engineerTo>
 <sourcePk>BF131C19-E07C-394A-CE6D-221945F46D91</sourcePk>
 <targetPk>4A087D86-F07E-F3C7-77BF-22BB45C4869A</targetPk>
 <identifying>false</identifying>
 <nameOnSource>patří</nameOnSource>
 <nameOnTarget>obsahuje</nameOnTarget>
-<optionalSource>false</optionalSource>
-<optionalTarget>false</optionalTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
 <sourceEntity>A1E656B3-1FB6-4606-DFFA-7B8ED71C4E7C</sourceEntity>
 <targetCardinalityString>1</targetCardinalityString>

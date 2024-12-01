@@ -8,7 +8,7 @@ public partial class Foto
 {
     [IdProperty]
     [ColumnName("ID_FOTO")]
-    public int IdFoto { get; set; }
+    public int? IdFoto { get; set; }
 
     public string JmenoSouboru { get; set; } = null!;
 
@@ -16,9 +16,9 @@ public partial class Foto
 
     public DateTime DatumPridani { get; set; }
 
-    public int IdKarty { get; set; }
+    public int? IdKarty { get; set; }
 
-    public int IdUzivatele { get; set; }
+    public int? IdUzivatele { get; set; }
 
     public virtual KartyMhd IdKartyNavigation { get; set; } = null!;
 
