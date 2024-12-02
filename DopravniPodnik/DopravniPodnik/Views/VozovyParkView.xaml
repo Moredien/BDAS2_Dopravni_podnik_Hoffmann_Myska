@@ -6,7 +6,24 @@
              xmlns:local="clr-namespace:DopravniPodnik.Views"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock>TODO vozovy park</TextBlock>
-    </Grid>
+    
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Upravit" Command="{Binding EditCommand}" />
+            <Button Content="Přidat" Command="{Binding CreateCommand}" />
+            <Button Content="Odstranit" Command="{Binding DeleteCommand}" />
+        </StackPanel>
+        <DataGrid ItemsSource="{Binding Items}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  SelectedItem="{Binding SelectedItem}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Typ Vozdila" Binding="{Binding TypVozidla}" />
+                <DataGridTextColumn Header="Značka" Binding="{Binding Znacka}" />
+                <DataGridTextColumn Header="Jezdí na lince" Binding="{Binding JezdiNaLince}" />
+            </DataGrid.Columns>
+            </DataGrid>
+
+    </StackPanel>
 </UserControl>

@@ -12,7 +12,5 @@ public partial class TypyVozidel
 
     public string Nazev { get; set; } = null!;
 
-    public string Znacka { get; set; } = null!;
-
     public virtual ICollection<Vozidla> Vozidlas { get; set; } = new List<Vozidla>();
 }

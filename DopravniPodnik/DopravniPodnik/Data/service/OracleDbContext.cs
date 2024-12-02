@@ -413,10 +413,6 @@ public partial class OracleDbContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("NAZEV");
-            entity.Property(e => e.Znacka)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("ZNACKA");
         });
 
         modelBuilder.Entity<Uzivatele>(entity =>
@@ -487,6 +483,10 @@ public partial class OracleDbContext : DbContext
                 .HasForeignKey(d => d.IdTypVozidla)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("VOZIDLO_TYP_VOZIDLA_FK");
+            entity.Property(e => e.Znacka)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("ZNACKA");
         });
 
         modelBuilder.Entity<Zakaznici>(entity =>

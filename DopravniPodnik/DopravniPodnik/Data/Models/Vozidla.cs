@@ -9,8 +9,11 @@ public partial class Vozidla
     [IdProperty]
     [ColumnName("ID_VOZIDLA")]
     public int IdVozidla { get; set; }
+    [ColumnName("ID_TYP_VOZIDLA")]
 
     public int IdTypVozidla { get; set; }
+    
+    public int Znacka { get; set; }
 
     public virtual TypyVozidel IdTypVozidlaNavigation { get; set; } = null!;
 

@@ -20,8 +20,6 @@ public partial class TypyVozidelFormViewModel : ViewModelBase , INotifyDataError
 
     [ObservableProperty]
     private string? nazev;
-    [ObservableProperty]
-    private string? znacka;
 
     private int? Id;
 
@@ -33,7 +31,6 @@ public partial class TypyVozidelFormViewModel : ViewModelBase , INotifyDataError
         {
             // cast to edited model type
             Nazev = ((TypyVozidel)selectedItem).Nazev;
-            Znacka = ((TypyVozidel)selectedItem).Znacka;
             Id = ((TypyVozidel)selectedItem).IdTypVozidla;
         }
     }
@@ -49,8 +46,7 @@ public partial class TypyVozidelFormViewModel : ViewModelBase , INotifyDataError
             BEGIN
                 ST67028.INSERT_UPDATE.edit_typy_vozidel(
                     :p_id_typ_vozidla,
-                    :p_nazev,
-                    :p_znacka
+                    :p_nazev
                 );
             END;
         ";
@@ -65,9 +61,7 @@ public partial class TypyVozidelFormViewModel : ViewModelBase , INotifyDataError
                 new OracleParameter("p_id_typ_vozidla", OracleDbType.Decimal)
                     { Value = id, Direction = ParameterDirection.Input },
                 new OracleParameter("p_nazev", OracleDbType.Varchar2)
-                    { Value = Nazev, Direction = ParameterDirection.Input },
-                new OracleParameter("p_znacka", OracleDbType.Varchar2) 
-                    { Value = Znacka, Direction = ParameterDirection.Input }
+                    { Value = Nazev, Direction = ParameterDirection.Input }
             };
             var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
             _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
