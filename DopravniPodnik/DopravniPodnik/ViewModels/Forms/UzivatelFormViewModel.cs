@@ -111,7 +111,7 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
                 new OracleParameter("p_prijmeni", OracleDbType.Varchar2)
                     { Value = Prijmeni, Direction = ParameterDirection.Input },
                 new OracleParameter("p_cas_zalozeni", OracleDbType.Date)
-                    { Value = editedItem.datum_zalozeni, Direction = ParameterDirection.Input },
+                    { Value = editedItem.cas_zalozeni, Direction = ParameterDirection.Input },
                 new OracleParameter("p_datum_narozeni", OracleDbType.Date)
                     { Value = Datum_narozeni, Direction = ParameterDirection.Input },
                 new OracleParameter("p_mesto", OracleDbType.Varchar2)

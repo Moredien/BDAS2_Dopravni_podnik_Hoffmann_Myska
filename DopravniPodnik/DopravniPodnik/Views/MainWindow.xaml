@@ -9,9 +9,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
     
-    <!-- <Window.DataContext> -->
-    <!--     <viewmodels:MainWindowViewModel/> -->
-    <!-- </Window.DataContext> -->
     
     <Window.Resources>
         <Style TargetType="Button">
@@ -30,10 +27,12 @@
 
         <!-- Header area in the top row -->
         <Border Background="LightBlue"
-                Padding="10"
+                
                 Height="50">
             <!-- Inserting top menu based on current state -->
-            <ContentControl Content="{Binding CurrentMenu}"/>
+            <ContentControl Content="{Binding CurrentMenu}"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"/>
         </Border>
 
         <!-- Main content area in the second row -->

@@ -1,14 +1,11 @@
-﻿<UserControl x:Class="DopravniPodnik.Views.Menu.LoggedInUserMenuView"
+﻿<UserControl x:Class="DopravniPodnik.Views.Menu.AdminMenuView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DopravniPodnik.Views.Menu"
              mc:Ignorable="d"
-             d:DesignHeight="*" d:DesignWidth="*"
-             HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch">
-    
+             d:DesignHeight="*" d:DesignWidth="*">
     <UserControl.Resources>
         <Style TargetType="Label">
             <Setter Property="FontSize" Value="16" />
@@ -17,35 +14,33 @@
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="Height" Value="30" />
             <Setter Property="Margin" Value="16 0 16 0" />
-            <Setter Property="Width" Value=" 100"/>
+            <Setter Property="Width" Value=" 100" />
         </Style>
     </UserControl.Resources>
-    
-    <Grid Background="LightGreen"
-          HorizontalAlignment="Stretch"
-          VerticalAlignment="Stretch">
+
+    <Grid Background="LightCoral">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200" />
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Label Content="{Binding Username}"
                Grid.Column="0"
                VerticalAlignment="Center"
-               Margin="0"
-        />
-        <CheckBox Grid.Column="1" 
+               Margin="0" />
+        <CheckBox Grid.Column="1"
                   Content="Bezpečný režim"
                   VerticalAlignment="Center"
-                  IsChecked="{Binding SafeMode}"/>
-        
-        
+                  IsChecked="{Binding SafeMode}" />
+
+
         <StackPanel Grid.Column="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
-
+            <Button Content="Emulovat"
+                    Command="{Binding EmulovatCommand}"/>
             <Button Content="Odhlásit"
-                    Command="{Binding LogOutCommand}"/>
+                    Command="{Binding LogOutCommand}" />
         </StackPanel>
     </Grid>
 </UserControl>

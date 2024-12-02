@@ -54,13 +54,15 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
         // Console.WriteLine($"pw: {PasswordBoxHelper.ConvertToUnsecureString(Heslo)}");
         ValidateAllInputs();
         
-        //do some authentication
         if (!CanCreate) return;
 
         _authService.LoginUser(Uzivatelske_jmeno!, PasswordBoxHelper.ConvertToUnsecureString(Heslo.Value));
         
-        WindowManager.SetMenuView(typeof(LoggedInUserMenuViewModel));
-        // Exit();
+        
+        if (UserSession.Instance.UserType.Nazev == "Admin")
+            WindowManager.SetMenuView(typeof(AdminMenuViewModel));
+        else
+            WindowManager.SetMenuView(typeof(LoggedInUserMenuViewModel));
 
     }
     public IEnumerable GetErrors(string? propertyName)

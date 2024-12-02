@@ -11,7 +11,7 @@ public class UzivatelDTO
     public string heslo{ get; set; }
     public string jmeno{ get; set; }
     public string prijmeni{ get; set; }
-    public DateTime datum_zalozeni{ get; set; }
+    public DateTime cas_zalozeni{ get; set; }
     public DateTime datum_narozeni{ get; set; }
     //typ_uzivatele
     [ColumnName("TYP_UZIVATELE")]

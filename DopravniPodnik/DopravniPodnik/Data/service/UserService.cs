@@ -51,7 +51,7 @@ public class UserService
                         heslo = reader.GetString(reader.GetOrdinal("HESLO")),
                         jmeno = reader.GetString(reader.GetOrdinal("JMENO")),
                         prijmeni = reader.GetString(reader.GetOrdinal("PRIJMENI")),
-                        datum_zalozeni = reader.GetDateTime(reader.GetOrdinal("CAS_ZALOZENI")),
+                        cas_zalozeni = reader.GetDateTime(reader.GetOrdinal("CAS_ZALOZENI")),
                         datum_narozeni = reader.GetDateTime(reader.GetOrdinal("DATUM_NAROZENI")),
                         nazev_typ_uzivatele = reader.GetString(reader.GetOrdinal("NAZEV_TYP_UZIVATELE")),
                         id_adresy = reader.GetInt32(reader.GetOrdinal("ID_ADRESY")),

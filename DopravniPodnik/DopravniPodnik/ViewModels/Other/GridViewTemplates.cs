@@ -42,7 +42,7 @@ public static class GridViewTemplates
                         new DataGridColumnInfo { Header = "Jméno", BindingPath = "jmeno" },
                         new DataGridColumnInfo { Header = "Příjmení", BindingPath = "prijmeni" },
                         new DataGridColumnInfo { Header = "Datum Narození", BindingPath = "datum_narozeni" , Format = "dd.MM.yyyy"},
-                        new DataGridColumnInfo { Header = "Datum Založení", BindingPath = "datum_zalozeni" ,Format = "dd.MM.yyyy" },
+                        new DataGridColumnInfo { Header = "Datum Založení", BindingPath = "cas_zalozeni" ,Format = "dd.MM.yyyy" },
                         new DataGridColumnInfo { Header = "Typ Uživatele", BindingPath = "nazev_typ_uzivatele" }
                     }
                 );

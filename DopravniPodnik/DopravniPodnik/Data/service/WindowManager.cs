@@ -13,7 +13,8 @@ public static class WindowManager
     private static readonly Dictionary<Type, ViewModelBase> MenuViewModels = new()
     {
         {typeof(AnonymousUserMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(AnonymousUserMenuViewModel))},
-        {typeof(LoggedInUserMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserMenuViewModel))}
+        {typeof(LoggedInUserMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserMenuViewModel))},
+        {typeof(AdminMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(AdminMenuViewModel))}
     };
 
     public static ViewModelBase? CurrentMenuViewModel { get; set; }
@@ -76,7 +77,7 @@ public static class WindowManager
                 MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", null,typeof(InfoOZastavceViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Profil", typeof(ProfilDTO),typeof(ProfilViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Karty", typeof(KartyDTO),typeof(KartyViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("HistoriePlateb", typeof(HistoriePlatebDTO),typeof(HistoriePlatebViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Historie Plateb", typeof(HistoriePlatebDTO),typeof(HistoriePlatebViewModel)));
                 break;
             case "Zaměstnanec":
                 MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce",null,typeof(InfoOZastavceViewModel)));
@@ -87,7 +88,7 @@ public static class WindowManager
             case "Admin":
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", null,typeof(InfoOZastavceViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("UživateleView", typeof(UzivatelDTO),typeof(GenericGridViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Uživatelé", typeof(UzivatelDTO),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Typy uživatele", typeof(TypyUzivatele),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Adresy", typeof(Adresy),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zamestnanci", typeof(Zamestnanci),typeof(GenericGridViewModel)));
@@ -95,6 +96,7 @@ public static class WindowManager
                 MainWindow.MenuItems.Add(new ListItemTemplate("Řidiči", typeof(Ridici),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zastávky", typeof(Zastavky),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Typy předplatného", typeof(TypyPredplatneho),typeof(GenericGridViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Vozový park", typeof(VozovyParkDTO),typeof(VozovyParkViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Logy", typeof(Logy),typeof(GenericGridViewModel)));
                 break;
         }
