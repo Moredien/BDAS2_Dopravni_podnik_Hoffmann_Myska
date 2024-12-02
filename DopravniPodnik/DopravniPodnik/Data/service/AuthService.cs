@@ -8,7 +8,6 @@ using DopravniPodnik.Data.Models;
 using DopravniPodnik.Utils;
 using Microsoft.EntityFrameworkCore;
 using Oracle.ManagedDataAccess.Client;
-using Oracle.ManagedDataAccess.Types;
 
 namespace DopravniPodnik.Data.service;
 
@@ -39,6 +38,8 @@ public class AuthService
                 );
             END;
         ";
+    private const string CheckUserExistQuery = "SELECT COUNT(*) FROM ST67028.UZIVATELE WHERE UZIVATELSKE_JMENO = :p_username";
+    
     public UserRegistrationResult RegisterUser(UzivatelDTO uzivatel)
     {
         try
@@ -187,7 +188,6 @@ public class AuthService
 
     private bool CheckUserExist(string username)
     {
-        //Kvuli tomu ze GetDbConnection obecny DbContext, tak to musi castnout na OracleConnection, abych tu connection mohl pouzit v OracleCommand
         var connection = _context.Database.GetDbConnection() as OracleConnection;
         if (connection == null)
         {
@@ -198,21 +198,15 @@ public class AuthService
         try
         {
             connection.Open();
-
-            using var command = new OracleCommand("CheckUserExists", connection);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-
-            command.Parameters.Add("p_username", OracleDbType.Varchar2).Value = username;
-
-            var outputParam = new OracleParameter("p_exists", OracleDbType.Int32)
+            
+            using var command = new OracleCommand(CheckUserExistQuery, connection);
+            command.Parameters.Add(new OracleParameter("p_username", OracleDbType.Varchar2)
             {
-                Direction = System.Data.ParameterDirection.Output
-            };
-            command.Parameters.Add(outputParam);
+                Value = username
+            });
 
-            command.ExecuteNonQuery();
-
-            return ((OracleDecimal)outputParam.Value).ToInt32() == 1;
+            var result = command.ExecuteScalar();
+            return result != null && Convert.ToInt32(result) > 0;
         }
         catch (Exception e)
         {
@@ -224,7 +218,7 @@ public class AuthService
             connection.Close();
         }
     }
-
+    
     private byte[]? ImageToBlob(Image? image)
     {
         if (image == null) return null;
