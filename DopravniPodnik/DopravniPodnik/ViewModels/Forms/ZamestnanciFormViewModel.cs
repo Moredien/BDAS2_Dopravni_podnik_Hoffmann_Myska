@@ -26,7 +26,8 @@ public partial class ZamestnanciFormViewModel: ViewModelBase , INotifyDataErrorI
     [ObservableProperty]
     public string plat;
     [ObservableProperty]
-    public DateTime? platnostUvazkuDo;
+    public DateTime? platnostUvazkuDo = DateTime.Today;
+
 
 
     public ZamestnanciFormViewModel(object selectedItem)
@@ -38,26 +39,17 @@ public partial class ZamestnanciFormViewModel: ViewModelBase , INotifyDataErrorI
         {
             if (selectedItem.GetType() == typeof(Int32))
             {
-                IdUzivatele = (int)selectedItem;
-
-                var item =
-                    _databaseService.FetchData<Zamestnanci>(
-                        $"SELECT * FROM ST67028.ZAMESTNANCI WHERE id_uzivatele = {IdUzivatele}")[0];
-                if (item != null)
-                {
-                    Plat = item.Plat;
-                    PlatnostUvazkuDo = item.PlatnostUvazkuDo;
-                    IdZamestnance = item.IdZamestnance;
-                }
+                IdUzivatele = (Int32)selectedItem;
+                LoadZamestnanec();
                 return;
             }
             if (selectedItem.GetType() == typeof(Zamestnanci))
             {
-                var zamestannec = (Zamestnanci)selectedItem;
-                Plat = zamestannec.Plat;
-                PlatnostUvazkuDo = zamestannec.PlatnostUvazkuDo;
-                IdUzivatele = zamestannec.IdUzivatele;
-                IdZamestnance = zamestannec.IdZamestnance;
+                var zamestnanec = (Zamestnanci)selectedItem;
+                Plat = zamestnanec.Plat;
+                PlatnostUvazkuDo = zamestnanec.PlatnostUvazkuDo;
+                IdUzivatele = zamestnanec.IdUzivatele;
+                IdZamestnance = zamestnanec.IdZamestnance;
             }
         }
     }
@@ -93,13 +85,25 @@ public partial class ZamestnanciFormViewModel: ViewModelBase , INotifyDataErrorI
 
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+        
+        // TODO delete zakaznik
 
         Console.WriteLine(error);
         Exit();
     }
-    
-    
 
+    private void LoadZamestnanec()
+    {
+        var data = _databaseService.FetchData<Zamestnanci>($"SELECT * FROM ZAMESTNANCI WHERE ID_UZIVATELE = {IdUzivatele}");
+        if (data.Count != 0)
+        {
+            var zamestnanec = data[0];
+            Plat = zamestnanec.Plat;
+            PlatnostUvazkuDo = zamestnanec.PlatnostUvazkuDo;
+            IdUzivatele = zamestnanec.IdUzivatele;
+            IdZamestnance = zamestnanec.IdZamestnance;
+        }
+    }
     private void ValidateInput(string propertyName)
     {
         _errorsViewModel.ClearErrors(propertyName);

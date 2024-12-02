@@ -39,7 +39,7 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
     [ObservableProperty] private string mesto;
     [ObservableProperty] private string ulice;
     [ObservableProperty] private string cislo_popisne;
-    [ObservableProperty] private string nazev_typ_uzivatele;
+    [ObservableProperty] public string nazev_typ_uzivatele;
 
     // private int? id_uzivatele = null;
     // private string foto_jmeno_souboru;
@@ -141,6 +141,34 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
         }
     }
 
+    [RelayCommand]
+    public void ChangeUserType()
+    {
+        if(nazev_typ_uzivatele == "Zákazník")
+            WindowManager.SetContentView(typeof(ZamestnanciFormViewModel), new object[] { editedItem.id_uzivatele });
+        else if (nazev_typ_uzivatele == "Zaměstnanec")
+        {
+            //TODO delete from zamestnanci, create new zakaznik
+            string query = @"
+            BEGIN
+                DELETE FROM ZAMESTNANCI WHERE ID_UZIVATELE = :id_uzivatele;
+                commit;
+            END;
+        ";
+        
+            var parameters = new List<OracleParameter>
+            {
+                new OracleParameter("id_uzivatele", OracleDbType.Decimal)
+                    { Value = editedItem.id_uzivatele, Direction = ParameterDirection.Input },
+            };
+
+            var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
+            _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+            Nazev_typ_uzivatele = "Zákazník";
+            Console.WriteLine();
+        }
+    }
+
     private void ValidateInput(string propertyName)
     {
         _errorsViewModel.ClearErrors(propertyName);
@@ -204,22 +232,7 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
         ValidateInput(nameof(Ulice));
         ValidateInput(nameof(Cislo_popisne));
     }
-
-    // [RelayCommand]
-    // void ChangeUserType()
-    // {
-    //     if (Nazev_typ_uzivatele == "Zákazník")
-    //     {
-    //         // open form to create employee
-    //     }
-    //     else if (Nazev_typ_uzivatele == "Zaměstnanec")
-    //     {
-    //         // remove employee here
-    //         Nazev_typ_uzivatele = "Zákazník";
-    //     }
-    //     UpdateZmenitTypUzivateleSection();
-    // }
-
+    
     [RelayCommand]
     private void EditEmployee()
     {

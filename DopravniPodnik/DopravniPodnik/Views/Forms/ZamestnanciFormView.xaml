@@ -21,13 +21,16 @@
         <Label Content="Zaměstnanec"
                HorizontalAlignment="Center"
                FontSize="30" />
-
-        <Label Content="Plat" />
-        <TextBox
-            Text="{Binding Plat, UpdateSourceTrigger=PropertyChanged}"/> 
-        <Label Content="Plat" />
-        <DatePicker SelectedDate="{Binding PlatnostUvazkuDo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
+        
+        <Label Content="Plat"/>
+        <TextBox Text="{Binding Plat}"/>
+        <Label Content="Platnost úvazku do"/>
+        <DatePicker SelectedDate="{Binding PlatnostUvazkuDo}"/>
+        <Label Content="Nadřízený"/>
+        <!-- this needs to be changed -->
+        <ComboBox ItemsSource="{Binding Zamestnanci}"
+                  SelectedItem="{Binding SelectedZamestnanec}"
+                  DisplayMemberPath="IdZamestnance"/>
         
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center">

@@ -91,8 +91,7 @@ public class AuthService
             _logger.Message("User was successfully inserted into DB").Info().Log();
 
             var userTypes = _databaseService.FetchData<TypyUzivatele>("SELECT * FROM ST67028.TYPY_UZIVATELE");
-            CreateNewSession(uzivatel.uzivatelske_jmeno, userTypes.First(e => e.Nazev == uzivatel.nazev_typ_uzivatele));
-
+            CreateNewSession(uzivatel.uzivatelske_jmeno, userTypes.First(e => e.Nazev == "Zákazník"));
             return UserRegistrationResult.Success;
         }
         catch (Exception e)

@@ -59,6 +59,8 @@ public partial class ProfilViewModel : ViewModelBase
         Console.WriteLine("open new photo form");
 
         var foto = LoadFotoFromFile();
+        if(foto==null)
+            return;
         testFoto = foto;
         string query = @"
             BEGIN
