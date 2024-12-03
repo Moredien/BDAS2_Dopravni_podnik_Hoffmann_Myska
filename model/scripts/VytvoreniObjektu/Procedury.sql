@@ -141,10 +141,17 @@ CREATE OR REPLACE PROCEDURE POVYSIT_ZAMESTNANCE (
     p_list_podrizenych IN VARCHAR2 DEFAULT NULL -- Seznam podřízených ID oddělených čárkou
 ) AS
 BEGIN
-    UPDATE ST67028.ZAMESTNANCI
-    SET PLAT = p_novy_plat,
-        ID_NADRIZENEHO = p_id_noveho_nadrizeneho
-    WHERE ID_ZAMESTNANCE = p_id_zamestnance;
+    
+    IF p_id_noveho_nadrizeneho IS NOT NULL THEN
+        UPDATE ST67028.ZAMESTNANCI
+        SET PLAT = p_novy_plat,
+            ID_NADRIZENEHO = p_id_noveho_nadrizeneho
+        WHERE ID_ZAMESTNANCE = p_id_zamestnance;
+    ELSE
+        UPDATE ST67028.ZAMESTNANCI
+        SET PLAT = p_novy_plat
+        WHERE ID_ZAMESTNANCE = p_id_zamestnance;
+    END IF;
 
     -- Aktualizace nadřízeného pro podřízené, pokud je seznam poskytnut
     IF p_list_podrizenych IS NOT NULL THEN
