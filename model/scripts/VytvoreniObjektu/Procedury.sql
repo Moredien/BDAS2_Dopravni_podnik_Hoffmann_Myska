@@ -133,3 +133,37 @@ BEGIN
 END;
 /
 
+
+CREATE OR REPLACE PROCEDURE POVYSIT_ZAMESTNANCE (
+    p_id_zamestnance IN NUMBER,
+    p_novy_plat IN NUMBER,
+    p_id_noveho_nadrizeneho IN NUMBER DEFAULT NULL,
+    p_list_podrizenych IN VARCHAR2 DEFAULT NULL -- Seznam podřízených ID oddělených čárkou
+) AS
+BEGIN
+    UPDATE ST67028.ZAMESTNANCI
+    SET PLAT = p_novy_plat,
+        ID_NADRIZENEHO = p_id_noveho_nadrizeneho
+    WHERE ID_ZAMESTNANCE = p_id_zamestnance;
+
+    -- Aktualizace nadřízeného pro podřízené, pokud je seznam poskytnut
+    IF p_list_podrizenych IS NOT NULL THEN
+        FOR podrizeny_id IN (
+            SELECT TO_NUMBER(REGEXP_SUBSTR(p_list_podrizenych, '[^,]+', 1, LEVEL)) AS ID
+            FROM DUAL
+            CONNECT BY REGEXP_SUBSTR(p_list_podrizenych, '[^,]+', 1, LEVEL) IS NOT NULL
+            ) LOOP
+                UPDATE ST67028.ZAMESTNANCI
+                SET ID_NADRIZENEHO = p_id_zamestnance
+                WHERE ID_ZAMESTNANCE = podrizeny_id.ID;
+            END LOOP;
+    END IF;
+    
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        DBMS_OUTPUT.PUT_LINE('Chyba při povýšení zaměstnance: ' || SQLERRM);
+        RAISE;
+END POVYSIT_ZAMESTNANCE;
+/
