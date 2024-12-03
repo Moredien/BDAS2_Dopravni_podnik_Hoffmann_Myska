@@ -133,7 +133,7 @@ public static class GridViewTemplates
                     modelType,
                     typeof(LogyFormViewModel),
                     new ObservableCollection<DataGridColumnInfo>{
-                        new DataGridColumnInfo { Header = "Čas", BindingPath = "Cas" },
+                        new DataGridColumnInfo { Header = "Čas", BindingPath = "Cas"  , Format = "dd.MM.yyyy"},
                         new DataGridColumnInfo { Header = "Tabulka", BindingPath = "Tabulka" },
                         new DataGridColumnInfo { Header = "Operace", BindingPath = "Operace" },
                     });

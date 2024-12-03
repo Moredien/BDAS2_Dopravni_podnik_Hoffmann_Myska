@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
+using DopravniPodnik.Utils;
 
 namespace DopravniPodnik.ViewModels;
 
@@ -14,6 +15,7 @@ public partial class KartyViewModel : ViewModelBase
     public KartyMhd selectedItem;
 
     private int id;
+    private int? id_zakaznika;
 
     // to be finished when the photos can be uploaded
     public KartyViewModel()
@@ -24,6 +26,7 @@ public partial class KartyViewModel : ViewModelBase
     private void LoadKarty()
     {
         // _databaseService.FetchData<KartyMhd>($"SELECT * FROM ST67028.KARTY_MHD WHERE ID_ZAKAZNIKA = {id}");
+        // id_zakaznika = _databaseService.FetchData<Zakaznici>($"SELECT ID_ZAKAZNIKA FROM ST67028.ZAKAZNICI WHERE ID_UZIVATELE = {UserSession.Instance.}]")
     }
     [RelayCommand]
     public void Zalozit()

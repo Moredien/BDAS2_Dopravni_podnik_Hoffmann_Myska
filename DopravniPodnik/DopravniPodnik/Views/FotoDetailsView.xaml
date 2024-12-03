@@ -16,7 +16,8 @@
     <StackPanel Orientation="Horizontal">
         <Image MaxWidth="200"
                MaxHeight="200"
-               Source="{Binding FotoSource}"/>
+               Source="{Binding FotoSource}"
+               VerticalAlignment="Top"/>
         <StackPanel Orientation="Vertical"
                     DataContext="{Binding Foto}">
             <Label Content="Jméno souboru"
