@@ -4,6 +4,7 @@ CREATE OR REPLACE PROCEDURE ZALOZIT_KARTU (
     p_platnost_do DATE,
     p_id_zakaznika NUMBER,
     p_foto BLOB,
+    p_jmeno_souboru VARCHAR2,
     p_typ_predplatneho VARCHAR2 DEFAULT NULL,
     p_konec_predplatneho DATE DEFAULT NULL
 )
@@ -12,6 +13,11 @@ AS
     v_id_typ_predplatneho NUMBER;
     v_od DATE := SYSDATE;
 BEGIN
+
+    IF p_foto IS NULL OR p_jmeno_souboru IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20004, 'Chybí informace o fotce. Foto i jméno souboru musí být zadány.');
+    END IF;
+
     INSERT INTO ST67028.KARTY_MHD (
         ZUSTATEK,
         PLATNOST_OD,
@@ -27,6 +33,21 @@ BEGIN
              )
     RETURNING ID_KARTY INTO v_id_karty;
 
+    INSERT INTO ST67028.FOTO (
+        JMENO_SOUBORU,
+        DATA,
+        DATUM_PRIDANI,
+        ID_KARTY,
+        ID_UZIVATELE
+    ) VALUES (
+                 p_jmeno_souboru,
+                 p_foto,
+                 SYSDATE,
+                 v_id_karty,
+                 NULL
+             );
+
+    -- Pokud je zadán typ předplatného, přidáme záznam o předplatném
     IF p_typ_predplatneho IS NOT NULL THEN
         SELECT ID_TYP_PREDPLATNEHO
         INTO v_id_typ_predplatneho
@@ -51,11 +72,7 @@ BEGIN
     END IF;
 
     COMMIT;
-
-    DBMS_OUTPUT.PUT_LINE('Karta byla úspěšně vytvořena. ID karty: ' || v_id_karty);
-    IF p_typ_predplatneho IS NOT NULL THEN
-        DBMS_OUTPUT.PUT_LINE('Předplatné bylo úspěšně přidáno. Typ předplatného: ' || p_typ_predplatneho);
-    END IF;
+    
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RAISE_APPLICATION_ERROR(-20002, 'Typ předplatného nebyl nalezen: ' || p_typ_predplatneho);
