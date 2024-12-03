@@ -102,8 +102,7 @@ public static class GridViewTemplates
                     modelType,
                     typeof(TypyVozidelFormViewModel),
                     new ObservableCollection<DataGridColumnInfo>{
-                        new DataGridColumnInfo { Header = "Název", BindingPath = "Nazev" },
-                        new DataGridColumnInfo { Header = "Značka", BindingPath = "Znacka" },
+                        new DataGridColumnInfo { Header = "Název", BindingPath = "Nazev" }
                     });
             case "Ridici":
                 return new DataGridDataContext(
