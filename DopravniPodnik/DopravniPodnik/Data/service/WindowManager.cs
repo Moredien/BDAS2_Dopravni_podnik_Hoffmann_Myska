@@ -84,7 +84,7 @@ public static class WindowManager
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Jízdy", typeof(JizdyDTO),typeof(JizdyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vozový park", typeof(VozovyParkDTO),typeof(VozovyParkViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("Uživatelé", null,typeof(ZakazniciViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Zákazníci", null,typeof(ZakazniciViewModel)));
                 break;
             case "Admin":
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
@@ -99,7 +99,7 @@ public static class WindowManager
                 MainWindow.MenuItems.Add(new ListItemTemplate("Typy předplatného", typeof(TypyPredplatneho),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vozový park", typeof(VozovyParkDTO),typeof(VozovyParkViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Logy", typeof(Logy),typeof(GenericGridViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("Uživatelé", null,typeof(ZakazniciViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Zákazníci", null,typeof(ZakazniciViewModel)));
                 break;
         }
 

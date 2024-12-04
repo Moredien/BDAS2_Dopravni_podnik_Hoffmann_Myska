@@ -9,7 +9,7 @@ public partial class Uzivatele
     [IdProperty]
     [ColumnName("ID_UZIVATELE")]
     public int IdUzivatele { get; set; }
-
+    [ColumnName("UZIVATELSKE_JMENO")]
     public string UzivatelskeJmeno { get; set; } = null!;
 
     public string Heslo { get; set; } = null!;
