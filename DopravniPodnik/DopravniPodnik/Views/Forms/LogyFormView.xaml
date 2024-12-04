@@ -22,17 +22,11 @@
                FontSize="30" />
 
         <Label Content="Čas" />
-        <TextBox
-            Text="{Binding Cas, UpdateSourceTrigger=PropertyChanged}"
-            IsReadOnly="True"/>
+        <Label Content="{Binding Cas}"  Style="{StaticResource PropertyLabel}"/>
         <Label Content="Tabulka" />
-        <TextBox
-            Text="{Binding Tabulka, UpdateSourceTrigger=PropertyChanged}"
-            IsReadOnly="True"/>
+        <Label Content="{Binding Tabulka}"  Style="{StaticResource PropertyLabel}"/>
         <Label Content="Operace" />
-        <TextBox
-            Text="{Binding Operace, UpdateSourceTrigger=PropertyChanged}"
-            IsReadOnly="True"/>
+        <Label Content="{Binding Operace}"  Style="{StaticResource PropertyLabel}"/>
         <Label Content="Stará hodnota" />
         <TextBlock Text="{Binding StaraHodnota}"
                    TextWrapping="Wrap"
