@@ -41,11 +41,6 @@
                             <Label Content="{Binding Nazev_typ_uzivatele,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" VerticalAlignment="Center" />
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Right">
-                                <Button Content="Upravit"
-                                        Margin="0" HorizontalAlignment="Right"
-                                        Width="Auto"
-                                        Command="{Binding EditEmployeeCommand}"
-                                        Visibility="{Binding EditBtnVisible}" />
                                 <Button
                                     Content="{Binding ZmenaTypuUzivateleBtnContent}"
                                     Margin="0" HorizontalAlignment="Right"

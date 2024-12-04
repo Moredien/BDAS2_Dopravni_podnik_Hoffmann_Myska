@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DopravniPodnik.Views.Forms"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    
+             d:DesignHeight="*" d:DesignWidth="*">
+
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,31 +14,52 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    
-    
+
+
     <StackPanel
         Width="400">
         <Label Content="Zaměstnanec"
                HorizontalAlignment="Center"
                FontSize="30" />
-        
-        <Label Content="Plat"/>
-        <TextBox Text="{Binding Plat}"/>
-        <Label Content="Platnost úvazku do"/>
-        <DatePicker SelectedDate="{Binding PlatnostUvazkuDo}"/>
-        <Label Content="Nadřízený"/>
+        <Label Content="Jméno" />
+        <Label Content="{Binding Jmeno}"  Style="{StaticResource PropertyLabel}" />
+        <Label Content="Příjmení" />
+        <Label Content="{Binding Prijmeni}"  Style="{StaticResource PropertyLabel}" />
+        <Button Content="Detail uživatele" 
+                Command="{Binding DetailUzivateleCommand}"/>
+        <Label Content="Plat" />
+        <TextBox Text="{Binding Plat}" />
+        <Label Content="Platnost úvazku do" />
+        <DatePicker SelectedDate="{Binding PlatnostUvazkuDo}" />
+        <Label Content="Nadřízený" />
+
         <!-- this needs to be changed -->
+        <!-- <ComboBox ItemsSource="{Binding Zamestnanci}" -->
+        <!--           SelectedItem="{Binding SelectedZamestnanec}" -->
+        <!--           DisplayMemberPath="IdZamestnance" /> -->
         <ComboBox ItemsSource="{Binding Zamestnanci}"
-                  SelectedItem="{Binding SelectedZamestnanec}"
-                  DisplayMemberPath="IdZamestnance"/>
-        
+                  SelectedItem="{Binding SelectedNadrizeny}"
+                  SelectedIndex="0">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Jmeno" />
+                                <Binding Path="Prijmeni" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center">
-            <Button Content="Zpět" 
-                    Command="{Binding ExitCommand}"/>
+            <Button Content="Zpět"
+                    Command="{Binding ExitCommand}" />
             <Button Content="Uložit"
-                    Command="{Binding SubmitCommand}"
-            />
+                    Command="{Binding SubmitCommand}" />
         </StackPanel>
     </StackPanel>
 </UserControl>

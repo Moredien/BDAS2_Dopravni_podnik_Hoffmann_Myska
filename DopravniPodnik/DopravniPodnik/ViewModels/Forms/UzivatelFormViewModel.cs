@@ -28,10 +28,7 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
     [ObservableProperty] private string _zmenaTypuUzivateleBtnContent = "Změna typu";
 
     [ObservableProperty] private Visibility _zmenaTypuUzivateleBtnVisible = Visibility.Hidden;
-
-
-    [ObservableProperty] private Visibility _editBtnVisible = Visibility.Hidden;
-
+    
     [ObservableProperty] private string uzivatelske_jmeno;
     [ObservableProperty] private string jmeno;
     [ObservableProperty] private string prijmeni;
@@ -40,11 +37,6 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
     [ObservableProperty] private string ulice;
     [ObservableProperty] private string cislo_popisne;
     [ObservableProperty] public string nazev_typ_uzivatele;
-
-    // private int? id_uzivatele = null;
-    // private string foto_jmeno_souboru;
-    // private Image? foto_data;
-    // private DateTime foto_datum_pridani;
 
     private UzivatelDTO editedItem;
 
@@ -148,7 +140,6 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
             WindowManager.SetContentView(typeof(ZamestnanciFormViewModel), new object[] { editedItem.id_uzivatele });
         else if (nazev_typ_uzivatele == "Zaměstnanec")
         {
-            //TODO delete from zamestnanci, create new zakaznik
             string query = @"
             BEGIN
                 DELETE FROM ZAMESTNANCI WHERE ID_UZIVATELE = :id_uzivatele;
@@ -165,7 +156,10 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
             var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
             _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
             Nazev_typ_uzivatele = "Zákazník";
-            Console.WriteLine();
+        }else if (nazev_typ_uzivatele == "Zaměstnanec")
+        {
+            //TODO remove employee?? 
+            Console.WriteLine("Not implemented yet");
         }
     }
 
@@ -233,25 +227,17 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
         ValidateInput(nameof(Cislo_popisne));
     }
     
-    [RelayCommand]
-    private void EditEmployee()
-    {
-        WindowManager.SetContentView(typeof(ZamestnanciFormViewModel), new object[] { editedItem.id_uzivatele });
-    }
+
 
     private void UpdateZmenitTypUzivateleSection()
     {
         if (Nazev_typ_uzivatele == "Zákazník")
         {
-            EditBtnVisible = Visibility.Hidden;
-
             ZmenaTypuUzivateleBtnVisible = Visibility.Visible;
             ZmenaTypuUzivateleBtnContent = "Vytvořit zaměstnance";
         }
         else if (Nazev_typ_uzivatele == "Zaměstnanec")
         {
-            EditBtnVisible = Visibility.Visible;
-
             ZmenaTypuUzivateleBtnVisible = Visibility.Visible;
             ZmenaTypuUzivateleBtnContent = "Odebrat zaměstnance";
         }

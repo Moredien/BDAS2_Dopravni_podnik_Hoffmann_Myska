@@ -38,6 +38,12 @@ public partial class ProfilViewModel : ViewModelBase
 
     }
 
+    public ProfilViewModel(int id_uzivatele)
+    {
+        uzivatel = _databaseService
+            .FetchData<UzivatelDTO>($"SELECT * FROM UZIVATEL_VIEW WHERE ID_UZIVATELE = {id_uzivatele}").FirstOrDefault();
+        LoadPhoto();
+    }
     public ProfilViewModel(UzivatelDTO uzivatel)
     {
         this.uzivatel = uzivatel;
@@ -81,7 +87,6 @@ public partial class ProfilViewModel : ViewModelBase
                 { Value = DBNull.Value, Direction = ParameterDirection.Input },
             new OracleParameter("p_jmeno_souboru", OracleDbType.Varchar2) 
                 { Value = foto.JmenoSouboru, Direction = ParameterDirection.Input },
-            // this doesnt work with files over 4000 bytes
             new OracleParameter("p_data", OracleDbType.Blob)
                 { Value = foto.Data, Direction = ParameterDirection.Input },
             new OracleParameter("p_datum_pridani", OracleDbType.Date)
@@ -99,6 +104,8 @@ public partial class ProfilViewModel : ViewModelBase
     [RelayCommand]
     public void PhotoDetails()
     {
+        if (Uzivatel.foto_data == null)
+            return;
         WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { uzivatel.id_foto });
     }
 
