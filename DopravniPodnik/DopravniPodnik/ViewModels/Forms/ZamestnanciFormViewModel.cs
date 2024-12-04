@@ -33,7 +33,7 @@ public partial class ZamestnanciFormViewModel : ViewModelBase, INotifyDataErrorI
     [ObservableProperty] public string plat;
     [ObservableProperty] public DateTime? platnostUvazkuDo = DateTime.Today;
 
-    [ObservableProperty] public ZamestnanecViewDTO editedZamestanenc;
+    [ObservableProperty] public ZamestnanecViewDTO? editedZamestanenc;
     [ObservableProperty] public ObservableCollection<ZamestnanecViewDTO> zamestnanci = new();
 
     [ObservableProperty] public ZamestnanecViewDTO selectedNadrizeny;
@@ -67,7 +67,6 @@ public partial class ZamestnanciFormViewModel : ViewModelBase, INotifyDataErrorI
         
         LoadZamestnanci();
 
-        // Exit();
     }
 
     public ZamestnanciFormViewModel(ZamestnanecViewDTO selectedItem)
@@ -78,7 +77,6 @@ public partial class ZamestnanciFormViewModel : ViewModelBase, INotifyDataErrorI
         if (selectedItem != null)
         {
             editedZamestanenc = (ZamestnanecViewDTO?)selectedItem;
-            // IdZamestnance = editedZamestanenc.IdZamestnance;
             UzivatelskeJmeno = editedZamestanenc.UzivatelskeJmeno;
             Jmeno = editedZamestanenc.Jmeno;
             Prijmeni = editedZamestanenc.Prijmeni;
@@ -111,6 +109,9 @@ public partial class ZamestnanciFormViewModel : ViewModelBase, INotifyDataErrorI
             idZamestnance = DBNull.Value;
         else
             idZamestnance = EditedZamestanenc.IdZamestnance;
+
+        if (SelectedNadrizeny.IdZamestnance == null)
+            SelectedNadrizeny = null;
         var parameters = new List<OracleParameter>
         {
             new OracleParameter("p_id_zamestnance", OracleDbType.Decimal)
@@ -120,12 +121,10 @@ public partial class ZamestnanciFormViewModel : ViewModelBase, INotifyDataErrorI
             new OracleParameter("p_platnost_uvazku_do", OracleDbType.Date)
                 { Value = PlatnostUvazkuDo, Direction = ParameterDirection.Input },
             new OracleParameter("p_id_nadrizeneho", OracleDbType.Decimal)
-                // { Value = selectedNadrizeny.IdZamestnance, Direction = ParameterDirection.Input },
                 { Value = SelectedNadrizeny==null?DBNull.Value : SelectedNadrizeny.IdZamestnance, Direction = ParameterDirection.Input },
             new OracleParameter("p_id_uzivatele", OracleDbType.Decimal)
                 { Value = IdUzivatele, Direction = ParameterDirection.Input }
         };
-        //
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
 
@@ -178,6 +177,8 @@ public partial class ZamestnanciFormViewModel : ViewModelBase, INotifyDataErrorI
             Zamestnanci.Add(zamestnanec);
         }
 
+        Zamestnanci.Add(new ZamestnanecViewDTO());
+        
         if (EditedZamestanenc.IdNadrizeneho != null)
         {
             SelectedNadrizeny = zamestnanci.FirstOrDefault(z => z.IdZamestnance == EditedZamestanenc.IdNadrizeneho);
