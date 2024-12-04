@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="DopravniPodnik.Views.LogyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DopravniPodnik.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Button Content="Detail"
+                HorizontalAlignment="Left"
+                Command="{Binding DetailCommand}" 
+                Grid.Row="0" />
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+            <DataGrid
+                AutoGenerateColumns="False"
+                ItemsSource="{Binding Items}"
+                SelectedItem="{Binding SelectedItem}"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                IsReadOnly="True"
+                Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Čas" Binding="{Binding Cas, StringFormat=dd/MM/yyyy HH:mm:ss}" SortDirection="Ascending"/>
+                    <DataGridTextColumn Header="Tabulka" Binding="{Binding Tabulka}" />
+                    <DataGridTextColumn Header="Operace" Binding="{Binding Operace}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -32,11 +32,7 @@
         <Label Content="Platnost úvazku do" />
         <DatePicker SelectedDate="{Binding PlatnostUvazkuDo}" />
         <Label Content="Nadřízený" />
-
-        <!-- this needs to be changed -->
-        <!-- <ComboBox ItemsSource="{Binding Zamestnanci}" -->
-        <!--           SelectedItem="{Binding SelectedZamestnanec}" -->
-        <!--           DisplayMemberPath="IdZamestnance" /> -->
+        
         <ComboBox ItemsSource="{Binding Zamestnanci}"
                   SelectedItem="{Binding SelectedNadrizeny}"
                   SelectedIndex="0">
