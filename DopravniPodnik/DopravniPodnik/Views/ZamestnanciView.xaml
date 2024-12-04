@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="DopravniPodnik.Views.ZamestnanciView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DopravniPodnik.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Upravit"
+                    Command="{Binding InformaceCommand}" />
+            <Button Content="Odebrat"
+                    Command="{Binding OdebratCommand}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Vyhledat: " />
+            <TextBox Width="200"
+                     Text="{Binding SearchedText, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <DataGrid
+            ItemsSource="{Binding FilteredItems}"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            SelectedItem="{Binding SelectedItem}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Uživatelské jméno" Binding="{Binding UzivatelskeJmeno}" />
+                <DataGridTextColumn Header="Jméno" Binding="{Binding Jmeno}" />
+                <DataGridTextColumn Header="Příjmení" Binding="{Binding  Prijmeni}" />
+                <DataGridTextColumn Header="Plat" Binding="{Binding Plat}" />
+                <DataGridTextColumn Header="Platnost úvazku do" Binding="{Binding PlatnostUvazkuDo, StringFormat=dd/MM/yyyy}" />
+                <DataGridTextColumn Header="Jméno nadřízeného" Binding="{Binding JmenoNadrizeneho}" />
+                <DataGridTextColumn Header="Příjmení nadřízeného" Binding="{Binding PrijmeniNadrizeneho}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>

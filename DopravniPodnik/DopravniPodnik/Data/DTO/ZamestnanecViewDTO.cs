@@ -5,7 +5,7 @@ namespace DopravniPodnik.Data.DTO;
 public class ZamestnanecViewDTO
 {
     [ColumnName("ID_ZAMESTNANCE")] 
-    public int IdZamestnance { get; set; }
+    public int? IdZamestnance { get; set; }
     
     [ColumnName("UZIVATELSKE_JMENO")] 
     public string UzivatelskeJmeno { get; set; }
@@ -21,10 +21,16 @@ public class ZamestnanecViewDTO
 
     [ColumnName("PLATNOST_UVAZKU_DO")] 
     public DateTime? PlatnostUvazkuDo { get; set; }
+
+    [ColumnName("ID_NADRIZENEHO")]
+    public int? IdNadrizeneho { get; set; }
     
     [ColumnName("JMENO_NADRIZENEHO")] 
     public string? JmenoNadrizeneho { get; set; }
 
     [ColumnName("PRIJMENI_NADRIZENEHO")] 
     public string? PrijmeniNadrizeneho { get; set; }
+    
+    [ColumnName("ID_UZIVATELE")]
+    public int? IdUzivatele { get; set; }
 }

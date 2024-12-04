@@ -171,5 +171,8 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="PropertyLabel" TargetType="Label">
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
 
 </ResourceDictionary>

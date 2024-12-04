@@ -1,8 +1,10 @@
 ﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using DopravniPodnik.Data.DTO;
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
 using DopravniPodnik.Utils;
@@ -11,7 +13,7 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace DopravniPodnik.ViewModels.Forms;
 
-public partial class ZamestnanciFormViewModel: ViewModelBase , INotifyDataErrorInfo
+public partial class ZamestnanciFormViewModel : ViewModelBase, INotifyDataErrorInfo
 {
     private readonly ErrorsViewModel _errorsViewModel;
     public bool HasErrors => _errorsViewModel.HasErrors;
@@ -19,39 +21,75 @@ public partial class ZamestnanciFormViewModel: ViewModelBase , INotifyDataErrorI
 
     public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
     private readonly DatabaseService _databaseService = new();
+    private ZamestnanecService _zamestnanecService = new();
 
-    private int? IdZamestnance { get; set; }
+
+    // private int? IdZamestnance { get; set; }
     private int? IdUzivatele { get; set; }
+    // private int IdZamestnance { get; set; }
+    [ObservableProperty] public string uzivatelskeJmeno;
+    [ObservableProperty] public string jmeno;
+    [ObservableProperty] public string prijmeni;
+    [ObservableProperty] public string plat;
+    [ObservableProperty] public DateTime? platnostUvazkuDo = DateTime.Today;
 
-    [ObservableProperty]
-    public string plat;
-    [ObservableProperty]
-    public DateTime? platnostUvazkuDo = DateTime.Today;
+    [ObservableProperty] public ZamestnanecViewDTO editedZamestanenc;
+    [ObservableProperty] public ObservableCollection<ZamestnanecViewDTO> zamestnanci = new();
 
+    [ObservableProperty] public ZamestnanecViewDTO selectedNadrizeny;
+    private UzivatelDTO EditedUzivatel { get; set; }
+    
+    public ZamestnanciFormViewModel(int idUzivatele)
+    {
+        _errorsViewModel = new ErrorsViewModel();
+        _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
+        IdUzivatele = idUzivatele;
 
+        editedZamestanenc =
+            _databaseService.FetchData<ZamestnanecViewDTO>(
+                $"SELECT * FROM ZAMESTNANCI_VIEW WHERE ID_UZIVATELE = {idUzivatele}")
+                .FirstOrDefault();
+        if (editedZamestanenc != null)
+        {
+            // IdZamestnance = editedZamestanenc.IdZamestnance;
+            UzivatelskeJmeno = editedZamestanenc.UzivatelskeJmeno;
+            Jmeno = editedZamestanenc.Jmeno;
+            Prijmeni = editedZamestanenc.Prijmeni;
+            Plat = editedZamestanenc.Plat.ToString();
+            PlatnostUvazkuDo = editedZamestanenc.PlatnostUvazkuDo;
+        }
+        else
+        {
+            editedZamestanenc = new ZamestnanecViewDTO(); 
+        }
 
-    public ZamestnanciFormViewModel(object selectedItem)
+        EditedUzivatel = LoadUserDetails(idUzivatele);
+        
+        LoadZamestnanci();
+
+        // Exit();
+    }
+
+    public ZamestnanciFormViewModel(ZamestnanecViewDTO selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
 
         if (selectedItem != null)
         {
-            if (selectedItem.GetType() == typeof(Int32))
-            {
-                IdUzivatele = (Int32)selectedItem;
-                LoadZamestnanec();
-                return;
-            }
-            if (selectedItem.GetType() == typeof(Zamestnanci))
-            {
-                var zamestnanec = (Zamestnanci)selectedItem;
-                Plat = zamestnanec.Plat;
-                PlatnostUvazkuDo = zamestnanec.PlatnostUvazkuDo;
-                IdUzivatele = zamestnanec.IdUzivatele;
-                IdZamestnance = zamestnanec.IdZamestnance;
-            }
+            editedZamestanenc = (ZamestnanecViewDTO?)selectedItem;
+            // IdZamestnance = editedZamestanenc.IdZamestnance;
+            UzivatelskeJmeno = editedZamestanenc.UzivatelskeJmeno;
+            Jmeno = editedZamestanenc.Jmeno;
+            Prijmeni = editedZamestanenc.Prijmeni;
+            Plat = editedZamestanenc.Plat.ToString();
+            PlatnostUvazkuDo = editedZamestanenc.PlatnostUvazkuDo;
+            IdUzivatele = editedZamestanenc.IdUzivatele;
+
+            LoadZamestnanci();
         }
+        else
+            Exit();
     }
 
     [RelayCommand]
@@ -68,63 +106,90 @@ public partial class ZamestnanciFormViewModel: ViewModelBase , INotifyDataErrorI
                 );
             END;
         ";
-        
+        object idZamestnance;
+        if (EditedZamestanenc.IdZamestnance == null)
+            idZamestnance = DBNull.Value;
+        else
+            idZamestnance = EditedZamestanenc.IdZamestnance;
         var parameters = new List<OracleParameter>
         {
             new OracleParameter("p_id_zamestnance", OracleDbType.Decimal)
-                { Value = IdZamestnance, Direction = ParameterDirection.Input },
-            new OracleParameter("p_plat", OracleDbType.Decimal) 
+                { Value = idZamestnance, Direction = ParameterDirection.Input },
+            new OracleParameter("p_plat", OracleDbType.Decimal)
                 { Value = Plat, Direction = ParameterDirection.Input },
             new OracleParameter("p_platnost_uvazku_do", OracleDbType.Date)
                 { Value = PlatnostUvazkuDo, Direction = ParameterDirection.Input },
             new OracleParameter("p_id_nadrizeneho", OracleDbType.Decimal)
-                { Value = null, Direction = ParameterDirection.Input },
+                // { Value = selectedNadrizeny.IdZamestnance, Direction = ParameterDirection.Input },
+                { Value = SelectedNadrizeny==null?DBNull.Value : SelectedNadrizeny.IdZamestnance, Direction = ParameterDirection.Input },
             new OracleParameter("p_id_uzivatele", OracleDbType.Decimal)
                 { Value = IdUzivatele, Direction = ParameterDirection.Input }
         };
-
+        //
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
-        
-        // TODO delete zakaznik
 
-        Console.WriteLine(error);
         Exit();
     }
 
-    private void LoadZamestnanec()
+    [RelayCommand]
+    private void DetailUzivatele()
     {
-        var data = _databaseService.FetchData<Zamestnanci>($"SELECT * FROM ZAMESTNANCI WHERE ID_UZIVATELE = {IdUzivatele}");
-        if (data.Count != 0)
+        if(EditedUzivatel == null)
+            WindowManager.SetContentView(typeof(ProfilViewModel), new object[] { EditedZamestanenc.IdUzivatele });
+        else
+            WindowManager.SetContentView(typeof(ProfilViewModel), new object[] { EditedUzivatel });
+    }
+
+    private UzivatelDTO LoadUserDetails(int id)
+    {
+        var uzivatel = _databaseService.FetchData<UzivatelDTO>($"SELECT * FROM UZIVATEL_VIEW WHERE ID_UZIVATELE = {id}")
+            .FirstOrDefault();
+        if (uzivatel != null)
         {
-            var zamestnanec = data[0];
-            Plat = zamestnanec.Plat;
-            PlatnostUvazkuDo = zamestnanec.PlatnostUvazkuDo;
-            IdUzivatele = zamestnanec.IdUzivatele;
-            IdZamestnance = zamestnanec.IdZamestnance;
+            Jmeno = uzivatel.jmeno;
+            Prijmeni = uzivatel.prijmeni;
+            IdUzivatele = uzivatel.id_uzivatele;
         }
+        return uzivatel;
     }
     private void ValidateInput(string propertyName)
     {
         _errorsViewModel.ClearErrors(propertyName);
-        
-        switch (propertyName)
+
+        // switch (propertyName)
+        // {
+        //     case nameof(Plat):
+        //         //validate hee
+        //         break;
+        //     case nameof(PlatnostUvazkuDo):
+        //         //and here
+        //         break;
+        // }
+    }
+
+    private void LoadZamestnanci()
+    {
+        var data = _zamestnanecService.GetAllZamestnanci();
+        foreach (var zamestnanec in data)
         {
-            case nameof(Plat):
-                //validate hee
-                break;
-            case nameof(PlatnostUvazkuDo):
-                //and here
-                break;
+            if (zamestnanec.IdZamestnance == EditedZamestanenc.IdZamestnance)
+                continue;
+            Zamestnanci.Add(zamestnanec);
+        }
+
+        if (EditedZamestanenc.IdNadrizeneho != null)
+        {
+            SelectedNadrizeny = zamestnanci.FirstOrDefault(z => z.IdZamestnance == EditedZamestanenc.IdNadrizeneho);
         }
     }
 
     private void ValidateAllInputs()
     {
-        ValidateInput(nameof(Plat));
-        ValidateInput(nameof(PlatnostUvazkuDo));
+        // ValidateInput(nameof(Plat));
+        // ValidateInput(nameof(PlatnostUvazkuDo));
     }
-    
+
     public IEnumerable GetErrors(string? propertyName)
     {
         return _errorsViewModel.GetErrors(propertyName);
@@ -132,7 +197,7 @@ public partial class ZamestnanciFormViewModel: ViewModelBase , INotifyDataErrorI
 
     private void ErrorsViewModel_ErrorsChanged(object? sender, DataErrorsChangedEventArgs e)
     {
-        ErrorsChanged?.Invoke(this,e);
+        ErrorsChanged?.Invoke(this, e);
         OnPropertyChanged(nameof(CanCreate));
     }
 

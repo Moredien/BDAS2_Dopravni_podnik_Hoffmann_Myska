@@ -60,9 +60,7 @@ public partial class ZakazniciViewModel : ViewModelBase
         FilteredItems.Clear();
         foreach (var entry in Items)
         {
-            if (entry.uzivatelske_jmeno.ToLower().Contains(keyword.ToLower()) ||
-                entry.jmeno.ToLower().Contains(keyword.ToLower()) ||
-                entry.prijmeni.ToLower().Contains(keyword.ToLower()))
+            if(string.Concat(entry.uzivatelske_jmeno,entry.jmeno,entry.prijmeni).ToLower().Contains(SearchedText.ToLower()))
             {
                 FilteredItems.Add(entry);
             }
