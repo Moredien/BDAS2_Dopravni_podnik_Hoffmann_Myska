@@ -10,10 +10,11 @@ CREATE OR REPLACE PROCEDURE ZALOZIT_KARTU (
 )
 AS
     v_id_karty NUMBER;
+    v_id_foto NUMBER;
     v_id_typ_predplatneho NUMBER;
     v_od DATE := SYSDATE;
 BEGIN
-
+    
     IF p_foto IS NULL OR p_jmeno_souboru IS NULL THEN
         RAISE_APPLICATION_ERROR(-20004, 'Chybí informace o fotce. Foto i jméno souboru musí být zadány.');
     END IF;
@@ -23,7 +24,7 @@ BEGIN
         PLATNOST_OD,
         PLATNOST_DO,
         ID_ZAKAZNIKA,
-        ID_FOTO
+        ID_FOTO -- Null, protože foto ještě nebylo vloženo
     ) VALUES (
                  p_zustatek,
                  p_platnost_od,
@@ -45,7 +46,13 @@ BEGIN
                  SYSDATE,
                  v_id_karty,
                  NULL
-             );
+             )
+    RETURNING ID_FOTO INTO v_id_foto;
+
+    -- Update na vložení id_foto ke kartě
+    UPDATE ST67028.KARTY_MHD
+    SET ID_FOTO = v_id_foto
+    WHERE ID_KARTY = v_id_karty;
 
     -- Pokud je zadán typ předplatného, přidáme záznam o předplatném
     IF p_typ_predplatneho IS NOT NULL THEN
@@ -72,7 +79,7 @@ BEGIN
     END IF;
 
     COMMIT;
-    
+
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RAISE_APPLICATION_ERROR(-20002, 'Typ předplatného nebyl nalezen: ' || p_typ_predplatneho);
