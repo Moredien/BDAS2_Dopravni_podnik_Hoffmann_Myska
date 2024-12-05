@@ -31,6 +31,7 @@ public partial class KartyViewModel : ViewModelBase
         // uzivatel = _databaseService.FetchData<Uzivatele>($"SELECT * FROM UZIVATELE WHERE UZIVATELSKE_JMENO = '{UserSession.Instance.UserName}'").FirstOrDefault();
         // zakaznik = _databaseService.FetchData<Zakaznici>(
         //     $"SELECT * FROM ZAKAZNICI WHERE ID_UZIVATELE = {uzivatel.IdUzivatele}").FirstOrDefault();
+        // var idUzivatele = _databaseService.FetchData<Zakaznici>($"SELECT * FROM ZAKAZNICI WHERE ID_ZAKAZNIKA = {UserSession.Instance.}")
     }
     [RelayCommand]
     public void Zalozit()
