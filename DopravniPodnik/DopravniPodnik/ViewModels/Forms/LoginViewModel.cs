@@ -57,7 +57,8 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
         if (!CanCreate) return;
 
         _authService.LoginUser(Uzivatelske_jmeno!, PasswordBoxHelper.ConvertToUnsecureString(Heslo.Value));
-        
+        if (UserSession.Instance.UserType == null)
+            return;
         
         if (UserSession.Instance.UserType.Nazev == "Admin")
             WindowManager.SetMenuView(typeof(AdminMenuViewModel));
