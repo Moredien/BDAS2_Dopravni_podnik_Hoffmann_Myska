@@ -50,7 +50,7 @@ public partial class KartyViewModel : ViewModelBase
     [RelayCommand]
     public void Informace()
     {
-        Console.WriteLine("informace");
+        WindowManager.SetContentView(typeof(KartaDetailViewModel), new object[] { selectedItem });
 
     }
     [RelayCommand]

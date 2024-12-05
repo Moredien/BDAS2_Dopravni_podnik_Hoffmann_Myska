@@ -20,9 +20,7 @@ namespace DopravniPodnik.ViewModels;
 public partial class ProfilViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
-    private readonly OracleDbContext _context = OracleDbContext.Instance;
     
-    // public Image Foto;
     [ObservableProperty] public BitmapSource displayedImage;
     [ObservableProperty] public UzivatelDTO uzivatel;
 

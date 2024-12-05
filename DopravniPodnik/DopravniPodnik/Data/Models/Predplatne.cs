@@ -14,8 +14,9 @@ public partial class Predplatne
 
     public DateTime Do { get; set; }
 
+    [ColumnName("ID_KARTY")]
     public int IdKarty { get; set; }
-
+    [ColumnName("ID_TYP_PREDPLATNEHO")]
     public int IdTypPredplatneho { get; set; }
 
     public virtual KartyMhd IdKartyNavigation { get; set; } = null!;
