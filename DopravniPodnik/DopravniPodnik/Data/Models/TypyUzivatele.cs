@@ -8,7 +8,7 @@ public partial class TypyUzivatele
 {
     [IdProperty]
     [ColumnName("ID_TYP_UZIVATELE")]
-    public int IdTypUzivatele { get; set; }
+    public int? IdTypUzivatele { get; set; } = null;
 
     public string Nazev { get; set; } = null!;
 

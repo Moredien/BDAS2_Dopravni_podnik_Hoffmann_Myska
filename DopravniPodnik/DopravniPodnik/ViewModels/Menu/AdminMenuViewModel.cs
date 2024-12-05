@@ -33,7 +33,7 @@ public partial class AdminMenuViewModel : ViewModelBase
     [RelayCommand]
     private void Emulovat()
     {
-        Console.WriteLine("emulovat");
+        App.UserSessionInstance.EmulateUserType("Zákazník"); //TODO implementovat přepíná uživatelů 
     }
     public override void Update()
     {
