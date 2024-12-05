@@ -21,7 +21,7 @@ AS
     v_od DATE := SYSDATE;
     v_cas_platby DATE := SYSDATE;
     v_id_platby NUMBER;
-    v_typ_platby VARCHAR2(50);
+    v_typ_platby NUMBER(1);
 BEGIN
 
     -- Validace povinných dat pro foto
@@ -33,21 +33,6 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20007, 'Nemůžou být zadány všechny parametry pro oba druhy plateb najednou.');
     END IF;
 
-    -- Vložení karty s přednastaveným ID_FOTO = NULL, bude se dělat update dále v proceduře
-    INSERT INTO ST67028.KARTY_MHD (
-        ZUSTATEK,
-        PLATNOST_OD,
-        PLATNOST_DO,
-        ID_ZAKAZNIKA,
-        ID_FOTO
-    ) VALUES (
-                 p_zustatek,
-                 p_platnost_od,
-                 p_platnost_do,
-                 p_id_zakaznika,
-                 NULL
-             )
-    RETURNING ID_KARTY INTO v_id_karty;
 
     -- Vložení záznamu do tabulky FOTO
     INSERT INTO ST67028.FOTO (
@@ -60,15 +45,31 @@ BEGIN
                  p_jmeno_souboru,
                  p_foto,
                  SYSDATE,
-                 v_id_karty,
+                 NULL,
                  NULL -- Protože fotka je spojena s kartou a ne uživatelem
              )
     RETURNING ID_FOTO INTO v_id_foto;
-
-    -- Aktualizace ID_FOTO u karty
-    UPDATE ST67028.KARTY_MHD
-    SET ID_FOTO = v_id_foto
-    WHERE ID_KARTY = v_id_karty;
+    
+    -- Vložení karty s přednastaveným ID_FOTO = NULL, bude se dělat update dále v proceduře
+    INSERT INTO ST67028.KARTY_MHD (
+        ZUSTATEK,
+        PLATNOST_OD,
+        PLATNOST_DO,
+        ID_ZAKAZNIKA,
+        ID_FOTO
+    ) VALUES (
+                 p_zustatek,
+                 p_platnost_od,
+                 p_platnost_do,
+                 p_id_zakaznika,
+                 v_id_foto
+             )
+    RETURNING ID_KARTY INTO v_id_karty;
+    
+    -- Aktualizace ID_KARTY u FOTO
+    UPDATE ST67028.FOTO
+    SET ID_KARTY = v_id_karty
+    WHERE ID_FOTO = v_id_foto;
 
     IF p_typ_predplatneho IS NOT NULL THEN
         SELECT ID_TYP_PREDPLATNEHO
@@ -94,7 +95,7 @@ BEGIN
 
         IF p_vyse_platby IS NOT NULL THEN
             IF p_cislo_karty IS NOT NULL AND p_jmeno_majitele IS NOT NULL THEN
-                v_typ_platby := 'KARTA';
+                v_typ_platby := 0; -- 0 pro platbu kartou
 
                 INSERT INTO ST67028.PLATBY (
                     CAS_PLATBY,
@@ -120,7 +121,7 @@ BEGIN
                          );
 
             ELSIF p_cislo_uctu IS NOT NULL THEN
-                v_typ_platby := 'PREVOD';
+                v_typ_platby := 1; -- 1 pro platbu prevodem
 
                 INSERT INTO ST67028.PLATBY (
                     CAS_PLATBY,
