@@ -41,6 +41,8 @@ public partial  class ZamestnanciViewModel : ViewModelBase
     [RelayCommand]
     public void Informace()
     {
+        if (selectedItem == null) 
+            return;
         WindowManager.SetContentView(typeof(ZamestnanciFormViewModel), new[] { selectedItem });
     }
 

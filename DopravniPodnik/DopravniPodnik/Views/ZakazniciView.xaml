@@ -26,7 +26,7 @@
                 <DataGridTextColumn Header="Uživatelské jméno" Binding="{Binding uzivatelske_jmeno}" />
                 <DataGridTextColumn Header="Jméno" Binding="{Binding jmeno}" />
                 <DataGridTextColumn Header="Příjmení" Binding="{Binding  prijmeni}" />
-                <DataGridTextColumn Header="Datum narozneí" Binding="{Binding datum_narozeni, StringFormat=dd/MM/yyyy}" />
+                <DataGridTextColumn Header="Datum narození" Binding="{Binding datum_narozeni, StringFormat=dd/MM/yyyy}" />
                 <DataGridTextColumn Header="Čas založení" Binding="{Binding cas_zalozeni, StringFormat=dd/MM/yyyy HH:mm}" />
             </DataGrid.Columns>
         </DataGrid>

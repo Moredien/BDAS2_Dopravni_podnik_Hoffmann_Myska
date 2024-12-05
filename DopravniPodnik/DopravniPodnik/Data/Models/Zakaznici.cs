@@ -9,7 +9,7 @@ public partial class Zakaznici
     [IdProperty]
     [ColumnName("ID_ZAKAZNIKA")]
     public int IdZakaznika { get; set; }
-
+    [ColumnName("ID_UZIVATELE")]
     public int IdUzivatele { get; set; }
 
     public virtual Uzivatele IdUzivateleNavigation { get; set; } = null!;
