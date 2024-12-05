@@ -127,14 +127,13 @@ public static class GridViewTemplates
                         new DataGridColumnInfo { Header = "Jméno", BindingPath = "Jmeno" },
                         new DataGridColumnInfo { Header = "Cena", BindingPath = "Cena" },
                     });
-            case "Logy":
+            case "Linky":
                 return new DataGridDataContext(
                     modelType,
-                    typeof(LogyFormViewModel),
+                    typeof(LinkyFormViewModel),
                     new ObservableCollection<DataGridColumnInfo>{
-                        new DataGridColumnInfo { Header = "Čas", BindingPath = "Cas"  , Format = "dd.MM.yyyy"},
-                        new DataGridColumnInfo { Header = "Tabulka", BindingPath = "Tabulka" },
-                        new DataGridColumnInfo { Header = "Operace", BindingPath = "Operace" },
+                        new DataGridColumnInfo { Header = "Číslo", BindingPath = "CisloLinky" },
+                        new DataGridColumnInfo { Header = "Jméno", BindingPath = "Jmeno" },
                     });
             default: return null;
         }

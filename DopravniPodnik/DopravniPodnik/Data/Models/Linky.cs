@@ -9,7 +9,7 @@ public partial class Linky
     [IdProperty]
     [ColumnName("ID_LINKY")]
     public int IdLinky { get; set; }
-
+    [ColumnName("CISLO_LINKY")]
     public short CisloLinky { get; set; }
 
     public string? Jmeno { get; set; }
