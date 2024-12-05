@@ -132,16 +132,6 @@ public partial class OracleDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("JMENO_SOUBORU");
-
-            entity.HasOne(d => d.IdKartyNavigation).WithOne(p => p.Foto)
-                .HasForeignKey<Foto>(d => d.IdKarty)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FOTO_KARTA_MHD_FK");
-
-            entity.HasOne(d => d.IdUzivateleNavigation).WithMany(p => p.Fotos)
-                .HasForeignKey(d => d.IdUzivatele)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FOTO_UZIVATELE_FK");
         });
 
         modelBuilder.Entity<Jizdy>(entity =>
@@ -204,15 +194,6 @@ public partial class OracleDbContext : DbContext
                 .HasColumnType("NUMBER(10,2)")
                 .HasColumnName("ZUSTATEK");
 
-            entity.HasOne(d => d.IdFotoNavigation).WithOne(p => p.KartyMhd)
-                .HasForeignKey<KartyMhd>(d => d.IdFoto)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("KARTA_MHD_FOTO_FK");
-
-            entity.HasOne(d => d.IdZakaznikaNavigation).WithMany(p => p.KartyMhds)
-                .HasForeignKey(d => d.IdZakaznika)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("KARTA_MHD_ZAKAZNIK_FK");
         });
 
         modelBuilder.Entity<Linky>(entity =>
@@ -313,11 +294,7 @@ public partial class OracleDbContext : DbContext
             entity.Property(e => e.Od)
                 .HasColumnType("DATE")
                 .HasColumnName("OD");
-
-            entity.HasOne(d => d.IdKartyNavigation).WithMany(p => p.Predplatnes)
-                .HasForeignKey(d => d.IdKarty)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("PREDPLATNE_KARTA_MHD_FK");
+            
 
             entity.HasOne(d => d.IdTypPredplatnehoNavigation).WithMany(p => p.Predplatnes)
                 .HasForeignKey(d => d.IdTypPredplatneho)

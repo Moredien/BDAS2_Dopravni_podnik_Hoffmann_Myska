@@ -11,20 +11,12 @@ public partial class KartyMhd
     public int IdKarty { get; set; }
 
     public decimal Zustatek { get; set; }
-
+    [ColumnName("PLATNOST_OD")]
     public DateTime PlatnostOd { get; set; }
-
+    [ColumnName("PLATNOST_DO")]
     public DateTime PlatnostDo { get; set; }
-
+    [ColumnName("ID_ZAKAZNIKA")]
     public int IdZakaznika { get; set; }
-
+    [ColumnName("ID_FOTO")]
     public int IdFoto { get; set; }
-
-    public virtual Foto? Foto { get; set; }
-
-    public virtual Foto IdFotoNavigation { get; set; } = null!;
-
-    public virtual Zakaznici IdZakaznikaNavigation { get; set; } = null!;
-
-    public virtual ICollection<Predplatne> Predplatnes { get; set; } = new List<Predplatne>();
 }

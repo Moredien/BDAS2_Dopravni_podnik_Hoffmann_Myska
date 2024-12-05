@@ -12,14 +12,20 @@
                     Command="{Binding ZalozitCommand}"/>
             <Button Content="Informace"
                     Command="{Binding InformaceCommand}"/>
-            <Button Content="Zaplatit"
-                    Command="{Binding ZaplatitCommand}"/>
+            <Button Content="Dobít"
+                    Command="{Binding DobitCommand}"/>
         </StackPanel>
         <DataGrid
             ItemsSource="{Binding Items}"
             AutoGenerateColumns="False"
             CanUserAddRows="False"
             IsReadOnly="True"
-            SelectedItem="{Binding SelectedItem}" />
+            SelectedItem="{Binding SelectedItem}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Zůstatek" Binding="{Binding Zustatek}" />
+                <DataGridTextColumn Header="Platnost od" Binding="{Binding PlatnostOd, StringFormat=dd/MM/yyyy}" SortDirection="Ascending"/>
+                <DataGridTextColumn Header="Platnost do" Binding="{Binding PlatnostDo, StringFormat=dd/MM/yyyy}" SortDirection="Ascending"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </StackPanel>
 </UserControl>

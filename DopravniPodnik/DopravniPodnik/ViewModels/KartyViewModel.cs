@@ -12,26 +12,35 @@ namespace DopravniPodnik.ViewModels;
 public partial class KartyViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
-    public ObservableCollection<KartyMhd> Items;
+    [ObservableProperty]
+    public ObservableCollection<KartyMhd> items;
     [ObservableProperty]
     public KartyMhd selectedItem;
 
     private int id;
-    private Zakaznici zakaznik;
+    private Zakaznici? zakaznik;
     private Uzivatele uzivatel;
 
-    // to be finished when the photos can be uploaded
     public KartyViewModel()
     {
+        Items = new();
         LoadKarty();
     }
 
     private void LoadKarty()
     {
-        // uzivatel = _databaseService.FetchData<Uzivatele>($"SELECT * FROM UZIVATELE WHERE UZIVATELSKE_JMENO = '{UserSession.Instance.UserName}'").FirstOrDefault();
-        // zakaznik = _databaseService.FetchData<Zakaznici>(
-        //     $"SELECT * FROM ZAKAZNICI WHERE ID_UZIVATELE = {uzivatel.IdUzivatele}").FirstOrDefault();
-        // var idUzivatele = _databaseService.FetchData<Zakaznici>($"SELECT * FROM ZAKAZNICI WHERE ID_ZAKAZNIKA = {UserSession.Instance.}")
+        var idUzivatele = _databaseService
+            .FetchData<Uzivatele>($"SELECT * FROM UZIVATELE WHERE UZIVATELSKE_JMENO = '{UserSession.Instance.UserName}'")
+            .FirstOrDefault()?.IdUzivatele;
+        zakaznik = _databaseService
+            .FetchData<Zakaznici>($"SELECT * FROM ZAKAZNICI WHERE ID_UZIVATELE = {idUzivatele}")
+            .FirstOrDefault();
+        var data = _databaseService.FetchData<KartyMhd>(
+            $"SELECT * FROM KARTY_MHD WHERE ID_ZAKAZNIKA = {zakaznik?.IdZakaznika}");
+        foreach (var entry in data)
+        {
+            Items.Add(entry);
+        }
     }
     [RelayCommand]
     public void Zalozit()
@@ -45,7 +54,7 @@ public partial class KartyViewModel : ViewModelBase
 
     }
     [RelayCommand]
-    public void Zaplatit()
+    public void Dobit()
     {
         Console.WriteLine("zaplatit");
 
