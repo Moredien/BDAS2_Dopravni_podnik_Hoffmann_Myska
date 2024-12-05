@@ -67,6 +67,7 @@ public static class WindowManager
         {
             MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
             MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", null,typeof(InfoOZastavceViewModel)));
+            MainWindow.SelectedListItem = MainWindow.MenuItems[0];
             return;
         }
         
@@ -98,6 +99,7 @@ public static class WindowManager
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zastávky", typeof(Zastavky),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Typy předplatného", typeof(TypyPredplatneho),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vozový park", typeof(VozovyParkDTO),typeof(VozovyParkViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Foto", null,typeof(FotoViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zákazníci", null,typeof(ZakazniciViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zaměstnanci", null,typeof(ZamestnanciViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Logy", null,typeof(LogyViewModel)));
