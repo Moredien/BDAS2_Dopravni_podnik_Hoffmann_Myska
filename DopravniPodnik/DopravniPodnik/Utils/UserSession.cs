@@ -12,6 +12,8 @@ public class UserSession
     public TypyUzivatele? UserType { get; private set; } = null;
     public DateTime? SessionCreationTime { get; private set; } = null;
     public bool IsSafeModeOn { get; set; } = false;
+    
+    private bool _isUserAdmin = false;
 
     private UserSession() { }
 
@@ -31,6 +33,8 @@ public class UserSession
         UserName = userName;
         UserType = userType;
         SessionCreationTime = DateTime.Now;
+
+        _isUserAdmin = userType is { Nazev: "Admin" };
     }
 
     public void EndSession()
@@ -38,10 +42,19 @@ public class UserSession
         SessionCreationTime = null;
         UserType = null;
         UserName = null;
+        _isUserAdmin = false;
     }
 
-    public void Temp()
+    public void EmulateUserType(string userType)
     {
-        Console.WriteLine("Test user: " + UserName);
+        if(!_isUserAdmin) return;
+        
+        UserType = userType switch
+        {
+            "Admin" => new TypyUzivatele { Nazev = "Admin" },
+            "Zákazník" => new TypyUzivatele { Nazev = "Zákazník" },
+            "Zaměstnanec" => new TypyUzivatele { Nazev = "Zaměstnanec" },
+            _ => throw new ArgumentException($"Neplatný typ uživatele: {userType}")
+        };
     }
 }
