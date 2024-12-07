@@ -55,8 +55,6 @@ public static class WindowManager
     }
     private static ViewModelBase CreateNewViewInstance(Type type, object[] parameters)
     {
-        // if (parameters == null)
-        //     return (ViewModelBase)Activator.CreateInstance(type);
         return (ViewModelBase)Activator.CreateInstance(type, parameters);
     }
 

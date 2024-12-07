@@ -17,10 +17,7 @@ public class UzivatelDTO
     [ColumnName("TYP_UZIVATELE")]
     public string nazev_typ_uzivatele{ get; set; }
     //foto
-    public int id_foto{ get; set; }
-    public string foto_jmeno_souboru{ get; set; }
-    public byte[]? foto_data{ get; set; }
-    public DateTime foto_datum_pridani{ get; set; }
+    public int? id_foto{ get; set; }
     //adresa
     public int id_adresy{ get; set; }
     public string mesto{ get; set; }

@@ -58,11 +58,7 @@ public class UserService
                         mesto = reader.GetString(reader.GetOrdinal("MESTO")),
                         ulice = reader.GetString(reader.GetOrdinal("ULICE")),
                         cislo_popisne = reader.GetInt16(reader.GetOrdinal("CISLO_POPISNE")),
-                        // Optional zatim default hodnoty
                         id_foto = 0,
-                        foto_jmeno_souboru = string.Empty,
-                        foto_data = null,
-                        foto_datum_pridani = DateTime.MinValue,
                         id_zakaznika = null,
                         id_zamestnance = null
                 };

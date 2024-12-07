@@ -33,7 +33,6 @@ public partial class ProfilViewModel : ViewModelBase
     {
         FetchUzivatel();
         LoadPhoto();
-
     }
 
     public ProfilViewModel(int id_uzivatele)
@@ -60,8 +59,6 @@ public partial class ProfilViewModel : ViewModelBase
     [RelayCommand]
     public void NewPhoto()
     {
-        Console.WriteLine("open new photo form");
-
         var foto = LoadFotoFromFile();
         if(foto==null)
             return;
@@ -102,7 +99,7 @@ public partial class ProfilViewModel : ViewModelBase
     [RelayCommand]
     public void PhotoDetails()
     {
-        if (Uzivatel.foto_data == null)
+        if (Uzivatel.id_foto == null)
             return;
         WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { uzivatel.id_foto });
     }
@@ -116,9 +113,9 @@ public partial class ProfilViewModel : ViewModelBase
 
     private void LoadPhoto()
     {
-        // fotoSource = new BitmapImage();
+        
         var bitmap = new BitmapImage();
-        if (uzivatel.foto_data == null || uzivatel.foto_data.Length==0)
+        if (uzivatel.id_foto == null)
         {
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(Path.GetFullPath("../../../Images/defaultUser.png"), UriKind.Absolute);
@@ -128,7 +125,9 @@ public partial class ProfilViewModel : ViewModelBase
         }
         else
         {
-            using (var memoryStream = new MemoryStream(uzivatel.foto_data))
+            var fotoData = _databaseService.FetchData<Foto>($"SELECT * FROM FOTO WHERE ID_FOTO = {uzivatel.id_foto}").FirstOrDefault();
+            
+            using (var memoryStream = new MemoryStream(fotoData.Data))
             {
                 BitmapImage bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();

@@ -66,18 +66,6 @@ public class AuthService
                 new("p_mesto", OracleDbType.Varchar2, uzivatel.mesto, ParameterDirection.Input),
                 new("p_ulice", OracleDbType.Varchar2, uzivatel.ulice, ParameterDirection.Input),
                 new("p_cislo_popisne", OracleDbType.Decimal, uzivatel.cislo_popisne, ParameterDirection.Input),
-                new("p_foto_jmeno_souboru", OracleDbType.Varchar2, 
-                    string.IsNullOrEmpty(uzivatel.foto_jmeno_souboru) ? DBNull.Value : uzivatel.foto_jmeno_souboru, 
-                    ParameterDirection.Input),
-                // new("p_foto_data", OracleDbType.Blob, 
-                //     uzivatel.foto_data != null ? ImageToBlob(uzivatel.foto_data) : DBNull.Value, 
-                //     ParameterDirection.Input),
-                new("p_foto_data", OracleDbType.Blob, 
-                    uzivatel.foto_data != null ? uzivatel.foto_data : DBNull.Value, 
-                    ParameterDirection.Input),
-                new("p_foto_datum_pridani", OracleDbType.Date, 
-                    uzivatel.foto_datum_pridani != default ? uzivatel.foto_datum_pridani : DBNull.Value, 
-                    ParameterDirection.Input)
             };
 
             _databaseService.ExecuteDbCall( new ProcedureCallWrapper(InsertUserProcedure, parameters), out var error);

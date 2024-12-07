@@ -112,17 +112,6 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
                     { Value = Ulice, Direction = ParameterDirection.Input },
                 new OracleParameter("p_cislo_popisne", OracleDbType.Decimal)
                     { Value = Cislo_popisne, Direction = ParameterDirection.Input },
-                new("p_foto_jmeno_souboru", OracleDbType.Varchar2, 
-                    string.IsNullOrEmpty(editedItem.foto_jmeno_souboru) ? DBNull.Value : editedItem.foto_jmeno_souboru, 
-                    ParameterDirection.Input),
-                // new("p_foto_data", OracleDbType.Blob, 
-                //     foto_data != null ? ImageToBlob(foto_data) : DBNull.Value, 
-                //     ParameterDirection.Input),                
-                new("p_foto_data", OracleDbType.Blob)
-                    {Value = editedItem.foto_data, Direction = ParameterDirection.Input},
-                new("p_foto_datum_pridani", OracleDbType.Date, 
-                    editedItem.foto_datum_pridani != default ? editedItem.foto_datum_pridani : DBNull.Value, 
-                    ParameterDirection.Input)
             };
 
             var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
@@ -231,14 +220,17 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
 
     private void UpdateZmenitTypUzivateleSection()
     {
+        if (UserSession.Instance.UserType.IdTypUzivatele == 3)
+            ZmenaTypuUzivateleBtnVisible = Visibility.Collapsed;
+        else
+            ZmenaTypuUzivateleBtnVisible = Visibility.Visible;
+        
         if (Nazev_typ_uzivatele == "Zákazník")
         {
-            ZmenaTypuUzivateleBtnVisible = Visibility.Visible;
             ZmenaTypuUzivateleBtnContent = "Vytvořit zaměstnance";
         }
         else if (Nazev_typ_uzivatele == "Zaměstnanec")
         {
-            ZmenaTypuUzivateleBtnVisible = Visibility.Visible;
             ZmenaTypuUzivateleBtnContent = "Odebrat zaměstnance";
         }
     }
