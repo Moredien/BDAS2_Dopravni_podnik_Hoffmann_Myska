@@ -51,4 +51,9 @@ public partial class EmployeeHierarchyViewModel : ViewModelBase
             employee.Hierarchy = employee.Hierarchy.Substring(4);
         }
     }
+    public override void Update()
+    {
+        base.Update();
+        WindowManager.ReturnToSelectedContentView();
+    }
 }

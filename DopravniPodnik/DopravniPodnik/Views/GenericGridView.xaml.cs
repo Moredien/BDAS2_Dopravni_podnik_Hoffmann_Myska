@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using DopravniPodnik.Utils;
 using DopravniPodnik.ViewModels;
 
 namespace DopravniPodnik.Views;
@@ -28,16 +29,22 @@ public partial class GenericGridView : UserControl
                     Header = columnInfo.Header,
                     Binding = new Binding(columnInfo.BindingPath),
                 };
-                if (!string.IsNullOrEmpty(columnInfo.Format))
+                
+                if (columnInfo.IsMaskable != null && UserSession.Instance.IsSafeModeOn)
                 {
                     column.Binding = new Binding(columnInfo.BindingPath)
                     {
-                        StringFormat =columnInfo.Format,
+                        Converter = new MaskValueConverter()
+                    };
+                }else if (!string.IsNullOrEmpty(columnInfo.Format))
+                {
+                    column.Binding = new Binding(columnInfo.BindingPath)
+                    {
+                        StringFormat = columnInfo.Format,
                     };
                 }
                 DynamicDataGrid.Columns.Add(column);
             }
         }
     }
-    
 }

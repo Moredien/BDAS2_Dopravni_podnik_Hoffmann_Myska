@@ -10,6 +10,7 @@ public class DataGridColumnInfo
     public string Header { get; set; }
     public string BindingPath { get; set; }
     public string Format { get; set; }
+    public bool? IsMaskable { get; set; }
 }
 
 public class DataGridDataContext
@@ -41,7 +42,7 @@ public static class GridViewTemplates
                         new DataGridColumnInfo { Header = "Username", BindingPath = "uzivatelske_jmeno" },
                         new DataGridColumnInfo { Header = "Jméno", BindingPath = "jmeno" },
                         new DataGridColumnInfo { Header = "Příjmení", BindingPath = "prijmeni" },
-                        new DataGridColumnInfo { Header = "Datum Narození", BindingPath = "datum_narozeni" , Format = "dd.MM.yyyy"},
+                        new DataGridColumnInfo { Header = "Datum Narození", BindingPath = "datum_narozeni" , Format = "dd.MM.yyyy", IsMaskable = true},
                         new DataGridColumnInfo { Header = "Datum Založení", BindingPath = "cas_zalozeni" ,Format = "dd.MM.yyyy" },
                         new DataGridColumnInfo { Header = "Typ Uživatele", BindingPath = "nazev_typ_uzivatele" }
                     }
@@ -63,15 +64,6 @@ public static class GridViewTemplates
                         new DataGridColumnInfo { Header = "Ulice", BindingPath = "Ulice" },
                         new DataGridColumnInfo { Header = "Číslo popisné", BindingPath = "CisloPopisne" }
                         });
-            case "Zamestnanci":
-                return new DataGridDataContext(
-                    modelType,
-                    typeof(ZamestnanciFormViewModel),
-                    new ObservableCollection<DataGridColumnInfo>{
-                        new DataGridColumnInfo { Header = "Plat", BindingPath = "Plat" },
-                        new DataGridColumnInfo { Header = "Platnost úvazku do", BindingPath = "PlatnostUvazkuDo" , Format = "dd.MM.yyyy"},
-                        new DataGridColumnInfo { Header = "id nadřízeného", BindingPath = "IdNadrizeneho" }
-                    });
             case "Foto":
                 return new DataGridDataContext(
                     modelType,

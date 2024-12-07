@@ -55,4 +55,9 @@ public partial class PlatbyViewModel : ViewModelBase
             
         Items.Remove(SelectedItem);
     }
+    public override void Update()
+    {
+        base.Update();
+        WindowManager.ReturnToSelectedContentView();
+    }
 }

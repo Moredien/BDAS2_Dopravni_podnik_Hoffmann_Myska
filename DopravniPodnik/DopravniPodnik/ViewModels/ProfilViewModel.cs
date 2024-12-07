@@ -166,6 +166,9 @@ public partial class ProfilViewModel : ViewModelBase
 
         return null;
     } 
-    
-    
+    public override void Update()
+    {
+        base.Update();
+        WindowManager.ReturnToSelectedContentView();
+    }
 }

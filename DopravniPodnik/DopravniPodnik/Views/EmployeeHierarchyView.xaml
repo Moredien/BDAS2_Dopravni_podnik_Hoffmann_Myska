@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DopravniPodnik.Views"
+             xmlns:utils="clr-namespace:DopravniPodnik.Utils"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <utils:MaskValueConverter x:Key="MaskValueConverter" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,8 +27,10 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Úroveň" Binding="{Binding Level}" />
                     <DataGridTextColumn Header="Jméno" Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="Plat" Binding="{Binding Salary, StringFormat={}{0} Kč}" />
-                    <DataGridTextColumn Header="Platnost úvazku do" Binding="{Binding ContractEndDate , StringFormat=dd.MM.yyyy}" />
+                    <DataGridTextColumn Header="Plat" Binding="{Binding Salary, StringFormat={}{0} Kč,
+                 Converter={StaticResource MaskValueConverter}}" />
+                    <DataGridTextColumn Header="Platnost úvazku do" Binding="{Binding ContractEndDate , StringFormat=dd.MM.yyyy,
+                 Converter={StaticResource MaskValueConverter}}" />
                     <DataGridTextColumn Header="Hierarchie" Binding="{Binding Hierarchy}" />
                 </DataGrid.Columns>
             </DataGrid>

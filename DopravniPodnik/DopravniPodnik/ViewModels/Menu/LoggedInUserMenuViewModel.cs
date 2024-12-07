@@ -18,6 +18,7 @@ public partial class LoggedInUserMenuViewModel : ViewModelBase
         {
             safeMode = value;
             UserSession.Instance.IsSafeModeOn = value;
+            WindowManager.CurrentContentViewModel.Update();
         }
     }
 

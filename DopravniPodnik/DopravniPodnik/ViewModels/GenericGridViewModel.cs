@@ -130,4 +130,9 @@ public partial class GenericGridViewModel : ViewModelBase
 
         return null; // Return null if no matching property is found
     }
+
+    public override void Update()
+    {
+        WindowManager.ReturnToSelectedContentView();
+    }
 }

@@ -22,6 +22,7 @@ public partial class AdminMenuViewModel : ViewModelBase
         {
             safeMode = value;
             UserSession.Instance.IsSafeModeOn = value;
+            WindowManager.CurrentContentViewModel.Update();
         }
     }
 

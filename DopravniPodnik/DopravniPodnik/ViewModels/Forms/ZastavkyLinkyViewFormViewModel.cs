@@ -54,7 +54,7 @@ public partial class ZastavkyLinkyViewFormViewModel : ViewModelBase
             id = DBNull.Value;
         else
             id = _editedZastavkyLinkyDto.IdZastaveni;
-        // OdjezdDate.Date+OdjezdTime.TimeOfDay
+        
         var parameters = new List<OracleParameter>
         {
             new OracleParameter("p_id_zastaveni", OracleDbType.Decimal)

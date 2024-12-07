@@ -104,7 +104,7 @@ public static class WindowManager
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zákazníci", null,typeof(ZakazniciViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zaměstnanci", null,typeof(ZamestnanciViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Jízdy", typeof(JizdyViewDTO),typeof(GenericGridViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("Zastávky", typeof(ZastavkyLinkyViewDTO),typeof(GenericGridViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Zastavení", typeof(ZastavkyLinkyViewDTO),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Logy", null,typeof(LogyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("DB objekty", null,typeof(DBObjektyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Hierarchie zaměstnanců", null,typeof(EmployeeHierarchyViewModel)));

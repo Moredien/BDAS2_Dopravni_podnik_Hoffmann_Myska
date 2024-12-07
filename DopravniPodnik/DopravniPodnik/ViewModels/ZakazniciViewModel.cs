@@ -66,4 +66,9 @@ public partial class ZakazniciViewModel : ViewModelBase
             }
         }
     }
+    public override void Update()
+    {
+        base.Update();
+        WindowManager.ReturnToSelectedContentView();
+    }
 }

@@ -22,6 +22,8 @@ public partial  class ZamestnanciViewModel : ViewModelBase
     [ObservableProperty]
     private string searchedText;
 
+    [ObservableProperty] private bool isMasked = true;
+
     partial void OnSearchedTextChanged(string value)
     {
         
@@ -95,5 +97,11 @@ public partial  class ZamestnanciViewModel : ViewModelBase
                 FilteredItems.Add(entry);
             }
         }
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        WindowManager.ReturnToSelectedContentView();
     }
 }

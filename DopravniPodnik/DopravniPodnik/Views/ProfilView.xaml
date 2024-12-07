@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DopravniPodnik.Views"
+             xmlns:utils="clr-namespace:DopravniPodnik.Utils"
              mc:Ignorable="d"
              d:DesignHeight="*" d:DesignWidth="*">
     
@@ -11,6 +12,7 @@
         <Style x:Key="PropertyLabel" TargetType="Label">
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
+        <utils:MaskValueConverter x:Key="MaskValueConverter" />
     </UserControl.Resources>
     
     <Grid>
@@ -48,15 +50,20 @@
             <Label Content="Příjmení:" Style="{StaticResource PropertyLabel}"  />
             <Label Content="{Binding prijmeni}" />
             <Label Content="Datum narození:" Style="{StaticResource PropertyLabel}"  />
-            <Label Content="{Binding datum_narozeni}" />
+            <Label Content="{Binding datum_narozeni, StringFormat=dd/MM/yyyy,
+                 Converter={StaticResource MaskValueConverter}}" />
             <Label Content="Město:" Style="{StaticResource PropertyLabel}"  />
-            <Label Content="{Binding mesto}" />
+            <Label Content="{Binding mesto,
+                 Converter={StaticResource MaskValueConverter}}" />
             <Label Content="Ulice:" Style="{StaticResource PropertyLabel}"  />
-            <Label Content="{Binding ulice}" />
+            <Label Content="{Binding ulice,
+                 Converter={StaticResource MaskValueConverter}}" />
             <Label Content="Číslo popisné:" Style="{StaticResource PropertyLabel}"  />
-            <Label Content="{Binding cislo_popisne}" />
+            <Label Content="{Binding cislo_popisne,
+                 Converter={StaticResource MaskValueConverter}}" />
             <Label Content="Typ Uživatele:" Style="{StaticResource PropertyLabel}"  />
-            <Label Content="{Binding nazev_typ_uzivatele}"/>
+            <Label Content="{Binding nazev_typ_uzivatele,
+                 Converter={StaticResource MaskValueConverter}}"/>
         </StackPanel>
         <Button Content="Zpět"
                 Command="{Binding ExitCommand}"
