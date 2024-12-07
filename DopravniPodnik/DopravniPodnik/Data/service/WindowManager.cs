@@ -74,14 +74,14 @@ public static class WindowManager
             case "Zákazník":
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce", null,typeof(InfoOZastavceViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("Profil", typeof(ProfilDTO),typeof(ProfilViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("Karty", typeof(KartyDTO),typeof(KartyViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Profil", null,typeof(ProfilViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Karty", null,typeof(KartyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Historie Plateb", typeof(HistoriePlatebDTO),typeof(HistoriePlatebViewModel)));
                 break;
             case "Zaměstnanec":
                 MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce",null,typeof(InfoOZastavceViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("Profil", typeof(ProfilDTO),typeof(ProfilViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Profil", null,typeof(ProfilViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Jízdy", typeof(JizdyViewDTO),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zastávky", typeof(Zastavky),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vozový park", typeof(VozovyParkDTO),typeof(VozovyParkViewModel)));
@@ -107,6 +107,7 @@ public static class WindowManager
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zastávky", typeof(ZastavkyLinkyViewDTO),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Logy", null,typeof(LogyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("DB objekty", null,typeof(DBObjektyViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Hierarchie zaměstnanců", null,typeof(EmployeeHierarchyViewModel)));
                 
                 break;
         }

@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="DopravniPodnik.Views.EmployeeHierarchyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DopravniPodnik.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+            <DataGrid
+                AutoGenerateColumns="False"
+                ItemsSource="{Binding Items}"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                IsReadOnly="True"
+                Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Úroveň" Binding="{Binding Level}" />
+                    <DataGridTextColumn Header="Jméno" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Plat" Binding="{Binding Salary, StringFormat={}{0} Kč}" />
+                    <DataGridTextColumn Header="Platnost úvazku do" Binding="{Binding ContractEndDate , StringFormat=dd.MM.yyyy}" />
+                    <DataGridTextColumn Header="Hierarchie" Binding="{Binding Hierarchy}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

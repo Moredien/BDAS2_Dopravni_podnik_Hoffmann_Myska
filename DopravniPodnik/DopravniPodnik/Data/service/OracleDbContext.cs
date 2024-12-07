@@ -72,8 +72,7 @@ public partial class OracleDbContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
             optionsBuilder
-                .UseOracle(connectionString)
-                .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
+                .UseOracle(connectionString);
         }
     }
     

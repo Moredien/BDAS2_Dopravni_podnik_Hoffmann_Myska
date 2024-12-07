@@ -27,8 +27,7 @@
                    Style="{StaticResource PropertyLabel}" />
             <Label Content="{Binding DatumPridani}"/>
             <Button Content="Zpět"
-                    Command="{Binding DataContext.ExitCommand, 
-                              RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    Command="{Binding ExitCommand}"/>
         </StackPanel>
     </StackPanel>
 </UserControl>
