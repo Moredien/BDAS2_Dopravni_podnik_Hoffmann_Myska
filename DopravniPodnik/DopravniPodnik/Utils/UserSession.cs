@@ -1,4 +1,5 @@
 ﻿using System;
+using DopravniPodnik.Data.DTO;
 using DopravniPodnik.Data.Models;
 
 namespace DopravniPodnik.Utils;
@@ -14,6 +15,10 @@ public class UserSession
     public bool IsSafeModeOn { get; set; } = false;
     
     private bool _isUserAdmin = false;
+
+    public bool _isCurrentlyEmulating = false;
+    
+    public string? AdminUserName { get; private set; } = null;
 
     private UserSession() { }
 
@@ -35,6 +40,8 @@ public class UserSession
         SessionCreationTime = DateTime.Now;
 
         _isUserAdmin = userType is { Nazev: "Admin" };
+        if (_isUserAdmin)
+            AdminUserName = userName;
     }
 
     public void EndSession()
@@ -56,5 +63,32 @@ public class UserSession
             "Zaměstnanec" => new TypyUzivatele { Nazev = "Zaměstnanec" },
             _ => throw new ArgumentException($"Neplatný typ uživatele: {userType}")
         };
+    }
+
+    public void EmulateUser(UzivatelDTO? uzivatel)
+    {
+        if (uzivatel == null)
+        {
+            var typAdmin = new TypyUzivatele() { IdTypUzivatele = 1, Nazev = "Admin" };
+            UpdateSession(AdminUserName,typAdmin);
+            _isCurrentlyEmulating = false;
+        }
+        else
+        {
+            TypyUzivatele typUzivatele;
+            switch (uzivatel.nazev_typ_uzivatele)
+            {
+                case "Zaměstnanec":
+                    typUzivatele = new TypyUzivatele() { IdTypUzivatele = 2, Nazev = "Zaměstnanec" };
+                    break;
+                case "Zákazník":
+                    typUzivatele = new TypyUzivatele() { IdTypUzivatele = 3, Nazev = "Zákazník" };
+                    break;
+                default: return;
+            }
+            UpdateSession(uzivatel.uzivatelske_jmeno,typUzivatele);
+            _isCurrentlyEmulating = true;
+        }
+        
     }
 }

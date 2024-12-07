@@ -37,8 +37,9 @@
         <StackPanel Grid.Column="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
-            <Button Content="Emulovat"
-                    Command="{Binding EmulovatCommand}"/>
+            <Button Content="{Binding EmulateBtnText}"
+                    Command="{Binding EmulovatCommand}"
+                    Visibility="{Binding EmulateBtnVisibility}"/>
             <Button Content="Odhlásit"
                     Command="{Binding LogOutCommand}" />
         </StackPanel>

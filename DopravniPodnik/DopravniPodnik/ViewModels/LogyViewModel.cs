@@ -18,7 +18,7 @@ public partial class LogyViewModel : ViewModelBase
     public LogyViewModel()
     {
         Items = new();
-        var data = _databaseService.FetchData<Logy>($"SELECT * FROM LOGY");
+        var data = _databaseService.FetchData<Logy>($"SELECT * FROM LOGY ORDER BY CAS DESC FETCH FIRST 100 ROWS ONLY");
         foreach (var entry in data)
         {
             Items.Add(entry);

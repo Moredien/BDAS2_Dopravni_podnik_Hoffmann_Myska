@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DopravniPodnik.Data.DTO;
 using DopravniPodnik.Data.Models;
@@ -28,6 +29,10 @@ public partial class MainWindowViewModel : ViewModelBase
         else
             WindowManager.SetContentView(value.ViewModelType,new object[]{});
 
+        // hide the emulate button when the main content is switched
+        if (WindowManager.CurrentMenuViewModel?.GetType() == typeof(AdminMenuViewModel)&&
+            UserSession.Instance._isCurrentlyEmulating == false)
+            ((AdminMenuViewModel)WindowManager.CurrentMenuViewModel).EmulateBtnVisibility= Visibility.Hidden;
     }
 
     public ObservableCollection<ListItemTemplate> MenuItems { get; } = new();
