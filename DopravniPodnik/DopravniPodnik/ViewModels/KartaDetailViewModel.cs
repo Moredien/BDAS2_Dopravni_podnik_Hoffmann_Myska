@@ -22,15 +22,30 @@ public partial class KartaDetailViewModel : ViewModelBase
     private Foto? foto;
     [ObservableProperty] private ImageSource fotoSource;
 
-    public KartaDetailViewModel(KartyMhd karta)
+
+    
+    public KartaDetailViewModel(object selectedItem)
     {
-        if (karta == null)
+        if (selectedItem == null)
+            return;
+        KartyMhd karta;
+        if (selectedItem.GetType() == typeof(KartyMhd))
+        {
+            karta = (KartyMhd)selectedItem;
+        }else if (selectedItem.GetType() == typeof(Int32))
+        {
+            karta = _databaseService
+                .FetchData<KartyMhd>($"SELECT * FROM KARTY_MHD WHERE ID_KARTY = {(int)selectedItem}").FirstOrDefault();
+            LoadPhoto((Int32)selectedItem);
+        }
+        else
             return;
         PlatnostOd = karta.PlatnostOd.ToString("dd.MM. yyyy");
         PlatnostDo = karta.PlatnostDo.ToString("dd.MM. yyyy");
         AktivniPredplatne = GetAktivniPredplatne(karta.IdKarty);
-        Zustatek = String.Concat(karta.Zustatek.ToString()," Kč");
+        Zustatek = String.Concat(karta.Zustatek.ToString(), " Kč");
         LoadPhoto(karta.IdKarty);
+        
     }
 
     [RelayCommand]

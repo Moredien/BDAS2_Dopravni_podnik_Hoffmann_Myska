@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="DopravniPodnik.Views.KartyMhdView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DopravniPodnik.Views"
+             xmlns:utils="clr-namespace:DopravniPodnik.Utils"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <utils:MaskValueConverter x:Key="MaskValueConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Button Content="Detail"
+                HorizontalAlignment="Left"
+                Command="{Binding DetailCommand}" 
+                Grid.Row="0" />
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+            <DataGrid
+                AutoGenerateColumns="False"
+                ItemsSource="{Binding Items}"
+                SelectedItem="{Binding SelectedItem}"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                IsReadOnly="True"
+                Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Uživatelské jméno" Binding="{Binding UzivatelskeJmeno}" />
+                    <DataGridTextColumn Header="Jméno" Binding="{Binding Jmeno}" />
+                    <DataGridTextColumn Header="Příjmení" Binding="{Binding Prijmeni}" />
+                    <DataGridTextColumn Header="Zůstatek" Binding="{Binding Zustatek, StringFormat={}{0} Kč,
+                 Converter={StaticResource MaskValueConverter}}" />
+                    <DataGridTextColumn Header="Platnost od" Binding="{Binding PlatnostOd, StringFormat=dd/MM/yyyy}" />
+                    <DataGridTextColumn Header="Platnost do" Binding="{Binding PlatnostDo, StringFormat=dd/MM/yyyy}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
