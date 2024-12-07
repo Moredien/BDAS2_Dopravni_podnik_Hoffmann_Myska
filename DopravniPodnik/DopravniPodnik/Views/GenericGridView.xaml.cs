@@ -32,7 +32,7 @@ public partial class GenericGridView : UserControl
                 {
                     column.Binding = new Binding(columnInfo.BindingPath)
                     {
-                        StringFormat = "dd.MM.yyyy",
+                        StringFormat =columnInfo.Format,
                     };
                 }
                 DynamicDataGrid.Columns.Add(column);

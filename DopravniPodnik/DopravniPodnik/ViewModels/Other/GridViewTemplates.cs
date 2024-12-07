@@ -94,8 +94,8 @@ public static class GridViewTemplates
                     null,
                     new ObservableCollection<DataGridColumnInfo>{
                         new DataGridColumnInfo { Header = "Zůstatek", BindingPath = "Zustatek" },
-                        new DataGridColumnInfo { Header = "Platnost od", BindingPath = "PlatnostOd" },
-                        new DataGridColumnInfo { Header = "Platnost do", BindingPath = "PlatnostDo" },
+                        new DataGridColumnInfo { Header = "Platnost od", BindingPath = "PlatnostOd" , Format = "dd.MM.yyyy"},
+                        new DataGridColumnInfo { Header = "Platnost do", BindingPath = "PlatnostDo" , Format = "dd.MM.yyyy"},
                     });
             case "TypyVozidel":
                 return new DataGridDataContext(
@@ -134,6 +134,29 @@ public static class GridViewTemplates
                     new ObservableCollection<DataGridColumnInfo>{
                         new DataGridColumnInfo { Header = "Číslo", BindingPath = "CisloLinky" },
                         new DataGridColumnInfo { Header = "Jméno", BindingPath = "Jmeno" },
+                    });
+            case "JizdyViewDTO":
+                return new DataGridDataContext(
+                    modelType,
+                    typeof(JizdyFormViewModel),
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Linka", BindingPath = "CisloLinky" },
+                        new DataGridColumnInfo { Header = "Jméno linky", BindingPath = "JmenoLinky" },
+                        new DataGridColumnInfo { Header = "Začátek", BindingPath = "Zacatek" , Format = "dd.MM.yyyy HH:mm"},
+                        new DataGridColumnInfo { Header = "Konec", BindingPath = "Konec" , Format = "dd.MM.yyyy HH:mm"},
+                        new DataGridColumnInfo { Header = "Typ Vozidla", BindingPath = "TypVozidla" },
+                        new DataGridColumnInfo { Header = "Značka vozidla", BindingPath = "ZnackaVozidla" },
+                        new DataGridColumnInfo { Header = "Jméno řidiče", BindingPath = "JmenoRidice" },
+                        new DataGridColumnInfo { Header = "Příjmení řidiče", BindingPath = "PrijmeniRidice" },
+                    });
+            case "ZastavkyLinkyViewDTO":
+                return new DataGridDataContext(
+                    modelType,
+                    typeof(ZastavkyLinkyViewFormViewModel),
+                    new ObservableCollection<DataGridColumnInfo>{
+                        new DataGridColumnInfo { Header = "Číslo linky", BindingPath = "CisloLinky" },
+                        new DataGridColumnInfo { Header = "Jméno zastávky", BindingPath = "JmenoZastavky" },
+                        new DataGridColumnInfo { Header = "Odjezd", BindingPath = "Odjezd" , Format = "dd.MM.yyyy HH:mm"},
                     });
             default: return null;
         }

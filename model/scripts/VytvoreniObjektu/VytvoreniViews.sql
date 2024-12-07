@@ -40,7 +40,8 @@ SELECT
     z.JMENO AS JMENO_ZASTAVKY,
     zs.ODJEZD,
     zs.ITERACE,
-    zs.SMER
+    zs.SMER,
+    zs.ID_ZASTAVENI
 FROM
     ST67028.LINKY l
         JOIN

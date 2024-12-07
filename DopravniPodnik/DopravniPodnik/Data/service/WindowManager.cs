@@ -84,7 +84,8 @@ public static class WindowManager
                 MainWindow.MenuItems.Add(new ListItemTemplate("Info o zastávce",null,typeof(InfoOZastavceViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Profil", typeof(ProfilDTO),typeof(ProfilViewModel)));
-                MainWindow.MenuItems.Add(new ListItemTemplate("Jízdy", typeof(JizdyDTO),typeof(JizdyViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Jízdy", typeof(JizdyViewDTO),typeof(GenericGridViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Zastávky", typeof(ZastavkyLinkyDTO),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Vozový park", typeof(VozovyParkDTO),typeof(VozovyParkViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zákazníci", null,typeof(ZakazniciViewModel)));
                 break;
@@ -104,8 +105,11 @@ public static class WindowManager
                 MainWindow.MenuItems.Add(new ListItemTemplate("Platby", null,typeof(PlatbyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zákazníci", null,typeof(ZakazniciViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Zaměstnanci", null,typeof(ZamestnanciViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Jízdy", typeof(JizdyViewDTO),typeof(GenericGridViewModel)));
+                MainWindow.MenuItems.Add(new ListItemTemplate("Zastávky", typeof(ZastavkyLinkyViewDTO),typeof(GenericGridViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Logy", null,typeof(LogyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("DB objekty", null,typeof(DBObjektyViewModel)));
+                
                 break;
         }
 

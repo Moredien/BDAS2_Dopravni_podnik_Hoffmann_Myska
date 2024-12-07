@@ -4,6 +4,7 @@ namespace DopravniPodnik.Data.DTO;
 
 public class ZamestnanecViewDTO
 {
+    [IdProperty]
     [ColumnName("ID_ZAMESTNANCE")] 
     public int? IdZamestnance { get; set; }
     

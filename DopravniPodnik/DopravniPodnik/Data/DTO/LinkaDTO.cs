@@ -4,6 +4,7 @@ namespace DopravniPodnik.Data.DTO;
 
 public class LinkaDTO
 {
+    [IdProperty]
     [ColumnName("LINKA")]
     public int Linka { get; set; }
 

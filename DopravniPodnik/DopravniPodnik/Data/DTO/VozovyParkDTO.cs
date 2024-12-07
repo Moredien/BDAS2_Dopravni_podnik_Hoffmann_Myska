@@ -4,6 +4,7 @@ namespace DopravniPodnik.Data.DTO;
 
 public class VozovyParkDTO
 {
+    [IdProperty]
     [ColumnName("ID_VOZIDLA")]
     public int IdVozidla { get; set; }
     [ColumnName("TYP_VOZIDLA")]

@@ -19,6 +19,8 @@ public static class TableMapper
         { typeof(UzivatelDTO), "UZIVATEL_VIEW" },
         { typeof(TypyUzivatele), "Typy_uzivatele" },
         { typeof(TypyVozidel), "Typy_vozidel" },
-        { typeof(TypyPredplatneho), "Typy_predplatneho" }
+        { typeof(TypyPredplatneho), "Typy_predplatneho" },
+        { typeof(JizdyViewDTO), "Jizdy_view" },
+        { typeof(ZastavkyLinkyViewDTO), "Zastavky_linky_view" }
     };
 }

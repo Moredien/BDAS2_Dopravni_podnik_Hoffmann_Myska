@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using DopravniPodnik.Data.service;
 using DopravniPodnik.Utils;
@@ -47,5 +48,13 @@ public partial class App : Application
                 Console.WriteLine($"Database connection exception: {ex.Message}");
             }
         }
+    }
+    protected override void OnStartup(StartupEventArgs e)
+    {
+        base.OnStartup(e);
+
+        // Add a trace listener for WPF binding errors
+        PresentationTraceSources.DataBindingSource.Listeners.Add(new ConsoleTraceListener());
+        PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Warning | SourceLevels.Error;
     }
 }

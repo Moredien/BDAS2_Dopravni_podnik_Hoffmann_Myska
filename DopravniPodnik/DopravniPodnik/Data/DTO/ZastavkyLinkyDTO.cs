@@ -2,7 +2,7 @@
 
 namespace DopravniPodnik.Data.DTO;
 
-public class ZastavkyLinkyDto
+public class ZastavkyLinkyDTO
 {
     [ColumnName("ID_LINKY")]
     public int IdLinky { get; set; }
