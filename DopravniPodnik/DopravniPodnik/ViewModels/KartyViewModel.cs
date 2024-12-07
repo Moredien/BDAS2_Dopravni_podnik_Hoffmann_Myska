@@ -57,6 +57,10 @@ public partial class KartyViewModel : ViewModelBase
     public void Dobit()
     {
         Console.WriteLine("zaplatit");
-
+    }
+    public override void Update()
+    {
+        base.Update();
+        WindowManager.ReturnToSelectedContentView();
     }
 }

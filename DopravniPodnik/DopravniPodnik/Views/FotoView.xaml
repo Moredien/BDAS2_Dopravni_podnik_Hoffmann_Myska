@@ -27,7 +27,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Uživatelské jméno" Binding="{Binding UzivatelskeJmeno}" />
                     <DataGridTextColumn Header="Jméno souboru" Binding="{Binding JmenoSouboru}" />
-                    <DataGridTextColumn Header="Datum přidání" Binding="{Binding DatumPridani}" />
+                    <DataGridTextColumn Header="Datum přidání" Binding="{Binding DatumPridani, StringFormat=dd/MM/yyyy HH:mm}" />
                     <DataGridTextColumn Header="Asociace" Binding="{Binding TypAsociace}" />
                 </DataGrid.Columns>
             </DataGrid>

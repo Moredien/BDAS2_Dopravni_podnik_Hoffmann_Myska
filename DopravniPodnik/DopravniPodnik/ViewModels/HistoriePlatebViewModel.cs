@@ -42,4 +42,10 @@ public partial class HistoriePlatebViewModel : ViewModelBase
             FilteredItems.Add(item);
         }
     }
+
+    public override void Update()
+    {
+        base.Update();
+        WindowManager.ReturnToSelectedContentView();
+    }
 }

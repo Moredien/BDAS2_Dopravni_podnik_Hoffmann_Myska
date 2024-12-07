@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DopravniPodnik.Views"
+             xmlns:utils="clr-namespace:DopravniPodnik.Utils"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <utils:MaskValueConverter x:Key="MaskValueConverter" />
+    </UserControl.Resources>
     <StackPanel Orientation="Vertical">
         <StackPanel Orientation="Horizontal">
             <Button Content="Založit kartu"
@@ -22,8 +26,9 @@
             IsReadOnly="True"
             SelectedItem="{Binding SelectedItem}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Zůstatek" Binding="{Binding Zustatek}" />
-                <DataGridTextColumn Header="Platnost od" Binding="{Binding PlatnostOd, StringFormat=dd/MM/yyyy}" SortDirection="Ascending"/>
+                <DataGridTextColumn Header="Zůstatek" Binding="{Binding Zustatek, StringFormat={}{0} Kč,
+                 Converter={StaticResource MaskValueConverter}}" />
+                <DataGridTextColumn Header="Platnost od" Binding="{Binding PlatnostOd, StringFormat=dd/MM/yyyy}"/>
                 <DataGridTextColumn Header="Platnost do" Binding="{Binding PlatnostDo, StringFormat=dd/MM/yyyy}" SortDirection="Ascending"/>
             </DataGrid.Columns>
         </DataGrid>

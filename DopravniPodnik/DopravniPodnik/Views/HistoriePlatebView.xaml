@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DopravniPodnik.Views"
+             xmlns:utils="clr-namespace:DopravniPodnik.Utils"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <utils:MaskValueConverter x:Key="MaskValueConverter" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -21,9 +25,11 @@
                 IsReadOnly="True"
                 Margin="10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Výše platby" Binding="{Binding VysePlatby, StringFormat={}{0} Kč}" />
-                    <DataGridTextColumn Header="Čas platby" Binding="{Binding CasPlatby}" />
-                    <DataGridTextColumn Header="Typ Platby" Binding="{Binding TypPlatbyString, StringFormat=dd/MM/yyyy HH:mm}" />
+                    <DataGridTextColumn Header="Výše platby" Binding="{Binding VysePlatby, StringFormat={}{0} Kč,
+                 Converter={StaticResource MaskValueConverter}}" />
+                    <DataGridTextColumn Header="Čas platby" Binding="{Binding CasPlatby, StringFormat=dd/MM/yyyy HH:mm,
+                 Converter={StaticResource MaskValueConverter}}" />
+                    <DataGridTextColumn Header="Typ Platby" Binding="{Binding TypPlatbyString}" />
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

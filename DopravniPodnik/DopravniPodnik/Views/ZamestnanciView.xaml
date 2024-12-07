@@ -32,7 +32,7 @@
                 <DataGridTextColumn Header="Uživatelské jméno" Binding="{Binding UzivatelskeJmeno}" />
                 <DataGridTextColumn Header="Jméno" Binding="{Binding Jmeno}" />
                 <DataGridTextColumn Header="Příjmení" Binding="{Binding  Prijmeni}" />
-                <DataGridTextColumn Header="Plat" Binding="{Binding Plat,
+                <DataGridTextColumn Header="Plat" Binding="{Binding Plat, StringFormat={}{0} Kč,
                  Converter={StaticResource MaskValueConverter}}" />
                 <DataGridTextColumn Header="Platnost úvazku do" Binding="{Binding PlatnostUvazkuDo, StringFormat=dd/MM/yyyy,
                  Converter={StaticResource MaskValueConverter}}" />

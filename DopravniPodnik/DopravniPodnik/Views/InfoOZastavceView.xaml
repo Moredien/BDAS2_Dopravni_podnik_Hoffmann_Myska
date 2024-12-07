@@ -33,7 +33,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Číslo linky" Binding="{Binding Linka}" />
                 <DataGridTextColumn Header="Jméno linky" Binding="{Binding JmenoLinky}" />
-                <DataGridTextColumn Header="Čas odjezdu" Binding="{Binding Odjezd, StringFormat=dd/MM/yyyy HH:mm:ss}" />
+                <DataGridTextColumn Header="Čas odjezdu" Binding="{Binding Odjezd, StringFormat=dd/MM/yyyy HH:mm}" />
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

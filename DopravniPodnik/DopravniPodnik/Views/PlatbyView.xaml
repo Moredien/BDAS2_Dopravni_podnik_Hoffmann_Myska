@@ -33,8 +33,8 @@
                 IsReadOnly="True"
                 Margin="10">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Čas platby" Binding="{Binding CasPlatby}" />
-                    <DataGridTextColumn Header="Výše" Binding="{Binding VysePlatby,
+                    <DataGridTextColumn Header="Čas platby" Binding="{Binding CasPlatby, StringFormat=dd/MM/yyyy HH:mm}" />
+                    <DataGridTextColumn Header="Výše" Binding="{Binding VysePlatby, StringFormat={}{0} Kč,
                  Converter={StaticResource MaskValueConverter}}" />
                     <DataGridTextColumn Header="Typ platby" Binding="{Binding TypPlatbyText}" />
                     <DataGridTextColumn Header="Jméno zákazníka" Binding="{Binding JmenoZakaznika}" />

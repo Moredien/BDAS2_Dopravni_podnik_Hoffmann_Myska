@@ -36,8 +36,8 @@
             Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Číslo linky" Binding="{Binding Linka}" />
-                <DataGridTextColumn Header="Čas odjezdu" Binding="{Binding StartTime, StringFormat=dd/MM/yyyy HH:mm:ss}" />
-                <DataGridTextColumn Header="Čas příjezdu" Binding="{Binding EndTime, StringFormat=dd/MM/yyyy HH:mm:ss}" />
+                <DataGridTextColumn Header="Čas odjezdu" Binding="{Binding StartTime, StringFormat=dd/MM/yyyy HH:mm}" />
+                <DataGridTextColumn Header="Čas příjezdu" Binding="{Binding EndTime, StringFormat=dd/MM/yyyy HH:mm}" />
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
