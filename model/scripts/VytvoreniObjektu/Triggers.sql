@@ -78,34 +78,45 @@ END;
 
 
 CREATE OR REPLACE TRIGGER DELETE_OLD_PHOTO_TRG
-    BEFORE INSERT ON ST67028.FOTO
+    BEFORE INSERT
+    ON FOTO
     FOR EACH ROW
 DECLARE
     v_old_id_foto NUMBER;
 BEGIN
     -- Pokud je fotka spojena s uživatelem
     IF :NEW.ID_UZIVATELE IS NOT NULL THEN
-        SELECT ID_FOTO
-        INTO v_old_id_foto
-        FROM ST67028.FOTO
-        WHERE ID_UZIVATELE = :NEW.ID_UZIVATELE
-          AND ID_KARTY IS NULL 
-            FETCH FIRST 1 ROW ONLY; 
+        BEGIN
+            SELECT ID_FOTO
+            INTO v_old_id_foto
+            FROM ST67028.FOTO
+            WHERE ID_UZIVATELE = :NEW.ID_UZIVATELE
+              AND ID_KARTY IS NULL
+              FETCH FIRST 1 ROW ONLY;
 
-        DELETE FROM ST67028.FOTO
-        WHERE ID_FOTO = v_old_id_foto;
+            DELETE FROM ST67028.FOTO
+            WHERE ID_FOTO = v_old_id_foto;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                NULL; -- Pokud záznam neexistuje, nic se nestane
+        END;
 
         -- Pokud je fotka spojena s kartou MHD
     ELSIF :NEW.ID_KARTY IS NOT NULL THEN
-        SELECT ID_FOTO
-        INTO v_old_id_foto
-        FROM ST67028.FOTO
-        WHERE ID_KARTY = :NEW.ID_KARTY
-          AND ID_UZIVATELE IS NULL 
-            FETCH FIRST 1 ROW ONLY;
+        BEGIN
+            SELECT ID_FOTO
+            INTO v_old_id_foto
+            FROM ST67028.FOTO
+            WHERE ID_KARTY = :NEW.ID_KARTY
+              AND ID_UZIVATELE IS NULL
+              FETCH FIRST 1 ROW ONLY;
 
-        DELETE FROM ST67028.FOTO
-        WHERE ID_FOTO = v_old_id_foto;
+            DELETE FROM ST67028.FOTO
+            WHERE ID_FOTO = v_old_id_foto;
+        EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                NULL; -- To stejné tady
+        END;
     END IF;
 END;
 /
