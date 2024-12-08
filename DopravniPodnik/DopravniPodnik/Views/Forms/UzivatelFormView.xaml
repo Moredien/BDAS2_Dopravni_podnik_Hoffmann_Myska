@@ -23,22 +23,22 @@
                            HorizontalAlignment="Center"
                            FontSize="30" />
                         <Label Content="Uživatelské jméno:" />
-                        <TextBox Text="{Binding Uzivatelske_jmeno, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Text="{Binding UzivatelskeJmeno, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Jméno:" />
                         <TextBox Text="{Binding Jmeno, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Příjmení:" />
                         <TextBox Text="{Binding Prijmeni, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Datum narození:" />
-                        <DatePicker SelectedDate="{Binding Datum_narozeni, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <DatePicker SelectedDate="{Binding DatumNarozeni, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Město:" />
                         <TextBox Text="{Binding Mesto, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Ulice:" />
                         <TextBox Text="{Binding Ulice, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Číslo popisné:" />
-                        <TextBox Text="{Binding Cislo_popisne, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Text="{Binding CisloPopisne, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Typ Uživatele:" />
                         <DockPanel LastChildFill="True">
-                            <Label Content="{Binding Nazev_typ_uzivatele,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" VerticalAlignment="Center" />
+                            <Label Content="{Binding NazevTypUzivatele,UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" VerticalAlignment="Center" />
                             <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Right">
                                 <Button

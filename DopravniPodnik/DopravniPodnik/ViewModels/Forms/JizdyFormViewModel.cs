@@ -27,7 +27,7 @@ public partial class JizdyFormViewModel : ViewModelBase
     [ObservableProperty] private Linky _selectedLinka;
     [ObservableProperty] private Ridici _selectedRidic;
 
-    private JizdyViewDTO _editedJizdyViewDto;
+    private JizdyViewDTO? _editedJizdyViewDto;
 
 
     public JizdyFormViewModel(JizdyViewDTO? selectedItem)
@@ -84,8 +84,11 @@ public partial class JizdyFormViewModel : ViewModelBase
         {
             ZacatekDate = jizdyViewDto.Zacatek;
             ZacatekTime = jizdyViewDto.Zacatek;
-            KonecDate = jizdyViewDto.Konec.Value;
-            KonecTime = jizdyViewDto.Konec.Value;
+            if (jizdyViewDto.Konec != null)
+            {
+                KonecDate = jizdyViewDto.Konec.Value;
+                KonecTime = jizdyViewDto.Konec.Value;
+            }
         }
         
 

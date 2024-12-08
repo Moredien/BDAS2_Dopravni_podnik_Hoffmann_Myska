@@ -12,9 +12,9 @@ public partial class PlatbyViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
     [ObservableProperty]
-    public ObservableCollection<PlatbyDTO> items;
+    private ObservableCollection<PlatbyDTO> _items;
     [ObservableProperty]
-    public PlatbyDTO selectedItem;
+    private PlatbyDTO? _selectedItem;
 
     public PlatbyViewModel()
     {
@@ -34,22 +34,25 @@ public partial class PlatbyViewModel : ViewModelBase
     [RelayCommand]
     private void Zmenit()
     {
-        WindowManager.SetContentView(typeof(PlatbaFormViewModel), new object[] { selectedItem });
+        if(SelectedItem != null)
+            WindowManager.SetContentView(typeof(PlatbaFormViewModel), new object[] { SelectedItem });
     }
     [RelayCommand]
     private void Odstranit()
     {
+        if(SelectedItem == null)
+            return;
         string query;
         //decide from which child table to delete
         if (SelectedItem.TypPlatby == 0)
-            query = $"DELETE FROM PLATBY_KARTOU WHERE ID_PLATBY = {selectedItem.IdPlatby}";
+            query = $"DELETE FROM PLATBY_KARTOU WHERE ID_PLATBY = {SelectedItem.IdPlatby}";
         else if(SelectedItem.TypPlatby ==1){}
-            query = $"DELETE FROM PLATBY_PREVODEM WHERE ID_PLATBY = {selectedItem.IdPlatby}";
+            query = $"DELETE FROM PLATBY_PREVODEM WHERE ID_PLATBY = {SelectedItem.IdPlatby}";
             
         var procedureCallWrapper = new ProcedureCallWrapper(query, new());
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var _);
         //delete from parent table
-        query = $"DELETE FROM PLATBY WHERE ID_PLATBY = {selectedItem.IdPlatby}";
+        query = $"DELETE FROM PLATBY WHERE ID_PLATBY = {SelectedItem.IdPlatby}";
         procedureCallWrapper = new ProcedureCallWrapper(query, new());
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var _);
             

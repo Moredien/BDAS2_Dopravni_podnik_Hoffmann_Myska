@@ -22,7 +22,7 @@
 
         <Label Content="Uživatelské jméno:" />
         <TextBox
-            Text="{Binding Uzivatelske_jmeno, UpdateSourceTrigger=PropertyChanged}"/>
+            Text="{Binding UzivatelskeJmeno, UpdateSourceTrigger=PropertyChanged}"/>
         <Label Content="Heslo:" />
         <ContentControl ContentTemplate="{StaticResource PasswordWithErrorTemplate}" 
                         Content="{Binding Heslo}"

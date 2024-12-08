@@ -16,20 +16,23 @@ public partial class PovysitViewModel : ViewModelBase
     private readonly DatabaseService _databaseService = new();
 
     [ObservableProperty] private int _aktualniPlat;
-    [ObservableProperty] private string _novyPlat;
-    [ObservableProperty] public ObservableCollection<ZamestnanecViewDTO> _zamestnanci = new();
-    [ObservableProperty] public ObservableCollection<ZamestnanecViewDTO> _podrizeni = new();
+    [ObservableProperty] private string _novyPlat = "";
+    [ObservableProperty] private ObservableCollection<ZamestnanecViewDTO> _zamestnanci = new();
+    [ObservableProperty] private ObservableCollection<ZamestnanecViewDTO> _podrizeni = new();
     [ObservableProperty] private ZamestnanecViewDTO? _selectedNadrizeny;
     [ObservableProperty] private ZamestnanecViewDTO? _selectedPodrizeny;
 
-    private ZamestnanecViewDTO editedZamestnanec;
+    private ZamestnanecViewDTO? _editedZamestnanec;
 
     public PovysitViewModel(ZamestnanecViewDTO? zamestanenc)
     {
-        editedZamestnanec = zamestanenc;
-        AktualniPlat = zamestanenc.Plat;
-        NovyPlat = zamestanenc.Plat.ToString();
-        
+        _editedZamestnanec = zamestanenc;
+        if (zamestanenc != null)
+        {
+            AktualniPlat = zamestanenc.Plat;
+            NovyPlat = zamestanenc.Plat.ToString();
+        }
+
         LoadZamestnanci();
         
         
@@ -39,7 +42,8 @@ public partial class PovysitViewModel : ViewModelBase
     private void PridatPodrizeneho()
     {
         if (SelectedPodrizeny != null && SelectedPodrizeny.IdZamestnance != null &&
-            SelectedPodrizeny.IdZamestnance != editedZamestnanec.IdZamestnance)
+            _editedZamestnanec!=null&&
+            SelectedPodrizeny.IdZamestnance != _editedZamestnanec.IdZamestnance)
         {
             if(!Podrizeni.Contains(SelectedPodrizeny) && SelectedPodrizeny!= SelectedNadrizeny)
                 Podrizeni.Add(SelectedPodrizeny);
@@ -49,7 +53,7 @@ public partial class PovysitViewModel : ViewModelBase
     [RelayCommand]
     private void Submit()
     {
-        if (SelectedNadrizeny.IdZamestnance == editedZamestnanec.IdZamestnance ||
+        if (SelectedNadrizeny.IdZamestnance == _editedZamestnanec.IdZamestnance ||
             !Int32.TryParse(NovyPlat, out int plat)) 
             return;
         string podrizeniId = string.Join(",",Podrizeni.Select(p => p.IdZamestnance));
@@ -68,7 +72,7 @@ public partial class PovysitViewModel : ViewModelBase
         var parameters = new List<OracleParameter>
         {
             new OracleParameter("p_id_zamestnance", OracleDbType.Decimal)
-                { Value = editedZamestnanec.IdZamestnance, Direction = ParameterDirection.Input },
+                { Value = _editedZamestnanec.IdZamestnance, Direction = ParameterDirection.Input },
             new OracleParameter("p_novy_plat", OracleDbType.Decimal) 
                 { Value = plat, Direction = ParameterDirection.Input },
             new OracleParameter("p_id_noveho_nadrizeneho", OracleDbType.Decimal)
@@ -86,7 +90,7 @@ public partial class PovysitViewModel : ViewModelBase
         var data = _databaseService.FetchData<ZamestnanecViewDTO>($"SELECT * FROM ZAMESTNANCI_VIEW");
         foreach (var entry in data)
         {
-            if (entry.IdZamestnance == editedZamestnanec.IdZamestnance)
+            if (entry.IdZamestnance == _editedZamestnanec.IdZamestnance)
                 continue;
             Zamestnanci.Add(entry);
         }

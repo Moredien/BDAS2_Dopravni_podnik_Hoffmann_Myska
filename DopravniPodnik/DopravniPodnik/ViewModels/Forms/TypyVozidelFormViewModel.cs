@@ -19,11 +19,11 @@ public partial class TypyVozidelFormViewModel : ViewModelBase , INotifyDataError
     private readonly DatabaseService _databaseService = new();
 
     [ObservableProperty]
-    private string? nazev;
+    private string? _nazev = "";
 
-    private int? Id;
+    private int? _id;
 
-    public TypyVozidelFormViewModel(object selectedItem)
+    public TypyVozidelFormViewModel(object? selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
@@ -31,7 +31,7 @@ public partial class TypyVozidelFormViewModel : ViewModelBase , INotifyDataError
         {
             // cast to edited model type
             Nazev = ((TypyVozidel)selectedItem).Nazev;
-            Id = ((TypyVozidel)selectedItem).IdTypVozidla;
+            _id = ((TypyVozidel)selectedItem).IdTypVozidla;
         }
     }
 
@@ -52,10 +52,10 @@ public partial class TypyVozidelFormViewModel : ViewModelBase , INotifyDataError
         ";
             
             object id;
-            if (Id == null)
+            if (_id == null)
                 id = DBNull.Value;
             else
-                id = Id;
+                id = _id;
             var parameters = new List<OracleParameter>
             {
                 new OracleParameter("p_id_typ_vozidla", OracleDbType.Decimal)
@@ -103,6 +103,6 @@ public partial class TypyVozidelFormViewModel : ViewModelBase , INotifyDataError
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs propertyChangedEventArgs)
     {
-        ValidateInput(propertyChangedEventArgs.PropertyName);
+        if (propertyChangedEventArgs.PropertyName != null) ValidateInput(propertyChangedEventArgs.PropertyName);
     }
     }

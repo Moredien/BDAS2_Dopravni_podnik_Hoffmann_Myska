@@ -11,17 +11,17 @@ public partial class FotoDetailsViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
     [ObservableProperty]
-    public Foto foto;
+    private Foto? _foto;
     [ObservableProperty]
-    public ImageSource fotoSource;
+    private ImageSource? _fotoSource;
 
 
 
-    public FotoDetailsViewModel(int foto_id)
+    public FotoDetailsViewModel(int fotoId)
     {
-        Foto = FetchFoto(foto_id);
+        Foto = FetchFoto(fotoId);
         if (Foto != null)
-            fotoSource = CreateImageSourceFromBytes(Foto.Data);
+            FotoSource = CreateImageSourceFromBytes(Foto.Data);
     }
 
     private Foto FetchFoto(int id)

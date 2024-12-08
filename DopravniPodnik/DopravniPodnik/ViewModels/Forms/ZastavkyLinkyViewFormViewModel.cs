@@ -20,7 +20,7 @@ public partial class ZastavkyLinkyViewFormViewModel : ViewModelBase
     [ObservableProperty] private ObservableCollection<Linky> _linky = new();
     [ObservableProperty] private Zastavky _selectedZastavka;
     [ObservableProperty] private Linky _selectedLinka;
-    [ObservableProperty] private string _iterace;
+    [ObservableProperty] private string _iterace = "";
     [ObservableProperty] private ObservableCollection<int> _smery = new() { -1,1};
     [ObservableProperty] private int _selectedSmer;
 

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -19,15 +18,15 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
     private readonly DatabaseService _databaseService = new();
 
     [ObservableProperty]
-    public string mesto;
+    private string _mesto= "";
     [ObservableProperty] 
-    public string ulice;
+    private string _ulice= "";
     [ObservableProperty] 
-    public string cislo_popisne;
+    private string _cisloPopisne = "";
 
-    private int? IdAdresy = null; 
+    private int? _idAdresy; 
     
-    public AdresyFormViewModel(object selectedItem)
+    public AdresyFormViewModel(object? selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
@@ -37,9 +36,9 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
             var item = (Adresy)selectedItem;
             Mesto = item.Mesto;
             Ulice = item.Ulice;
-            Cislo_popisne = item.CisloPopisne.ToString();
+            CisloPopisne = item.CisloPopisne.ToString();
 
-            IdAdresy = item.IdAdresy;
+            _idAdresy = item.IdAdresy;
         }
     }
 
@@ -61,10 +60,10 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
             END;
         ";
             object id;
-            if (IdAdresy == null)
+            if (_idAdresy == null)
                 id = DBNull.Value;
             else
-                id = IdAdresy;
+                id = _idAdresy;
         
             var parameters = new List<OracleParameter>
             {
@@ -75,7 +74,7 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
                 new OracleParameter("p_ulice", OracleDbType.Varchar2)
                     { Value = Ulice, Direction = ParameterDirection.Input },
                 new OracleParameter("p_cislo_popisne", OracleDbType.Decimal)
-                    { Value = Int32.Parse(Cislo_popisne), Direction = ParameterDirection.Input }
+                    { Value = Int32.Parse(CisloPopisne), Direction = ParameterDirection.Input }
             };
 
             var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
@@ -106,24 +105,24 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
         switch (propertyName)
         {
             case nameof(Mesto):
-                if(Mesto ==null || Mesto.Length == 0)
+                if(string.IsNullOrEmpty(Mesto))
                     _errorsViewModel.AddError(nameof(Mesto),"Nebylo zadáno město.");
                 else if (Mesto.Length > 32) 
                     _errorsViewModel.AddError(nameof(Mesto),"Maximální délka je 32 znaků.");
                 break;
             case nameof(Ulice):
-                if(Ulice ==null || Ulice.Length == 0)
+                if(string.IsNullOrEmpty(Ulice))
                     _errorsViewModel.AddError(nameof(Ulice),"Nebyla zadána ulice.");
                 else if (Ulice.Length > 32) 
                     _errorsViewModel.AddError(nameof(Ulice),"Maximální délka je 32 znaků.");
                 break;
-            case nameof(Cislo_popisne):
-                if(Cislo_popisne==null || Cislo_popisne.Length==0)
-                    _errorsViewModel.AddError(nameof(Cislo_popisne),"Nebylo zadáno číslo popisné.");
-                else if(!Int32.TryParse(Cislo_popisne,out _))
-                    _errorsViewModel.AddError(nameof(Cislo_popisne),"Zadaná hodnota musí být číslo");
-                else if(Cislo_popisne.Length>6)
-                    _errorsViewModel.AddError(nameof(Cislo_popisne),"Maximální délka je 6 znaků.");
+            case nameof(CisloPopisne):
+                if(string.IsNullOrEmpty(CisloPopisne))
+                    _errorsViewModel.AddError(nameof(CisloPopisne),"Nebylo zadáno číslo popisné.");
+                else if(!Int32.TryParse(CisloPopisne,out _))
+                    _errorsViewModel.AddError(nameof(CisloPopisne),"Zadaná hodnota musí být číslo");
+                else if(CisloPopisne.Length>6)
+                    _errorsViewModel.AddError(nameof(CisloPopisne),"Maximální délka je 6 znaků.");
                 break;
         }
     }
@@ -131,11 +130,11 @@ public partial class AdresyFormViewModel : ViewModelBase , INotifyDataErrorInfo
     {
         ValidateInput(nameof(Mesto));
         ValidateInput(nameof(Ulice));
-        ValidateInput(nameof(Cislo_popisne));
+        ValidateInput(nameof(CisloPopisne));
     }
     
     protected override void OnPropertyChanged(PropertyChangedEventArgs propertyChangedEventArgs)
     {
-        ValidateInput(propertyChangedEventArgs.PropertyName);
+        if (propertyChangedEventArgs.PropertyName != null) ValidateInput(propertyChangedEventArgs.PropertyName);
     }
 }

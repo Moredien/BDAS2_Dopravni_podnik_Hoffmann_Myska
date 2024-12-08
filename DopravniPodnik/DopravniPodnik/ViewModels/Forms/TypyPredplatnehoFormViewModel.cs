@@ -19,13 +19,13 @@ public partial class TypyPredplatnehoFormViewModel : ViewModelBase , INotifyData
     private readonly DatabaseService _databaseService = new();
     
     [ObservableProperty]
-    private string? jmeno;
+    private string? _jmeno;
     [ObservableProperty]
-    private string? cena;
+    private string? _cena;
     
-    private int? Id;
+    private int? _id;
 
-    public TypyPredplatnehoFormViewModel(object selectedItem)
+    public TypyPredplatnehoFormViewModel(object? selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
@@ -34,7 +34,7 @@ public partial class TypyPredplatnehoFormViewModel : ViewModelBase , INotifyData
             // cast to edited model type
             Jmeno = ((TypyPredplatneho)selectedItem).Jmeno;
             Cena = ((TypyPredplatneho)selectedItem).Cena.ToString();
-            Id = ((TypyPredplatneho)selectedItem).IdTypPredplatneho;
+            _id = ((TypyPredplatneho)selectedItem).IdTypPredplatneho;
         }
     }
     
@@ -56,10 +56,10 @@ public partial class TypyPredplatnehoFormViewModel : ViewModelBase , INotifyData
         ";
             
             object id;
-            if (Id == null)
+            if (_id == null)
                 id = DBNull.Value;
             else
-                id = Id;
+                id = _id;
             var parameters = new List<OracleParameter>
             {
                 new OracleParameter("p_id_typ_uzivatele", OracleDbType.Decimal)
@@ -112,6 +112,6 @@ public partial class TypyPredplatnehoFormViewModel : ViewModelBase , INotifyData
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs propertyChangedEventArgs)
     {
-        ValidateInput(propertyChangedEventArgs.PropertyName);
+        if (propertyChangedEventArgs.PropertyName != null) ValidateInput(propertyChangedEventArgs.PropertyName);
     }
 }

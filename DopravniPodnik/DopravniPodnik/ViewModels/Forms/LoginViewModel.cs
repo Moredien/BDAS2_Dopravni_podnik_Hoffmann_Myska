@@ -16,20 +16,20 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
     public bool HasErrors => _errorsViewModel.HasErrors;
     public bool CanCreate => !HasErrors;
 
-    private string? _uzivatelske_jmeno ;
+    private string? _uzivatelskeJmeno ="";
 
-    public string? Uzivatelske_jmeno
+    public string? UzivatelskeJmeno
     {
-        get { return _uzivatelske_jmeno;}
+        get { return _uzivatelskeJmeno;}
         set
         {
-            _uzivatelske_jmeno = value;
-            ValidateInput(nameof(Uzivatelske_jmeno));
+            _uzivatelskeJmeno = value;
+            ValidateInput(nameof(UzivatelskeJmeno));
         }
     }
 
     [ObservableProperty]
-    public PasswordBoxModel heslo = new();
+    private PasswordBoxModel _heslo = new();
 
 
     public LoginViewModel()
@@ -56,7 +56,7 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
         
         if (!CanCreate) return;
 
-        _authService.LoginUser(Uzivatelske_jmeno!, PasswordBoxHelper.ConvertToUnsecureString(Heslo.Value));
+        _authService.LoginUser(UzivatelskeJmeno!, PasswordBoxHelper.ConvertToUnsecureString(Heslo.Value));
         if (UserSession.Instance.UserType == null)
             return;
         
@@ -82,19 +82,19 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
                 if(Heslo.Validate() is {} value)
                     _errorsViewModel.AddError(nameof(Heslo),value);
                 break;
-            case nameof(Uzivatelske_jmeno):
-                if(Uzivatelske_jmeno ==null || Uzivatelske_jmeno.Length == 0)
-                    _errorsViewModel.AddError(nameof(Uzivatelske_jmeno),"Nebylo zadáno uživatelské jméno.");
-                else if (_uzivatelske_jmeno.Length > 30) 
-                    _errorsViewModel.AddError(nameof(Uzivatelske_jmeno),"Neplatné uživatelské jméno. Maximální délka je 30 znaků.");
-                OnPropertyChanged(nameof(Uzivatelske_jmeno));
+            case nameof(UzivatelskeJmeno):
+                if(UzivatelskeJmeno ==null || UzivatelskeJmeno.Length == 0)
+                    _errorsViewModel.AddError(nameof(UzivatelskeJmeno),"Nebylo zadáno uživatelské jméno.");
+                else if (_uzivatelskeJmeno != null && _uzivatelskeJmeno.Length > 30) 
+                    _errorsViewModel.AddError(nameof(UzivatelskeJmeno),"Neplatné uživatelské jméno. Maximální délka je 30 znaků.");
+                OnPropertyChanged(nameof(UzivatelskeJmeno));
                 break;
         }
     }
 
     private void ValidateAllInputs()
     {
-        ValidateInput(nameof(Uzivatelske_jmeno));
+        ValidateInput(nameof(UzivatelskeJmeno));
         ValidateInput(nameof(Heslo));
     }
 }

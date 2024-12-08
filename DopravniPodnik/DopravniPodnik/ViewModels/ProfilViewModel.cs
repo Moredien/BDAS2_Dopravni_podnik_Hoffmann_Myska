@@ -21,14 +21,12 @@ public partial class ProfilViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
     
-    [ObservableProperty] public BitmapSource displayedImage;
-    [ObservableProperty] public UzivatelDTO uzivatel;
+    [ObservableProperty] private BitmapSource _displayedImage;
+    [ObservableProperty] private UzivatelDTO? _uzivatel;
 
     [ObservableProperty]
-    public ImageSource fotoSource;
+    private ImageSource? _fotoSource;
 
-    private Foto testFoto;
-    
     public ProfilViewModel()
     {
         FetchUzivatel();
@@ -37,20 +35,20 @@ public partial class ProfilViewModel : ViewModelBase
 
     public ProfilViewModel(int id_uzivatele)
     {
-        uzivatel = _databaseService
+        Uzivatel = _databaseService
             .FetchData<UzivatelDTO>($"SELECT * FROM UZIVATEL_VIEW WHERE ID_UZIVATELE = {id_uzivatele}").FirstOrDefault();
         LoadPhoto();
     }
     public ProfilViewModel(UzivatelDTO uzivatel)
     {
-        this.uzivatel = uzivatel;
+        Uzivatel = uzivatel;
         LoadPhoto();
     }
 
     private void FetchUzivatel()
     {
         var username = UserSession.Instance.UserName;
-        uzivatel =
+        Uzivatel =
             _databaseService.FetchData<UzivatelDTO>(
                 $"SELECT * FROM ST67028.UZIVATEL_VIEW WHERE UZIVATELSKE_JMENO = '{username}'")[0];
         
@@ -62,7 +60,6 @@ public partial class ProfilViewModel : ViewModelBase
         var foto = LoadFotoFromFile();
         if(foto==null)
             return;
-        testFoto = foto;
         string query = @"
             BEGIN
                 ST67028.INSERT_UPDATE.edit_foto(
@@ -101,13 +98,13 @@ public partial class ProfilViewModel : ViewModelBase
     {
         if (Uzivatel.id_foto == null)
             return;
-        WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { uzivatel.id_foto });
+        WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { Uzivatel.id_foto });
     }
 
     [RelayCommand]
     public void EditUzivatel()
     {
-        WindowManager.SetContentView(typeof(UzivatelFormViewModel), new object[]{uzivatel});
+        WindowManager.SetContentView(typeof(UzivatelFormViewModel), new object[]{Uzivatel});
     }
 
 
@@ -115,7 +112,7 @@ public partial class ProfilViewModel : ViewModelBase
     {
         
         var bitmap = new BitmapImage();
-        if (uzivatel.id_foto == null)
+        if (Uzivatel.id_foto == null)
         {
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(Path.GetFullPath("../../../Images/defaultUser.png"), UriKind.Absolute);
@@ -125,7 +122,7 @@ public partial class ProfilViewModel : ViewModelBase
         }
         else
         {
-            var fotoData = _databaseService.FetchData<Foto>($"SELECT * FROM FOTO WHERE ID_FOTO = {uzivatel.id_foto}").FirstOrDefault();
+            var fotoData = _databaseService.FetchData<Foto>($"SELECT * FROM FOTO WHERE ID_FOTO = {Uzivatel.id_foto}").FirstOrDefault();
             
             using (var memoryStream = new MemoryStream(fotoData.Data))
             {
@@ -141,7 +138,7 @@ public partial class ProfilViewModel : ViewModelBase
     }
 
 
-    private Foto LoadFotoFromFile()
+    private Foto? LoadFotoFromFile()
     {
         OpenFileDialog openFileDialog = new OpenFileDialog
         {

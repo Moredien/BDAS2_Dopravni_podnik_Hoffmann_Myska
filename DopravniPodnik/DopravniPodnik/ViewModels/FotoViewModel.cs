@@ -11,9 +11,9 @@ public partial class FotoViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
     [ObservableProperty]
-    public ObservableCollection<FotoDTO> items;
+    private ObservableCollection<FotoDTO> _items;
     [ObservableProperty]
-    public FotoDTO selectedItem;
+    private FotoDTO? _selectedItem;
 
     public FotoViewModel()
     {
@@ -33,6 +33,7 @@ public partial class FotoViewModel : ViewModelBase
     [RelayCommand]
     private void Detail()
     {
-        WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { selectedItem.IdFoto });
+        if(SelectedItem!=null)
+            WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { SelectedItem.IdFoto });
     }
 }

@@ -13,14 +13,14 @@ namespace DopravniPodnik.ViewModels;
 public partial class ZamestnanciViewModel : ViewModelBase
 {
     private ZamestnanecService _zamestnanecService = new();
-    public ObservableCollection<ZamestnanecViewDTO> Items { get; set; }
-    public ObservableCollection<ZamestnanecViewDTO> FilteredItems { get; set; }
-    [ObservableProperty] public ZamestnanecViewDTO selectedItem;
+    [ObservableProperty] private ObservableCollection<ZamestnanecViewDTO> _items;
+    [ObservableProperty] private ObservableCollection<ZamestnanecViewDTO> _filteredItems;
+    [ObservableProperty] private ZamestnanecViewDTO? _selectedItem;
 
-    [ObservableProperty] public ZamestnanecViewDTO selectedZamestnanec;
-    [ObservableProperty] private string searchedText;
+    // [ObservableProperty] private ZamestnanecViewDTO? selectedZamestnanec;
+    [ObservableProperty] private string _searchedText= "";
 
-    [ObservableProperty] private bool isMasked = true;
+    [ObservableProperty] private bool _isMasked = true;
 
     partial void OnSearchedTextChanged(string value)
     {
@@ -40,9 +40,9 @@ public partial class ZamestnanciViewModel : ViewModelBase
     [RelayCommand]
     public void Informace()
     {
-        if (selectedItem == null)
+        if (SelectedItem == null)
             return;
-        WindowManager.SetContentView(typeof(ZamestnanciFormViewModel), new[] { selectedItem });
+        WindowManager.SetContentView(typeof(ZamestnanciFormViewModel), new object[] { SelectedItem });
     }
 
     [RelayCommand]
@@ -64,9 +64,9 @@ public partial class ZamestnanciViewModel : ViewModelBase
         };
 
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
-        _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
-        Items.Remove(selectedItem);
-        FilteredItems.Remove(selectedItem);
+        _databaseService.ExecuteDbCall(procedureCallWrapper, out var _);
+        Items.Remove(SelectedItem);
+        FilteredItems.Remove(SelectedItem);
     }
 
     [RelayCommand]
@@ -74,7 +74,7 @@ public partial class ZamestnanciViewModel : ViewModelBase
     {
         if (SelectedItem != null)
         {
-            WindowManager.SetContentView(typeof(PovysitViewModel), new object[] { selectedItem });
+            WindowManager.SetContentView(typeof(PovysitViewModel), new object[] { SelectedItem });
         }
     }
 
@@ -87,7 +87,7 @@ public partial class ZamestnanciViewModel : ViewModelBase
         }
     }
 
-    private void FilterList(string keyword)
+    private void FilterList(string? keyword)
     {
         if (string.IsNullOrEmpty(keyword))
         {

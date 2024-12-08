@@ -11,15 +11,14 @@ namespace DopravniPodnik.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty] private ViewModelBase _currentPage;
+    [ObservableProperty] private ViewModelBase? _currentPage;
 
     [ObservableProperty] 
     private ViewModelBase? _currentMenu;
     
     [ObservableProperty]
-    public ListItemTemplate _selectedListItem;
+    private ListItemTemplate? _selectedListItem;
 
-    private GenericGridViewModel GridViewModel;
     partial void OnSelectedListItemChanged(ListItemTemplate? value)
     {
         if (MenuItems.Count == 0)

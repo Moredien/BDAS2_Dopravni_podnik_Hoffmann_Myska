@@ -29,35 +29,35 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
 
     [ObservableProperty] private Visibility _zmenaTypuUzivateleBtnVisible = Visibility.Hidden;
     
-    [ObservableProperty] private string uzivatelske_jmeno;
-    [ObservableProperty] private string jmeno;
-    [ObservableProperty] private string prijmeni;
-    [ObservableProperty] private DateTime datum_narozeni = DateTime.Today;
-    [ObservableProperty] private string mesto;
-    [ObservableProperty] private string ulice;
-    [ObservableProperty] private string cislo_popisne;
-    [ObservableProperty] public string nazev_typ_uzivatele;
+    [ObservableProperty] private string _uzivatelskeJmeno = "";
+    [ObservableProperty] private string _jmeno = "";
+    [ObservableProperty] private string _prijmeni = "";
+    [ObservableProperty] private DateTime _datumNarozeni = DateTime.Today;
+    [ObservableProperty] private string _mesto = "";
+    [ObservableProperty] private string _ulice = "";
+    [ObservableProperty] private string _cisloPopisne = "";
+    [ObservableProperty] private string _nazevTypUzivatele = "";
 
-    private UzivatelDTO editedItem;
+    private UzivatelDTO? _editedItem;
 
 
-    public UzivatelFormViewModel(object selectedItem)
+    public UzivatelFormViewModel(object? selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
         if (selectedItem != null)
         {
             var item = (UzivatelDTO)selectedItem;
-            Uzivatelske_jmeno = item.uzivatelske_jmeno;
+            UzivatelskeJmeno = item.uzivatelske_jmeno;
             Jmeno = item.jmeno;
             Prijmeni = item.prijmeni;
-            Datum_narozeni = item.datum_narozeni;
+            DatumNarozeni = item.datum_narozeni;
             Mesto = item.mesto;
             Ulice = item.ulice;
-            Cislo_popisne = item.cislo_popisne.ToString();
-            Nazev_typ_uzivatele = item.nazev_typ_uzivatele;
+            CisloPopisne = item.cislo_popisne.ToString();
+            NazevTypUzivatele = item.nazev_typ_uzivatele;
             
-            editedItem = item;
+            _editedItem = item;
 
             UpdateZmenitTypUzivateleSection();
         }
@@ -93,25 +93,25 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
             var parameters = new List<OracleParameter>
             {
                 new OracleParameter("p_id_uzivatele", OracleDbType.Decimal)
-                    { Value = editedItem.id_uzivatele, Direction = ParameterDirection.InputOutput },
+                    { Value = _editedItem.id_uzivatele, Direction = ParameterDirection.InputOutput },
                 new OracleParameter("p_uzivatelske_jmeno", OracleDbType.Varchar2)
-                    { Value = Uzivatelske_jmeno, Direction = ParameterDirection.Input },
+                    { Value = UzivatelskeJmeno, Direction = ParameterDirection.Input },
                 new OracleParameter("p_heslo", OracleDbType.Varchar2)
-                    { Value = editedItem.heslo, Direction = ParameterDirection.Input },
+                    { Value = _editedItem.heslo, Direction = ParameterDirection.Input },
                 new OracleParameter("p_jmeno", OracleDbType.Varchar2)
                     { Value = Jmeno, Direction = ParameterDirection.Input },
                 new OracleParameter("p_prijmeni", OracleDbType.Varchar2)
                     { Value = Prijmeni, Direction = ParameterDirection.Input },
                 new OracleParameter("p_cas_zalozeni", OracleDbType.Date)
-                    { Value = editedItem.cas_zalozeni, Direction = ParameterDirection.Input },
+                    { Value = _editedItem.cas_zalozeni, Direction = ParameterDirection.Input },
                 new OracleParameter("p_datum_narozeni", OracleDbType.Date)
-                    { Value = Datum_narozeni, Direction = ParameterDirection.Input },
+                    { Value = DatumNarozeni, Direction = ParameterDirection.Input },
                 new OracleParameter("p_mesto", OracleDbType.Varchar2)
                     { Value = Mesto, Direction = ParameterDirection.Input },
                 new OracleParameter("p_ulice", OracleDbType.Varchar2)
                     { Value = Ulice, Direction = ParameterDirection.Input },
                 new OracleParameter("p_cislo_popisne", OracleDbType.Decimal)
-                    { Value = Cislo_popisne, Direction = ParameterDirection.Input },
+                    { Value = CisloPopisne, Direction = ParameterDirection.Input },
             };
 
             var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
@@ -125,9 +125,11 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
     [RelayCommand]
     public void ChangeUserType()
     {
-        if(nazev_typ_uzivatele == "Zákazník")
-            WindowManager.SetContentView(typeof(ZamestnanciFormViewModel), new object[] { editedItem.id_uzivatele });
-        else if (nazev_typ_uzivatele == "Zaměstnanec")
+        if (_editedItem == null || _editedItem.id_uzivatele == null)
+            return;
+        if(NazevTypUzivatele == "Zákazník")
+            WindowManager.SetContentView(typeof(ZamestnanciFormViewModel), new object[] { _editedItem.id_uzivatele });
+        else if (NazevTypUzivatele == "Zaměstnanec")
         {
             string query = @"
             BEGIN
@@ -139,13 +141,13 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
             var parameters = new List<OracleParameter>
             {
                 new OracleParameter("id_uzivatele", OracleDbType.Decimal)
-                    { Value = editedItem.id_uzivatele, Direction = ParameterDirection.Input },
+                    { Value = _editedItem.id_uzivatele, Direction = ParameterDirection.Input },
             };
 
             var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
             _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
-            Nazev_typ_uzivatele = "Zákazník";
-        }else if (nazev_typ_uzivatele == "Zaměstnanec")
+            NazevTypUzivatele = "Zákazník";
+        }else if (NazevTypUzivatele == "Zaměstnanec")
         {
             //TODO remove employee?? 
             Console.WriteLine("Not implemented yet");
@@ -158,11 +160,11 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
 
         switch (propertyName)
         {
-            case nameof(Uzivatelske_jmeno):
-                if (string.IsNullOrEmpty(Uzivatelske_jmeno))
-                    _errorsViewModel.AddError(nameof(Uzivatelske_jmeno), "Položka nesmí být prázdná.");
-                else if (Uzivatelske_jmeno.Length > 30)
-                    _errorsViewModel.AddError(nameof(Uzivatelske_jmeno), "Maximální délka je 30 znaků.");
+            case nameof(UzivatelskeJmeno):
+                if (string.IsNullOrEmpty(UzivatelskeJmeno))
+                    _errorsViewModel.AddError(nameof(UzivatelskeJmeno), "Položka nesmí být prázdná.");
+                else if (UzivatelskeJmeno.Length > 30)
+                    _errorsViewModel.AddError(nameof(UzivatelskeJmeno), "Maximální délka je 30 znaků.");
                 break;
             case nameof(Jmeno):
                 if (string.IsNullOrEmpty(Jmeno))
@@ -176,11 +178,11 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
                 else if (Prijmeni.Length > 20)
                     _errorsViewModel.AddError(nameof(Prijmeni), "Maximální délka je 20 znaků.");
                 break;
-            case nameof(Datum_narozeni):
-                if (Datum_narozeni > DateTime.Today)
-                    _errorsViewModel.AddError(nameof(Datum_narozeni), "Datum narození nemůže být v budoucnosti.");
-                else if (Datum_narozeni.Year < 1900)
-                    _errorsViewModel.AddError(nameof(Datum_narozeni), "Spodní limit roku narození je 1900.");
+            case nameof(DatumNarozeni):
+                if (DatumNarozeni > DateTime.Today)
+                    _errorsViewModel.AddError(nameof(DatumNarozeni), "Datum narození nemůže být v budoucnosti.");
+                else if (DatumNarozeni.Year < 1900)
+                    _errorsViewModel.AddError(nameof(DatumNarozeni), "Spodní limit roku narození je 1900.");
                 break;
             case nameof(Mesto):
                 if (string.IsNullOrEmpty(Mesto))
@@ -194,26 +196,26 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
                 else if (Ulice.Length > 32)
                     _errorsViewModel.AddError(nameof(Ulice), "Maximální délka je 32 znaků.");
                 break;
-            case nameof(Cislo_popisne):
-                if (string.IsNullOrEmpty(Cislo_popisne))
-                    _errorsViewModel.AddError(nameof(Cislo_popisne), "Nebylo zadáno číslo popisné.");
-                else if (!Int32.TryParse(Cislo_popisne, out _))
-                    _errorsViewModel.AddError(nameof(Cislo_popisne), "Zadaná hodnota musí být číslo");
-                else if (Cislo_popisne.Length > 6)
-                    _errorsViewModel.AddError(nameof(Cislo_popisne), "Maximální délka je 6 znaků.");
+            case nameof(CisloPopisne):
+                if (string.IsNullOrEmpty(CisloPopisne))
+                    _errorsViewModel.AddError(nameof(CisloPopisne), "Nebylo zadáno číslo popisné.");
+                else if (!Int32.TryParse(CisloPopisne, out _))
+                    _errorsViewModel.AddError(nameof(CisloPopisne), "Zadaná hodnota musí být číslo");
+                else if (CisloPopisne.Length > 6)
+                    _errorsViewModel.AddError(nameof(CisloPopisne), "Maximální délka je 6 znaků.");
                 break;
         }
     }
 
     private void ValidateAllInputs()
     {
-        ValidateInput(nameof(Uzivatelske_jmeno));
+        ValidateInput(nameof(UzivatelskeJmeno));
         ValidateInput(nameof(Jmeno));
         ValidateInput(nameof(Prijmeni));
-        ValidateInput(nameof(Datum_narozeni));
+        ValidateInput(nameof(DatumNarozeni));
         ValidateInput(nameof(Mesto));
         ValidateInput(nameof(Ulice));
-        ValidateInput(nameof(Cislo_popisne));
+        ValidateInput(nameof(CisloPopisne));
     }
     
 
@@ -225,11 +227,11 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
         else
             ZmenaTypuUzivateleBtnVisible = Visibility.Visible;
         
-        if (Nazev_typ_uzivatele == "Zákazník")
+        if (NazevTypUzivatele == "Zákazník")
         {
             ZmenaTypuUzivateleBtnContent = "Vytvořit zaměstnance";
         }
-        else if (Nazev_typ_uzivatele == "Zaměstnanec")
+        else if (NazevTypUzivatele == "Zaměstnanec")
         {
             ZmenaTypuUzivateleBtnContent = "Odebrat zaměstnance";
         }
@@ -248,6 +250,6 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs propertyChangedEventArgs)
     {
-        ValidateInput(propertyChangedEventArgs.PropertyName);
+        if (propertyChangedEventArgs.PropertyName != null) ValidateInput(propertyChangedEventArgs.PropertyName);
     }
 }

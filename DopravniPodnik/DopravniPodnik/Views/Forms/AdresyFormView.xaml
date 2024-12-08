@@ -28,7 +28,7 @@
             Text="{Binding Ulice, UpdateSourceTrigger=PropertyChanged}"/>
         <Label Content="Číslo popisné:" />
         <TextBox
-            Text="{Binding Cislo_popisne, UpdateSourceTrigger=PropertyChanged}"/>
+            Text="{Binding CisloPopisne, UpdateSourceTrigger=PropertyChanged}"/>
         
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center">

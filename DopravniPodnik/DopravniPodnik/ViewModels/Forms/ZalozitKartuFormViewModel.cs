@@ -24,34 +24,34 @@ public partial class ZalozitKartuFormViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
 
-    [ObservableProperty] public string jmeno;
-    [ObservableProperty] public string prijmeni;
-    [ObservableProperty] public DateTime platnostOd;
-    [ObservableProperty] public DateTime platnostDo;
+    [ObservableProperty] private string _jmeno = "";
+    [ObservableProperty] private string _prijmeni = "";
+    [ObservableProperty] private DateTime _platnostOd;
+    [ObservableProperty] private DateTime _platnostDo;
 
-    [ObservableProperty] public string typPredplatneho = "Roční";
-    [ObservableProperty] public DateTime konecPredplatneho = DateTime.Today.AddYears(1);
+    [ObservableProperty] private string _typPredplatneho = "Roční";
+    [ObservableProperty] private DateTime _konecPredplatneho = DateTime.Today.AddYears(1);
     
     [ObservableProperty]
-    public ImageSource fotoSource;
+    private ImageSource _fotoSource;
 
-    private byte[] fotoData;
+    private byte[] _fotoData;
     private string JmenoSouboru { get; set; }
 
-    private int id_zakaznika;
+    private int _idZakaznika;
 
-    [ObservableProperty] private ObservableCollection<TypyPredplatneho> typyPredplatneho;
-    [ObservableProperty] private TypyPredplatneho selectedTypPredplatneho;
-    [ObservableProperty] private string cenaPredplatneho;
-    [ObservableProperty] private ObservableCollection<MetodyPlatby> metodyPlatby;
-    [ObservableProperty] private MetodyPlatby selectedMetodaPlatby;
+    [ObservableProperty] private ObservableCollection<TypyPredplatneho> _typyPredplatneho;
+    [ObservableProperty] private TypyPredplatneho? _selectedTypPredplatneho;
+    [ObservableProperty] private string _cenaPredplatneho;
+    [ObservableProperty] private ObservableCollection<MetodyPlatby> _metodyPlatby;
+    [ObservableProperty] private MetodyPlatby? _selectedMetodaPlatby;
 
-    [ObservableProperty] private string cisloKarty;
-    [ObservableProperty] private string jmenoMajitele;
-    [ObservableProperty] private string cisloUctu;
+    [ObservableProperty] private string _cisloKarty;
+    [ObservableProperty] private string _jmenoMajitele;
+    [ObservableProperty] private string _cisloUctu;
 
-    [ObservableProperty] private Visibility kartouFormVisible;
-    [ObservableProperty] private Visibility prevodemFormVisible;
+    [ObservableProperty] private Visibility _kartouFormVisible;
+    [ObservableProperty] private Visibility _prevodemFormVisible;
     
     public ZalozitKartuFormViewModel()
     {
@@ -90,13 +90,16 @@ public partial class ZalozitKartuFormViewModel : ViewModelBase
     private void GetUserData()
     {
         var uzivatel = _databaseService.FetchData<Uzivatele>($"SELECT * FROM UZIVATELE WHERE UZIVATELSKE_JMENO = '{UserSession.Instance.UserName}'").FirstOrDefault();
-        var zakaznik = _databaseService.FetchData<Zakaznici>(
-            $"SELECT * FROM ZAKAZNICI WHERE ID_UZIVATELE = {uzivatel.IdUzivatele}").FirstOrDefault();
-        Jmeno = uzivatel.Jmeno;
-        Prijmeni = uzivatel.Prijmeni;
-        PlatnostOd= DateTime.Today;
-        PlatnostDo = DateTime.Today.AddYears(5);
-        id_zakaznika = zakaznik.IdZakaznika;
+        if (uzivatel != null)
+        {
+            var zakaznik = _databaseService.FetchData<Zakaznici>(
+                $"SELECT * FROM ZAKAZNICI WHERE ID_UZIVATELE = {uzivatel.IdUzivatele}").FirstOrDefault();
+            Jmeno = uzivatel.Jmeno;
+            Prijmeni = uzivatel.Prijmeni;
+            PlatnostOd= DateTime.Today;
+            PlatnostDo = DateTime.Today.AddYears(5);
+            _idZakaznika = zakaznik.IdZakaznika;
+        }
     }
 
     private void GetTypyPredplatneho()
@@ -121,22 +124,23 @@ public partial class ZalozitKartuFormViewModel : ViewModelBase
         if (openFileDialog.ShowDialog() == true)
         {
             string filePath = openFileDialog.FileName;
-            fotoData = File.ReadAllBytes(filePath);
+            _fotoData = File.ReadAllBytes(filePath);
             JmenoSouboru = Path.GetFileName(filePath);
 
-            FotoSource = CreateImageSourceFromBytes(fotoData);
+            FotoSource = CreateImageSourceFromBytes(_fotoData);
         }
     }
 
     [RelayCommand]
     public void Zalozit()
     {
-        if (fotoData == null||
-            selectedMetodaPlatby.value == 0 && (String.IsNullOrEmpty(CisloKarty) || String.IsNullOrEmpty(JmenoMajitele)) ||
-            selectedMetodaPlatby.value == 1 && String.IsNullOrEmpty(CisloUctu))
+        if (_fotoData == null||
+            SelectedMetodaPlatby.value == 0 && (String.IsNullOrEmpty(CisloKarty) || String.IsNullOrEmpty(JmenoMajitele)) ||
+            SelectedMetodaPlatby.value == 1 && String.IsNullOrEmpty(CisloUctu))
             return;
 
-        int vysePlatby = SelectedTypPredplatneho.IdTypPredplatneho == null ? 0 : SelectedTypPredplatneho.Cena;
+        int vysePlatby = SelectedTypPredplatneho == null ? 0 : SelectedTypPredplatneho.Cena;
+        
         string query = @"
             BEGIN
                 ST67028.ZALOZIT_KARTU(
@@ -165,13 +169,13 @@ public partial class ZalozitKartuFormViewModel : ViewModelBase
             new OracleParameter("p_platnost_do", OracleDbType.Date)
                 { Value = PlatnostDo, Direction = ParameterDirection.Input },
             new OracleParameter("p_id_zakaznika", OracleDbType.Decimal)
-                { Value = id_zakaznika, Direction = ParameterDirection.Input },
+                { Value = _idZakaznika, Direction = ParameterDirection.Input },
             new OracleParameter("p_foto", OracleDbType.Blob)
-                { Value = fotoData, Direction = ParameterDirection.Input },
+                { Value = _fotoData, Direction = ParameterDirection.Input },
             new OracleParameter("p_jmeno_souboru", OracleDbType.Varchar2)
                 { Value = JmenoSouboru, Direction = ParameterDirection.Input },
             new OracleParameter("p_typ_predplatneho", OracleDbType.Varchar2)
-                { Value = typPredplatneho, Direction = ParameterDirection.Input },
+                { Value = SelectedTypPredplatneho, Direction = ParameterDirection.Input },
             new OracleParameter("p_konec_predplatneho", OracleDbType.Date)
                 { Value = KonecPredplatneho, Direction = ParameterDirection.Input },
             new OracleParameter("p_vyse_platby", OracleDbType.Decimal)

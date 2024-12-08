@@ -8,7 +8,7 @@ namespace DopravniPodnik.ViewModels;
 public partial class DBObjektyViewModel : ViewModelBase
 {
     private DatabaseService _databaseService = new();
-    [ObservableProperty] private ObservableCollection<DBObjektyDTO> items;
+    [ObservableProperty] private ObservableCollection<DBObjektyDTO> _items;
 
     public DBObjektyViewModel()
     {

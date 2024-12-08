@@ -8,13 +8,15 @@ namespace DopravniPodnik.ViewModels;
 
 public partial class ZakazniciViewModel : ViewModelBase
 {
-    public ObservableCollection<UzivatelDTO> Items { get; set; }
-    public ObservableCollection<UzivatelDTO> FilteredItems { get; set; }
     [ObservableProperty] 
-    public UzivatelDTO selectedItem;
+    private ObservableCollection<UzivatelDTO> _items;
+    [ObservableProperty] 
+    private ObservableCollection<UzivatelDTO> _filteredItems;
+    [ObservableProperty] 
+    private UzivatelDTO? _selectedItem;
 
     [ObservableProperty]
-    private string searchedText;
+    private string _searchedText = "";
 
     partial void OnSearchedTextChanged(string value)
     {
@@ -35,7 +37,8 @@ public partial class ZakazniciViewModel : ViewModelBase
     [RelayCommand]
     public void Informace()
     {
-        WindowManager.SetContentView(typeof(ProfilViewModel), new[] { selectedItem });
+        if(SelectedItem!=null)
+            WindowManager.SetContentView(typeof(ProfilViewModel), new object[] { SelectedItem });
     }
 
     private void LoadData()
@@ -47,7 +50,7 @@ public partial class ZakazniciViewModel : ViewModelBase
         }
     }
 
-    private void FilterList(string keyword)
+    private void FilterList(string? keyword)
     {
         if(string.IsNullOrEmpty(keyword))
         {

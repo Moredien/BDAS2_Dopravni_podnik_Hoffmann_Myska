@@ -11,9 +11,9 @@ namespace DopravniPodnik.ViewModels;
 public partial class VozovyParkViewModel : ViewModelBase
 {
     [ObservableProperty] 
-    public ObservableCollection<VozovyParkDTO> items = new ();
+    private ObservableCollection<VozovyParkDTO> _items = new ();
     [ObservableProperty]
-    public VozovyParkDTO selectedItem;
+    private VozovyParkDTO? _selectedItem;
     
     private readonly DatabaseService _databaseService = new();
 
@@ -49,6 +49,8 @@ public partial class VozovyParkViewModel : ViewModelBase
     [RelayCommand]
     public void Delete()
     {
+        if (SelectedItem == null)
+            return;
         string query = $"DELETE FROM VOZIDLA WHERE ID_VOZIDLA = {SelectedItem.IdVozidla}";
             
         var procedureCallWrapper = new ProcedureCallWrapper(query, new());

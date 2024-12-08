@@ -20,11 +20,11 @@ public partial class ZastavkyFormViewModel : ViewModelBase , INotifyDataErrorInf
     
     // add all the properties here
     [ObservableProperty]
-    private string? jmeno;
+    private string? _jmeno;
     
-    private int? Id;
+    private int? _id;
 
-    public ZastavkyFormViewModel(object selectedItem)
+    public ZastavkyFormViewModel(object? selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
@@ -32,7 +32,7 @@ public partial class ZastavkyFormViewModel : ViewModelBase , INotifyDataErrorInf
         {
             // cast to edited model type
             Jmeno = ((Zastavky)selectedItem).Jmeno;
-            Id = ((Zastavky)selectedItem).IdZastavky;
+            _id = ((Zastavky)selectedItem).IdZastavky;
         }
     }
     
@@ -53,10 +53,10 @@ public partial class ZastavkyFormViewModel : ViewModelBase , INotifyDataErrorInf
         ";
             
             object id;
-            if (Id == null)
+            if (_id == null)
                 id = DBNull.Value;
             else
-                id = Id;
+                id = _id;
             var parameters = new List<OracleParameter>
             {
                 new OracleParameter("p_id_zastavky", OracleDbType.Decimal)
@@ -105,6 +105,6 @@ public partial class ZastavkyFormViewModel : ViewModelBase , INotifyDataErrorInf
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs propertyChangedEventArgs)
     {
-        ValidateInput(propertyChangedEventArgs.PropertyName);
+        if (propertyChangedEventArgs.PropertyName != null) ValidateInput(propertyChangedEventArgs.PropertyName);
     }
 }

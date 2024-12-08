@@ -11,8 +11,8 @@ namespace DopravniPodnik.ViewModels;
 public partial class HistoriePlatebViewModel : ViewModelBase
 {
     private DatabaseService _databaseService = new();
-    [ObservableProperty] private ObservableCollection<Platby> items;
-    [ObservableProperty] private ObservableCollection<Platby> filteredItems;
+    [ObservableProperty] private ObservableCollection<Platby> _items;
+    [ObservableProperty] private ObservableCollection<Platby> _filteredItems;
 
     public HistoriePlatebViewModel()
     {
@@ -23,9 +23,9 @@ public partial class HistoriePlatebViewModel : ViewModelBase
                 $"SELECT * FROM UZIVATELE WHERE UZIVATELSKE_JMENO = '{UserSession.Instance.UserName}'")
                 .FirstOrDefault();
         var zakaznik =
-            _databaseService.FetchData<Zakaznici>($"SELECT * FROM ZAKAZNICI WHERE ID_UZIVATELE = {uzivatel.IdUzivatele}")
+            _databaseService.FetchData<Zakaznici>($"SELECT * FROM ZAKAZNICI WHERE ID_UZIVATELE = {uzivatel?.IdUzivatele}")
                 .FirstOrDefault();
-        var data = _databaseService.FetchData<Platby>($"SELECT * FROM PLATBY WHERE ID_ZAKAZNIKA = {zakaznik.IdZakaznika}");
+        var data = _databaseService.FetchData<Platby>($"SELECT * FROM PLATBY WHERE ID_ZAKAZNIKA = {zakaznik?.IdZakaznika}");
         foreach (var entry in data)
         {
             Items.Add(entry);

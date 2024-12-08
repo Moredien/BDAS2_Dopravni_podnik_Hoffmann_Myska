@@ -110,8 +110,8 @@ public partial class ZamestnanciFormViewModel : ViewModelBase, INotifyDataErrorI
         else
             idZamestnance = EditedZamestanenc.IdZamestnance;
 
-        if (SelectedNadrizeny.IdZamestnance == null)
-            SelectedNadrizeny = null;
+        // if (SelectedNadrizeny.IdZamestnance == null)
+        //     SelectedNadrizeny = null;
         var parameters = new List<OracleParameter>
         {
             new OracleParameter("p_id_zamestnance", OracleDbType.Decimal)

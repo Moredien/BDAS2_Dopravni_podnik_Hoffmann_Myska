@@ -12,11 +12,11 @@ namespace DopravniPodnik.ViewModels;
 
 public partial class VyhledaniCestyViewModel : ViewModelBase
 {
-    [ObservableProperty] public ObservableCollection<Zastavky> zastavky = new ObservableCollection<Zastavky>();
-    [ObservableProperty] public Zastavky zastavkaOdkud;
-    [ObservableProperty] public Zastavky zastavkaKam;
-    
-    public ObservableCollection<LinkaDTO> Items { get; set; }
+    [ObservableProperty] private ObservableCollection<Zastavky> _zastavky = new ObservableCollection<Zastavky>();
+    [ObservableProperty] private Zastavky? _zastavkaOdkud;
+    [ObservableProperty] private Zastavky? _zastavkaKam;
+
+    [ObservableProperty] private ObservableCollection<LinkaDTO> _items;
     private readonly DatabaseService _databaseService = new();
 
     public VyhledaniCestyViewModel()
@@ -44,7 +44,7 @@ public partial class VyhledaniCestyViewModel : ViewModelBase
     }
     private void LoadZastavky()
     {
-        zastavky.Clear();
+        Zastavky.Clear();
 
         var data = _databaseService.FetchData<Zastavky>("SELECT * FROM ST67028.ZASTAVKY");
         

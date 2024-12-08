@@ -11,9 +11,9 @@ public partial class KartyMhdViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
     [ObservableProperty]
-    public ObservableCollection<KartyMhdViewDTO> items;
+    private ObservableCollection<KartyMhdViewDTO> _items;
     [ObservableProperty]
-    public KartyMhdViewDTO selectedItem;
+    private KartyMhdViewDTO? _selectedItem;
 
 
     public KartyMhdViewModel()
@@ -35,7 +35,8 @@ public partial class KartyMhdViewModel : ViewModelBase
     [RelayCommand]
     public void Detail()
     {
-        WindowManager.SetContentView(typeof(KartaDetailViewModel), new object[] { selectedItem.IdKarty });
+        if(SelectedItem!=null)
+            WindowManager.SetContentView(typeof(KartaDetailViewModel), new object[] { SelectedItem.IdKarty });
     }
     public override void Update()
     {
@@ -45,6 +46,7 @@ public partial class KartyMhdViewModel : ViewModelBase
     [RelayCommand]
     public void Dobit()
     {
-        WindowManager.SetContentView(typeof(DobitKartuViewModel), new[] { selectedItem });
+        if(SelectedItem!=null)
+            WindowManager.SetContentView(typeof(DobitKartuViewModel), new object[] { SelectedItem });
     }
 }

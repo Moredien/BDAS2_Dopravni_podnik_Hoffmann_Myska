@@ -13,16 +13,16 @@ namespace DopravniPodnik.ViewModels.Forms;
 public partial class DostupnaVozidlaFormViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
-    [ObservableProperty] public ObservableCollection<TypyVozidel> typyVozidla = new();
+    [ObservableProperty] private ObservableCollection<TypyVozidel> _typyVozidla = new();
     [ObservableProperty] 
-    public TypyVozidel selectedTyp;
+    private TypyVozidel? _selectedTyp;
     [ObservableProperty]
-    public string znacka;
+    private string _znacka = "";
 
     private int? Id { get; set; }
 
 
-    public DostupnaVozidlaFormViewModel(VozovyParkDTO selectedItem)
+    public DostupnaVozidlaFormViewModel(VozovyParkDTO? selectedItem)
     {
         var data = _databaseService.FetchData<TypyVozidel>("SELECT * FROM ST67028.TYPY_VOZIDEL");
         foreach (var obj in data)
@@ -34,12 +34,14 @@ public partial class DostupnaVozidlaFormViewModel : ViewModelBase
         {
             Znacka = selectedItem.Znacka;
             Id = selectedItem.IdVozidla;
-            SelectedTyp = typyVozidla.FirstOrDefault(tv => tv.Nazev == selectedItem.TypVozidla);
+            SelectedTyp = TypyVozidla.FirstOrDefault(tv => tv.Nazev == selectedItem.TypVozidla);
         }
     }
     [RelayCommand]
     public void Submit()
     {
+        if (SelectedTyp == null)
+            return;
         string query = @"
             BEGIN
                 ST67028.INSERT_UPDATE.edit_vozidla(

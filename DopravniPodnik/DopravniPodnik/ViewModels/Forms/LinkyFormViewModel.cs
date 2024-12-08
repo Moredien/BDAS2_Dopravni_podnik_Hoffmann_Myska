@@ -11,17 +11,17 @@ namespace DopravniPodnik.ViewModels.Forms;
 public partial class LinkyFormViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
-    [ObservableProperty] private string cisloLinky;
-    [ObservableProperty] private string? jmeno;
-    private object idLinky;
+    [ObservableProperty] private string _cisloLinky = "";
+    [ObservableProperty] private string? _jmeno ="";
+    private object _idLinky;
 
     public LinkyFormViewModel(Linky? linka)
     {
         if (linka == null)
-            idLinky = DBNull.Value;
+            _idLinky = DBNull.Value;
         else
         {
-            idLinky = linka.IdLinky;
+            _idLinky = linka.IdLinky;
             CisloLinky = linka.CisloLinky.ToString();
             Jmeno = linka.Jmeno;
         }
@@ -46,7 +46,7 @@ public partial class LinkyFormViewModel : ViewModelBase
         var parameters = new List<OracleParameter>
         {
             new OracleParameter("p_id_linky", OracleDbType.Decimal)
-                { Value = idLinky, Direction = ParameterDirection.Input },
+                { Value = _idLinky, Direction = ParameterDirection.Input },
             new OracleParameter("p_cislo_linky", OracleDbType.Decimal) 
                 { Value = cislo, Direction = ParameterDirection.Input },
             new OracleParameter("p_jmeno", OracleDbType.Varchar2)

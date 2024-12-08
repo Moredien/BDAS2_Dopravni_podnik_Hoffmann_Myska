@@ -13,26 +13,25 @@ public partial class KartaDetailViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
 
-    [ObservableProperty] private BitmapSource displayedImage;
-    [ObservableProperty] private string platnostOd;
-    [ObservableProperty] private string platnostDo;
-    [ObservableProperty] private string aktivniPredplatne;
-    [ObservableProperty] private string zustatek;
+    [ObservableProperty] private BitmapSource _displayedImage;
+    [ObservableProperty] private string _platnostOd;
+    [ObservableProperty] private string _platnostDo;
+    [ObservableProperty] private string _aktivniPredplatne;
+    [ObservableProperty] private string _zustatek;
 
-    private Foto? foto;
-    [ObservableProperty] private ImageSource fotoSource;
+    private Foto? _foto;
+    [ObservableProperty] private ImageSource _fotoSource;
 
-
-    
-    public KartaDetailViewModel(object selectedItem)
+    public KartaDetailViewModel(object? selectedItem)
     {
         if (selectedItem == null)
             return;
-        KartyMhd karta;
+        KartyMhd? karta;
         if (selectedItem.GetType() == typeof(KartyMhd))
         {
             karta = (KartyMhd)selectedItem;
-        }else if (selectedItem.GetType() == typeof(Int32))
+        }
+        else if (selectedItem?.GetType() == typeof(Int32))
         {
             karta = _databaseService
                 .FetchData<KartyMhd>($"SELECT * FROM KARTY_MHD WHERE ID_KARTY = {(int)selectedItem}").FirstOrDefault();
@@ -40,29 +39,32 @@ public partial class KartaDetailViewModel : ViewModelBase
         }
         else
             return;
-        PlatnostOd = karta.PlatnostOd.ToString("dd.MM. yyyy");
-        PlatnostDo = karta.PlatnostDo.ToString("dd.MM. yyyy");
-        AktivniPredplatne = GetAktivniPredplatne(karta.IdKarty);
-        Zustatek = String.Concat(karta.Zustatek.ToString(), " Kč");
-        LoadPhoto(karta.IdKarty);
-        
+
+        if (karta != null)
+        {
+            PlatnostOd = karta.PlatnostOd.ToString("dd.MM. yyyy");
+            PlatnostDo = karta.PlatnostDo.ToString("dd.MM. yyyy");
+            AktivniPredplatne = GetAktivniPredplatne(karta.IdKarty);
+            Zustatek = String.Concat(karta.Zustatek.ToString(), " Kč");
+            LoadPhoto(karta.IdKarty);
+        }
     }
 
     [RelayCommand]
     private void PhotoDetails()
     {
-        if (foto.Data == null)
+        if (_foto?.Data == null)
             return;
-        WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { foto.IdFoto });
+        WindowManager.SetContentView(typeof(FotoDetailsViewModel), new object[] { _foto.IdFoto });
     }
 
     private void LoadPhoto(int idKarty)
     {
-        foto = _databaseService.FetchData<Foto>($"SELECT * FROM FOTO WHERE ID_KARTY = {idKarty}").FirstOrDefault();
-        
+        _foto = _databaseService.FetchData<Foto>($"SELECT * FROM FOTO WHERE ID_KARTY = {idKarty}").FirstOrDefault();
+
         var bitmap = new BitmapImage();
-            
-        using (var memoryStream = new MemoryStream(foto.Data))
+
+        using (var memoryStream = new MemoryStream(_foto.Data))
         {
             BitmapImage bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();
@@ -78,14 +80,17 @@ public partial class KartaDetailViewModel : ViewModelBase
     {
         var predplatne =
             _databaseService.FetchData<Predplatne>(
-                $"SELECT * FROM PREDPLATNE WHERE ID_KARTY = {idKarty} AND OD < SYSDATE AND DO > SYSDATE").FirstOrDefault();
+                    $"SELECT * FROM PREDPLATNE WHERE ID_KARTY = {idKarty} AND OD < SYSDATE AND DO > SYSDATE")
+                .FirstOrDefault();
         if (predplatne != null)
         {
             var typPredplatneho =
                 _databaseService.FetchData<TypyPredplatneho>(
-                    $"SELECT * FROM TYPY_PREDPLATNEHO WHERE ID_TYP_PREDPLATNEHO = {predplatne.IdTypPredplatneho}").FirstOrDefault();
-            return typPredplatneho.Jmeno;
+                        $"SELECT * FROM TYPY_PREDPLATNEHO WHERE ID_TYP_PREDPLATNEHO = {predplatne.IdTypPredplatneho}")
+                    .FirstOrDefault();
+            if (typPredplatneho != null) return typPredplatneho.Jmeno;
         }
+
         return String.Empty;
     }
 }

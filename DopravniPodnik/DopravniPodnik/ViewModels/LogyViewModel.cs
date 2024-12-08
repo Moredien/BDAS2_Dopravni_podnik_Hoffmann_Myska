@@ -10,15 +10,17 @@ namespace DopravniPodnik.ViewModels;
 public partial class LogyViewModel : ViewModelBase
 {
     private DatabaseService _databaseService = new();
-    [ObservableProperty] private ObservableCollection<Logy> items;
+    [ObservableProperty] private ObservableCollection<Logy> _items;
 
     [ObservableProperty]
-    private Logy selectedItem;
+    private Logy? _selectedItem;
+
+    private const int NumberOfFetchedRows = 500;
 
     public LogyViewModel()
     {
         Items = new();
-        var data = _databaseService.FetchData<Logy>($"SELECT * FROM LOGY ORDER BY CAS DESC FETCH FIRST 100 ROWS ONLY");
+        var data = _databaseService.FetchData<Logy>($"SELECT * FROM LOGY ORDER BY CAS DESC FETCH FIRST {NumberOfFetchedRows} ROWS ONLY");
         foreach (var entry in data)
         {
             Items.Add(entry);
@@ -28,8 +30,8 @@ public partial class LogyViewModel : ViewModelBase
     [RelayCommand]
     private void Detail()
     {
-        if (selectedItem == null)
+        if (SelectedItem == null)
             return;
-        WindowManager.SetContentView(typeof(LogyFormViewModel), new object[] { selectedItem });
+        WindowManager.SetContentView(typeof(LogyFormViewModel), new object[] { SelectedItem });
     }
 }

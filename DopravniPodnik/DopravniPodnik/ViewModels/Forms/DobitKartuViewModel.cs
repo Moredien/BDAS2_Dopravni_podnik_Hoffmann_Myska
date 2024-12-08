@@ -82,7 +82,7 @@ public partial class DobitKartuViewModel : ViewModelBase
         if (Int32.TryParse(Castka, out int castkaInt) && castkaInt > 0)
         {
             ProvestPlatbu(castkaInt);
-            // ZmenitZustatek(castkaInt);
+            ZmenitZustatek(castkaInt);
             Exit();
         }
     }

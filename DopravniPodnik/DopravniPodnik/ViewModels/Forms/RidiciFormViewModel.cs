@@ -19,13 +19,13 @@ public partial class RidiciFormViewModel : ViewModelBase , INotifyDataErrorInfo
     private readonly DatabaseService _databaseService = new();
 
     [ObservableProperty]
-    private string? jmeno;
+    private string? _jmeno = "";
     [ObservableProperty]
-    private string? prijmeni;
+    private string? _prijmeni = "";
 
     private int? Id;
 
-    public RidiciFormViewModel(object selectedItem)
+    public RidiciFormViewModel(object? selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
@@ -109,6 +109,6 @@ public partial class RidiciFormViewModel : ViewModelBase , INotifyDataErrorInfo
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs propertyChangedEventArgs)
     {
-        ValidateInput(propertyChangedEventArgs.PropertyName);
+        if (propertyChangedEventArgs.PropertyName != null) ValidateInput(propertyChangedEventArgs.PropertyName);
     }
     }

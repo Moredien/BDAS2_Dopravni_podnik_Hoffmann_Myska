@@ -11,7 +11,7 @@ namespace DopravniPodnik.ViewModels;
 public partial class EmployeeHierarchyViewModel : ViewModelBase
 {
     private readonly DatabaseService _databaseService = new();
-    [ObservableProperty] private ObservableCollection<EmployeeHierarchyDTO> items;
+    [ObservableProperty] private ObservableCollection<EmployeeHierarchyDTO> _items;
     
     public EmployeeHierarchyViewModel()
     {

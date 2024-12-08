@@ -1,36 +1,31 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Globalization;
+using CommunityToolkit.Mvvm.ComponentModel;
 using DopravniPodnik.Data.Models;
-using DopravniPodnik.Data.service;
 
 namespace DopravniPodnik.ViewModels.Forms;
 
 public partial class LogyFormViewModel : ViewModelBase
 {
-    private readonly DatabaseService _databaseService = new();
+    [ObservableProperty]
+    private string? _cas;
+    [ObservableProperty]
+    private string? _tabulka;
+    [ObservableProperty]
+    private string? _operace;
+    [ObservableProperty]
+    private string? _staraHodnota;
+    [ObservableProperty]
+    private string? _novaHodnota;
     
-    [ObservableProperty]
-    private string? cas;
-    [ObservableProperty]
-    private string? tabulka;
-    [ObservableProperty]
-    private string? operace;
-    [ObservableProperty]
-    private string? staraHodnota;
-    [ObservableProperty]
-    private string? novaHodnota;
-    
-    private int? Id;
-
-    public LogyFormViewModel(object selectedItem)
+    public LogyFormViewModel(object? selectedItem)
     {
         if (selectedItem != null)
         {
-            Cas = ((Logy)selectedItem).Cas.ToString();
+            Cas = ((Logy)selectedItem).Cas.ToString(CultureInfo.InvariantCulture);
             Tabulka = ((Logy)selectedItem).Tabulka;
             Operace = ((Logy)selectedItem).Operace;
             StaraHodnota = ((Logy)selectedItem).StaraHodnota;
             NovaHodnota = ((Logy)selectedItem).NovaHodnota;
-            Id = ((Logy)selectedItem).IdLogu;
         }
     }
 }

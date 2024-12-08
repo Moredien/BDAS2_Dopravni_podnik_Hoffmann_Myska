@@ -17,16 +17,16 @@ namespace DopravniPodnik.ViewModels;
 
 public partial class GenericGridViewModel : ViewModelBase
 {
-    public ObservableCollection<object> Items { get; set; }
+    [ObservableProperty] private ObservableCollection<object> _items;
 
-    public ObservableCollection<DataGridColumnInfo> Columns => DataContext.Columns;
-    public Type EditFormtype => DataContext.EditFormType;
+    public ObservableCollection<DataGridColumnInfo> Columns => _dataContext.Columns;
+    private Type EditFormtype => _dataContext.EditFormType;
 
-    [ObservableProperty] public object selectedItem;
+    [ObservableProperty] private object? _selectedItem;
 
-    public DataGridDataContext DataContext;
+    private readonly DataGridDataContext _dataContext;
     private readonly Type _modelType;
-    private readonly string tableName;
+    private readonly string _tableName;
 
     private readonly DatabaseService _databaseService = new();
 
@@ -48,9 +48,9 @@ public partial class GenericGridViewModel : ViewModelBase
         _modelType = modelType;
         Items = new();
 
-        DataContext = GridViewTemplates.Get(modelType);
+        _dataContext = GridViewTemplates.Get(modelType);
 
-        tableName = TableMapper.getTableName(modelType);
+        _tableName = TableMapper.getTableName(modelType);
 
         Reload();
     }
@@ -64,7 +64,7 @@ public partial class GenericGridViewModel : ViewModelBase
             return;
         }
 
-        WindowManager.SetContentView(EditFormtype, new object[] { selectedItem });
+        WindowManager.SetContentView(EditFormtype, new object[] { SelectedItem });
     }
 
     [RelayCommand]
@@ -81,7 +81,7 @@ public partial class GenericGridViewModel : ViewModelBase
             var id = GetId(SelectedItem);
             var columnName = GetColumnNameForIdProperty(SelectedItem);
 
-            string query = $"DELETE FROM {tableName} WHERE {columnName} = {id}";
+            string query = $"DELETE FROM {_tableName} WHERE {columnName} = {id}";
 
             var procedureCallWrapper = new ProcedureCallWrapper(query, new());
             _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
@@ -95,9 +95,10 @@ public partial class GenericGridViewModel : ViewModelBase
     {
         Items.Clear();
         var method = typeof(DatabaseService).GetMethod(nameof(_databaseService.FetchData));
-        var genericMethod = method.MakeGenericMethod(_modelType);
-        var data = genericMethod.Invoke(_databaseService, new object?[] { $"SELECT * FROM ST67028.{tableName}" });
-
+        var genericMethod = method?.MakeGenericMethod(_modelType);
+        var data = genericMethod?.Invoke(_databaseService, new object?[] { $"SELECT * FROM ST67028.{_tableName}" });
+        if (data == null)
+            return;
         foreach (var obj in (IEnumerable)data)
         {
             Items.Add(obj);

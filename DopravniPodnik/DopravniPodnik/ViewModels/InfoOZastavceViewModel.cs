@@ -12,8 +12,8 @@ namespace DopravniPodnik.ViewModels;
 
 public partial class InfoOZastavceViewModel : ViewModelBase
 {
-    [ObservableProperty] public ObservableCollection<Zastavky> zastavky = new ObservableCollection<Zastavky>();
-    [ObservableProperty] public Zastavky selectedZastavka;
+    [ObservableProperty] private ObservableCollection<Zastavky> _zastavky = new ObservableCollection<Zastavky>();
+    [ObservableProperty] private Zastavky? _selectedZastavka;
     
     private DateTime? _selectedDate;
     public DateTime? SelectedDate
@@ -28,7 +28,8 @@ public partial class InfoOZastavceViewModel : ViewModelBase
             }
         }
     }
-    public ObservableCollection<InfoOZastavceDTO> Items { get; set; }
+
+    [ObservableProperty] private ObservableCollection<InfoOZastavceDTO> _items;
     private readonly DatabaseService _databaseService = new();
 
     public InfoOZastavceViewModel()
@@ -39,7 +40,7 @@ public partial class InfoOZastavceViewModel : ViewModelBase
     
     private void LoadZastavky()
     {
-        zastavky.Clear();
+        Zastavky.Clear();
 
         var data = _databaseService.FetchData<Zastavky>("SELECT * FROM ST67028.ZASTAVKY");
         
@@ -79,7 +80,7 @@ public partial class InfoOZastavceViewModel : ViewModelBase
                 {
                     ParameterName = "p_jmeno_zastavky",
                     OracleDbType = OracleDbType.Varchar2,
-                    Value = SelectedZastavka.Jmeno
+                    Value = SelectedZastavka?.Jmeno
                 },
 
                 new OracleParameter

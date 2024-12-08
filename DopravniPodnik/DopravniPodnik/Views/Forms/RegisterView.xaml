@@ -25,27 +25,27 @@
                    FontSize="30" />
 
             <Label Content="Uživatelské jméno:" />
-            <TextBox Text="{Binding Uzivatelske_jmeno}"/>
+            <TextBox Text="{Binding UzivatelskeJmeno}"/>
             <Label Content="Heslo:" />
             <ContentControl ContentTemplate="{StaticResource PasswordWithErrorTemplate}" 
-                            Content="{Binding Heslo_1}"
+                            Content="{Binding Heslo1}"
                             Validation.ErrorTemplate="{x:Null}"/>
             <Label Content="Heslo znovu:" />
             <ContentControl ContentTemplate="{StaticResource PasswordWithErrorTemplate}" 
-                            Content="{Binding Heslo_2}"
+                            Content="{Binding Heslo2}"
                             Validation.ErrorTemplate="{x:Null}"/>
             <Label Content="Jméno:" />
             <TextBox Text="{Binding Jmeno}"/>
             <Label Content="Příjmení:" />
             <TextBox Text="{Binding Prijmeni}"/>
             <Label Content="Datum narození:" />
-            <DatePicker SelectedDate="{Binding Datum_narozeni, Mode=TwoWay}"/>
+            <DatePicker SelectedDate="{Binding DatumNarozeni, Mode=TwoWay}"/>
             <Label Content="Město:" />
             <TextBox Text="{Binding Mesto}"/>
             <Label Content="Ulice:" />
             <TextBox Text="{Binding Ulice}"/>
             <Label Content="Číslo popisné:" />
-            <TextBox Text="{Binding Cislo_popisne}"/>
+            <TextBox Text="{Binding CisloPopisne}"/>
 
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">

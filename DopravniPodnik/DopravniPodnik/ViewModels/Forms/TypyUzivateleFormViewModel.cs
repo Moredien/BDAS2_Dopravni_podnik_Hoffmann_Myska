@@ -21,9 +21,9 @@ public partial class TypyUzivateleFormViewModel : ViewModelBase , INotifyDataErr
     private readonly DatabaseService _databaseService = new();
 
     [ObservableProperty]
-    private string? nazev ;
+    private string? _nazev ="";
     private int? IdTypUzivatele { get; set; }
-    public TypyUzivateleFormViewModel(object selectedItem)
+    public TypyUzivateleFormViewModel(object? selectedItem)
     {
         _errorsViewModel = new ErrorsViewModel();
         _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
@@ -103,6 +103,6 @@ public partial class TypyUzivateleFormViewModel : ViewModelBase , INotifyDataErr
 
     protected override void OnPropertyChanged(PropertyChangedEventArgs propertyChangedEventArgs)
     {
-        ValidateInput(propertyChangedEventArgs.PropertyName);
+        if (propertyChangedEventArgs.PropertyName != null) ValidateInput(propertyChangedEventArgs.PropertyName);
     }
 }
