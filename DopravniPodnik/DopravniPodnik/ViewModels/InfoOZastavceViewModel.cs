@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.DTO;
@@ -55,9 +56,19 @@ public partial class InfoOZastavceViewModel : ViewModelBase
     {
         Items.Clear();
         if (SelectedZastavka == null || SelectedZastavka == null)
+        {
+            MessageBox.Show("Nebyla vybrána zastávka", "Chybi nazev zastavky", 
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
+        }
         
         var temp = _databaseService.FetchDataParam<InfoOZastavceDTO>(GetProcedureCallWrapper());
+        if (temp.Count == 0)
+        {
+            MessageBox.Show("Mezi stanicemi neexistuje spojeni", "Vysledek", 
+                MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        
         foreach (var item in temp)
         {
             Items.Add(item);

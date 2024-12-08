@@ -117,7 +117,13 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
             var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
             _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
 
-            Console.WriteLine(error);
+            if (!string.IsNullOrEmpty(error))
+            {
+                MessageBox.Show($"Při ukládání data do databáze došlo k chybě", "Chyba pri ukladani", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
             Exit();
         }
     }

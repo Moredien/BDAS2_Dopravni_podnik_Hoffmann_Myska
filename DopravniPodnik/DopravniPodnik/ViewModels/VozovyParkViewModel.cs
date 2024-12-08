@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.DTO;
@@ -50,7 +51,19 @@ public partial class VozovyParkViewModel : ViewModelBase
     public void Delete()
     {
         if (SelectedItem == null)
+        {
+            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber", 
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
+        }
+        
+        var confirmation = MessageBox.Show(
+            $"Opravdu chcete vozidlo {SelectedItem.Znacka} odebrat ?", 
+            "Potvrzeni", 
+            MessageBoxButton.YesNo);
+        
+        if(confirmation == MessageBoxResult.No) return;
+        
         string query = $"DELETE FROM VOZIDLA WHERE ID_VOZIDLA = {SelectedItem.IdVozidla}";
             
         var procedureCallWrapper = new ProcedureCallWrapper(query, new());

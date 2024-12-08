@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.ComponentModel;
 using System.Data;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.Models;
@@ -67,7 +68,13 @@ public partial class ZastavkyFormViewModel : ViewModelBase , INotifyDataErrorInf
             var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
             _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
             
-            Console.WriteLine(error);
+            if (!string.IsNullOrEmpty(error))
+            {
+                MessageBox.Show($"Při ukládání data do databáze došlo k chybě", "Chyba pri ukladani", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
             Exit();
         }
     }

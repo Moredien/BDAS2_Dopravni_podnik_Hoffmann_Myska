@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.DTO;
@@ -12,7 +13,7 @@ namespace DopravniPodnik.ViewModels;
 
 public partial class VyhledaniCestyViewModel : ViewModelBase
 {
-    [ObservableProperty] private ObservableCollection<Zastavky> _zastavky = new ObservableCollection<Zastavky>();
+    [ObservableProperty] private ObservableCollection<Zastavky> _zastavky = [];
     [ObservableProperty] private Zastavky? _zastavkaOdkud;
     [ObservableProperty] private Zastavky? _zastavkaKam;
 
@@ -29,10 +30,26 @@ public partial class VyhledaniCestyViewModel : ViewModelBase
     public void Vyhledat()
     {
         Items.Clear();
-        if (ZastavkaOdkud == null || ZastavkaKam == null)
+        if (ZastavkaOdkud is null)
+        {
+            MessageBox.Show($"Nebyla vybrána počáteční zastávka", "Prazdna zastavka", 
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
-        if(ZastavkaOdkud == ZastavkaKam)
+        }
+
+        if (ZastavkaKam is null)
+        {
+            MessageBox.Show("Nebyla vybrána konečná zastávka", "Prazdna zastavka", 
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
+        }
+
+        if (ZastavkaOdkud == ZastavkaKam)
+        {
+            MessageBox.Show("Nemůžete zvolit stejnou zastávku pro začátek a konec", "Chyba", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
 
         var temp = _databaseService.FetchDataParam<LinkaDTO>(GetProcedureCallWrapper());
 

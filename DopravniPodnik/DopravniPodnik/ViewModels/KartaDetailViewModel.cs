@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -25,7 +26,12 @@ public partial class KartaDetailViewModel : ViewModelBase
     public KartaDetailViewModel(object? selectedItem)
     {
         if (selectedItem == null)
+        {
+            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber", 
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
+        }
+        
         KartyMhd? karta;
         if (selectedItem.GetType() == typeof(KartyMhd))
         {

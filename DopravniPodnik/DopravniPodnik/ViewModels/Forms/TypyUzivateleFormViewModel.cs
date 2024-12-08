@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
+using System.Windows;
 using System.Windows.Controls.Primitives;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -65,7 +66,13 @@ public partial class TypyUzivateleFormViewModel : ViewModelBase , INotifyDataErr
             var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
             _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
 
-            Console.WriteLine(error);
+            if (!string.IsNullOrEmpty(error))
+            {
+                MessageBox.Show($"Při ukládání data do databáze došlo k chybě", "Chyba pri ukladani", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
             Exit();
         }
     }

@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:DopravniPodnik.Views"
         xmlns:utils="clr-namespace:DopravniPodnik.Utils"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="Doprava po meste" Height="900" Width="800">
     
     
     <Window.Resources>

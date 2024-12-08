@@ -25,7 +25,6 @@ public partial class LoggedInUserMenuViewModel : ViewModelBase
     [RelayCommand]
     private void LogOut()
     {
-        //logging out actions can be called from here
         UserSession.Instance.EndSession();
         Update();
         WindowManager.SetMenuView(typeof(AnonymousUserMenuViewModel));

@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Globalization;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.DTO;
@@ -64,6 +65,14 @@ public partial class PlatbaFormViewModel : ViewModelBase
 
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+
+        if (!string.IsNullOrEmpty(error))
+        {
+            MessageBox.Show($"Při ukládání data do databáze došlo k chybě", "Chyba pri ukladani", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+        
         Exit();
     }
 }

@@ -9,6 +9,7 @@ using DopravniPodnik.Utils;
 using DopravniPodnik.ViewModels.Forms;
 using System.Drawing;
 using System.IO;
+using System.Windows;
 using System.Windows.Media;
 using DopravniPodnik.Data.Models;
 using Microsoft.Win32;
@@ -91,6 +92,11 @@ public partial class ProfilViewModel : ViewModelBase
         Console.WriteLine($"size: {foto.Data.Length}");
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+        if (!string.IsNullOrEmpty(error))
+        {
+            MessageBox.Show("Při ukládání data do databáze došlo k chybě", "Chyba pri ukladani", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 
     [RelayCommand]

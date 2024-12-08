@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.DTO;
@@ -41,7 +42,11 @@ public partial class ZamestnanciViewModel : ViewModelBase
     public void Informace()
     {
         if (SelectedItem == null)
+        {
+            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber", 
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
+        }
         WindowManager.SetContentView(typeof(ZamestnanciFormViewModel), new object[] { SelectedItem });
     }
 
@@ -49,7 +54,19 @@ public partial class ZamestnanciViewModel : ViewModelBase
     public void Odebrat()
     {
         if (SelectedItem == null)
+        {
+            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber", 
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
+        }
+        
+        var confirmation = MessageBox.Show(
+            $"Opravdu chcete zaměstnance {SelectedItem.Jmeno} {SelectedItem.Prijmeni} odebrat ?", 
+            "Potvrzeni", 
+            MessageBoxButton.YesNo);
+        
+        if(confirmation == MessageBoxResult.No) return;
+        
         string query = @"
             BEGIN
                 DELETE FROM ZAMESTNANCI WHERE ID_ZAMESTNANCE = :id_zamestnance;
@@ -64,7 +81,14 @@ public partial class ZamestnanciViewModel : ViewModelBase
         };
 
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
-        _databaseService.ExecuteDbCall(procedureCallWrapper, out var _);
+        _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+        if (!string.IsNullOrEmpty(error))
+        {
+            MessageBox.Show($"Při mazání data z databáze došlo k chybě", "Chyba pri mazani", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+        
         Items.Remove(SelectedItem);
         FilteredItems.Remove(SelectedItem);
     }

@@ -190,7 +190,14 @@ public partial class ZalozitKartuFormViewModel : ViewModelBase
 
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
-    Exit();
+        if (!string.IsNullOrEmpty(error))
+        {
+            MessageBox.Show($"Při ukládání data do databáze došlo k chybě", "Chyba pri ukladani", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+        
+        Exit();
     }
     public ImageSource CreateImageSourceFromBytes(byte[] imageData)
     {

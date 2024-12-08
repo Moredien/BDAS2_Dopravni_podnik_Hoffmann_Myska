@@ -34,4 +34,6 @@ public class ZamestnanecViewDTO
     
     [ColumnName("ID_UZIVATELE")]
     public int? IdUzivatele { get; set; }
+    
+    
 }

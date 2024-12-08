@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.ComponentModel;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.Models;
@@ -56,15 +57,34 @@ public partial class LoginViewModel : ViewModelBase , INotifyDataErrorInfo
         
         if (!CanCreate) return;
 
-        _authService.LoginUser(UzivatelskeJmeno!, PasswordBoxHelper.ConvertToUnsecureString(Heslo.Value));
+        var result = _authService.LoginUser(UzivatelskeJmeno!, PasswordBoxHelper.ConvertToUnsecureString(Heslo.Value));
+
+        switch (result)
+        {
+            case UserLoginResult.Success:
+                break;
+            case UserLoginResult.Failed:
+                MessageBox.Show("Při přihlašování se vyskytla chyba.", "Chyba přihlášení", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                break;
+            case UserLoginResult.NotRegistered:
+                MessageBox.Show($"Uživatel s jménem {UzivatelskeJmeno} neexistuje.", "Uzivatel neexistuje", 
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                break;
+            case UserLoginResult.WrongPassword:
+                MessageBox.Show("Špatné heslo", "Spatne heslo", 
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
         if (UserSession.Instance.UserType == null)
             return;
-        
-        if (UserSession.Instance.UserType.Nazev == "Admin")
-            WindowManager.SetMenuView(typeof(AdminMenuViewModel));
-        else
-            WindowManager.SetMenuView(typeof(LoggedInUserMenuViewModel));
 
+        WindowManager.SetMenuView(UserSession.Instance.UserType.Nazev == "Admin"
+            ? typeof(AdminMenuViewModel)
+            : typeof(LoggedInUserMenuViewModel));
     }
     public IEnumerable GetErrors(string? propertyName)
     {

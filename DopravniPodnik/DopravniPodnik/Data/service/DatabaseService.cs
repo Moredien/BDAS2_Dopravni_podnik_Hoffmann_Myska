@@ -47,7 +47,7 @@ public class DatabaseService
                 command.Parameters.AddRange(procedure.Parameters.ToArray());
             }
             
-            command.ExecuteNonQuery();
+            //command.ExecuteNonQuery();
             error = string.Empty;
         }
         catch (Exception e)

@@ -60,7 +60,8 @@ public partial class GenericGridViewModel : ViewModelBase
     {
         if (SelectedItem == null)
         {
-            Console.WriteLine("Neni vybran zadny radek");
+            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber", 
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
@@ -76,18 +77,35 @@ public partial class GenericGridViewModel : ViewModelBase
     [RelayCommand]
     void Delete()
     {
-        if (SelectedItem != null)
+        if (SelectedItem == null)
         {
-            var id = GetId(SelectedItem);
-            var columnName = GetColumnNameForIdProperty(SelectedItem);
-
-            string query = $"DELETE FROM {_tableName} WHERE {columnName} = {id}";
-
-            var procedureCallWrapper = new ProcedureCallWrapper(query, new());
-            _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
-
-            Items.Remove(SelectedItem);
+            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber", 
+                MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
         }
+        
+        var confirmation = MessageBox.Show(
+            "Opravdu chcete záznam odebrat ?", 
+            "Potvrzeni", 
+            MessageBoxButton.YesNo);
+        
+        if(confirmation == MessageBoxResult.No) return;
+        
+        var id = GetId(SelectedItem);
+        var columnName = GetColumnNameForIdProperty(SelectedItem);
+
+        string query = $"DELETE FROM {_tableName} WHERE {columnName} = {id}";
+
+        var procedureCallWrapper = new ProcedureCallWrapper(query, new());
+        _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+        if (!string.IsNullOrEmpty(error))
+        {
+            MessageBox.Show("Při mazání data z databáze došlo k chybě", "Chyba pri mazani", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+
+        Items.Remove(SelectedItem);
     }
 
     [RelayCommand]

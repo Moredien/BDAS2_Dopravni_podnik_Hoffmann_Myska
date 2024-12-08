@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.Models;
@@ -31,7 +32,11 @@ public partial class LogyViewModel : ViewModelBase
     private void Detail()
     {
         if (SelectedItem == null)
+        {
+            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber", 
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
+        }
         WindowManager.SetContentView(typeof(LogyFormViewModel), new object[] { SelectedItem });
     }
 }

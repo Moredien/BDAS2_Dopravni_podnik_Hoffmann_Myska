@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.DTO;
@@ -40,8 +41,20 @@ public partial class PlatbyViewModel : ViewModelBase
     [RelayCommand]
     private void Odstranit()
     {
-        if(SelectedItem == null)
+        if (SelectedItem == null)
+        {
+            MessageBox.Show($"Nebyl vybrán žádný záznam", "", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
             return;
+        }
+        
+        var confirmation = MessageBox.Show(
+            "Opravdu chcete záznam o platbě odebrat ?", 
+            "Potvrzeni", 
+            MessageBoxButton.YesNo);
+        
+        if(confirmation == MessageBoxResult.No) return;
+        
         string query;
         //decide from which child table to delete
         if (SelectedItem.TypPlatby == 0)
@@ -50,11 +63,24 @@ public partial class PlatbyViewModel : ViewModelBase
             query = $"DELETE FROM PLATBY_PREVODEM WHERE ID_PLATBY = {SelectedItem.IdPlatby}";
             
         var procedureCallWrapper = new ProcedureCallWrapper(query, new());
-        _databaseService.ExecuteDbCall(procedureCallWrapper, out var _);
+        _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
+        if (!string.IsNullOrEmpty(error))
+        {
+            MessageBox.Show($"Při mazání data z databáze došlo k chybě", "Chyba pri mazani", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+        
         //delete from parent table
         query = $"DELETE FROM PLATBY WHERE ID_PLATBY = {SelectedItem.IdPlatby}";
         procedureCallWrapper = new ProcedureCallWrapper(query, new());
-        _databaseService.ExecuteDbCall(procedureCallWrapper, out var _);
+        _databaseService.ExecuteDbCall(procedureCallWrapper, out var errorPlatby);
+        if (!string.IsNullOrEmpty(errorPlatby))
+        {
+            MessageBox.Show($"Při mazání data z databáze došlo k chybě", "Chyba pri mazani", 
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
             
         Items.Remove(SelectedItem);
     }

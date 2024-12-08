@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.DTO;
@@ -71,9 +72,13 @@ public partial class RegisterViewModel : ViewModelBase , INotifyDataErrorInfo
                 Exit();
                 break;
             case UserRegistrationResult.AlreadyRegistered:
+                MessageBox.Show($"Uživatel s jménem {UzivatelskeJmeno} už je zaregistrován.", "Uzivatel uz existuje", 
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
                 _logger.Message($"User with username {UzivatelskeJmeno} already exists.").Warning().Log();
                 break;
             case UserRegistrationResult.Failed:
+                MessageBox.Show("Při registraci uživatele nastala chyba.", "Chyba registrace", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
                 _logger.Message("User registration failed. Please try again.").Error().Log();
                 break;
             default:
