@@ -31,10 +31,7 @@ public class AuthService
                     :p_datum_narozeni,
                     :p_mesto, 
                     :p_ulice, 
-                    :p_cislo_popisne, 
-                    :p_foto_jmeno_souboru,
-                    :p_foto_data, 
-                    :p_foto_datum_pridani
+                    :p_cislo_popisne
                 );
             END;
         ";
@@ -65,7 +62,7 @@ public class AuthService
                 new("p_datum_narozeni", OracleDbType.Date, uzivatel.datum_narozeni, ParameterDirection.Input),
                 new("p_mesto", OracleDbType.Varchar2, uzivatel.mesto, ParameterDirection.Input),
                 new("p_ulice", OracleDbType.Varchar2, uzivatel.ulice, ParameterDirection.Input),
-                new("p_cislo_popisne", OracleDbType.Decimal, uzivatel.cislo_popisne, ParameterDirection.Input),
+                new("p_cislo_popisne", OracleDbType.Decimal, uzivatel.cislo_popisne, ParameterDirection.Input)
             };
 
             _databaseService.ExecuteDbCall( new ProcedureCallWrapper(InsertUserProcedure, parameters), out var error);
