@@ -42,9 +42,9 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Číslo linky" Binding="{Binding Linka}" />
                     <DataGridTextColumn Header="Čas odjezdu"
-                                        Binding="{Binding StartTime, StringFormat=dd/MM/yyyy HH:mm}" />
+                                        Binding="{Binding StartTime, StringFormat=HH:mm}" />
                     <DataGridTextColumn Header="Čas příjezdu"
-                                        Binding="{Binding EndTime, StringFormat=dd/MM/yyyy HH:mm}" />
+                                        Binding="{Binding EndTime, StringFormat=HH:mm}" />
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

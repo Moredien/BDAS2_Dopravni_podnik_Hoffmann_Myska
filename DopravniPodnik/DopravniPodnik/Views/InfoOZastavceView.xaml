@@ -26,8 +26,6 @@
                         Command="{Binding VyhledatCommand}"
                         VerticalAlignment="Center" />
             </StackPanel>
-            <Label Content="Datum odjezdu" />
-            <DatePicker SelectedDate="{Binding SelectedDate}" />
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
             <DataGrid
