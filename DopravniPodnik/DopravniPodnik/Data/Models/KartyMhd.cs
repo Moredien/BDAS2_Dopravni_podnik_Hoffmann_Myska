@@ -10,7 +10,7 @@ public partial class KartyMhd
     [ColumnName("ID_KARTY")]
     public int IdKarty { get; set; }
 
-    public decimal Zustatek { get; set; }
+    public int Zustatek { get; set; }
     [ColumnName("PLATNOST_OD")]
     public DateTime PlatnostOd { get; set; }
     [ColumnName("PLATNOST_DO")]

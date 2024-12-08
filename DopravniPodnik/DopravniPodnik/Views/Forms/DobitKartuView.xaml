@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="DopravniPodnik.Views.Forms.DobitKartuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DopravniPodnik.Views.Forms"
+             mc:Ignorable="d"
+             d:DesignHeight="*" d:DesignWidth="*">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/FormStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel Orientation="Vertical" >
+        <Label Content="Částka:"/>
+        <TextBox Text="{Binding Castka}"/>
+        <Label Content="Metoda platby:" />
+        <ComboBox ItemsSource="{Binding MetodyPlatby}"
+                  SelectedItem="{Binding SelectedMetodaPlatby}"
+                  DisplayMemberPath="Jmeno"
+                  Width="200"
+                  HorizontalAlignment="Left" />
+        <StackPanel Visibility="{Binding KartouFormVisible}">
+            <Label Content="Číslo karty:" />
+            <TextBox Text="{Binding CisloKarty}"
+                     Width="300"
+                     HorizontalAlignment="Left" />
+            <Label Content="Jméno majitele:" />
+            <TextBox Text="{Binding JmenoMajitele}"
+                     Width="300"
+                     HorizontalAlignment="Left" />
+        </StackPanel>
+        <StackPanel Visibility="{Binding PrevodemFormVisible}">
+            <Label Content="Číslo účtu:" />
+            <TextBox Text="{Binding CisloUctu}"
+                     Width="300"
+                     HorizontalAlignment="Left" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Content="Zpět"
+                    Command="{Binding ExitCommand}" />
+            <Button Content="Zaplatit"
+                    Command="{Binding ZaplatitCommand}" />
+        </StackPanel>
+    </StackPanel>
+    
+
+</UserControl>

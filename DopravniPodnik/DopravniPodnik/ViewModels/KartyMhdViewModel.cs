@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.DTO;
 using DopravniPodnik.Data.service;
+using DopravniPodnik.ViewModels.Forms;
 
 namespace DopravniPodnik.ViewModels;
 
@@ -40,5 +41,10 @@ public partial class KartyMhdViewModel : ViewModelBase
     {
         base.Update();
         WindowManager.ReturnToSelectedContentView();
+    }
+    [RelayCommand]
+    public void Dobit()
+    {
+        WindowManager.SetContentView(typeof(DobitKartuViewModel), new[] { selectedItem });
     }
 }

@@ -15,11 +15,15 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Detail"
+                    HorizontalAlignment="Left"
+                    Command="{Binding DetailCommand}"
+                    Grid.Row="0" />
+            <Button Content="Dobít"
+                    Command="{Binding DobitCommand}" />
+        </StackPanel>
         
-        <Button Content="Detail"
-                HorizontalAlignment="Left"
-                Command="{Binding DetailCommand}" 
-                Grid.Row="0" />
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
             <DataGrid

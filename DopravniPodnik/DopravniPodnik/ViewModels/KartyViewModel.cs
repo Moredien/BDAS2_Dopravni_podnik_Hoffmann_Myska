@@ -56,7 +56,7 @@ public partial class KartyViewModel : ViewModelBase
     [RelayCommand]
     public void Dobit()
     {
-        Console.WriteLine("zaplatit");
+        WindowManager.SetContentView(typeof(DobitKartuViewModel), new[] { selectedItem });
     }
     public override void Update()
     {
