@@ -19,9 +19,9 @@ public partial class DobitKartuViewModel : ViewModelBase
     [ObservableProperty] private ObservableCollection<MetodyPlatby> _metodyPlatby;
     [ObservableProperty] private MetodyPlatby _selectedMetodaPlatby;
 
-    [ObservableProperty] private string _cisloKarty;
-    [ObservableProperty] private string _jmenoMajitele;
-    [ObservableProperty] private string _cisloUctu;
+    [ObservableProperty] private string? _cisloKarty;
+    [ObservableProperty] private string? _jmenoMajitele;
+    [ObservableProperty] private string? _cisloUctu;
 
     [ObservableProperty] private Visibility _kartouFormVisible;
     [ObservableProperty] private Visibility _prevodemFormVisible;
@@ -63,10 +63,13 @@ public partial class DobitKartuViewModel : ViewModelBase
             case 0:
                 KartouFormVisible = Visibility.Visible;
                 PrevodemFormVisible = Visibility.Collapsed;
+                CisloUctu = null;
                 break;
             case 1:
                 KartouFormVisible = Visibility.Collapsed;
                 PrevodemFormVisible = Visibility.Visible;
+                CisloKarty = null;
+                JmenoMajitele = null;
                 break;
             default:
                 return;
@@ -78,8 +81,8 @@ public partial class DobitKartuViewModel : ViewModelBase
     {
         if (Int32.TryParse(Castka, out int castkaInt) && castkaInt > 0)
         {
-            // ProvestPlatbu(castkaInt);
-            ZmenitZustatek(castkaInt);
+            ProvestPlatbu(castkaInt);
+            // ZmenitZustatek(castkaInt);
             Exit();
         }
     }
@@ -124,77 +127,31 @@ public partial class DobitKartuViewModel : ViewModelBase
     {
         string query = @"
                     BEGIN
-                        ST67028.INSERT_UPDATE.edit_platby(
-                            :p_id_platby,
-                            :p_cas_platby,
-                            :p_vyse_platby, 
+                        ST67028.VYTVORIT_PLATBU(
                             :p_id_zakaznika,
-                            :p_typ_platby
+                            :p_vyse_platby,
+                            :p_cislo_karty, 
+                            :p_jmeno_majitele,
+                            :p_cislo_uctu
                         );
                     END;
                 ";
         var parameters = new List<OracleParameter>
         {
-            new OracleParameter("p_id_platby", OracleDbType.Decimal)
-                { Value = DBNull.Value, Direction = ParameterDirection.Input },
-            new OracleParameter("p_cas_platby", OracleDbType.Date)
-                { Value = DateTime.Now, Direction = ParameterDirection.Input },
+            new OracleParameter("p_id_zakaznika", OracleDbType.Decimal)
+                { Value = _idZakaznika, Direction = ParameterDirection.Input },
             new OracleParameter("p_vyse_platby", OracleDbType.Decimal)
                 { Value = castka, Direction = ParameterDirection.Input },
-            new OracleParameter("p_id_zakaznika", OracleDbType.Decimal)
-                { Value = _karta.IdZakaznika, Direction = ParameterDirection.Input },
-            new OracleParameter("p_typ_platby", OracleDbType.Decimal)
-                { Value = SelectedMetodaPlatby.value, Direction = ParameterDirection.Input }
+            new OracleParameter("p_cislo_karty", OracleDbType.Varchar2)
+                { Value = CisloKarty, Direction = ParameterDirection.Input },
+            new OracleParameter("p_jmeno_majitele", OracleDbType.Varchar2)
+                { Value = JmenoMajitele, Direction = ParameterDirection.Input },
+            new OracleParameter("p_cislo_uctu", OracleDbType.Varchar2)
+                { Value = CisloUctu, Direction = ParameterDirection.Input }
         };
 
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
-        
-        //TODO zde by to chtelo vratit id platby a pouzit pro vytvoreni platby kartou/prevodem
-        int idPlatby = 0; // id provedene platby priradit zde
-        
-        if (SelectedMetodaPlatby.value == 0)
-        {
-            query = @"
-                    BEGIN
-                        ST67028.INSERT_UPDATE.edit_platby_kartou(
-                            :p_id_platby,
-                            :p_cislo_karty,
-                            :p_jmeno_majitele
-                        );
-                    END;
-                ";
-            parameters = new List<OracleParameter>
-            {
-                new OracleParameter("p_id_platby", OracleDbType.Decimal)
-                    { Value = idPlatby, Direction = ParameterDirection.Input },
-                new OracleParameter("p_cislo_karty", OracleDbType.Varchar2)
-                    { Value = CisloKarty, Direction = ParameterDirection.Input },
-                new OracleParameter("p_jmeno_majitele", OracleDbType.Varchar2)
-                    { Value = JmenoMajitele, Direction = ParameterDirection.Input }
-            };
-            procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
-            _databaseService.ExecuteDbCall(procedureCallWrapper, out var _);
-        }
-        else if (SelectedMetodaPlatby.value == 1)
-        {
-            query = @"
-                    BEGIN
-                        ST67028.INSERT_UPDATE.edit_platby_prevodem(
-                            :p_id_platby,
-                            :p_cislo_uctu
-                        );
-                    END;
-                ";
-            parameters = new List<OracleParameter>
-            {
-                new OracleParameter("p_id_platby", OracleDbType.Decimal)
-                    { Value = idPlatby, Direction = ParameterDirection.Input },
-                new OracleParameter("p_cislo_uctu", OracleDbType.Varchar2)
-                    { Value = CisloUctu, Direction = ParameterDirection.Input }
-            };
-            procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
-            _databaseService.ExecuteDbCall(procedureCallWrapper, out var _);
-        }
+
     }
 }
