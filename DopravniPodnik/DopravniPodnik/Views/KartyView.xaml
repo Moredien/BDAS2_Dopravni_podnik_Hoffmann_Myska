@@ -10,27 +10,37 @@
     <UserControl.Resources>
         <utils:MaskValueConverter x:Key="MaskValueConverter" />
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
             <Button Content="Založit kartu"
-                    Command="{Binding ZalozitCommand}"/>
+                    Command="{Binding ZalozitCommand}" />
             <Button Content="Informace"
-                    Command="{Binding InformaceCommand}"/>
+                    Command="{Binding InformaceCommand}" />
             <Button Content="Dobít"
-                    Command="{Binding DobitCommand}"/>
+                    Command="{Binding DobitCommand}" />
         </StackPanel>
-        <DataGrid
-            ItemsSource="{Binding Items}"
-            AutoGenerateColumns="False"
-            CanUserAddRows="False"
-            IsReadOnly="True"
-            SelectedItem="{Binding SelectedItem}" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Zůstatek" Binding="{Binding Zustatek, StringFormat={}{0} Kč,
+        <ScrollViewer Grid.Row="1">
+            <DataGrid
+                ItemsSource="{Binding Items}"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                IsReadOnly="True"
+                SelectedItem="{Binding SelectedItem}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Zůstatek"
+                                        Binding="{Binding Zustatek, StringFormat={}{0} Kč,
                  Converter={StaticResource MaskValueConverter}}" />
-                <DataGridTextColumn Header="Platnost od" Binding="{Binding PlatnostOd, StringFormat=dd/MM/yyyy}"/>
-                <DataGridTextColumn Header="Platnost do" Binding="{Binding PlatnostDo, StringFormat=dd/MM/yyyy}" SortDirection="Ascending"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </StackPanel>
+                    <DataGridTextColumn Header="Platnost od" Binding="{Binding PlatnostOd, StringFormat=dd/MM/yyyy}" />
+                    <DataGridTextColumn Header="Platnost do" Binding="{Binding PlatnostDo, StringFormat=dd/MM/yyyy}"
+                                        SortDirection="Ascending" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

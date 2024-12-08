@@ -7,38 +7,46 @@
              mc:Ignorable="d"
              d:DesignHeight="*" d:DesignWidth="*">
 
-    <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel Orientation="Vertical"
-                        Width="200">
-                <Label Content="Odkud" />
-                <ComboBox ItemsSource="{Binding Zastavky}"
-                          SelectedItem="{Binding ZastavkaOdkud}"
-                          DisplayMemberPath="Jmeno" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <StackPanel Orientation="Vertical"
+                            Width="200">
+                    <Label Content="Odkud" />
+                    <ComboBox ItemsSource="{Binding Zastavky}"
+                              SelectedItem="{Binding ZastavkaOdkud}"
+                              DisplayMemberPath="Jmeno" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical"
+                            Width="200">
+                    <Label Content="Kam" />
+                    <ComboBox ItemsSource="{Binding Zastavky}"
+                              SelectedItem="{Binding ZastavkaKam}"
+                              DisplayMemberPath="Jmeno" />
+                </StackPanel>
+                <Button Content="Vyhledat"
+                        Command="{Binding VyhledatCommand}"
+                        VerticalAlignment="Center" />
             </StackPanel>
-            <StackPanel Orientation="Vertical"
-                        Width="200">
-                <Label Content="Kam" />
-                <ComboBox ItemsSource="{Binding Zastavky}"
-                          SelectedItem="{Binding ZastavkaKam}"
-                          DisplayMemberPath="Jmeno" />
-            </StackPanel>
-            <Button Content="Vyhledat"
-                    Command="{Binding VyhledatCommand}"
-                    VerticalAlignment="Center"/>
-        </StackPanel>
-        <DataGrid
-            AutoGenerateColumns="False"
-            ItemsSource="{Binding Items}"
-            CanUserAddRows="False"
-            CanUserDeleteRows="False"
-            IsReadOnly="True"
-            Margin="10">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Číslo linky" Binding="{Binding Linka}" />
-                <DataGridTextColumn Header="Čas odjezdu" Binding="{Binding StartTime, StringFormat=dd/MM/yyyy HH:mm}" />
-                <DataGridTextColumn Header="Čas příjezdu" Binding="{Binding EndTime, StringFormat=dd/MM/yyyy HH:mm}" />
-            </DataGrid.Columns>
-        </DataGrid>
-    </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <DataGrid
+                AutoGenerateColumns="False"
+                ItemsSource="{Binding Items}"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                IsReadOnly="True"
+                Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Číslo linky" Binding="{Binding Linka}" />
+                    <DataGridTextColumn Header="Čas odjezdu"
+                                        Binding="{Binding StartTime, StringFormat=dd/MM/yyyy HH:mm}" />
+                    <DataGridTextColumn Header="Čas příjezdu"
+                                        Binding="{Binding EndTime, StringFormat=dd/MM/yyyy HH:mm}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

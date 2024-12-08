@@ -10,4 +10,6 @@ public class InfoOZastavceDTO
     public string JmenoLinky { get; set; }
     [ColumnName("CAS_ODJEZDU")]
     public DateTime Odjezd { get; set; }
+    [ColumnName("JMENO_POSLEDNI_ZASTAVKY")]
+    public string KonecnaZastavka { get; set; }
 }

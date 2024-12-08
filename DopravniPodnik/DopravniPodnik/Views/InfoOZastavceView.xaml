@@ -7,34 +7,44 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel Orientation="Vertical"
-                        Width="200">
-                <Label Content="Zastávka" />
-                <ComboBox ItemsSource="{Binding Zastavky}"
-                          SelectedItem="{Binding SelectedZastavka}"
-                          DisplayMemberPath="Jmeno" />
-            </StackPanel>
-            <Button Content="Vyhledat"
-                    Command="{Binding VyhledatCommand}"
-                    VerticalAlignment="Center"/>
-        </StackPanel>
-        <Label Content="Datum odjezdu"/>
-        <DatePicker SelectedDate="{Binding SelectedDate}"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <DataGrid
-            AutoGenerateColumns="False"
-            ItemsSource="{Binding Items}"
-            CanUserAddRows="False"
-            CanUserDeleteRows="False"
-            IsReadOnly="True"
-            Margin="10">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Číslo linky" Binding="{Binding Linka}" />
-                <DataGridTextColumn Header="Jméno linky" Binding="{Binding JmenoLinky}" />
-                <DataGridTextColumn Header="Čas odjezdu" Binding="{Binding Odjezd, StringFormat=dd/MM/yyyy HH:mm}" />
-            </DataGrid.Columns>
-        </DataGrid>
-    </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical"
+                            Width="200">
+                    <Label Content="Zastávka" />
+                    <ComboBox ItemsSource="{Binding Zastavky}"
+                              SelectedItem="{Binding SelectedZastavka}"
+                              DisplayMemberPath="Jmeno" />
+                </StackPanel>
+                <Button Content="Vyhledat"
+                        Command="{Binding VyhledatCommand}"
+                        VerticalAlignment="Center" />
+            </StackPanel>
+            <Label Content="Datum odjezdu" />
+            <DatePicker SelectedDate="{Binding SelectedDate}" />
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+            <DataGrid
+                AutoGenerateColumns="False"
+                ItemsSource="{Binding Items}"
+                CanUserAddRows="False"
+                CanUserDeleteRows="False"
+                IsReadOnly="True"
+                Margin="10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Číslo linky" Binding="{Binding Linka}" />
+                    <DataGridTextColumn Header="Jméno linky" Binding="{Binding JmenoLinky}" />
+                    <DataGridTextColumn Header="Čas odjezdu" Binding="{Binding Odjezd, StringFormat=HH:mm}" />
+                    <DataGridTextColumn Header="Konečná zastávka" Binding="{Binding KonecnaZastavka}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+
+    </Grid>
 </UserControl>

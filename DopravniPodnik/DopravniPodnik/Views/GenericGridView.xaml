@@ -10,22 +10,29 @@
     <UserControl.Resources>
         <utils:MaskValueConverter x:Key="MaskValueConverter" />
     </UserControl.Resources>
-    <ScrollViewer>
-        <StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+    
+    
+        <StackPanel Grid.Row="0">
             <StackPanel Orientation="Horizontal">
                 <Button Content="Obnovit" Command="{Binding ReloadCommand}" />
                 <Button Content="Upravit" Command="{Binding EditCommand}" />
                 <Button Content="Přidat" Command="{Binding CreateCommand}" />
                 <Button Content="Odstranit" Command="{Binding DeleteCommand}" />
             </StackPanel>
-
-
+        </StackPanel>
+        <ScrollViewer Grid.Row="1">
             <DataGrid x:Name="DynamicDataGrid"
                       ItemsSource="{Binding Items}"
                       AutoGenerateColumns="False"
                       CanUserAddRows="False"
                       IsReadOnly="True"
                       SelectedItem="{Binding SelectedItem}" />
-        </StackPanel>
-    </ScrollViewer>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

@@ -255,3 +255,82 @@ EXCEPTION
         RAISE;
 END POVYSIT_ZAMESTNANCE;
 /
+CREATE OR REPLACE PROCEDURE VYTVORIT_PLATBU (
+    p_id_zakaznika NUMBER,
+    p_vyse_platby NUMBER DEFAULT NULL,
+    -- Volitelné parametry pro platby kartou
+    p_cislo_karty VARCHAR2 DEFAULT NULL,
+    p_jmeno_majitele VARCHAR2 DEFAULT NULL,
+    -- Volitelné parametry pro platby převodem
+    p_cislo_uctu VARCHAR2 DEFAULT NULL
+)
+AS
+    v_cas_platby DATE := SYSDATE;
+    v_id_platby NUMBER;
+    v_typ_platby NUMBER(1);
+BEGIN
+        IF p_vyse_platby IS NOT NULL THEN
+            IF p_cislo_karty IS NOT NULL AND p_jmeno_majitele IS NOT NULL THEN
+                v_typ_platby := 0; -- 0 pro platbu kartou
+
+                INSERT INTO ST67028.PLATBY (
+                    CAS_PLATBY,
+                    VYSE_PLATBY,
+                    ID_ZAKAZNIKA,
+                    TYP_PLATBY
+                ) VALUES (
+                             v_cas_platby,
+                             p_vyse_platby,
+                             p_id_zakaznika,
+                             v_typ_platby
+                         )
+                RETURNING ID_PLATBY INTO v_id_platby;
+
+                INSERT INTO ST67028.PLATBY_KARTOU (
+                    ID_PLATBY,
+                    CISLO_KARTY,
+                    JMENO_MAJITELE
+                ) VALUES (
+                             v_id_platby,
+                             p_cislo_karty,
+                             p_jmeno_majitele
+                         );
+
+            ELSIF p_cislo_uctu IS NOT NULL THEN
+                v_typ_platby := 1; -- 1 pro platbu prevodem
+
+                INSERT INTO ST67028.PLATBY (
+                    CAS_PLATBY,
+                    VYSE_PLATBY,
+                    ID_ZAKAZNIKA,
+                    TYP_PLATBY
+                ) VALUES (
+                             v_cas_platby,
+                             p_vyse_platby,
+                             p_id_zakaznika,
+                             v_typ_platby
+                         )
+                RETURNING ID_PLATBY INTO v_id_platby;
+
+                INSERT INTO ST67028.PLATBY_PREVODEM (
+                    ID_PLATBY,
+                    CISLO_UCTU
+                ) VALUES (
+                             v_id_platby,
+                             p_cislo_uctu
+                         );
+
+            ELSE
+                RAISE_APPLICATION_ERROR(-20006, 'Chybí informace o platbě. Musí být zadány parametry pro platbu kartou nebo převodem.');
+            END IF;
+        ELSE
+            RAISE_APPLICATION_ERROR(-20005, 'Chybí informace o výši platby.');
+        END IF;
+        
+    COMMIT;
+    
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RAISE;
+END;

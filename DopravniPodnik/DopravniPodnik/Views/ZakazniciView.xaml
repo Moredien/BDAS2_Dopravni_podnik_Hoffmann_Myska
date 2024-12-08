@@ -10,16 +10,24 @@
     <UserControl.Resources>
         <utils:MaskValueConverter x:Key="MaskValueConverter" />
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Upravit"
-                    Command="{Binding InformaceCommand}" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Upravit"
+                        Command="{Binding InformaceCommand}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Vyhledat: " />
+                <TextBox Width="200"
+                         Text="{Binding SearchedText, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Vyhledat: " />
-            <TextBox Width="200"
-                     Text="{Binding SearchedText, UpdateSourceTrigger=PropertyChanged}"/>
-        </StackPanel>
+        
+        <ScrollViewer Grid.Row="1">
         <DataGrid
             ItemsSource="{Binding FilteredItems}"
             AutoGenerateColumns="False"
@@ -36,5 +44,6 @@
                  Converter={StaticResource MaskValueConverter}}" />
             </DataGrid.Columns>
         </DataGrid>
-    </StackPanel>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

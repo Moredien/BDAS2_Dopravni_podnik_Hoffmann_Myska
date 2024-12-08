@@ -15,7 +15,7 @@ public partial class KartyViewModel : ViewModelBase
     [ObservableProperty]
     public ObservableCollection<KartyMhd> items;
     [ObservableProperty]
-    public KartyMhd selectedItem;
+    public KartyMhd? selectedItem;
 
     private int id;
     private Zakaznici? zakaznik;
@@ -56,6 +56,8 @@ public partial class KartyViewModel : ViewModelBase
     [RelayCommand]
     public void Dobit()
     {
+        if (SelectedItem == null)
+            return;
         WindowManager.SetContentView(typeof(DobitKartuViewModel), new[] { selectedItem });
     }
     public override void Update()
