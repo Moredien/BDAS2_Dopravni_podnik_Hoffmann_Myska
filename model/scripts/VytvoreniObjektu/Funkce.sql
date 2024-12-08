@@ -97,7 +97,11 @@ BEGIN
             u.JMENO || ' ' || u.PRIJMENI AS JMENO,
             z.PLAT AS PLAT,
             z.PLATNOST_UVAZKU_DO AS PLATNOST_UVAZKU_DO,
-            SYS_CONNECT_BY_PATH(u.JMENO || ' ' || u.PRIJMENI, ' -> ') AS HIERARCHIE
+            CASE
+                WHEN SYS_CONNECT_BY_PATH(u.JMENO || ' ' || u.PRIJMENI, ' -> ') = ' -> ' || u.JMENO || ' ' || u.PRIJMENI
+                    THEN NULL
+                ELSE SYS_CONNECT_BY_PATH(u.JMENO || ' ' || u.PRIJMENI, ' -> ')
+                END AS HIERARCHIE
         FROM
             ST67028.ZAMESTNANCI z
                 JOIN
@@ -108,6 +112,7 @@ BEGIN
             PRIOR z.ID_ZAMESTNANCE = z.ID_NADRIZENEHO;
     RETURN employee_hierarchy;
 END;
+
 /
 
 
