@@ -2,6 +2,7 @@
 using DopravniPodnik.Data.Models;
 using DopravniPodnik.Utils;
 using DopravniPodnik.ViewModels;
+using DopravniPodnik.ViewModels.Forms;
 using DopravniPodnik.ViewModels.Menu;
 
 namespace DopravniPodnik.Data.service;
@@ -111,7 +112,6 @@ public static class WindowManager
                 MainWindow.MenuItems.Add(new ListItemTemplate("Logy", null,typeof(LogyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("DB objekty", null,typeof(DBObjektyViewModel)));
                 MainWindow.MenuItems.Add(new ListItemTemplate("Hierarchie zaměstnanců", null,typeof(EmployeeHierarchyViewModel)));
-
                 break;
         }
 

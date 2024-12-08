@@ -10,26 +10,23 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace DopravniPodnik.ViewModels;
 
-public partial  class ZamestnanciViewModel : ViewModelBase
+public partial class ZamestnanciViewModel : ViewModelBase
 {
     private ZamestnanecService _zamestnanecService = new();
     public ObservableCollection<ZamestnanecViewDTO> Items { get; set; }
     public ObservableCollection<ZamestnanecViewDTO> FilteredItems { get; set; }
-    [ObservableProperty] 
-    public ZamestnanecViewDTO selectedItem;
+    [ObservableProperty] public ZamestnanecViewDTO selectedItem;
 
     [ObservableProperty] public ZamestnanecViewDTO selectedZamestnanec;
-    [ObservableProperty]
-    private string searchedText;
+    [ObservableProperty] private string searchedText;
 
     [ObservableProperty] private bool isMasked = true;
 
     partial void OnSearchedTextChanged(string value)
     {
-        
         FilterList(value);
     }
-    
+
     private readonly DatabaseService _databaseService = new();
 
     public ZamestnanciViewModel()
@@ -43,7 +40,7 @@ public partial  class ZamestnanciViewModel : ViewModelBase
     [RelayCommand]
     public void Informace()
     {
-        if (selectedItem == null) 
+        if (selectedItem == null)
             return;
         WindowManager.SetContentView(typeof(ZamestnanciFormViewModel), new[] { selectedItem });
     }
@@ -51,13 +48,15 @@ public partial  class ZamestnanciViewModel : ViewModelBase
     [RelayCommand]
     public void Odebrat()
     {
+        if (SelectedItem == null)
+            return;
         string query = @"
             BEGIN
                 DELETE FROM ZAMESTNANCI WHERE ID_ZAMESTNANCE = :id_zamestnance;
                 commit;
             END;
         ";
-        
+
         var parameters = new List<OracleParameter>
         {
             new OracleParameter("id_zamestnance", OracleDbType.Decimal)
@@ -68,6 +67,15 @@ public partial  class ZamestnanciViewModel : ViewModelBase
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
         Items.Remove(selectedItem);
         FilteredItems.Remove(selectedItem);
+    }
+
+    [RelayCommand]
+    private void Povysit()
+    {
+        if (SelectedItem != null)
+        {
+            WindowManager.SetContentView(typeof(PovysitViewModel), new object[] { selectedItem });
+        }
     }
 
     private void LoadData()
@@ -81,7 +89,7 @@ public partial  class ZamestnanciViewModel : ViewModelBase
 
     private void FilterList(string keyword)
     {
-        if(string.IsNullOrEmpty(keyword))
+        if (string.IsNullOrEmpty(keyword))
         {
             foreach (var item in Items)
             {
@@ -89,10 +97,12 @@ public partial  class ZamestnanciViewModel : ViewModelBase
             }
             return;
         }
+
         FilteredItems.Clear();
         foreach (var entry in Items)
         {
-            if (string.Concat(entry.UzivatelskeJmeno,entry.Jmeno,entry.Prijmeni).ToLower().Contains(SearchedText.ToLower()))
+            if (string.Concat(entry.UzivatelskeJmeno, entry.Jmeno, entry.Prijmeni).ToLower()
+                .Contains(SearchedText.ToLower()))
             {
                 FilteredItems.Add(entry);
             }

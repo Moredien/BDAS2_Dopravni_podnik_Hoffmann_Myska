@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="DopravniPodnik.Views.Forms.PovysitView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DopravniPodnik.Views.Forms"
+             mc:Ignorable="d"
+             d:DesignHeight="*" d:DesignWidth="*">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/FormStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="PropertyLabel" TargetType="Label">
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel
+        Width="400">
+        <Label Content="Povýšit zaměstnance"
+               HorizontalAlignment="Center"
+               FontSize="30" />
+
+        <Label Content="Aktuální plat:" />
+        <Label Content="{Binding AktualniPlat}"
+               Style="{StaticResource PropertyLabel}" />
+        <Label Content="Nový plat:" />
+        <TextBox Text="{Binding NovyPlat}" />
+        <Label Content="Nový nadřízený:" />
+        <ComboBox ItemsSource="{Binding Zamestnanci}"
+                  SelectedItem="{Binding SelectedNadrizeny}"
+                  SelectedIndex="0">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Jmeno" />
+                                <Binding Path="Prijmeni" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label Content="Podřízení:" />
+        <StackPanel Orientation="Horizontal">
+            <ComboBox ItemsSource="{Binding Zamestnanci}"
+                      SelectedItem="{Binding SelectedPodrizeny}"
+                      SelectedIndex="0"
+                      Width="280">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Jmeno" />
+                                    <Binding Path="Prijmeni" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Content="Přidat podřízeného"
+                    Command="{Binding PridatPodrizenehoCommand}"
+                    Margin="10 0 0 0"
+                    Width="Auto"/>
+        </StackPanel>
+        <ListView ItemsSource="{Binding Podrizeni}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Jmeno" />
+                                <Binding Path="Prijmeni" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Content="Zpět"
+                    Command="{Binding ExitCommand}" />
+            <Button Content="Povýšit"
+                    Command="{Binding SubmitCommand}" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

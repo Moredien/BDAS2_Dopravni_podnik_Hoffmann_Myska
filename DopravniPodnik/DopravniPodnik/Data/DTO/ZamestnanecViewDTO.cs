@@ -18,7 +18,7 @@ public class ZamestnanecViewDTO
     public string Prijmeni { get; set; }
     
     [ColumnName("PLAT")] 
-    public decimal Plat { get; set; }
+    public int Plat { get; set; }
 
     [ColumnName("PLATNOST_UVAZKU_DO")] 
     public DateTime? PlatnostUvazkuDo { get; set; }

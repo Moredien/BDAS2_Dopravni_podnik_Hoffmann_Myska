@@ -16,6 +16,8 @@
                     Command="{Binding InformaceCommand}" />
             <Button Content="Odebrat"
                     Command="{Binding OdebratCommand}" />
+            <Button Content="Povýšit"
+                    Command="{Binding PovysitCommand}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Content="Vyhledat: " />
