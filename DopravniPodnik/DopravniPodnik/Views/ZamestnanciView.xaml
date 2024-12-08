@@ -10,37 +10,47 @@
     <UserControl.Resources>
         <utils:MaskValueConverter x:Key="MaskValueConverter" />
     </UserControl.Resources>
-    <StackPanel Orientation="Vertical">
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Upravit"
-                    Command="{Binding InformaceCommand}" />
-            <Button Content="Odebrat"
-                    Command="{Binding OdebratCommand}" />
-            <Button Content="Povýšit"
-                    Command="{Binding PovysitCommand}" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Upravit"
+                        Command="{Binding InformaceCommand}" />
+                <Button Content="Odebrat"
+                        Command="{Binding OdebratCommand}" />
+                <Button Content="Povýšit"
+                        Command="{Binding PovysitCommand}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Vyhledat: " />
+                <TextBox Width="200"
+                         Text="{Binding SearchedText, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Vyhledat: " />
-            <TextBox Width="200"
-                     Text="{Binding SearchedText, UpdateSourceTrigger=PropertyChanged}"/>
-        </StackPanel>
-        <DataGrid
-            ItemsSource="{Binding FilteredItems}"
-            AutoGenerateColumns="False"
-            CanUserAddRows="False"
-            IsReadOnly="True"
-            SelectedItem="{Binding SelectedItem}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Uživatelské jméno" Binding="{Binding UzivatelskeJmeno}" />
-                <DataGridTextColumn Header="Jméno" Binding="{Binding Jmeno}" />
-                <DataGridTextColumn Header="Příjmení" Binding="{Binding  Prijmeni}" />
-                <DataGridTextColumn Header="Plat" Binding="{Binding Plat, StringFormat={}{0} Kč,
+        <ScrollViewer Grid.Row="1">
+            <DataGrid
+                ItemsSource="{Binding FilteredItems}"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                IsReadOnly="True"
+                SelectedItem="{Binding SelectedItem}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Uživatelské jméno" Binding="{Binding UzivatelskeJmeno}" />
+                    <DataGridTextColumn Header="Jméno" Binding="{Binding Jmeno}" />
+                    <DataGridTextColumn Header="Příjmení" Binding="{Binding  Prijmeni}" />
+                    <DataGridTextColumn Header="Plat"
+                                        Binding="{Binding Plat, StringFormat={}{0} Kč,
                  Converter={StaticResource MaskValueConverter}}" />
-                <DataGridTextColumn Header="Platnost úvazku do" Binding="{Binding PlatnostUvazkuDo, StringFormat=dd/MM/yyyy,
+                    <DataGridTextColumn Header="Platnost úvazku do"
+                                        Binding="{Binding PlatnostUvazkuDo, StringFormat=dd/MM/yyyy,
                  Converter={StaticResource MaskValueConverter}}" />
-                <DataGridTextColumn Header="Jméno nadřízeného" Binding="{Binding JmenoNadrizeneho}" />
-                <DataGridTextColumn Header="Příjmení nadřízeného" Binding="{Binding PrijmeniNadrizeneho}" />
-            </DataGrid.Columns>
-        </DataGrid>
-    </StackPanel>
+                    <DataGridTextColumn Header="Jméno nadřízeného" Binding="{Binding JmenoNadrizeneho}" />
+                    <DataGridTextColumn Header="Příjmení nadřízeného" Binding="{Binding PrijmeniNadrizeneho}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </Grid>
 </UserControl>
