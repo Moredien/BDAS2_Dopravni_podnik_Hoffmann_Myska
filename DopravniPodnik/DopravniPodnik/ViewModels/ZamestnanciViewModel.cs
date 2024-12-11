@@ -35,7 +35,6 @@ public partial class ZamestnanciViewModel : ViewModelBase
         Items = new();
         FilteredItems = new();
         LoadData();
-        FilterList(null);
     }
 
     [RelayCommand]
@@ -102,13 +101,14 @@ public partial class ZamestnanciViewModel : ViewModelBase
         }
     }
 
-    private void LoadData()
+    private async void LoadData()
     {
-        var data = _zamestnanecService.GetAllZamestnanci();
+        var data =await Task.Run(() => _zamestnanecService.GetAllZamestnanci());
         foreach (var zamestnanec in data)
         {
             Items.Add(zamestnanec);
         }
+        FilterList(null);
     }
 
     private void FilterList(string? keyword)

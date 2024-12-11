@@ -22,11 +22,11 @@ public partial class KartyMhdViewModel : ViewModelBase
         LoadKarty();
     }
 
-    private void LoadKarty()
+    private async void LoadKarty()
     {
 
-        var data = _databaseService.FetchData<KartyMhdViewDTO>(
-            $"SELECT * FROM KARTY_MHD_VIEW");
+        var data = await Task.Run(() => _databaseService.FetchData<KartyMhdViewDTO>(
+            $"SELECT * FROM KARTY_MHD_VIEW"));
         foreach (var entry in data)
         {
             Items.Add(entry);

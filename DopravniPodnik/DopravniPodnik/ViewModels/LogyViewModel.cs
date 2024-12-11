@@ -21,11 +21,8 @@ public partial class LogyViewModel : ViewModelBase
     public LogyViewModel()
     {
         Items = new();
-        var data = _databaseService.FetchData<Logy>($"SELECT * FROM LOGY ORDER BY CAS DESC FETCH FIRST {NumberOfFetchedRows} ROWS ONLY");
-        foreach (var entry in data)
-        {
-            Items.Add(entry);
-        }
+
+        LoadDataAsync();
     }
 
     [RelayCommand]
@@ -38,5 +35,22 @@ public partial class LogyViewModel : ViewModelBase
             return;
         }
         WindowManager.SetContentView(typeof(LogyFormViewModel), new object[] { SelectedItem });
+    }
+    private async Task LoadDataAsync()
+    {
+        try
+        {
+            var data = await Task.Run(() =>
+                _databaseService.FetchData<Logy>($"SELECT * FROM LOGY ORDER BY CAS DESC FETCH FIRST {NumberOfFetchedRows} ROWS ONLY"));
+
+            foreach (var entry in data)
+            {
+                Items.Add(entry);
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }

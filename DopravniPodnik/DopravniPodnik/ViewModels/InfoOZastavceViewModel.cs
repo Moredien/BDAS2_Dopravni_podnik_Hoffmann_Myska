@@ -39,11 +39,11 @@ public partial class InfoOZastavceViewModel : ViewModelBase
         LoadZastavky();
     }
     
-    private void LoadZastavky()
+    private async void LoadZastavky()
     {
         Zastavky.Clear();
 
-        var data = _databaseService.FetchData<Zastavky>("SELECT * FROM ST67028.ZASTAVKY");
+        var data = await Task.Run(() =>_databaseService.FetchData<Zastavky>("SELECT * FROM ST67028.ZASTAVKY"));
         
         foreach (var obj in data)
         {
@@ -52,7 +52,7 @@ public partial class InfoOZastavceViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    public void Vyhledat()
+    public async Task Vyhledat()
     {
         Items.Clear();
         if (SelectedZastavka == null || SelectedZastavka == null)
@@ -62,7 +62,7 @@ public partial class InfoOZastavceViewModel : ViewModelBase
             return;
         }
         
-        var temp = _databaseService.FetchDataParam<InfoOZastavceDTO>(GetProcedureCallWrapper());
+        var temp = await Task.Run(() => _databaseService.FetchDataParam<InfoOZastavceDTO>(GetProcedureCallWrapper()));
         if (temp.Count == 0)
         {
             MessageBox.Show("Mezi stanicemi neexistuje spojeni", "Vysledek", 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DopravniPodnik.Data.DTO;
 using DopravniPodnik.Data.service;
@@ -20,7 +21,7 @@ public partial class EmployeeHierarchyViewModel : ViewModelBase
         FetchData();    
     }
 
-    private void FetchData()
+    private async void FetchData()
     {
         string query = @"BEGIN :result := GET_EMPLOYEE_HIERARCHY(); END;";
 
@@ -34,13 +35,20 @@ public partial class EmployeeHierarchyViewModel : ViewModelBase
             }
         };
         var procedureCallWrapper = new ProcedureCallWrapper(query, parameters);
-
-        var data = _databaseService.FetchDataParam<EmployeeHierarchyDTO>(procedureCallWrapper);
-
-        foreach (var entry in data)
+        try
         {
-            TrimPrefix(entry);
-            Items.Add(entry);
+
+            var data = await Task.Run(() =>
+                _databaseService.FetchDataParam<EmployeeHierarchyDTO>(procedureCallWrapper));
+
+            foreach (var entry in data)
+            {
+                TrimPrefix(entry);
+                Items.Add(entry);
+            }
+        }catch (Exception ex)
+        {
+            MessageBox.Show($"Error while loading data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 

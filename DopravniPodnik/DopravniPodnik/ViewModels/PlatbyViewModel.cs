@@ -23,9 +23,9 @@ public partial class PlatbyViewModel : ViewModelBase
         LoadItems();
     }
 
-    private void LoadItems()
+    private async void LoadItems()
     {
-        var data = _databaseService.FetchData<PlatbyDTO>($"SELECT * FROM PLATBY_VIEW");
+        var data = await Task.Run(() =>_databaseService.FetchData<PlatbyDTO>($"SELECT * FROM PLATBY_VIEW"));
         foreach (var entry in data)
         {
             Items.Add(entry);

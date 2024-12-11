@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using DopravniPodnik.Data.DTO;
+using DopravniPodnik.Data.Models;
 using DopravniPodnik.Data.service;
 
 namespace DopravniPodnik.ViewModels;
@@ -13,10 +15,22 @@ public partial class DBObjektyViewModel : ViewModelBase
     public DBObjektyViewModel()
     {
         Items = new();
-        var data = _databaseService.FetchData<DBObjektyDTO>($"SELECT * FROM DB_OBJEKTY_VIEW");
-        foreach (var entry in data)
+        LoadDataAsync();
+    }
+    private async void LoadDataAsync()
+    {
+        try
         {
-            Items.Add(entry);
+            var data = await Task.Run(() =>
+                _databaseService.FetchData<DBObjektyDTO>($"SELECT * FROM DB_OBJEKTY_VIEW"));
+            foreach (var entry in data)
+            {
+                Items.Add(entry);
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"An error occurred while loading data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

@@ -59,11 +59,11 @@ public partial class VyhledaniCestyViewModel : ViewModelBase
         }
 
     }
-    private void LoadZastavky()
+    private async void LoadZastavky()
     {
         Zastavky.Clear();
 
-        var data = _databaseService.FetchData<Zastavky>("SELECT * FROM ST67028.ZASTAVKY");
+        var data = await Task.Run(() =>_databaseService.FetchData<Zastavky>("SELECT * FROM ST67028.ZASTAVKY"));
         
         foreach (var obj in data)
         {

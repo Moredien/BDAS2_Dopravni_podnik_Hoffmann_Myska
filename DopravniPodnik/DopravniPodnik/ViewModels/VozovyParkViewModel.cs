@@ -24,11 +24,11 @@ public partial class VozovyParkViewModel : ViewModelBase
     }
 
 
-    private void LoadItems()
+    private async void LoadItems()
     {
         Items.Clear();
 
-        var data = _databaseService.FetchData<VozovyParkDTO>("SELECT * FROM ST67028.DOSTUPNA_VOZIDLA_VIEW");
+        var data =await Task.Run(() => _databaseService.FetchData<VozovyParkDTO>("SELECT * FROM ST67028.DOSTUPNA_VOZIDLA_VIEW"));
         
         foreach (var obj in data)
         {

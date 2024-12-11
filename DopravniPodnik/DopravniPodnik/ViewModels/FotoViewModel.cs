@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DopravniPodnik.Data.DTO;
@@ -18,15 +19,24 @@ public partial class FotoViewModel : ViewModelBase
     public FotoViewModel()
     {
         Items = new();
-        LoadItems();
+        LoadItemsAsync();
     }
 
-    private void LoadItems()
+    private async void LoadItemsAsync()
     {
-        var data = _databaseService.FetchData<FotoDTO>($"SELECT * FROM FOTO_VIEW");
-        foreach (var entry in data)
+        try
         {
-            Items.Add(entry);
+            var data = await Task.Run(() =>
+                _databaseService.FetchData<FotoDTO>("SELECT * FROM FOTO_VIEW"));
+
+            foreach (var entry in data)
+            {
+                Items.Add(entry);
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error while loading data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 

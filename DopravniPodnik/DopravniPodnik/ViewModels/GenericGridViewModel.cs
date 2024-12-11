@@ -52,7 +52,7 @@ public partial class GenericGridViewModel : ViewModelBase
 
         _tableName = TableMapper.getTableName(modelType);
 
-        Reload();
+        _ = Reload();
     }
 
     [RelayCommand]
@@ -60,7 +60,7 @@ public partial class GenericGridViewModel : ViewModelBase
     {
         if (SelectedItem == null)
         {
-            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber", 
+            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber",
                 MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
@@ -79,18 +79,18 @@ public partial class GenericGridViewModel : ViewModelBase
     {
         if (SelectedItem == null)
         {
-            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber", 
+            MessageBox.Show("Nebyl vybrán žádný záznam", "Prazdny vyber",
                 MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
-        
+
         var confirmation = MessageBox.Show(
-            "Opravdu chcete záznam odebrat ?", 
-            "Potvrzeni", 
+            "Opravdu chcete záznam odebrat ?",
+            "Potvrzeni",
             MessageBoxButton.YesNo);
-        
-        if(confirmation == MessageBoxResult.No) return;
-        
+
+        if (confirmation == MessageBoxResult.No) return;
+
         var id = GetId(SelectedItem);
         var columnName = GetColumnNameForIdProperty(SelectedItem);
 
@@ -100,7 +100,7 @@ public partial class GenericGridViewModel : ViewModelBase
         _databaseService.ExecuteDbCall(procedureCallWrapper, out var error);
         if (!string.IsNullOrEmpty(error))
         {
-            MessageBox.Show("Při mazání data z databáze došlo k chybě", "Chyba pri mazani", 
+            MessageBox.Show("Při mazání data z databáze došlo k chybě", "Chyba pri mazani",
                 MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
@@ -109,12 +109,14 @@ public partial class GenericGridViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    void Reload()
+    private async Task Reload()
     {
         Items.Clear();
         var method = typeof(DatabaseService).GetMethod(nameof(_databaseService.FetchData));
         var genericMethod = method?.MakeGenericMethod(_modelType);
-        var data = genericMethod?.Invoke(_databaseService, new object?[] { $"SELECT * FROM ST67028.{_tableName}" });
+
+        var data = await Task.Run(() =>
+            genericMethod?.Invoke(_databaseService, new object?[] { $"SELECT * FROM ST67028.{_tableName}" }));
         if (data == null)
             return;
         foreach (var obj in (IEnumerable)data)
@@ -122,6 +124,7 @@ public partial class GenericGridViewModel : ViewModelBase
             Items.Add(obj);
         }
     }
+
     private int? GetId(object obj)
     {
         var type = obj.GetType();

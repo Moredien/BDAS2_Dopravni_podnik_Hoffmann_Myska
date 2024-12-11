@@ -25,7 +25,7 @@ public partial class KartyViewModel : ViewModelBase
         LoadKarty();
     }
 
-    private void LoadKarty()
+    private async void LoadKarty()
     {
         var idUzivatele = _databaseService
             .FetchData<Uzivatele>($"SELECT * FROM UZIVATELE WHERE UZIVATELSKE_JMENO = '{UserSession.Instance.UserName}'")
@@ -33,8 +33,8 @@ public partial class KartyViewModel : ViewModelBase
         _zakaznik = _databaseService
             .FetchData<Zakaznici>($"SELECT * FROM ZAKAZNICI WHERE ID_UZIVATELE = {idUzivatele}")
             .FirstOrDefault();
-        var data = _databaseService.FetchData<KartyMhd>(
-            $"SELECT * FROM KARTY_MHD WHERE ID_ZAKAZNIKA = {_zakaznik?.IdZakaznika}");
+        var data = await Task.Run(() =>_databaseService.FetchData<KartyMhd>(
+            $"SELECT * FROM KARTY_MHD WHERE ID_ZAKAZNIKA = {_zakaznik?.IdZakaznika}"));
         foreach (var entry in data)
         {
             Items.Add(entry);

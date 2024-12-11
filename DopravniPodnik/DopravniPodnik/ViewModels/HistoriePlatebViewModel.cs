@@ -18,14 +18,22 @@ public partial class HistoriePlatebViewModel : ViewModelBase
     {
         Items = new();
         FilteredItems = new();
-        var uzivatel =
+
+        LoadItemsAsync();
+    }
+
+    private async void LoadItemsAsync()
+    {
+        var uzivatel = await Task.Run(() =>
             _databaseService.FetchData<Uzivatele>(
-                $"SELECT * FROM UZIVATELE WHERE UZIVATELSKE_JMENO = '{UserSession.Instance.UserName}'")
-                .FirstOrDefault();
-        var zakaznik =
-            _databaseService.FetchData<Zakaznici>($"SELECT * FROM ZAKAZNICI WHERE ID_UZIVATELE = {uzivatel?.IdUzivatele}")
-                .FirstOrDefault();
-        var data = _databaseService.FetchData<Platby>($"SELECT * FROM PLATBY WHERE ID_ZAKAZNIKA = {zakaznik?.IdZakaznika}");
+                    $"SELECT * FROM UZIVATELE WHERE UZIVATELSKE_JMENO = '{UserSession.Instance.UserName}'")
+                .FirstOrDefault());
+        var zakaznik = await Task.Run(() =>
+            _databaseService
+                .FetchData<Zakaznici>($"SELECT * FROM ZAKAZNICI WHERE ID_UZIVATELE = {uzivatel?.IdUzivatele}")
+                .FirstOrDefault());
+        var data = _databaseService.FetchData<Platby>(
+            $"SELECT * FROM PLATBY WHERE ID_ZAKAZNIKA = {zakaznik?.IdZakaznika}");
         foreach (var entry in data)
         {
             Items.Add(entry);

@@ -31,7 +31,6 @@ public partial class ZakazniciViewModel : ViewModelBase
         Items = new();
         FilteredItems = new();
         LoadData();
-        FilterList(null);
     }
 
     [RelayCommand]
@@ -41,13 +40,14 @@ public partial class ZakazniciViewModel : ViewModelBase
             WindowManager.SetContentView(typeof(ProfilViewModel), new object[] { SelectedItem });
     }
 
-    private void LoadData()
+    private async void LoadData()
     {
-        var data = _databaseService.FetchData<UzivatelDTO>($"SELECT * FROM UZIVATEL_VIEW WHERE TYP_UZIVATELE = 'Zákazník'");
+        var data = await Task.Run(() => _databaseService.FetchData<UzivatelDTO>($"SELECT * FROM UZIVATEL_VIEW WHERE TYP_UZIVATELE = 'Zákazník'"));
         foreach (var uzivatel in data)
         {
             Items.Add(uzivatel);
         }
+        FilterList(null);
     }
 
     private void FilterList(string? keyword)

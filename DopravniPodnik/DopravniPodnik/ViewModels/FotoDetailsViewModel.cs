@@ -19,14 +19,14 @@ public partial class FotoDetailsViewModel : ViewModelBase
 
     public FotoDetailsViewModel(int fotoId)
     {
-        Foto = FetchFoto(fotoId);
+        Foto = FetchFoto(fotoId).Result;
         if (Foto != null)
             FotoSource = CreateImageSourceFromBytes(Foto.Data);
     }
 
-    private Foto FetchFoto(int id)
+    private Task<Foto> FetchFoto(int id)
     {
-        return _databaseService.FetchData<Foto>($"SELECT * FROM FOTO WHERE ID_FOTO = {id}")[0];
+        return Task.FromResult(_databaseService.FetchData<Foto>($"SELECT * FROM FOTO WHERE ID_FOTO = {id}")[0]);
     }
     
     public ImageSource CreateImageSourceFromBytes(byte[] imageData)
