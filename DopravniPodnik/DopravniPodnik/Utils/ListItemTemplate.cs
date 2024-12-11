@@ -2,7 +2,7 @@
 
 public class ListItemTemplate
 {
-    public ListItemTemplate(string label, Type modelType,Type viewModelType)
+    public ListItemTemplate(string label, Type? modelType,Type viewModelType)
     {
         Label = label;
         ModelType = modelType;
@@ -10,6 +10,6 @@ public class ListItemTemplate
     }
 
     public string Label { get; }
-    public Type ModelType { get; }
+    public Type? ModelType { get; }
     public Type ViewModelType { get; }
 }

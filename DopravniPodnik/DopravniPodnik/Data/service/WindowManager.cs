@@ -11,11 +11,11 @@ public static class WindowManager
 { 
     public static MainWindowViewModel? MainWindow {get;set;}
     //viewmodels for the top menu
-    private static readonly Dictionary<Type, ViewModelBase> MenuViewModels = new()
+    private static readonly Dictionary<Type, ViewModelBase?> MenuViewModels = new()
     {
-        {typeof(AnonymousUserMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(AnonymousUserMenuViewModel))},
-        {typeof(LoggedInUserMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserMenuViewModel))},
-        {typeof(AdminMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(AdminMenuViewModel))}
+        {typeof(AnonymousUserMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(AnonymousUserMenuViewModel))!},
+        {typeof(LoggedInUserMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(LoggedInUserMenuViewModel))!},
+        {typeof(AdminMenuViewModel),(ViewModelBase)Activator.CreateInstance(typeof(AdminMenuViewModel))!}
     };
 
     public static ViewModelBase? CurrentMenuViewModel { get; set; }
@@ -27,16 +27,19 @@ public static class WindowManager
         if (type == null)
             throw new Exception("Cannot create new view without specifying type");
         CurrentContentViewModel = CreateNewViewInstance(type, parameters);
-        MainWindow.CurrentPage = CurrentContentViewModel;
+        MainWindow!.CurrentPage = CurrentContentViewModel;
         return CurrentContentViewModel;
     }
 
     public static ViewModelBase ReturnToSelectedContentView()
     {
-        if(MainWindow.SelectedListItem.ViewModelType== typeof(GenericGridViewModel))
-            return SetContentView(MainWindow.SelectedListItem.ViewModelType,new object[]{MainWindow.SelectedListItem.ModelType });
+        if(MainWindow?.SelectedListItem?.ViewModelType== typeof(GenericGridViewModel))
+            return SetContentView(MainWindow.SelectedListItem.ViewModelType,new object[]
+                {
+                    MainWindow.SelectedListItem.ModelType!
+                });
         else
-            return SetContentView(MainWindow.SelectedListItem.ViewModelType,new object[]{});
+            return SetContentView(MainWindow?.SelectedListItem?.ViewModelType,new object[]{});
     }
 
     //changes the top menu
@@ -48,7 +51,7 @@ public static class WindowManager
         {
             CurrentMenuViewModel = model;
             MainWindow.CurrentMenu = CurrentMenuViewModel;
-            CurrentMenuViewModel.Update();
+            if (CurrentMenuViewModel != null) CurrentMenuViewModel.Update();
         }
         else
             throw new Exception($"Failed to set menu view. MenuView {key} doesnt exist.");
@@ -56,12 +59,12 @@ public static class WindowManager
     }
     private static ViewModelBase CreateNewViewInstance(Type type, object[] parameters)
     {
-        return (ViewModelBase)Activator.CreateInstance(type, parameters);
+        return ((ViewModelBase)Activator.CreateInstance(type, parameters)!);
     }
 
-    public static void ChangeUserType(TypyUzivatele userType)
+    public static void ChangeUserType(TypyUzivatele? userType)
     {
-        MainWindow.MenuItems.Clear();
+        MainWindow!.MenuItems.Clear();
         if (userType == null)
         {
             MainWindow.MenuItems.Add(new ListItemTemplate("Vyhledání cesty", null,typeof(VyhledaniCestyViewModel)));
