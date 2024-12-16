@@ -175,7 +175,7 @@ public partial class ZalozitKartuFormViewModel : ViewModelBase
             new OracleParameter("p_jmeno_souboru", OracleDbType.Varchar2)
                 { Value = JmenoSouboru, Direction = ParameterDirection.Input },
             new OracleParameter("p_typ_predplatneho", OracleDbType.Varchar2)
-                { Value = SelectedTypPredplatneho, Direction = ParameterDirection.Input },
+                { Value = SelectedTypPredplatneho.Jmeno, Direction = ParameterDirection.Input },
             new OracleParameter("p_konec_predplatneho", OracleDbType.Date)
                 { Value = KonecPredplatneho, Direction = ParameterDirection.Input },
             new OracleParameter("p_vyse_platby", OracleDbType.Decimal)

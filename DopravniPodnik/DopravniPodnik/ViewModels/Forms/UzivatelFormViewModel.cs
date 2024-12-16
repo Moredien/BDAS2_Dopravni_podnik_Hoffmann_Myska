@@ -82,10 +82,7 @@ public partial class UzivatelFormViewModel : ViewModelBase, INotifyDataErrorInfo
                     :p_datum_narozeni,
                     :p_mesto,
                     :p_ulice,
-                    :p_cislo_popisne,
-                    :p_foto_jmeno_souboru,
-                    :p_foto_data,
-                    :p_foto_datum_pridani
+                    :p_cislo_popisne
                 );
             END;
         ";
